@@ -13,6 +13,7 @@ public interface ILessonLikeService
     Task<GetLessonLikeResponse> GetByIdAsync(Guid id);
     Task<IPaginate<GetListLessonLikeResponse>> GetByAccountIdAsync(Guid accountId);
     Task<IPaginate<GetListLessonLikeResponse>> GetByLessonIdAsync(Guid lessonId);
+    Task<GetListLessonLikeResponse> GetByLessonIdAndAccountIdAsync(Guid lessonId, Guid accountId);
     Task<DeletedLessonLikeResponse> DeleteByAccountIdAndLessonIdAsync(DeleteLessonLikeRequest deleteLessonLikeRequest);
 }
 
