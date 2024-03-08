@@ -18,6 +18,15 @@ public class AccountAnswerProfile : Profile
 
         CreateMap<AccountAnswer, DeleteAccountAnswerRequest>().ReverseMap();
         CreateMap<AccountAnswer, DeletedAccountAnswerResponse>().ReverseMap();
+        CreateMap<AccountAnswer, GetAccountAnswerResponse>()
+            .ForMember(destinationMember: caar => caar.ExamName,
+            memberOptions: opt => opt.MapFrom(aa => aa.Exam.Name))
+
+             .ForMember(destinationMember: caar => caar.AccountName,
+             memberOptions: opt => opt.MapFrom(aa => aa.Account.User.FirstName))
+
+             .ForMember(destinationMember: caar => caar.QuestionName,
+             memberOptions: opt => opt.MapFrom(aa => aa.Question.Description)).ReverseMap();
 
         CreateMap<AccountAnswer, GetListAccountAnswerResponse>()
              .ForMember(destinationMember: caar => caar.ExamName,

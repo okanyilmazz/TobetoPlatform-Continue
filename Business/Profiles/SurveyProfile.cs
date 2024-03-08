@@ -19,6 +19,7 @@ public class SurveyProfile : Profile
         CreateMap<Survey, DeletedSurveyResponse>().ReverseMap();
 
         CreateMap<Survey, GetListSurveyResponse>().ReverseMap();
+        CreateMap<Survey, GetSurveyResponse>().ReverseMap();
         CreateMap<IPaginate<Survey>, Paginate<GetListSurveyResponse>>().ReverseMap();
     }
 }

@@ -20,6 +20,7 @@ public class CompetenceQuestionProfile : Profile
         CreateMap<CompetenceQuestion, DeletedCompetenceQuestionResponse>().ReverseMap();
 
         CreateMap<CompetenceQuestion, GetListCompetenceQuestionResponse>().ReverseMap();
+        CreateMap<CompetenceQuestion, GetCompetenceQuestionResponse>().ReverseMap();
 
         CreateMap<IPaginate<CompetenceQuestion>, Paginate<GetListCompetenceQuestionResponse>>().ReverseMap();
     }

@@ -20,6 +20,7 @@ public class LessonLikeProfile : Profile
         CreateMap<LessonLike, DeletedLessonLikeResponse>().ReverseMap();
 
         CreateMap<LessonLike, GetListLessonLikeResponse>().ReverseMap();
+        CreateMap<LessonLike, GetLessonLikeResponse>().ReverseMap();
         CreateMap<IPaginate<LessonLike>, Paginate<GetListLessonLikeResponse>>().ReverseMap();
     }
 }

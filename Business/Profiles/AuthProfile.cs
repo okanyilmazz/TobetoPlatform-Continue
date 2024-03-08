@@ -6,14 +6,12 @@ using Core.Utilities.Security.JWT;
 
 namespace Business.Profiles;
 
-public class AuthProfile:Profile
+public class AuthProfile : Profile
 {
-	public AuthProfile()
-	{
-		CreateMap<AccessToken, LoginResponse>().ReverseMap();
-		CreateMap<GetListOperationClaimResponse, OperationClaim>()
-
-			.ReverseMap();
-	}
+    public AuthProfile()
+    {
+        CreateMap<AccessToken, LoginResponse>().ReverseMap();
+        CreateMap<GetListOperationClaimResponse, OperationClaim>().ReverseMap();
+    }
 }
 

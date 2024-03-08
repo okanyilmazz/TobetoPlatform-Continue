@@ -27,7 +27,10 @@ public class WorkExperienceProfile : Profile
                .ForMember(destinationMember: response => response.AccountName,
                memberOptions: opt => opt.MapFrom(we => we.Account.User.FirstName)).ReverseMap();
 
-
-
+        CreateMap<WorkExperience, GetWorkExperienceResponse>()
+       .ForMember(destinationMember: response => response.CityName,
+       memberOptions: opt => opt.MapFrom(we => we.City.Name))
+       .ForMember(destinationMember: response => response.AccountName,
+       memberOptions: opt => opt.MapFrom(we => we.Account.User.FirstName)).ReverseMap();
     }
 }
