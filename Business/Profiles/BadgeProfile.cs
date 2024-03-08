@@ -20,6 +20,7 @@ public class BadgeProfile : Profile
         CreateMap<Badge, DeletedBadgeResponse>().ReverseMap();
 
         CreateMap<Badge, GetListBadgeResponse>().ReverseMap();
+        CreateMap<Badge, GetBadgeResponse>().ReverseMap();
 
         CreateMap<IPaginate<Badge>, Paginate<GetListBadgeResponse>>().ReverseMap();
 

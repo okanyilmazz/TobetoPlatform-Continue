@@ -21,6 +21,8 @@ public class EducationProgramProfile : Profile
         CreateMap<IPaginate<EducationProgram>, Paginate<GetListEducationProgramResponse>>().ReverseMap();
 
         CreateMap<EducationProgram, GetListEducationProgramResponse>().ReverseMap();
+        CreateMap<EducationProgram, GetEducationProgramResponse>().ReverseMap();
+
 
         CreateMap<List<EducationProgram>, Paginate<GetListEducationProgramResponse>>()
             .ForMember(destinationMember: p => p.Items,

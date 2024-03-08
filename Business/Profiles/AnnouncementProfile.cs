@@ -19,7 +19,10 @@ public class AnnouncementProfile : Profile
         CreateMap<Announcement, DeleteAnnouncementRequest>().ReverseMap();
         CreateMap<Announcement, DeletedAnnouncementResponse>().ReverseMap();
 
-        CreateMap<Announcement, GetListAnnouncementResponse>().ReverseMap();
+        CreateMap<Announcement, GetAnnouncementResponse>()
+            .ForMember(destinationMember: response => response.AnnouncementTypeName,
+            memberOptions: opt => opt.MapFrom(er => er.AnnouncementType.Name)).ReverseMap();
+
         CreateMap<IPaginate<Announcement>, Paginate<GetListAnnouncementResponse>>().ReverseMap();
 
         CreateMap<Announcement, GetListAnnouncementResponse>()

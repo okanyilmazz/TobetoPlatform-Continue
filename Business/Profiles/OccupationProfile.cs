@@ -21,5 +21,6 @@ public class OccupationProfile : Profile
 
             CreateMap<IPaginate<Occupation>, Paginate<GetListOccupationResponse>>().ReverseMap();
             CreateMap<Occupation, GetListOccupationResponse>().ReverseMap();
+            CreateMap<Occupation, GetOccupationResponse>().ReverseMap();
     }
 }

@@ -20,6 +20,7 @@ public class EducationProgramDevelopmentProfile :Profile
         CreateMap<EducationProgramDevelopment, DeletedEducationProgramDevelopmentResponse>().ReverseMap();
 
         CreateMap<EducationProgramDevelopment, GetListEducationProgramDevelopmentResponse>().ReverseMap();
+        CreateMap<EducationProgramDevelopment, GetEducationProgramDevelopmentResponse>().ReverseMap();
         CreateMap<IPaginate<EducationProgramDevelopment>, Paginate<GetListEducationProgramDevelopmentResponse>>().ReverseMap();
     }
 }

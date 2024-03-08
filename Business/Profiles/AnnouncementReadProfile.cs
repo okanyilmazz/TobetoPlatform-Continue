@@ -22,5 +22,7 @@ public class AnnouncementReadProfile : Profile
 
         CreateMap<IPaginate<AnnouncementRead>, Paginate<GetListAnnouncementReadResponse>>().ReverseMap();
         CreateMap<AnnouncementRead, GetListAnnouncementReadResponse>().ReverseMap();
+        CreateMap<AnnouncementRead, GetAnnouncementReadResponse>().ReverseMap();
+
     }
 }

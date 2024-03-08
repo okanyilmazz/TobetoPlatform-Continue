@@ -20,6 +20,15 @@ public class AccountLanguageProfile : Profile
         CreateMap<AccountLanguage, DeletedAccountLanguageResponse>().ReverseMap();
 
         CreateMap<IPaginate<AccountLanguage>, Paginate<GetListAccountLanguageResponse>>().ReverseMap();
+        CreateMap<AccountLanguage, GetAccountLanguageResponse>()
+            .ForMember(destinationMember: response => response.LanguageName,
+            memberOptions: opt => opt.MapFrom(l => l.Language.Name))
+            .ForMember(destinationMember: response => response.LanguageLevelName,
+            memberOptions: opt => opt.MapFrom(ll => ll.LanguageLevel.Name))
+            .ForMember(destinationMember: response => response.AccountName,
+            memberOptions: opt => opt.MapFrom(a => a.Account.User.FirstName))
+            .ReverseMap();
+
         CreateMap<AccountLanguage, GetListAccountLanguageResponse>()
             .ForMember(destinationMember: response => response.LanguageName,
             memberOptions: opt => opt.MapFrom(l => l.Language.Name))

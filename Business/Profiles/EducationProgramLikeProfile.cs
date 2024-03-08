@@ -20,6 +20,7 @@ public class EducationProgramLikeProfile : Profile
         CreateMap<EducationProgramLike, DeletedEducationProgramLikeResponse>().ReverseMap();
 
         CreateMap<EducationProgramLike, GetListEducationProgramLikeResponse>().ReverseMap();
+        CreateMap<EducationProgramLike, GetEducationProgramLikeResponse>().ReverseMap();
         CreateMap<IPaginate<EducationProgramLike>, Paginate<GetListEducationProgramLikeResponse>>().ReverseMap();
     }
 }

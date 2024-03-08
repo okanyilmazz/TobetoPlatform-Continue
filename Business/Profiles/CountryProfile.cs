@@ -1,5 +1,4 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using Business.Dtos.Requests.CountryRequests;
 using Business.Dtos.Responses.CountryResponses;
 using Core.DataAccess.Paging;
@@ -21,6 +20,7 @@ public class CountryProfile : Profile
         CreateMap<Country, DeletedCountryResponse>().ReverseMap();
 
         CreateMap<Country, GetListCountryResponse>().ReverseMap();
+        CreateMap<Country, GetCountryResponse>().ReverseMap();
         CreateMap<IPaginate<Country>, Paginate<GetListCountryResponse>>().ReverseMap();
     }
 }

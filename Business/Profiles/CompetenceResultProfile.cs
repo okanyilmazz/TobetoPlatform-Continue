@@ -22,6 +22,6 @@ public class CompetenceResultProfile : Profile
 
         CreateMap<IPaginate<CompetenceResult>, Paginate<GetListCompetenceResultResponse>>().ReverseMap();
         CreateMap<CompetenceResult, GetListCompetenceResultResponse>().ReverseMap();
-
+        CreateMap<CompetenceResult, GetCompetenceResultResponse>().ReverseMap();
     }
 }

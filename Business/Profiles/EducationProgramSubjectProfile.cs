@@ -19,7 +19,9 @@ public class EducationProgramSubjectProfile : Profile
         CreateMap<EducationProgramSubject, DeleteEducationProgramSubjectRequest>().ReverseMap();
         CreateMap<EducationProgramSubject, DeletedEducationProgramSubjectResponse>().ReverseMap();
 
+        CreateMap<EducationProgramSubject, GetEducationProgramSubjectResponse>().ReverseMap();
         CreateMap<EducationProgramSubject, GetListEducationProgramSubjectResponse>().ReverseMap();
+
         CreateMap<IPaginate<EducationProgramSubject>, Paginate<GetListEducationProgramSubjectResponse>>().ReverseMap();
     }
 }
