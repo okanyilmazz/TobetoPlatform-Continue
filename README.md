@@ -1,0 +1,1 @@
+Welcome to the continuation repository of the TobetoPlatform project at [https://github.com/okanyilmazz/TobetoPlatform](https://github.com/okanyilmazz/TobetoPlatform). I will be continuing the development of the project through this repository.
