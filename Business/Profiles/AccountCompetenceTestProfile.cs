@@ -22,5 +22,6 @@ public class AccountCompetenceTestProfile : Profile
 
         CreateMap<IPaginate<AccountCompetenceTest>, Paginate<GetListAccountCompetenceTestResponse>>().ReverseMap();
         CreateMap<AccountCompetenceTest, GetListAccountCompetenceTestResponse>().ReverseMap();
+        CreateMap<AccountCompetenceTest, GetAccountCompetenceTestResponse>().ReverseMap();
     }
 }

@@ -20,6 +20,7 @@ namespace Business.Profiles
 
             CreateMap<IPaginate<Subject>, Paginate<GetListSubjectResponse>>().ReverseMap();
             CreateMap<Subject, GetListSubjectResponse>().ReverseMap();
+            CreateMap<Subject, GetSubjectResponse>().ReverseMap();
         }
     }
 }

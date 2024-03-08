@@ -18,6 +18,14 @@ public class EducationProgramLessonProfile : Profile
 
         CreateMap<EducationProgramLesson, DeleteEducationProgramLessonRequest>().ReverseMap();
         CreateMap<EducationProgramLesson, DeletedEducationProgramLessonResponse>().ReverseMap();
+        CreateMap<EducationProgramLesson, GetEducationProgramLessonResponse>() 
+            .ForMember(destinationMember: response => response.EducationProgramName,
+            memberOptions: opt => opt.MapFrom(epl => epl.EducationProgram.Name)
+            ).ForMember(destinationMember: response => response.LessonName,
+            memberOptions: opt => opt.MapFrom(epl => epl.Lesson.Name))
+            .ForMember(destinationMember: response => response.LessonSubTypeName,
+            memberOptions: opt => opt.MapFrom(epl => epl.Lesson.LessonSubType.Name))
+            .ReverseMap();
 
         CreateMap<EducationProgramLesson, GetListEducationProgramLessonResponse>()
             .ForMember(destinationMember: response => response.EducationProgramName,

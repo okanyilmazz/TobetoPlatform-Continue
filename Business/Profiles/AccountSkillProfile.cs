@@ -1,33 +1,38 @@
 ﻿using AutoMapper;
-using Azure;
 using Business.Dtos.Requests.AccountSkillRequests;
 using Business.Dtos.Responses.AccountSkillResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
 
-namespace Business.Profiles
+namespace Business.Profiles;
+
+public class AccountSkillProfile : Profile
 {
-    public class AccountSkillProfile : Profile
+    public AccountSkillProfile()
     {
-        public AccountSkillProfile()
-        {
-            CreateMap<AccountSkill, CreateAccountSkillRequest>().ReverseMap();
-            CreateMap<AccountSkill, CreatedAccountSkillResponse>().ReverseMap();
+        CreateMap<AccountSkill, CreateAccountSkillRequest>().ReverseMap();
+        CreateMap<AccountSkill, CreatedAccountSkillResponse>().ReverseMap();
 
-            CreateMap<AccountSkill, UpdateAccountSkillRequest>().ReverseMap();
-            CreateMap<AccountSkill, UpdatedAccountSkillResponse>().ReverseMap();
+        CreateMap<AccountSkill, UpdateAccountSkillRequest>().ReverseMap();
+        CreateMap<AccountSkill, UpdatedAccountSkillResponse>().ReverseMap();
 
-            CreateMap<AccountSkill, DeleteAccountSkillRequest>().ReverseMap();
-            CreateMap<AccountSkill, DeletedAccountSkillResponse>().ReverseMap();
+        CreateMap<AccountSkill, DeleteAccountSkillRequest>().ReverseMap();
+        CreateMap<AccountSkill, DeletedAccountSkillResponse>().ReverseMap();
 
-            CreateMap<AccountSkill, GetListAccountSkillResponse>()
-                .ForMember(destinationMember:response=>response.SkillName,memberOptions:
-                opt=>opt.MapFrom(acs=>acs.Skill.Name))
-                .ForMember(destinationMember:response=>response.AccountName,memberOptions:
-                opt=>opt.MapFrom(acs=>acs.Account.User.FirstName+" "+ acs.Account.User.LastName))
-                .ReverseMap();
-            CreateMap<IPaginate<AccountSkill>, Paginate<GetListAccountSkillResponse>>().ReverseMap();
+        CreateMap<AccountSkill, GetAccountSkillResponse>()
+            .ForMember(destinationMember: response => response.SkillName, memberOptions:
+            opt => opt.MapFrom(acs => acs.Skill.Name))
+            .ForMember(destinationMember: response => response.AccountName, memberOptions:
+            opt => opt.MapFrom(acs => acs.Account.User.FirstName + " " + acs.Account.User.LastName))
+            .ReverseMap();
 
-        }
+        CreateMap<AccountSkill, GetListAccountSkillResponse>()
+            .ForMember(destinationMember:response=>response.SkillName,memberOptions:
+            opt=>opt.MapFrom(acs=>acs.Skill.Name))
+            .ForMember(destinationMember:response=>response.AccountName,memberOptions:
+            opt=>opt.MapFrom(acs=>acs.Account.User.FirstName+" "+ acs.Account.User.LastName))
+            .ReverseMap();
+        CreateMap<IPaginate<AccountSkill>, Paginate<GetListAccountSkillResponse>>().ReverseMap();
+
     }
 }

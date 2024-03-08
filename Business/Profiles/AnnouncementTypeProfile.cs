@@ -22,5 +22,6 @@ public class AnnouncementTypeProfile : Profile
 
         CreateMap<IPaginate<AnnouncementType>, Paginate<GetListAnnouncementTypeResponse>>().ReverseMap();
         CreateMap<AnnouncementType, GetListAnnouncementTypeResponse>().ReverseMap();
+        CreateMap<AnnouncementType, GetAnnouncementTypeResponse>().ReverseMap();
     }
 }

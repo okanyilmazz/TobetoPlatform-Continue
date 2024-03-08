@@ -24,6 +24,12 @@ public class SessionProfile : Profile
             .ForMember(dest => dest.OccupationClassName, opt => opt.MapFrom(src => MapOccupationClassName(src)))
             .ForMember(dest => dest.AccountName, opt => opt.MapFrom(src => MapAccountName(src)))
             .ReverseMap();
+
+        CreateMap<Session, GetSessionResponse>()
+       .ForMember(dest => dest.LessonName, opt => opt.MapFrom(src => src.Lesson.Name))
+       .ForMember(dest => dest.OccupationClassName, opt => opt.MapFrom(src => MapOccupationClassName(src)))
+       .ForMember(dest => dest.AccountName, opt => opt.MapFrom(src => MapAccountName(src)))
+       .ReverseMap();
     }
 
     private static string MapOccupationClassName(Session src)

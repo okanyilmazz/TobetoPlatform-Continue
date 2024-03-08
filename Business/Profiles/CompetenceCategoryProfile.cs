@@ -20,6 +20,7 @@ public class CompetenceCategoryProfile : Profile
         CreateMap<CompetenceCategory, DeletedCompetenceCategoryResponse>().ReverseMap();
 
         CreateMap<CompetenceCategory, GetListCompetenceCategoryResponse>().ReverseMap();
+        CreateMap<CompetenceCategory, GetCompetenceCategoryResponse>().ReverseMap();
 
         CreateMap<IPaginate<CompetenceCategory>, Paginate<GetListCompetenceCategoryResponse>>().ReverseMap();
     }

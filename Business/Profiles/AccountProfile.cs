@@ -19,13 +19,7 @@ public class AccountProfile : Profile
         CreateMap<Account, DeleteAccountRequest>().ReverseMap();
         CreateMap<Account, DeletedAccountResponse>().ReverseMap();
 
-        CreateMap<Account, GetListAccountResponse>()
-            //.ForMember(destinationMember: response => response.DistrictId,
-            //memberOptions: a => a.MapFrom(a => a.Address.District.Id))
-            //.ForMember(destinationMember: response => response.CityId,
-            //memberOptions: a => a.MapFrom(a => a.Address.City.Id))
-            //.ForMember(destinationMember: response => response.CountryId,
-            //memberOptions: a => a.MapFrom(a => a.Address.Country.Id))
+        CreateMap<Account, GetAccountResponse>()
             .ForMember(destinationMember: response => response.FirstName,
             memberOptions: a => a.MapFrom(a => a.User.FirstName))
               .ForMember(destinationMember: response => response.LastName,
@@ -35,7 +29,19 @@ public class AccountProfile : Profile
          .ForMember(dest => dest.OccupationClassName, opt => opt.MapFrom
          (src => string.Join(", ", src.AccountOccupationClasses.Select(aoc => aoc.OccupationClass.Name))))
            .ForMember(dest => dest.OccupationClassId, opt => opt.MapFrom
-         (src => string.Join(", ", src.AccountOccupationClasses.Select(aoc => aoc.OccupationClass.Id))));
+         (src => string.Join(", ", src.AccountOccupationClasses.Select(aoc => aoc.OccupationClass.Id)))).ReverseMap();
+
+        CreateMap<Account, GetListAccountResponse>()
+            .ForMember(destinationMember: response => response.FirstName,
+            memberOptions: a => a.MapFrom(a => a.User.FirstName))
+              .ForMember(destinationMember: response => response.LastName,
+            memberOptions: a => a.MapFrom(a => a.User.LastName))
+            .ForMember(destinationMember: response => response.Email,
+            memberOptions: a => a.MapFrom(a => a.User.Email))
+         .ForMember(dest => dest.OccupationClassName, opt => opt.MapFrom
+         (src => string.Join(", ", src.AccountOccupationClasses.Select(aoc => aoc.OccupationClass.Name))))
+           .ForMember(dest => dest.OccupationClassId, opt => opt.MapFrom
+         (src => string.Join(", ", src.AccountOccupationClasses.Select(aoc => aoc.OccupationClass.Id)))).ReverseMap();
 
 
 

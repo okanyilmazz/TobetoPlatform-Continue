@@ -25,6 +25,10 @@ public class HomeworkProfile : Profile
         CreateMap<List<Homework>, Paginate<GetListHomeworkResponse>>().ForMember(destinationMember: h => h.Items,
             memberOptions: opt => opt.MapFrom(h=>h.ToList())).ReverseMap();
 
+        CreateMap<Homework, GetHomeworkResponse>()
+            .ForMember(destinationMember: response => response.LessonName,
+            memberOptions: opt => opt.MapFrom(h => h.Lesson.Name)).ReverseMap();
+
         CreateMap<Homework, GetListHomeworkResponse>()
           .ForMember(destinationMember: response => response.LessonName,
           memberOptions: opt => opt.MapFrom(h => h.Lesson.Name)).ReverseMap();

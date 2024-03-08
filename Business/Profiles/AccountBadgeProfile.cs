@@ -19,7 +19,14 @@ public class AccountBadgeProfile : Profile
 
         CreateMap<AccountBadge, DeleteAccountBadgeRequest>().ReverseMap();
         CreateMap<AccountBadge, DeletedAccountBadgeResponse>().ReverseMap();
+
         CreateMap<IPaginate<AccountBadge>, Paginate<GetListAccountBadgeResponse>>().ReverseMap();
+        CreateMap<AccountBadge, GetAccountBadgeResponse>()
+            .ForMember(destinationMember: response => response.AccountName,
+            memberOptions: opt => opt.MapFrom(ab => ab.Account.User.FirstName + " " + ab.Account.User.LastName))
+            .ForMember(destinationMember: response => response.BadgeThumbnail,
+            memberOptions: opt => opt.MapFrom(ab => ab.Badge.ThumbnailPath))
+            .ReverseMap();
 
         CreateMap<AccountBadge, GetListAccountBadgeResponse>()
             .ForMember(destinationMember: response => response.AccountName,

@@ -22,5 +22,6 @@ public class ManagementProgramProfile:Profile
 
         CreateMap<IPaginate<ManagementProgram>, Paginate<GetListManagementProgramResponse>>().ReverseMap();
         CreateMap<ManagementProgram, GetListManagementProgramResponse>().ReverseMap();
+        CreateMap<ManagementProgram, GetManagementProgramResponse>().ReverseMap();
     }
 }

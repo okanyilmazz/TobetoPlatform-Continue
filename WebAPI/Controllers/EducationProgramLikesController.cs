@@ -65,6 +65,16 @@ public class EducationProgramLikesController : ControllerBase
 
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
+    [Cache]
+    [HttpGet("GetByEducationProgramIdAndAccountId")]
+    public async Task<IActionResult> GetByEducationProgramIdAndAccountIdAsync([FromQuery] Guid educationProgramId, Guid accountId)
+    {
+        var result = await _educationProgramLikeService.GetByEducationProgramIdAndAccountIdAsync(educationProgramId,accountId);
+        return Ok(result);
+    }
+
+    [Logging(typeof(MsSqlLogger))]
+    [Logging(typeof(FileLogger))]
     [CacheRemove("EducationProgramLikes.Get")]
     [CustomValidation(typeof(CreateEducationProgramLikeRequestValidator))]
     [HttpPost]
