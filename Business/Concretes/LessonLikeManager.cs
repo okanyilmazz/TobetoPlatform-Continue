@@ -87,6 +87,18 @@ public class LessonLikeManager : ILessonLikeService
         return mappedLessonLikes;
     }
 
+    public async Task<GetListLessonLikeResponse> GetByLessonIdAndAccountIdAsync(Guid lessonId, Guid accountId)
+    {
+        var lessonLike = await _lessonLikeDal.GetAsync(
+            predicate: l => l.LessonId == lessonId && l.AccountId == accountId,
+            include: l => l.
+            Include(l => l.Lesson).
+            Include(l => l.Account));
+
+        var mappedLessonLike = _mapper.Map<GetListLessonLikeResponse>(lessonLike);
+        return mappedLessonLike;
+    }
+
     public async Task<IPaginate<GetListLessonLikeResponse>> GetListAsync(PageRequest pageRequest)
     {
         var lessonLike = await _lessonLikeDal.GetListAsync(

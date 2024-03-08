@@ -64,6 +64,16 @@ public class LessonLikesController : ControllerBase
 
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
+    [Cache]
+    [HttpGet("GetByLessonIdAndAccountId")]
+    public async Task<IActionResult> GetByLessonIdAndAccountIdAsync([FromQuery] Guid lessonId, Guid accountId)
+    {
+        var result = await _lessonLikeService.GetByLessonIdAndAccountIdAsync(lessonId, accountId);
+        return Ok(result);
+    }
+
+    [Logging(typeof(MsSqlLogger))]
+    [Logging(typeof(FileLogger))]
     [CacheRemove("LessonLikes.Get")]
     [CustomValidation(typeof(CreateLessonLikeRequestValidator))]
     [HttpPost]

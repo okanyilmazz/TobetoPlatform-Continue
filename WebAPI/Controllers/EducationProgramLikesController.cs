@@ -69,7 +69,7 @@ public class EducationProgramLikesController : ControllerBase
     [HttpGet("GetByEducationProgramIdAndAccountId")]
     public async Task<IActionResult> GetByEducationProgramIdAndAccountIdAsync([FromQuery] Guid educationProgramId, Guid accountId)
     {
-        var result = await _educationProgramLikeService.GetByEducationProgramIdAndAccountIdAsync(educationProgramId,accountId);
+        var result = await _educationProgramLikeService.GetByEducationProgramIdAndAccountIdAsync(educationProgramId, accountId);
         return Ok(result);
     }
 
