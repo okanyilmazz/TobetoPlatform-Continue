@@ -10,5 +10,5 @@ public interface IEducationProgramProgrammingLanguageService
     Task<DeletedEducationProgramProgrammingLanguageResponse> DeleteAsync(DeleteEducationProgramProgrammingLanguageRequest deleteEducationProgramProgrammingLanguageRequest);
     Task<UpdatedEducationProgramProgrammingLanguageResponse> UpdateAsync(UpdateEducationProgramProgrammingLanguageRequest updateEducationProgramProgrammingLanguageRequest);
     Task<IPaginate<GetListEducationProgramProgrammingLanguageResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListEducationProgramProgrammingLanguageResponse> GetByIdAsync(Guid id);
+    Task<GetEducationProgramProgrammingLanguageResponse> GetByIdAsync(Guid id);
 }

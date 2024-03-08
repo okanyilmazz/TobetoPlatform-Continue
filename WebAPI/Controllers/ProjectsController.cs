@@ -47,7 +47,7 @@ public class ProjectsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Projects.Get")]
     [CustomValidation(typeof(CreateProjectRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateProjectRequest createProjectRequest)
     {
         var result = await _projectService.AddAsync(createProjectRequest);
@@ -59,7 +59,7 @@ public class ProjectsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Projects.Get")]
     [CustomValidation(typeof(UpdateProjectRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateProjectRequest updateProjectRequest)
     {
         var result = await _projectService.UpdateAsync(updateProjectRequest);
@@ -70,7 +70,7 @@ public class ProjectsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Projects.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteProjectRequest deleteProjectRequest)
     {
         var result = await _projectService.DeleteAsync(deleteProjectRequest);

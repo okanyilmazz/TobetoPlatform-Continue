@@ -12,7 +12,7 @@ public interface IAnnouncementReadService
     Task<DeletedAnnouncementReadResponse> DeleteAsync(DeleteAnnouncementReadRequest deleteAnnouncementReadRequest);
 
     Task<IPaginate<GetListAnnouncementReadResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListAnnouncementReadResponse> GetByIdAsync(Guid Id);
+    Task<GetAnnouncementReadResponse> GetByIdAsync(Guid Id);
     Task<IPaginate<GetListAnnouncementReadResponse>> GetByAccountIdAsync(Guid accountId);
     Task<IPaginate<GetListAnnouncementReadResponse>> GetByAnnouncementIdAsync(Guid announcementId);
 }

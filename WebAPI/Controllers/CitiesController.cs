@@ -47,7 +47,7 @@ public class CitiesController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Cities.Get")]
     [CustomValidation(typeof(CreateCityRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateCityRequest createCityRequest)
     {
         var result = await _cityService.AddAsync(createCityRequest);
@@ -58,7 +58,7 @@ public class CitiesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Cities.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteCityRequest deleteCityRequest)
     {
         var result = await _cityService.DeleteAsync(deleteCityRequest);
@@ -70,7 +70,7 @@ public class CitiesController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Cities.Get")]
     [CustomValidation(typeof(UpdateCityRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateCityRequest updateCityRequest)
     {
         var result = await _cityService.UpdateAsync(updateCityRequest);

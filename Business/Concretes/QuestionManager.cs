@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.QuestionRequests;
-using Business.Dtos.Responses.AccountSkillResponses;
 using Business.Dtos.Responses.QuestionResponses;
 using Business.Rules.BusinessRules;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
-using DataAccess.Concretes;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 
@@ -52,10 +50,10 @@ public class QuestionManager : IQuestionService
         return mappedQuestions;
     }
 
-    public async Task<GetListQuestionResponse> GetByIdAsync(Guid id)
+    public async Task<GetQuestionResponse> GetByIdAsync(Guid id)
     {
         var question = await _questionDal.GetAsync(q => q.Id == id);
-        var mappedQuestion = _mapper.Map<GetListQuestionResponse>(question);
+        var mappedQuestion = _mapper.Map<GetQuestionResponse>(question);
         return mappedQuestion;
     }
 

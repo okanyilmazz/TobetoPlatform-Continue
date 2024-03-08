@@ -10,6 +10,6 @@ public interface IAddressService
     Task<UpdatedAddressResponse> UpdateAsync(UpdateAddressRequest updateAddressRequest);
     Task<DeletedAddressResponse> DeleteAsync(DeleteAddressRequest deleteAddressRequest);
     Task<IPaginate<GetListAddressResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListAddressResponse> GetByIdAsync(Guid Id);
-    Task<GetListAddressResponse> GetByAccountIdAsync(Guid accountId);
+    Task<GetAddressResponse> GetByIdAsync(Guid Id);
+    Task<GetAddressResponse> GetByAccountIdAsync(Guid accountId);
 }

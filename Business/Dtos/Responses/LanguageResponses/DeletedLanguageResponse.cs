@@ -1,8 +1,7 @@
-﻿namespace Business.Dtos.Responses.LanguageResponses
+﻿namespace Business.Dtos.Responses.LanguageResponses;
+
+public class DeletedLanguageResponse
 {
-    public class DeletedLanguageResponse
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-    }
+    public Guid Id { get; set; }
+    public string Name { get; set; }
 }

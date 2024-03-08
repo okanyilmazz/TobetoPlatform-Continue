@@ -10,5 +10,5 @@ public interface IUniversityDepartmentService
     Task<CreatedUniversityDepartmentResponse> AddAsync(CreateUniversityDepartmentRequest createUniversityDepartmentRequest);
     Task<UpdatedUniversityDepartmentResponse> UpdateAsync(UpdateUniversityDepartmentRequest updateUniversityDepartmentRequest);
     Task<DeletedUniversityDepartmentResponse> DeleteAsync(DeleteUniversityDepartmentRequest deleteUniversityDepartmentRequest);
-    Task<GetListUniversityDepartmentResponse> GetByIdAsync(Guid id);
+    Task<GetUniversityDepartmentResponse> GetByIdAsync(Guid id);
 }

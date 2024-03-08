@@ -46,7 +46,7 @@ public class AccountAnswersController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountAnswers.Get")]
     [CustomValidation(typeof(CreateAccountAnswerRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateAccountAnswerRequest createAccountAnswerRequest)
     {
         var result = await _accountAnswersService.AddAsync(createAccountAnswerRequest);
@@ -58,7 +58,7 @@ public class AccountAnswersController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountAnswers.Get")]
     [CustomValidation(typeof(UpdateAccountAnswerRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateAccountAnswerRequest updateAccountAnswerRequest)
     {
         var result = await _accountAnswersService.UpdateAsync(updateAccountAnswerRequest);
@@ -68,7 +68,7 @@ public class AccountAnswersController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountAnswers.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountAnswerRequest deleteAccountAnswerRequest)
     {
         var result = await _accountAnswersService.DeleteAsync(deleteAccountAnswerRequest);

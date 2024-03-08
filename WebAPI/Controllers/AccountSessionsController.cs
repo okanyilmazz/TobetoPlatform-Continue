@@ -68,7 +68,7 @@ public class AccountSessionsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountSessions.Get")]
     [CustomValidation(typeof(CreateAccountSessionRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateAccountSessionRequest createAccountSessionRequest)
     {
         var result = await _accountSessionService.AddAsync(createAccountSessionRequest);
@@ -80,7 +80,7 @@ public class AccountSessionsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountSessions.Get")]
     [CustomValidation(typeof(UpdateAccountSessionRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateAccountSessionRequest updateAccountSessionRequest)
     {
         var result = await _accountSessionService.UpdateAsync(updateAccountSessionRequest);
@@ -91,7 +91,7 @@ public class AccountSessionsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountSessions.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountSessionRequest deleteAccountSessionRequest)
     {
         var result = await _accountSessionService.DeleteAsync(deleteAccountSessionRequest);

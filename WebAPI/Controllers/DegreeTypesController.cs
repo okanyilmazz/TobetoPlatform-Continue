@@ -49,7 +49,7 @@ public class DegreeTypesController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("DegreeTypes.Get")]
     [CustomValidation(typeof(CreateDegreeTypeRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateDegreeTypeRequest createDegreeTypeRequest)
     {
         var result = await _degreeTypeService.AddAsync(createDegreeTypeRequest);
@@ -60,7 +60,7 @@ public class DegreeTypesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("DegreeTypes.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteDegreeTypeRequest deleteDegreeTypeRequest)
     {
         var result = await _degreeTypeService.DeleteAsync(deleteDegreeTypeRequest);
@@ -72,7 +72,7 @@ public class DegreeTypesController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("DegreeTypes.Get")]
     [CustomValidation(typeof(UpdateContactRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateDegreeTypeRequest updateDegreeTypeRequest)
     {
         var result = await _degreeTypeService.UpdateAsync(updateDegreeTypeRequest);

@@ -40,14 +40,14 @@ public class AccountHomeworkManager : IAccountHomeworkService
         return deletedAccountHomeworkeResponse;
     }
 
-    public async Task<GetListAccountHomeworkResponse> GetByIdAsync(Guid id)
+    public async Task<GetAccountHomeworkResponse> GetByIdAsync(Guid id)
     {
         var accountHomework = await _accountHomeworkDal.GetAsync(
             predicate: a => a.Id == id,
             include: ah => ah
             .Include(ah => ah.Account).ThenInclude(a => a.User)
             .Include(ah => ah.Homework));
-        var mappedAccountHomework = _mapper.Map<GetListAccountHomeworkResponse>(accountHomework);
+        var mappedAccountHomework = _mapper.Map<GetAccountHomeworkResponse>(accountHomework);
         return mappedAccountHomework;
     }
 

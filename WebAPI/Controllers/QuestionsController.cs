@@ -59,7 +59,7 @@ public class QuestionsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Questions.Get")]
     [CustomValidation(typeof(CreateQuestionRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateQuestionRequest createQuestionRequest)
     {
         var result = await _questionService.AddAsync(createQuestionRequest);
@@ -71,7 +71,7 @@ public class QuestionsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Questions.Get")]
     [CustomValidation(typeof(UpdateQuestionRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateQuestionRequest updateQuestionRequest)
     {
         var result = await _questionService.UpdateAsync(updateQuestionRequest);
@@ -82,7 +82,7 @@ public class QuestionsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Questions.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteQuestionRequest deleteQuestionRequest)
     {
         var result = await _questionService.DeleteAsync(deleteQuestionRequest);

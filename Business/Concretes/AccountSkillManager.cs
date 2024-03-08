@@ -47,14 +47,14 @@ public class AccountSkillManager : IAccountSkillService
         return deletedAccountSkillResponse;
     }
 
-    public async Task<GetListAccountSkillResponse> GetByIdAsync(Guid id)
+    public async Task<GetAccountSkillResponse> GetByIdAsync(Guid id)
     {
         var accountSkill = await _accountSkillDal.GetAsync(
             predicate: a => a.Id == id,
             include: acs => acs.
             Include(acs => acs.Skill)
             .Include(acs => acs.Account).ThenInclude(a => a.User));
-        var mappedAccountSkill = _mapper.Map<GetListAccountSkillResponse>(accountSkill);
+        var mappedAccountSkill = _mapper.Map<GetAccountSkillResponse>(accountSkill);
         return mappedAccountSkill;
     }
 

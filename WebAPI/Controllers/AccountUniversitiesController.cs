@@ -57,7 +57,7 @@ public class AccountUniversitiesController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountUniversities.Get")]
     [CustomValidation(typeof(CreateAccountUniversityRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateAccountUniversityRequest createAccountUniversityRequest)
     {
         var result = await _accountUniversityService.AddAsync(createAccountUniversityRequest);
@@ -69,7 +69,7 @@ public class AccountUniversitiesController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountUniversities.Get")]
     [CustomValidation(typeof(UpdateAccountUniversityRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateAccountUniversityRequest updateAccountUniversityRequest)
     {
         var result = await _accountUniversityService.UpdateAsync(updateAccountUniversityRequest);
@@ -80,7 +80,7 @@ public class AccountUniversitiesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountUniversities.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountUniversityRequest deleteAccountUniversityRequest)
     {
         var result = await _accountUniversityService.DeleteAsync(deleteAccountUniversityRequest);

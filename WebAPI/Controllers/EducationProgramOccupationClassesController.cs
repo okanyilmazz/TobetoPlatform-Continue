@@ -44,7 +44,7 @@ public class EducationProgramOccupationClassesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("EducationProgramOccupationClasses.Get")]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateEducationProgramOccupationClassRequest createEducationProgramOccupationClassRequest)
     {
         var result = await _educationProgramOccupationClassService.AddAsync(createEducationProgramOccupationClassRequest);
@@ -55,7 +55,7 @@ public class EducationProgramOccupationClassesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("EducationProgramOccupationClasses.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteEducationProgramOccupationClassRequest deleteEducationProgramOccupationClassRequest)
     {
         var result = await _educationProgramOccupationClassService.DeleteAsync(deleteEducationProgramOccupationClassRequest);
@@ -66,7 +66,7 @@ public class EducationProgramOccupationClassesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("EducationProgramOccupationClasses.Get")]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateEducationProgramOccupationClassRequest updateEducationProgramOccupationClassRequest)
     {
         var result = await _educationProgramOccupationClassService.UpdateAsync(updateEducationProgramOccupationClassRequest);

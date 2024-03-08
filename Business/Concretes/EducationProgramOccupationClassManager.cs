@@ -41,21 +41,21 @@ public class EducationProgramOccupationClassManager : IEducationProgramOccupatio
         return deletedEducationProgramOccupationClassResponse;
     }
 
-    public async Task<GetListEducationProgramOccupationClassResponse> GetByIdAsync(Guid id)
+    public async Task<GetEducationProgramOccupationClassResponse> GetByIdAsync(Guid id)
     {
         var educationProgramOccupationClass = await _educationProgramOccupationClassDal.GetAsync(
             predicate: h => h.Id == id,
             include: epoc => epoc
             .Include(epoc => epoc.OccupationClass)
             .Include(epoc => epoc.EducationProgram));
-        return _mapper.Map<GetListEducationProgramOccupationClassResponse>(educationProgramOccupationClass);
+        return _mapper.Map<GetEducationProgramOccupationClassResponse>(educationProgramOccupationClass);
     }
 
     public async Task<IPaginate<GetListEducationProgramOccupationClassResponse>> GetListAsync(PageRequest pageRequest)
     {
         var EducationProgramOccupationClasss = await _educationProgramOccupationClassDal.GetListAsync(
-            index:pageRequest.PageIndex,
-            size:pageRequest.PageSize,
+            index: pageRequest.PageIndex,
+            size: pageRequest.PageSize,
             include: epoc => epoc
             .Include(epoc => epoc.OccupationClass)
             .Include(epoc => epoc.EducationProgram)

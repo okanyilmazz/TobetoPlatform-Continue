@@ -70,10 +70,10 @@ public class SkillManager : ISkillService
 
     }
 
-    public async Task<GetListSkillResponse> GetByIdAsync(Guid id)
+    public async Task<GetSkillResponse> GetByIdAsync(Guid id)
     {
         var skill = await _skillDal.GetAsync(s => s.Id == id);
-        var mappedSkill = _mapper.Map<GetListSkillResponse>(skill);
+        var mappedSkill = _mapper.Map<GetSkillResponse>(skill);
         return mappedSkill;
     }
 }

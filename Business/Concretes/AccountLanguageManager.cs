@@ -38,7 +38,7 @@ public class AccountLanguageManager : IAccountLanguageService
         return responseAccountLanguage;
     }
 
-    public async Task<GetListAccountLanguageResponse> GetByIdAsync(Guid id)
+    public async Task<GetAccountLanguageResponse> GetByIdAsync(Guid id)
     {
         var AccountLanguageListed = await _accountLanguageDal.GetAsync(
             predicate: a => a.Id == id,
@@ -46,7 +46,7 @@ public class AccountLanguageManager : IAccountLanguageService
             .Include(al => al.Language)
             .Include(al => al.LanguageLevel)
             .Include(al => al.Account).ThenInclude(a => a.User));
-        var mappedListed = _mapper.Map<GetListAccountLanguageResponse>(AccountLanguageListed);
+        var mappedListed = _mapper.Map<GetAccountLanguageResponse>(AccountLanguageListed);
         return mappedListed;
     }
 

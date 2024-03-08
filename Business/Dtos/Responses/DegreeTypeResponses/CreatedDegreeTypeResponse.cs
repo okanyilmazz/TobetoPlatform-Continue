@@ -1,8 +1,7 @@
-﻿namespace Business.Dtos.Responses.DegreeTypeResponses
+﻿namespace Business.Dtos.Responses.DegreeTypeResponses;
+
+public class CreatedDegreeTypeResponse
 {
-    public class CreatedDegreeTypeResponse
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-    }
+    public Guid Id { get; set; }
+    public string Name { get; set; }
 }

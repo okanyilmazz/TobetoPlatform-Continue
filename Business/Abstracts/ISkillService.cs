@@ -11,6 +11,5 @@ public interface ISkillService
     Task<UpdatedSkillResponse> UpdateAsync(UpdateSkillRequest updateSkillRequest);
     Task<IPaginate<GetListSkillResponse>> GetListAsync(PageRequest pageRequest);
     Task<IPaginate<GetListSkillResponse>> GetByAccountIdAsync(Guid id);
-    Task<GetListSkillResponse> GetByIdAsync(Guid id);
-
+    Task<GetSkillResponse> GetByIdAsync(Guid id);
 }

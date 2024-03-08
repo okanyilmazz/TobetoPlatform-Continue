@@ -12,5 +12,5 @@ public interface IHomeworkService
     Task<IPaginate<GetListHomeworkResponse>> GetListAsync(PageRequest pageRequest);
     Task<IPaginate<GetListHomeworkResponse>> GetByAccountIdAsync(Guid accountId);
     Task<IPaginate<GetListHomeworkResponse>> GetByLessonIdAsync(Guid lessonId);    
-    Task<GetListHomeworkResponse> GetByIdAsync(Guid id);
+    Task<GetHomeworkResponse> GetByIdAsync(Guid id);
 }

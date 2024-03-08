@@ -43,7 +43,7 @@ public class EducationProgramSubjectsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("EducationProgramSubjects.Get")]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateEducationProgramSubjectRequest createEducationProgramSubjectRequest)
     {
         var result = await _educationProgramSubjectService.AddAsync(createEducationProgramSubjectRequest);
@@ -54,7 +54,7 @@ public class EducationProgramSubjectsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("EducationProgramSubjects.Get")]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateEducationProgramSubjectRequest updateEducationProgramSubjectRequest)
     {
         var result = await _educationProgramSubjectService.UpdateAsync(updateEducationProgramSubjectRequest);
@@ -65,7 +65,7 @@ public class EducationProgramSubjectsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("EducationProgramSubjects.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteEducationProgramSubjectRequest deleteEducationProgramSubjectRequest)
     {
         var result = await _educationProgramSubjectService.DeleteAsync(deleteEducationProgramSubjectRequest);

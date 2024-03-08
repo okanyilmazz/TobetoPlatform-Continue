@@ -1,5 +1,4 @@
 ﻿using Business.Dtos.Requests.UserOperationClaimRequests;
-using Business.Dtos.Responses.AccountLessonResponses;
 using Business.Dtos.Responses.UserOperationClaimResponses;
 using Core.DataAccess.Paging;
 
@@ -11,7 +10,6 @@ public interface IUserOperationClaimService
     Task<UpdatedUserOperationClaimResponse> UpdateAsync(UpdateUserOperationClaimRequest updateUserOperationClaimRequest);
     Task<DeletedUserOperationClaimResponse> DeleteAsync(DeleteUserOperationClaimRequest deleteUserOperationClaimRequest);
     Task<IPaginate<GetListUserOperationClaimResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListUserOperationClaimResponse> GetByUserIdAndOperationClaimId(Guid userId, Guid operationClaimId);
+    Task<GetUserOperationClaimResponse> GetByUserIdAndOperationClaimId(Guid userId, Guid operationClaimId);
     Task <IPaginate<GetListUserOperationClaimResponse>> GetByUserId(Guid userId );
-
 }

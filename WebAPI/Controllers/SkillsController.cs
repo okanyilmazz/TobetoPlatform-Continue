@@ -58,7 +58,7 @@ public class SkillsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Skills.Get")]
     [CustomValidation(typeof(CreateSkillRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateSkillRequest createSkillRequest)
     {
         var result = await _skillService.AddAsync(createSkillRequest);
@@ -69,7 +69,7 @@ public class SkillsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Skills.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteSkillRequest deleteSkillRequest)
     {
         var result = await _skillService.DeleteAsync(deleteSkillRequest);
@@ -81,7 +81,7 @@ public class SkillsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Skills.Get")]
     [CustomValidation(typeof(UpdateSkillRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateSkillRequest updateSkillRequest)
     {
         var result = await _skillService.UpdateAsync(updateSkillRequest);

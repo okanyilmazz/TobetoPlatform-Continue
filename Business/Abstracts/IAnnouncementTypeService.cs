@@ -12,5 +12,5 @@ public interface IAnnouncementTypeService
     Task<DeletedAnnouncementTypeResponse> DeleteAsync(DeleteAnnouncementTypeRequest deleteAnnouncementTypeRequest);
 
     Task<IPaginate<GetListAnnouncementTypeResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListAnnouncementTypeResponse> GetByIdAsync(Guid Id);
+    Task<GetAnnouncementTypeResponse> GetByIdAsync(Guid Id);
 }

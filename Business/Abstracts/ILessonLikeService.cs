@@ -10,10 +10,9 @@ public interface ILessonLikeService
     Task<UpdatedLessonLikeResponse> UpdateAsync(UpdateLessonLikeRequest updateLessonLikeRequest);
     Task<DeletedLessonLikeResponse> DeleteAsync(DeleteLessonLikeRequest deleteLessonLikeRequest);
     Task<IPaginate<GetListLessonLikeResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListLessonLikeResponse> GetByIdAsync(Guid id);
+    Task<GetLessonLikeResponse> GetByIdAsync(Guid id);
     Task<IPaginate<GetListLessonLikeResponse>> GetByAccountIdAsync(Guid accountId);
     Task<IPaginate<GetListLessonLikeResponse>> GetByLessonIdAsync(Guid lessonId);
     Task<DeletedLessonLikeResponse> DeleteByAccountIdAndLessonIdAsync(DeleteLessonLikeRequest deleteLessonLikeRequest);
-
 }
 

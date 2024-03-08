@@ -47,11 +47,11 @@ public class ProductionCompanyManager : IProductionCompanyService
         var mappedProductionCompanies = _mapper.Map<Paginate<GetListProductionCompanyResponse>>(ProductionCompanies);
         return mappedProductionCompanies;
     }
-    public async Task<GetListProductionCompanyResponse> GetByIdAsync(Guid id)
+    public async Task<GetProductionCompanyResponse> GetByIdAsync(Guid id)
     {
-        var ProductionCompanies = await _productionCompanyDal.GetAsync(p => p.Id == id);
-        var mappedProductionCompanies = _mapper.Map<GetListProductionCompanyResponse>(ProductionCompanies);
-        return mappedProductionCompanies;
+        var productionCompany = await _productionCompanyDal.GetAsync(p => p.Id == id);
+        var mappedProductionCompany = _mapper.Map<GetProductionCompanyResponse>(productionCompany);
+        return mappedProductionCompany;
     }
 
     public async Task<UpdatedProductionCompanyResponse> UpdateAsync(UpdateProductionCompanyRequest updateProductionCompanyRequest)

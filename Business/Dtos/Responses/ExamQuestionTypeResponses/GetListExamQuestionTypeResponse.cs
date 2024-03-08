@@ -1,9 +1,8 @@
-﻿namespace Business.Dtos.Responses.ExamQuestionTypeResponses
+﻿namespace Business.Dtos.Responses.ExamQuestionTypeResponses;
+
+public class GetListExamQuestionTypeResponse
 {
-    public class GetListExamQuestionTypeResponse
-    {
-        public Guid Id { get; set; }
-        public string ExamName { get; set; }
-        public string QuestionTypeName { get; set; }
-    }
+    public Guid Id { get; set; }
+    public string ExamName { get; set; }
+    public string QuestionTypeName { get; set; }
 }

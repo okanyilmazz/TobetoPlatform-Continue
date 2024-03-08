@@ -55,7 +55,7 @@ public class AccountSkillsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountSkills.Get")]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateAccountSkillRequest createAccountSkillRequest)
     {
         var result = await _accountSkillsService.AddAsync(createAccountSkillRequest);
@@ -75,7 +75,7 @@ public class AccountSkillsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountSkills.Get")]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateAccountSkillRequest updateAccountSkillRequest)
     {
         var result = await _accountSkillsService.UpdateAsync(updateAccountSkillRequest);
@@ -86,7 +86,7 @@ public class AccountSkillsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountSkills.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountSkillRequest deleteAccountSkillRequest)
     {
         var result = await _accountSkillsService.DeleteAsync(deleteAccountSkillRequest);

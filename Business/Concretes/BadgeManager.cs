@@ -1,17 +1,12 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.BadgeRequests;
-using Business.Dtos.Responses.AccountResponses;
 using Business.Dtos.Responses.BadgeResponses;
-using Business.Dtos.Responses.LessonResponses;
-using Business.Dtos.Responses.SkillResponses;
 using Business.Rules.BusinessRules;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
-using DataAccess.Concretes;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
 
 namespace Business.Concretes;
 
@@ -54,15 +49,15 @@ public class BadgeManager : IBadgeService
 
         var mappedBadges = _mapper.Map<Paginate<GetListBadgeResponse>>(filteredBadges);
         return mappedBadges;
-        
+
     }
 
 
-public async Task<GetListBadgeResponse> GetByIdAsync(Guid Id)
+    public async Task<GetBadgeResponse> GetByIdAsync(Guid Id)
     {
         var badge = await _badgeDal.GetAsync(
             predicate: b => b.Id == Id);
-        var mappedBadge = _mapper.Map<GetListBadgeResponse>(badge);
+        var mappedBadge = _mapper.Map<GetBadgeResponse>(badge);
         return mappedBadge;
     }
 

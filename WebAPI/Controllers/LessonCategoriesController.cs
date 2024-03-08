@@ -37,7 +37,7 @@ public class LessonCategoriesController : ControllerBase
 
     [CacheRemove("LessonCategories.Get")]
     [CustomValidation(typeof(CreateLessonCategoryRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateLessonCategoryRequest createLessonCategoryRequest)
     {
         var result = await _lessonCategoryService.AddAsync(createLessonCategoryRequest);
@@ -46,7 +46,7 @@ public class LessonCategoriesController : ControllerBase
 
     [CacheRemove("LessonCategories.Get")]
     [CustomValidation(typeof(UpdateLessonCategoryRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateLessonCategoryRequest updateLessonCategoryRequest)
     {
         var result = await _lessonCategoryService.UpdateAsync(updateLessonCategoryRequest);
@@ -54,7 +54,7 @@ public class LessonCategoriesController : ControllerBase
     }
 
     [CacheRemove("LessonCategories.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteLessonCategoryRequest deleteLessonCategoryRequest)
     {
         var result = await _lessonCategoryService.DeleteAsync(deleteLessonCategoryRequest);

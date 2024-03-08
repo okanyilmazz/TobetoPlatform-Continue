@@ -41,10 +41,10 @@ public class ExamManager : IExamService
         return deletedExamResponse;
     }
 
-    public async Task<GetListExamResponse> GetByIdAsync(Guid id)
+    public async Task<GetExamResponse> GetByIdAsync(Guid id)
     {
         var exam = await _examDal.GetAsync(h => h.Id == id);
-        return _mapper.Map<GetListExamResponse>(exam);
+        return _mapper.Map<GetExamResponse>(exam);
     }
 
     public async Task<IPaginate<GetListExamResponse>> GetListAsync(PageRequest pageRequest)

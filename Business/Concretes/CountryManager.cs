@@ -39,13 +39,11 @@ public class CountryManager : ICountryService
         return deletedCountryResponse;
     }
 
-    public async Task<GetListCountryResponse> GetByIdAsync(Guid id)
+    public async Task<GetCountryResponse> GetByIdAsync(Guid id)
     {
-
         var country = await _countryDal.GetAsync(c => c.Id == id);
-        var mappedCountry = _mapper.Map<GetListCountryResponse>(country);
+        var mappedCountry = _mapper.Map<GetCountryResponse>(country);
         return mappedCountry;
-
     }
 
     public async Task<IPaginate<GetListCountryResponse>> GetListAsync(PageRequest pageRequest)

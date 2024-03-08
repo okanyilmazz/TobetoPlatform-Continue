@@ -67,7 +67,7 @@ public class AccountLessonsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountLessons.Get")]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateAccountLessonRequest createAccountLessonRequest)
     {
         var result = await _accountLessonService.AddAsync(createAccountLessonRequest);
@@ -78,7 +78,7 @@ public class AccountLessonsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountLessons.Get")]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateAccountLessonRequest updateAccountLessonRequest)
     {
         var result = await _accountLessonService.UpdateAsync(updateAccountLessonRequest);
@@ -89,7 +89,7 @@ public class AccountLessonsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountLessons.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountLessonRequest deleteAccountLessonRequest)
     {
         var result = await _accountLessonService.DeleteAsync(deleteAccountLessonRequest);

@@ -67,7 +67,7 @@ public class EducationProgramLikesController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("EducationProgramLikes.Get")]
     [CustomValidation(typeof(CreateEducationProgramLikeRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateEducationProgramLikeRequest createEducationProgramLikeRequest)
     {
         var result = await _educationProgramLikeService.AddAsync(createEducationProgramLikeRequest);
@@ -79,7 +79,7 @@ public class EducationProgramLikesController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("EducationProgramLikes.Get")]
     [CustomValidation(typeof(UpdateEducationProgramLikeRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateEducationProgramLikeRequest updateEducationProgramLikeRequest)
     {
         var result = await _educationProgramLikeService.UpdateAsync(updateEducationProgramLikeRequest);
@@ -90,7 +90,7 @@ public class EducationProgramLikesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("EducationProgramLikes.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteEducationProgramLikeRequest deleteEducationProgramLikeRequest)
     {
         var result = await _educationProgramLikeService.DeleteAsync(deleteEducationProgramLikeRequest);

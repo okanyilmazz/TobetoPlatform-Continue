@@ -1,10 +1,7 @@
-﻿using System;
+﻿namespace Business.Dtos.Responses.QuestionTypeResponses;
 
-namespace Business.Dtos.Responses.QuestionTypeResponses
+public class GetListQuestionTypeResponse
 {
-    public class GetListQuestionTypeResponse
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-    }
+    public Guid Id { get; set; }
+    public string Name { get; set; }
 }

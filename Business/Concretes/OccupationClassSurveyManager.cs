@@ -41,14 +41,14 @@ public class OccupationClassSurveyManager : IOccupationClassSurveyService
         return deletedOccupationClassSurveyResponse;
     }
 
-    public async Task<GetListOccupationClassSurveyResponse> GetByIdAsync(Guid id)
+    public async Task<GetOccupationClassSurveyResponse> GetByIdAsync(Guid id)
     {
-        var occupationClassSurveyId = await _occupationClassSurveyDal.GetAsync(
+        var occupationClassSurvey = await _occupationClassSurveyDal.GetAsync(
             predicate: o => o.Id == id,
             include: ocs => ocs.
             Include(ocs => ocs.OccupationClass)
             .Include(ocs => ocs.Survey));
-        var mappedoccupationClassSurvey = _mapper.Map<GetListOccupationClassSurveyResponse>(occupationClassSurveyId);
+        var mappedoccupationClassSurvey = _mapper.Map<GetOccupationClassSurveyResponse>(occupationClassSurvey);
         return mappedoccupationClassSurvey;
     }
 

@@ -41,14 +41,14 @@ public class ExamQuestionTypeManager : IExamQuestionTypeService
 
     }
 
-    public async Task<GetListExamQuestionTypeResponse> GetByIdAsync(Guid id)
+    public async Task<GetExamQuestionTypeResponse> GetByIdAsync(Guid id)
     {
         var examQuestionType = await _examQuestionTypeDal.GetAsync(
             predicate: eqt => eqt.Id == id,
             include: eqt => eqt
             .Include(eqt => eqt.QuestionType)
             .Include(eqt => eqt.Exam));
-        return _mapper.Map<GetListExamQuestionTypeResponse>(examQuestionType);
+        return _mapper.Map<GetExamQuestionTypeResponse>(examQuestionType);
     }
 
     public async Task<IPaginate<GetListExamQuestionTypeResponse>> GetListAsync(PageRequest pageRequest)

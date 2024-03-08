@@ -40,10 +40,10 @@ public class AnnouncementTypeManager : IAnnouncementTypeService
         return deletedAnnouncementTypeResponse;
     }
 
-    public async Task<GetListAnnouncementTypeResponse> GetByIdAsync(Guid Id)
+    public async Task<GetAnnouncementTypeResponse> GetByIdAsync(Guid Id)
     {
         var announcementType = await _announcementTypeDal.GetAsync(at => at.Id == Id);
-        var mappedAnnouncementType = _mapper.Map<GetListAnnouncementTypeResponse>(announcementType);
+        var mappedAnnouncementType = _mapper.Map<GetAnnouncementTypeResponse>(announcementType);
         return mappedAnnouncementType;
     }
 

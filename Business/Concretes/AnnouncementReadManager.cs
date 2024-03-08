@@ -65,7 +65,7 @@ public class AnnouncementReadManager : IAnnouncementReadService
         return mappedAnnouncementRead;
     }
 
-    public async Task<GetListAnnouncementReadResponse> GetByIdAsync(Guid Id)
+    public async Task<GetAnnouncementReadResponse> GetByIdAsync(Guid Id)
     {
         var announcementRead = await _announcementReadDal.GetAsync(
             predicate: at => at.Id == Id,
@@ -73,7 +73,7 @@ public class AnnouncementReadManager : IAnnouncementReadService
             Include(l => l.Announcement)
             .Include(l => l.Account));
 
-        var mappedAnnouncementRead = _mapper.Map<GetListAnnouncementReadResponse>(announcementRead);
+        var mappedAnnouncementRead = _mapper.Map<GetAnnouncementReadResponse>(announcementRead);
         return mappedAnnouncementRead;
     }
 

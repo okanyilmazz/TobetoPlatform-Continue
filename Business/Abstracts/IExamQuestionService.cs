@@ -10,5 +10,5 @@ public interface IExamQuestionService
     Task<UpdatedExamQuestionResponse> UpdateAsync(UpdateExamQuestionRequest updateExamQuestionRequest);
     Task<DeletedExamQuestionResponse> DeleteAsync(DeleteExamQuestionRequest deleteExamQuestionRequest);
     Task<IPaginate<GetListExamQuestionResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListExamQuestionResponse> GetByIdAsync(Guid id);
+    Task<GetExamQuestionResponse> GetByIdAsync(Guid id);
 }

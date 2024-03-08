@@ -10,6 +10,6 @@ public interface IAccountLanguageService
     Task<UpdatedAccountLanguageResponse> UpdateAsync(UpdateAccountLanguageRequest updateAccountLanguageRequest);
     Task<DeletedAccountLanguageResponse> DeleteAsync(DeleteAccountLanguageRequest deleteAccountLanguageRequest);
     Task<IPaginate<GetListAccountLanguageResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListAccountLanguageResponse> GetByIdAsync(Guid id);
+    Task<GetAccountLanguageResponse> GetByIdAsync(Guid id);
     Task<IPaginate<GetListAccountLanguageResponse>> GetByAccountIdAsync(Guid accountId);
 }

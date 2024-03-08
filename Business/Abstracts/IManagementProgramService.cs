@@ -10,5 +10,5 @@ public interface IManagementProgramService
     Task<CreatedManagementProgramResponse> AddAsync(CreateManagementProgramRequest createManagementProgramRequest);
     Task<UpdatedManagementProgramResponse> UpdateAsync(UpdateManagementProgramRequest updateManagementProgramRequest);
     Task<DeletedManagementProgramResponse> DeleteAsync(DeleteManagementProgramRequest deleteManagementProgramRequest);
-    Task<GetListManagementProgramResponse> GetByIdAsync(Guid id);
+    Task<GetManagementProgramResponse> GetByIdAsync(Guid id);
 }

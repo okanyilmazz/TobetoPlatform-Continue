@@ -39,10 +39,10 @@ public class UniversityManager : IUniversityService
         return deletedUniversityResponse;
     }
 
-    public async Task<GetListUniversityResponse> GetByIdAsync(Guid id)
+    public async Task<GetUniversityResponse> GetByIdAsync(Guid id)
     {
         var university = await _universityDal.GetAsync(u => u.Id == id);
-        var mappedUniversity = _mapper.Map<GetListUniversityResponse>(university);
+        var mappedUniversity = _mapper.Map<GetUniversityResponse>(university);
         return mappedUniversity;
     }
 

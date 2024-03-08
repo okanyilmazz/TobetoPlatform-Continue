@@ -39,10 +39,10 @@ public class CompetenceTestManager : ICompetenceTestService
         return deletedCompetenceTestResponse;
     }
 
-    public async Task<GetListCompetenceTestResponse> GetByIdAsync(Guid id)
+    public async Task<GetCompetenceTestResponse> GetByIdAsync(Guid id)
     {
         var competenceTest = await _competenceTestDal.GetAsync(ct => ct.Id == id);
-        return _mapper.Map<GetListCompetenceTestResponse>(competenceTest);
+        return _mapper.Map<GetCompetenceTestResponse>(competenceTest);
     }
 
     public async Task<IPaginate<GetListCompetenceTestResponse>> GetListAsync(PageRequest pageRequest)

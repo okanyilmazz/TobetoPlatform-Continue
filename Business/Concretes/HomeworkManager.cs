@@ -50,15 +50,14 @@ public class HomeworkManager : IHomeworkService
         return mappedHomeworks;
     }
 
-    public async Task<GetListHomeworkResponse> GetByIdAsync(Guid id)
+    public async Task<GetHomeworkResponse> GetByIdAsync(Guid id)
     {
         var homework = await _homeworkDal.GetAsync(
-        predicate: h => h.Id == id,
-        include: h => h
-        .Include(h => h.Lesson));
+            predicate: h => h.Id == id,
+            include: h => h
+            .Include(h => h.Lesson));
 
-
-        var mappedHomework = _mapper.Map<GetListHomeworkResponse>(homework);
+        var mappedHomework = _mapper.Map<GetHomeworkResponse>(homework);
         return mappedHomework;
     }
 

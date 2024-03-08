@@ -40,10 +40,10 @@ public class LanguageManager : ILanguageService
         return responseLanguage;
     }
 
-    public async Task<GetListLanguageResponse> GetByIdAsync(Guid id)
+    public async Task<GetLanguageResponse> GetByIdAsync(Guid id)
     {
-        var language = await _languageDal.GetListAsync(l => l.Id == id);
-        return _mapper.Map<GetListLanguageResponse>(language.Items.FirstOrDefault());
+        var language = await _languageDal.GetAsync(l => l.Id == id);
+        return _mapper.Map<GetLanguageResponse>(language);
     }
 
     public async Task<IPaginate<GetListLanguageResponse>> GetListAsync(PageRequest pageRequest)

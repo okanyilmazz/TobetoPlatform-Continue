@@ -79,7 +79,7 @@ public class AccountsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Accounts.Get")]
     [CustomValidation(typeof(CreateAccountRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateAccountRequest createAccountRequest)
     {
         var result = await _accountService.AddAsync(createAccountRequest);
@@ -91,7 +91,7 @@ public class AccountsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Accounts.Get")]
     [CustomValidation(typeof(UpdateAccountRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateAccountRequest updateAccountRequest)
     {
         var result = await _accountService.UpdateAsync(updateAccountRequest);
@@ -102,7 +102,7 @@ public class AccountsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Accounts.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountRequest deleteAccountRequest)
     {
         var result = await _accountService.DeleteAsync(deleteAccountRequest);

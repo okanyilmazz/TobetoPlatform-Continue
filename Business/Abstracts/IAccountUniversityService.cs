@@ -11,7 +11,7 @@ public interface IAccountUniversityService
     Task<UpdatedAccountUniversityResponse> UpdateAsync(UpdateAccountUniversityRequest updateAccountUniversityRequest);
     Task<DeletedAccountUniversityResponse> DeleteAsync(DeleteAccountUniversityRequest deleteAccountUniversityRequest);
     Task<IPaginate<GetListAccountUniversityResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListAccountUniversityResponse> GetByIdAsync(Guid Id);
+    Task<GetAccountUniversityResponse> GetByIdAsync(Guid Id);
     Task<IPaginate<GetListAccountUniversityResponse>> GetByAccountIdAsync(Guid accountId, PageRequest pageRequest);
 
 }

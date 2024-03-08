@@ -48,7 +48,7 @@ public class EducationProgramDevelopmentsController : ControllerBase
     [CacheRemove("EducationProgramDevelopments.Get")]
     [CustomValidation(typeof(CreateEducationProgramDevelopmentRequest))]
 
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateEducationProgramDevelopmentRequest createEducationProgramDevelopmentRequest)
     {
         var result = await _educationProgramDevelopmentService.AddAsync(createEducationProgramDevelopmentRequest);
@@ -61,7 +61,7 @@ public class EducationProgramDevelopmentsController : ControllerBase
     [CacheRemove("EducationProgramDevelopments.Get")]
     [CustomValidation(typeof(UpdateEducationProgramDevelopmentRequest))]
 
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateEducationProgramDevelopmentRequest updateEducationProgramDevelopmentRequest)
     {
         var result = await _educationProgramDevelopmentService.UpdateAsync(updateEducationProgramDevelopmentRequest);
@@ -72,7 +72,7 @@ public class EducationProgramDevelopmentsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("EducationProgramDevelopments.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteEducationProgramDevelopmentRequest deleteEducationProgramDevelopmentRequest)
     {
         var result = await _educationProgramDevelopmentService.DeleteAsync(deleteEducationProgramDevelopmentRequest);

@@ -1,9 +1,8 @@
-﻿namespace Business.Dtos.Responses.EducationProgramOccupationClassResponses
+﻿namespace Business.Dtos.Responses.EducationProgramOccupationClassResponses;
+
+public class GetListEducationProgramOccupationClassResponse
 {
-    public class GetListEducationProgramOccupationClassResponse
-    {
-        public Guid Id { get; set; }
-        public string EducationProgramName { get; set; }
-        public string OccupationClassName { get; set; }
-    }
+    public Guid Id { get; set; }
+    public string EducationProgramName { get; set; }
+    public string OccupationClassName { get; set; }
 }

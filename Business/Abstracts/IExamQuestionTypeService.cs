@@ -10,5 +10,5 @@ public interface IExamQuestionTypeService
     Task<CreatedExamQuestionTypeResponse> AddAsync(CreateExamQuestionTypeRequest createExamQuestionTypeRequest);
     Task<UpdatedExamQuestionTypeResponse> UpdateAsync(UpdateExamQuestionTypeRequest updateExamQuestionTypeRequest);
     Task<DeletedExamQuestionTypeResponse> DeleteAsync(DeleteExamQuestionTypeRequest deleteExamQuestionTypeRequest);
-    Task<GetListExamQuestionTypeResponse> GetByIdAsync(Guid id);
+    Task<GetExamQuestionTypeResponse> GetByIdAsync(Guid id);
 }

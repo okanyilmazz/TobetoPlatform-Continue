@@ -50,7 +50,7 @@ public class CertificatesController : Controller
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Certificates.Get")]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromForm]CreateCertificateRequest createCertificateRequest)
     {
         var currentPath = _webHostEnvironment.ContentRootPath + PathConstant.CertificatesPath;
@@ -63,7 +63,7 @@ public class CertificatesController : Controller
     [Logging(typeof(FileLogger))]
     [CacheRemove("Certificates.Get")]
     [CustomValidation(typeof(UpdateCertificateRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateCertificateRequest updateCertificateRequest)
     {
         var result = await _certificateService.UpdateAsync(updateCertificateRequest);
@@ -74,7 +74,7 @@ public class CertificatesController : Controller
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Certificates.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteCertificateRequest deleteCertificateRequest)
     {
         var result = await _certificateService.DeleteAsync(deleteCertificateRequest);

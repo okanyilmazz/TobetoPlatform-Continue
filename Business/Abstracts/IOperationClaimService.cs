@@ -11,5 +11,5 @@ public interface IOperationClaimService
     Task<DeletedOperationClaimResponse> DeleteAsync(DeleteOperationClaimRequest deleteOperationClaimRequest);
     Task<IPaginate<GetListOperationClaimResponse>> GetListAsync(PageRequest pageRequest);
     Task<List<GetListOperationClaimResponse>> GetByUserIdAsync(Guid userId);
-    Task<GetListOperationClaimResponse> GetByRoleName(string roleName);
+    Task<GetOperationClaimResponse> GetByRoleName(string roleName);
 }

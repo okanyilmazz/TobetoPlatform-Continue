@@ -41,13 +41,13 @@ public class AnnouncementManager : IAnnouncementService
         return deletedAnnouncementResponse;
     }
 
-    public async Task<GetListAnnouncementResponse> GetByIdAsync(Guid Id)
+    public async Task<GetAnnouncementResponse> GetByIdAsync(Guid Id)
     {
         var announcement = await _announcementDal.GetAsync(
             predicate: a => a.Id == Id,
             include: a => a.Include(a => a.AnnouncementType));
 
-        var mappedAnnouncement = _mapper.Map<GetListAnnouncementResponse>(announcement);
+        var mappedAnnouncement = _mapper.Map<GetAnnouncementResponse>(announcement);
         return mappedAnnouncement;
     }
 

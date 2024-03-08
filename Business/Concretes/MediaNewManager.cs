@@ -39,10 +39,10 @@ public class MediaNewManager : IMediaNewService
         return deletedMediaNewResponse;
     }
 
-    public async Task<GetListMediaNewResponse> GetByIdAsync(Guid id)
+    public async Task<GetMediaNewResponse> GetByIdAsync(Guid id)
     {
         var mediaNewId = await _mediaNewDal.GetAsync(m => m.Id == id);
-        var mappedMediaNew = _mapper.Map<GetListMediaNewResponse>(mediaNewId);
+        var mappedMediaNew = _mapper.Map<GetMediaNewResponse>(mediaNewId);
         return mappedMediaNew;
     }
 

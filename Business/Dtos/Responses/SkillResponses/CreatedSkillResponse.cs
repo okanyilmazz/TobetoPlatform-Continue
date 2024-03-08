@@ -1,8 +1,7 @@
-﻿namespace Business.Dtos.Responses.SkillResponses
+﻿namespace Business.Dtos.Responses.SkillResponses;
+
+public class CreatedSkillResponse
 {
-    public class CreatedSkillResponse
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-    }
+    public Guid Id { get; set; }
+    public string Name { get; set; }
 }

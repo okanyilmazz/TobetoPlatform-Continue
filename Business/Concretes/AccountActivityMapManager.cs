@@ -66,14 +66,14 @@ public class AccountActivityMapManager : IAccountActivityMapService
     }
 
 
-    public async Task<GetListAccountActivityMapResponse> GetByIdAsync(Guid Id)
+    public async Task<GetAccountActivityMapResponse> GetByIdAsync(Guid Id)
     {
         var accountActivityMap = await _accountActivityMapDal.GetAsync(
             predicate: b => b.Id == Id,
             include: ab => ab
             .Include(ab => ab.Account).ThenInclude(ab => ab.User)
             .Include(ab => ab.ActivityMap));
-        var mappedAccountActivityMap = _mapper.Map<GetListAccountActivityMapResponse>(accountActivityMap);
+        var mappedAccountActivityMap = _mapper.Map<GetAccountActivityMapResponse>(accountActivityMap);
         return mappedAccountActivityMap;
     }
 

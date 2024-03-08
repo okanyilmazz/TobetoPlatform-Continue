@@ -40,14 +40,14 @@ public class EducationProgramProgrammingLanguageManager : IEducationProgramProgr
         return deletedEducationProgramProgrammingLanguageResponse;
     }
 
-    public async Task<GetListEducationProgramProgrammingLanguageResponse> GetByIdAsync(Guid id)
+    public async Task<GetEducationProgramProgrammingLanguageResponse> GetByIdAsync(Guid id)
     {
         var EducationProgramProgrammingLanguage = await _educationProgramProgrammingLanguageDal.GetAsync(
             predicate: p => p.Id == id,
             include: ep => ep
             .Include(ep => ep.EducationProgram)
             .Include(ep => ep.ProgrammingLanguage));
-        var mappedEducationProgramProgrammingLanguage = _mapper.Map<GetListEducationProgramProgrammingLanguageResponse>(EducationProgramProgrammingLanguage);
+        var mappedEducationProgramProgrammingLanguage = _mapper.Map<GetEducationProgramProgrammingLanguageResponse>(EducationProgramProgrammingLanguage);
         return mappedEducationProgramProgrammingLanguage;
     }
 

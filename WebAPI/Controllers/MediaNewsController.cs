@@ -47,7 +47,7 @@ public class MediaNewsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("MediaNews.Get")]
     [CustomValidation(typeof(CreateMediaNewRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateMediaNewRequest createMediaNewRequest)
     {
         var result = await _mediaNewService.AddAsync(createMediaNewRequest);
@@ -59,7 +59,7 @@ public class MediaNewsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("MediaNews.Get")]
     [CustomValidation(typeof(UpdateMediaNewRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateMediaNewRequest updateMediaNewRequest)
     {
         var result = await _mediaNewService.UpdateAsync(updateMediaNewRequest);
@@ -70,7 +70,7 @@ public class MediaNewsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("MediaNews.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteMediaNewRequest deleteMediaNewRequest)
     {
         var result = await _mediaNewService.DeleteAsync(deleteMediaNewRequest);

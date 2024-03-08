@@ -2,10 +2,8 @@
 using Business.Abstracts;
 using Business.Dtos.Requests.CompetenceRequests;
 using Business.Dtos.Responses.CompetenceResponses;
-using Business.Dtos.Responses.CompetenceResultResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
-using DataAccess.Concretes;
 using Entities.Concretes;
 
 namespace Business.Concretes;
@@ -30,19 +28,16 @@ public class CompetenceCategoryManager : ICompetenceCategoryService
 
     public async Task<DeletedCompetenceCategoryResponse> DeleteAsync(DeleteCompetenceCategoryRequest deleteCompetenceCategoryRequest)
     {
-        //await _cityBusinessRules.IsExistsCity(deleteCityRequest.Id);
         CompetenceCategory competenceCategory = await _competenceCategoryDal.GetAsync(predicate: c => c.Id == deleteCompetenceCategoryRequest.Id);
         CompetenceCategory deletedCompetenceCategory = await _competenceCategoryDal.DeleteAsync(competenceCategory);
         DeletedCompetenceCategoryResponse deletedCompetenceCategoryResponse = _mapper.Map<DeletedCompetenceCategoryResponse>(deletedCompetenceCategory);
         return deletedCompetenceCategoryResponse;
     }
 
- 
-
-    public async Task<GetListCompetenceCategoryResponse> GetByIdAsync(Guid id)
+    public async Task<GetCompetenceCategoryResponse> GetByIdAsync(Guid id)
     {
         var competenceCategory = await _competenceCategoryDal.GetAsync(p => p.Id == id);
-        var mappedCompetenceCategory = _mapper.Map<GetListCompetenceCategoryResponse>(competenceCategory);
+        var mappedCompetenceCategory = _mapper.Map<GetCompetenceCategoryResponse>(competenceCategory);
         return mappedCompetenceCategory;
     }
 
@@ -57,7 +52,6 @@ public class CompetenceCategoryManager : ICompetenceCategoryService
 
     public async Task<UpdatedCompetenceCategoryResponse> UpdateAsync(UpdateCompetenceCategoryRequest updateCompetenceCategoryRequest)
     {
-        //await _contactBusinessRules.IsExistsContact(updateContactRequest.Id);
         CompetenceCategory competenceCategory = _mapper.Map<CompetenceCategory>(updateCompetenceCategoryRequest);
         CompetenceCategory updatedCompetenceCategory = await _competenceCategoryDal.UpdateAsync(competenceCategory);
         UpdatedCompetenceCategoryResponse updatedCompetenceCategoryResponse = _mapper.Map<UpdatedCompetenceCategoryResponse>(updatedCompetenceCategory);

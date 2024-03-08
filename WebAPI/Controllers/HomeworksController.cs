@@ -66,7 +66,7 @@ public class HomeworksController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Homeworks.Get")]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateHomeworkRequest createHomeworkRequest)
     {
         var result = await _homeworkService.AddAsync(createHomeworkRequest);
@@ -77,7 +77,7 @@ public class HomeworksController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Homeworks.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteHomeworkRequest deleteHomeworkRequest)
     {
         var result = await _homeworkService.DeleteAsync(deleteHomeworkRequest);
@@ -87,7 +87,7 @@ public class HomeworksController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Homeworks.Get")]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateHomeworkRequest updateHomeworkRequest)
     {
         var result = await _homeworkService.UpdateAsync(updateHomeworkRequest);

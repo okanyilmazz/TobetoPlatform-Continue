@@ -1,5 +1,4 @@
-﻿using System;
-namespace Business.Dtos.Responses.CountryResponses;
+﻿namespace Business.Dtos.Responses.CountryResponses;
 
 public class GetListCountryResponse
 {

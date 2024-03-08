@@ -1,8 +1,7 @@
-﻿namespace Business.Dtos.Responses.DegreeTypeResponses
+﻿namespace Business.Dtos.Responses.DegreeTypeResponses;
+
+public class DeletedDegreeTypeResponse
 {
-    public class DeletedDegreeTypeResponse
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-    }
+    public Guid Id { get; set; }
+    public string Name { get; set; }
 }

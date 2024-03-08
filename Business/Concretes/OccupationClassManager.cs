@@ -40,20 +40,20 @@ public class OccupationClassManager : IOccupationClassService
         return deletedOccupationClassResponse;
     }
 
-    public async Task<GetListOccupationClassResponse> GetByIdAsync(Guid id)
+    public async Task<GetOccupationClassResponse> GetByIdAsync(Guid id)
     {
-        var occupationClassId = await _occupationClassDal.GetAsync(o => o.Id == id);
-        var mappedoccupationClass = _mapper.Map<GetListOccupationClassResponse>(occupationClassId);
+        var occupationClass = await _occupationClassDal.GetAsync(o => o.Id == id);
+        var mappedoccupationClass = _mapper.Map<GetOccupationClassResponse>(occupationClass);
         return mappedoccupationClass;
     }
 
-    public async Task<GetListOccupationClassResponse> GetByAccountIdAsync(Guid accountId)
+    public async Task<GetOccupationClassResponse> GetByAccountIdAsync(Guid accountId)
     {
         await _occupationClassBusinessRules.IsExistUser(accountId);
-        var occupationClassId = await _occupationClassDal.GetAsync(
+        var occupationClass = await _occupationClassDal.GetAsync(
             include: o => o.Include(o => o.AccountOccupationClasses),
             predicate: o => o.AccountOccupationClasses.Any(aoc => aoc.AccountId == accountId));
-        var mappedOccupationClass = _mapper.Map<GetListOccupationClassResponse>(occupationClassId);
+        var mappedOccupationClass = _mapper.Map<GetOccupationClassResponse>(occupationClass);
         return mappedOccupationClass;
     }
 

@@ -49,10 +49,10 @@ public class ProgrammingLanguageManager : IProgrammingLanguageService
         return mappedProgrammingLanguages;
     }
 
-    public async Task<GetListProgrammingLanguageResponse> GetByIdAsync(Guid id)
+    public async Task<GetProgrammingLanguageResponse> GetByIdAsync(Guid id)
     {
         var programmingLanguage = await _programmingLanguageDal.GetAsync(p => p.Id == id);
-        var mappedProgrammingLanguage = _mapper.Map<GetListProgrammingLanguageResponse>(programmingLanguage);
+        var mappedProgrammingLanguage = _mapper.Map<GetProgrammingLanguageResponse>(programmingLanguage);
         return mappedProgrammingLanguage;
     }
 

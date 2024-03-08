@@ -68,7 +68,7 @@ public class AccountEducationProgramsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountEducationPrograms.Get")]
     [CustomValidation(typeof(CreateAccountEducationProgramRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateAccountEducationProgramRequest createAccountEducationProgramRequest)
     {
         var result = await _accountEducationProgramService.AddAsync(createAccountEducationProgramRequest);
@@ -80,7 +80,7 @@ public class AccountEducationProgramsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountEducationPrograms.Get")]
     [CustomValidation(typeof(UpdateAccountEducationProgramRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateAccountEducationProgramRequest updateAccountEducationProgramRequest)
     {
         var result = await _accountEducationProgramService.UpdateAsync(updateAccountEducationProgramRequest);
@@ -90,7 +90,7 @@ public class AccountEducationProgramsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountEducationPrograms.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountEducationProgramRequest deleteAccountEducationProgramRequest)
     {
         var result = await _accountEducationProgramService.DeleteAsync(deleteAccountEducationProgramRequest);

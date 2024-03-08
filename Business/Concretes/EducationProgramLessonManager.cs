@@ -40,14 +40,14 @@ public class EducationProgramLessonManager : IEducationProgramLessonService
         return deletedEducationProgramLessonResponse;
     }
 
-    public async Task<GetListEducationProgramLessonResponse> GetByIdAsync(Guid id)
+    public async Task<GetEducationProgramLessonResponse> GetByIdAsync(Guid id)
     {
         var educationProgramLesson = await _educationProgramLessonDal.GetAsync(
             predicate: h => h.Id == id,
             include: epl => epl
                 .Include(epl => epl.Lesson).ThenInclude(l => l.LessonSubType)
                 .Include(epl => epl.EducationProgram));
-        return _mapper.Map<GetListEducationProgramLessonResponse>(educationProgramLesson);
+        return _mapper.Map<GetEducationProgramLessonResponse>(educationProgramLesson);
     }
 
     public async Task<IPaginate<GetListEducationProgramLessonResponse>> GetByEducationProgramIdAsync(Guid educationProgramId)

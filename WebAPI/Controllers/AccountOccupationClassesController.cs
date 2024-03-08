@@ -61,7 +61,7 @@ public class AccountOccupationClassesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountOccupationClasses.Get")]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateAccountOccupationClassRequest createAccountOccupationClassRequest)
     {
         var result = await _accountOccupationClass.AddAsync(createAccountOccupationClassRequest);
@@ -72,7 +72,7 @@ public class AccountOccupationClassesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountOccupationClasses.Get")]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateAccountOccupationClassRequest updateOccupationClassOfAccountRequest)
     {
         var result = await _accountOccupationClass.UpdateAsync(updateOccupationClassOfAccountRequest);
@@ -83,7 +83,7 @@ public class AccountOccupationClassesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountOccupationClasses.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountOccupationClassRequest deleteOccupationClassOfAccountRequest)
     {
         var result = await _accountOccupationClass.DeleteAsync(deleteOccupationClassOfAccountRequest);

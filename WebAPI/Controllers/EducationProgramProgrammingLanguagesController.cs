@@ -44,7 +44,7 @@ public class EducationProgramProgrammingLanguagesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("EducationProgramProgrammingLanguages.Get")]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateEducationProgramProgrammingLanguageRequest CreateEducationProgramProgrammingLanguageRequest)
     {
         var result = await _educationProgramProgrammingLanguageService.AddAsync(CreateEducationProgramProgrammingLanguageRequest);
@@ -55,7 +55,7 @@ public class EducationProgramProgrammingLanguagesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("EducationProgramProgrammingLanguages.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteEducationProgramProgrammingLanguageRequest deleteEducationProgramProgrammingLanguageRequest)
     {
         var result = await _educationProgramProgrammingLanguageService.DeleteAsync(deleteEducationProgramProgrammingLanguageRequest);
@@ -66,7 +66,7 @@ public class EducationProgramProgrammingLanguagesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("EducationProgramProgrammingLanguages.Get")]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateEducationProgramProgrammingLanguageRequest updateEducationProgramProgrammingLanguageRequest)
     {
         var result = await _educationProgramProgrammingLanguageService.UpdateAsync(updateEducationProgramProgrammingLanguageRequest);

@@ -56,7 +56,7 @@ public class BadgesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Badges.Get")]
-    [HttpPost("Add")]
+    [HttpPost]
     [CustomValidation(typeof(CreateBadgeRequest))]
 
 
@@ -70,7 +70,7 @@ public class BadgesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Badges.Get")]
-    [HttpPost("Update")]
+    [HttpPut]
     [CustomValidation(typeof(UpdateBadgeRequest))]
 
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateBadgeRequest updateBadgeRequest)
@@ -82,7 +82,7 @@ public class BadgesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Badges.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteBadgeRequest deleteBadgeRequest)
     {
         var result = await _badgeService.DeleteAsync(deleteBadgeRequest);

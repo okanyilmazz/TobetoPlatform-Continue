@@ -10,5 +10,5 @@ public interface IEducationProgramDevelopmentService
     Task<UpdatedEducationProgramDevelopmentResponse> UpdateAsync(UpdateEducationProgramDevelopmentRequest updateEducationProgramDevelopmentRequest);
     Task<DeletedEducationProgramDevelopmentResponse> DeleteAsync(DeleteEducationProgramDevelopmentRequest deleteEducationProgramDevelopmentRequest);
     Task<IPaginate<GetListEducationProgramDevelopmentResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListEducationProgramDevelopmentResponse> GetByIdAsync(Guid id);
+    Task<GetEducationProgramDevelopmentResponse> GetByIdAsync(Guid id);
 }

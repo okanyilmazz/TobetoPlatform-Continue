@@ -56,7 +56,7 @@ public class DistrictsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Districts.Get")]
     [CustomValidation(typeof(CreateDistrictRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateDistrictRequest createDistrictRequest)
     {
         var result = await _districtService.AddAsync(createDistrictRequest);
@@ -67,7 +67,7 @@ public class DistrictsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Districts.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteDistrictRequest deleteDistrictRequest)
     {
         var result = await _districtService.DeleteAsync(deleteDistrictRequest);
@@ -79,7 +79,7 @@ public class DistrictsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Districts.Get")]
     [CustomValidation(typeof(UpdateDistrictRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateDistrictRequest updateDistrictRequest)
     {
         var result = await _districtService.UpdateAsync(updateDistrictRequest);

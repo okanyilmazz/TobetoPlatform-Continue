@@ -46,7 +46,7 @@ public class CountriesController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Countries.Get")]
     [CustomValidation(typeof(CreateCountryRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateCountryRequest createCountryRequest)
     {
         var result = await _countryService.AddAsync(createCountryRequest);
@@ -58,7 +58,7 @@ public class CountriesController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Countries.Get")]
     [CustomValidation(typeof(UpdateCountryRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateCountryRequest updateCountryRequest)
     {
         var result = await _countryService.UpdateAsync(updateCountryRequest);
@@ -69,7 +69,7 @@ public class CountriesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Countries.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteCountryRequest deleteCountryRequest)
     {
         var result = await _countryService.DeleteAsync(deleteCountryRequest);

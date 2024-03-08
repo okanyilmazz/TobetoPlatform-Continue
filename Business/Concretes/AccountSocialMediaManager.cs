@@ -40,18 +40,16 @@ public class AccountSocialMediaManager : IAccountSocialMediaService
         return deletedAccountSocialMediaResponse;
     }
 
-    public async Task<GetListAccountSocialMediaResponse> GetByIdAsync(Guid Id)
+    public async Task<GetAccountSocialMediaResponse> GetByIdAsync(Guid Id)
     {
         var accountSocialMedia = await _accountSocialMediaDal.GetAsync(
             predicate: a => a.Id == Id,
             include: asm => asm
             .Include(asm => asm.SocialMedia)
-            .Include(asm => asm.Account).ThenInclude(a => a.User)
-            );
+            .Include(asm => asm.Account).ThenInclude(a => a.User));
 
-
-        var mappedAccountSocialMedias = _mapper.Map<GetListAccountSocialMediaResponse>(accountSocialMedia);
-        return mappedAccountSocialMedias;
+        var mappedAccountSocialMedia = _mapper.Map<GetAccountSocialMediaResponse>(accountSocialMedia);
+        return mappedAccountSocialMedia;
     }
 
     public async Task<IPaginate<GetListAccountSocialMediaResponse>> GetByAccountIdAsync(Guid accountId, PageRequest pageRequest)

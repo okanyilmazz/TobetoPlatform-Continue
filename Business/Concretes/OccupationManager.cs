@@ -39,10 +39,10 @@ public class OccupationManager : IOccupationService
         return deletedOccupationResponse;
     }
 
-    public async Task<GetListOccupationResponse> GetByIdAsync(Guid id)
+    public async Task<GetOccupationResponse> GetByIdAsync(Guid id)
     {
         var Occupation = await _occupationDal.GetAsync(p => p.Id == id);
-        var mappedOccupation = _mapper.Map<GetListOccupationResponse>(Occupation);
+        var mappedOccupation = _mapper.Map<GetOccupationResponse>(Occupation);
         return mappedOccupation;
     }
 

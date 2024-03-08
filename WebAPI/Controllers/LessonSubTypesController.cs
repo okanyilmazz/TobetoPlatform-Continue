@@ -48,7 +48,7 @@ public class LessonSubTypesController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("LessonSubTypes.Get")]
     [CustomValidation(typeof(CreateLessonSubTypeRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateLessonSubTypeRequest createLessonSubTypeRequest)
     {
         var result = await _lessonSubTypeService.AddAsync(createLessonSubTypeRequest);
@@ -60,7 +60,7 @@ public class LessonSubTypesController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("LessonSubTypes.Get")]
     [CustomValidation(typeof(UpdateLessonSubTypeRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateLessonSubTypeRequest updateLessonSubTypeRequest)
     {
         var result = await _lessonSubTypeService.UpdateAsync(updateLessonSubTypeRequest);
@@ -71,7 +71,7 @@ public class LessonSubTypesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("LessonSubTypes.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteLessonSubTypeRequest deleteLessonSubTypeRequest)
     {
         var result = await _lessonSubTypeService.DeleteAsync(deleteLessonSubTypeRequest);

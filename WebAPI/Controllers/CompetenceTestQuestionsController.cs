@@ -44,7 +44,7 @@ public class CompetenceTestQuestionsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("CompetenceTestQuestions.Get")]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateCompetenceTestQuestionRequest createCompetenceTestQuestionRequest)
     {
         var result = await _competenceTestQuestionService.AddAsync(createCompetenceTestQuestionRequest);
@@ -55,7 +55,7 @@ public class CompetenceTestQuestionsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("CompetenceTestQuestions.Get")]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateCompetenceTestQuestionRequest updateCompetenceTestQuestionRequest)
     {
         var result = await _competenceTestQuestionService.UpdateAsync(updateCompetenceTestQuestionRequest);
@@ -66,7 +66,7 @@ public class CompetenceTestQuestionsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("CompetenceTestQuestions.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteCompetenceTestQuestionRequest deleteCompetenceTestQuestionRequest)
     {
         var result = await _competenceTestQuestionService.DeleteAsync(deleteCompetenceTestQuestionRequest);

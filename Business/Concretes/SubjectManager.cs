@@ -40,10 +40,10 @@ public class SubjectManager : ISubjectService
     }
       
 
-    public async Task<GetListSubjectResponse> GetByIdAsync(Guid id)
+    public async Task<GetSubjectResponse> GetByIdAsync(Guid id)
     {
         var subject = await _subjectDal.GetAsync(s => s.Id == id);
-        var mappedSubject = _mapper.Map<GetListSubjectResponse>(subject);
+        var mappedSubject = _mapper.Map<GetSubjectResponse>(subject);
         return mappedSubject;
     }
 

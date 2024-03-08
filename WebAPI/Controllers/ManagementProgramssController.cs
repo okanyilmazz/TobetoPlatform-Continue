@@ -44,7 +44,7 @@ public class ManagementProgramsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("ManagementPrograms.Get")]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateManagementProgramRequest createManagementProgramRequest)
     {
         var result = await _managementProgramService.AddAsync(createManagementProgramRequest);
@@ -55,7 +55,7 @@ public class ManagementProgramsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("ManagementPrograms.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteManagementProgramRequest deleteManagementProgramRequest)
     {
         var result = await _managementProgramService.DeleteAsync(deleteManagementProgramRequest);
@@ -65,7 +65,7 @@ public class ManagementProgramsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("ManagementPrograms.Get")]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateManagementProgramRequest updateManagementProgramRequest)
     {
         var result = await _managementProgramService.UpdateAsync(updateManagementProgramRequest);

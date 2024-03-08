@@ -1,8 +1,7 @@
-﻿namespace Business.Dtos.Responses.ProductionCompanyResponses
+﻿namespace Business.Dtos.Responses.ProductionCompanyResponses;
+
+public class CreatedProductionCompanyResponse
 {
-    public class CreatedProductionCompanyResponse
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-    }
+    public Guid Id { get; set; }
+    public string Name { get; set; }
 }

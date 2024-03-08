@@ -41,12 +41,11 @@ public class DegreeTypeManager : IDegreeTypeService
         return deleteddegreeTypeResponse;
     }
 
-    public async Task<GetListDegreeTypeResponse> GetByIdAsync(Guid id)
+    public async Task<GetDegreeTypeResponse> GetByIdAsync(Guid id)
     {
-        var degreeTypes = await _degreeTypeDal.GetAsync(d => d.Id == id);
-        var mappeddegreeTypes = _mapper.Map<GetListDegreeTypeResponse>(degreeTypes);
-        return mappeddegreeTypes;
-
+        var degreeType = await _degreeTypeDal.GetAsync(d => d.Id == id);
+        var mappeddegreeType = _mapper.Map<GetDegreeTypeResponse>(degreeType);
+        return mappeddegreeType;
     }
 
     public async Task<IPaginate<GetListDegreeTypeResponse>> GetListAsync(PageRequest pageRequest)

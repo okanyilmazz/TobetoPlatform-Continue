@@ -39,10 +39,10 @@ public class ContactManager : IContactService
         return deletedContactResponse;
     }
 
-    public async Task<GetListContactResponse> GetByIdAsync(Guid id)
+    public async Task<GetContactResponse> GetByIdAsync(Guid id)
     {
         var contact = await _contactDal.GetAsync(p => p.Id == id);
-        var mappedContact = _mapper.Map<GetListContactResponse>(contact);
+        var mappedContact = _mapper.Map<GetContactResponse>(contact);
         return mappedContact;
     }
 

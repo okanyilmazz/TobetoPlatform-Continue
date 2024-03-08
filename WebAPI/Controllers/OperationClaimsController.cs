@@ -43,7 +43,7 @@ namespace WebAPI.Controllers
         [Logging(typeof(FileLogger))]
         [CacheRemove("OperationClaims.Get")]
         [CustomValidation(typeof(CreateOperationClaimValidator))]
-        [HttpPost("Add")]
+        [HttpPost]
         public async Task<IActionResult> AddAsync([FromBody] CreateOperationClaimRequest createOperationClaimRequest)
         {
             var result = await _operationClaimService.AddAsync(createOperationClaimRequest);
@@ -63,7 +63,7 @@ namespace WebAPI.Controllers
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
         [CacheRemove("OperationClaims.Get")]
-        [HttpPost("Delete")]
+        [HttpDelete]
         public async Task<IActionResult> DeleteAsync([FromBody] DeleteOperationClaimRequest deleteOperationClaimRequest)
         {
             var result = await _operationClaimService.DeleteAsync(deleteOperationClaimRequest);
@@ -74,7 +74,7 @@ namespace WebAPI.Controllers
         [Logging(typeof(FileLogger))]
         [CacheRemove("OperationClaims.Get")]
         [CustomValidation(typeof(UpdateOperationClaimValidator))]
-        [HttpPost("Update")]
+        [HttpPut]
         public async Task<IActionResult> UpdateAsync([FromBody] UpdateOperationClaimRequest updateOperationClaimRequest)
         {
             var result = await _operationClaimService.UpdateAsync(updateOperationClaimRequest);

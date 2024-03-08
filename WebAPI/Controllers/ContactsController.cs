@@ -47,7 +47,7 @@ public class ContactsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Contacts.Get")]
     [CustomValidation(typeof(CreateContactRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateContactRequest createContactRequest)
     {
         var result = await _contactService.AddAsync(createContactRequest);
@@ -59,7 +59,7 @@ public class ContactsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Contacts.Get")]
     [CustomValidation(typeof(UpdateContactRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateContactRequest updateContactRequest)
     {
         var result = await _contactService.UpdateAsync(updateContactRequest);
@@ -70,7 +70,7 @@ public class ContactsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Contacts.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteContactRequest deleteContactRequest)
     {
         var result = await _contactService.DeleteAsync(deleteContactRequest);

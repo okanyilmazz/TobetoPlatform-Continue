@@ -1,5 +1,4 @@
-﻿using System;
-using Entities.Concretes;
+﻿using Entities.Concretes;
 
 namespace Business.Dtos.Responses.SocialMediaResponses;
 
@@ -11,4 +10,3 @@ public class GetListSocialMediaResponse
 
     public virtual ICollection<Account>? Accounts { get; set; }
 }
-

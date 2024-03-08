@@ -37,10 +37,10 @@ public class AccountCompetenceTestManager : IAccountCompetenceTestService
     }
 
 
-    public async Task<GetListAccountCompetenceTestResponse> GetByIdAsync(Guid Id)
+    public async Task<GetAccountCompetenceTestResponse> GetByIdAsync(Guid Id)
     {
         var accountCompetenceTest = await _accountCompetenceTestDal.GetAsync(d => d.Id == Id);
-        var mappedAccountCompetenceTest = _mapper.Map<GetListAccountCompetenceTestResponse>(accountCompetenceTest);
+        var mappedAccountCompetenceTest = _mapper.Map<GetAccountCompetenceTestResponse>(accountCompetenceTest);
         return mappedAccountCompetenceTest;
     }
 

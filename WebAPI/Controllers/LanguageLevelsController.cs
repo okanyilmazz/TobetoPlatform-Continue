@@ -44,7 +44,7 @@ public class LanguageLevelsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("LanguageLevels.Get")]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateLanguageLevelRequest createLanguageLevelRequest)
     {
         var result = await _languageLevelService.AddAsync(createLanguageLevelRequest);
@@ -55,7 +55,7 @@ public class LanguageLevelsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("LanguageLevels.Get")]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateLanguageLevelRequest updateProjectRequest)
     {
         var result = await _languageLevelService.UpdateAsync(updateProjectRequest);
@@ -66,7 +66,7 @@ public class LanguageLevelsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("LanguageLevels.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteLanguageLevelRequest deleteProjectRequest)
     {
         var result = await _languageLevelService.DeleteAsync(deleteProjectRequest);

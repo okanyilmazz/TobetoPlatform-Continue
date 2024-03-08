@@ -71,7 +71,7 @@ public class AuthManager : IAuthService
             ProfilePhotoPath = null,
         });
 
-        GetListOperationClaimResponse operationClaim = await _operationClaimService.GetByRoleName(Roles.User);
+        GetOperationClaimResponse operationClaim = await _operationClaimService.GetByRoleName(Roles.User);
 
         await _userOperationClaimService.AddAsync(new CreateUserOperationClaimRequest
         {

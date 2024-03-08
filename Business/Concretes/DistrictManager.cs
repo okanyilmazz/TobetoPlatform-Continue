@@ -23,8 +23,6 @@ public class DistrictManager : IDistrictService
         _districtBusinessRules = districtBusinessRules;
     }
 
-
-
     public async Task<CreatedDistrictResponse> AddAsync(CreateDistrictRequest createDistrictRequest)
     {
         District district = _mapper.Map<District>(createDistrictRequest);
@@ -56,14 +54,14 @@ public class DistrictManager : IDistrictService
     }
 
 
-    public async Task<GetListDistrictResponse> GetByIdAsync(Guid id)
+    public async Task<GetDistrictResponse> GetByIdAsync(Guid id)
     {
         var district = await _districtDal.GetAsync(
           predicate: d => d.Id == id,
           include: d => d
           .Include(d => d.City));
-          
-        var mappedDistricts= _mapper.Map<GetListDistrictResponse>(district);
+
+        var mappedDistricts = _mapper.Map<GetDistrictResponse>(district);
         return mappedDistricts;
 
     }

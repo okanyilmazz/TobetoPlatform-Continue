@@ -39,10 +39,10 @@ public class EducationProgramDevelopmentManager : IEducationProgramDevelopmentSe
         return deletedEducationProgramDevelopmentResponse;
     }
 
-    public async Task<GetListEducationProgramDevelopmentResponse> GetByIdAsync(Guid id)
+    public async Task<GetEducationProgramDevelopmentResponse> GetByIdAsync(Guid id)
     {
         var educationProgramDevelopmentId = await _educationProgramDevelopmentDal.GetAsync(epc => epc.Id == id);
-        var mappedEducationProgramDevelopment = _mapper.Map<GetListEducationProgramDevelopmentResponse>(educationProgramDevelopmentId);
+        var mappedEducationProgramDevelopment = _mapper.Map<GetEducationProgramDevelopmentResponse>(educationProgramDevelopmentId);
         return mappedEducationProgramDevelopment;
     }      
 

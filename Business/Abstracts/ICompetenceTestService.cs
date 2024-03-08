@@ -10,6 +10,6 @@ public interface ICompetenceTestService
     Task<UpdatedCompetenceTestResponse> UpdateAsync(UpdateCompetenceTestRequest updateCompetenceTestRequest);
     Task<DeletedCompetenceTestResponse> DeleteAsync(DeleteCompetenceTestRequest deleteCompetenceTestRequest);
     Task<IPaginate<GetListCompetenceTestResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListCompetenceTestResponse> GetByIdAsync(Guid id);
+    Task<GetCompetenceTestResponse> GetByIdAsync(Guid id);
     Task<IPaginate<GetListCompetenceTestResponse>> GetByAccountIdAsync(Guid accountId, PageRequest pageRequest);
 }

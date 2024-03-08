@@ -58,7 +58,7 @@ public class WorkExperiencesController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("WorkExperiences.Get")]
     [CustomValidation(typeof(CreateWorkExperienceRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateWorkExperienceRequest createWorkExperienceRequest)
     {
         var result = await _workExperienceService.AddAsync(createWorkExperienceRequest);
@@ -70,7 +70,7 @@ public class WorkExperiencesController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("WorkExperiences.Get")]
     [CustomValidation(typeof(UpdateWorkExperienceRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateWorkExperienceRequest updateWorkExperienceRequest)
     {
         var result = await _workExperienceService.UpdateAsync(updateWorkExperienceRequest);
@@ -81,7 +81,7 @@ public class WorkExperiencesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("WorkExperiences.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteWorkExperienceRequest deleteWorkExperienceRequest)
     {
         var result = await _workExperienceService.DeleteAsync(deleteWorkExperienceRequest);

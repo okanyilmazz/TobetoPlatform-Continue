@@ -40,14 +40,14 @@ public class CompetenceTestQuestionManager : ICompetenceTestQuestionService
         return createdCompetenceTestQuestionResponse;
     }
 
-    public async Task<GetListCompetenceTestQuestionResponse> GetByIdAsync(Guid id)
+    public async Task<GetCompetenceTestQuestionResponse> GetByIdAsync(Guid id)
     {
         var competenceTestQuestion = await _competenceTestQuestionDal.GetAsync(
              predicate: ctq => ctq.Id == id,
              include: ctq => ctq.
              Include(ctq => ctq.CompetenceTest).
              Include(ctq => ctq.CompetenceQuestion));
-        var mappedCompetenceTestQuestion = _mapper.Map<GetListCompetenceTestQuestionResponse>(competenceTestQuestion);
+        var mappedCompetenceTestQuestion = _mapper.Map<GetCompetenceTestQuestionResponse>(competenceTestQuestion);
         return mappedCompetenceTestQuestion;
     }
 

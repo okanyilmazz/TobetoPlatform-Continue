@@ -39,10 +39,10 @@ public class SurveyManager : ISurveyService
         return deletedSurveyResponse;
     }
 
-    public async Task<GetListSurveyResponse> GetByIdAsync(Guid id)
+    public async Task<GetSurveyResponse> GetByIdAsync(Guid id)
     {
         var survey = await _surveyDal.GetAsync(s => s.Id == id);
-        var mappedSurvey = _mapper.Map<GetListSurveyResponse>(survey);
+        var mappedSurvey = _mapper.Map<GetSurveyResponse>(survey);
         return mappedSurvey;
     }
 

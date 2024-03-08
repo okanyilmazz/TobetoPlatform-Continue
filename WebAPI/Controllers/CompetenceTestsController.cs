@@ -46,7 +46,7 @@ namespace WebAPI.Controllers
         [Logging(typeof(MsSqlLogger))]
         [Logging(typeof(FileLogger))]
         [CacheRemove("CompetenceTests.Get")]
-        [HttpPost("Add")]
+        [HttpPost]
         public async Task<IActionResult> AddAsync([FromBody] CreateCompetenceTestRequest createCompetenceTestRequest)
         {
             var result = await _competenceTestService.AddAsync(createCompetenceTestRequest);
@@ -57,7 +57,7 @@ namespace WebAPI.Controllers
         [Logging(typeof(MsSqlLogger))]
         [Logging(typeof(FileLogger))]
         [CacheRemove("CompetenceTests.Get")]
-        [HttpPost("Delete")]
+        [HttpDelete]
         public async Task<IActionResult> DeleteAsync([FromBody] DeleteCompetenceTestRequest deleteCompetenceTestRequest)
         {
             var result = await _competenceTestService.DeleteAsync(deleteCompetenceTestRequest);
@@ -68,7 +68,7 @@ namespace WebAPI.Controllers
         [Logging(typeof(MsSqlLogger))]
         [Logging(typeof(FileLogger))]
         [CacheRemove("CompetenceTests.Get")]
-        [HttpPost("Update")]
+        [HttpPut]
         public async Task<IActionResult> UpdateAsync([FromBody] UpdateCompetenceTestRequest updateCompetenceTestRequest)
         {
             var result = await _competenceTestService.UpdateAsync(updateCompetenceTestRequest);

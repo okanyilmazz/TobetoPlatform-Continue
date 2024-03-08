@@ -51,7 +51,7 @@ public class LessonLikeManager : ILessonLikeService
         return deletedLessonLikeResponse;
     }
 
-    public async Task<GetListLessonLikeResponse> GetByIdAsync(Guid id)
+    public async Task<GetLessonLikeResponse> GetByIdAsync(Guid id)
     {
         var lessonLike = await _lessonLikeDal.GetAsync(
             predicate: l => l.Id == id,
@@ -59,8 +59,8 @@ public class LessonLikeManager : ILessonLikeService
             Include(l => l.Lesson).
             Include(l => l.Account));
 
-        var mappedLessonLikes = _mapper.Map<GetListLessonLikeResponse>(lessonLike);
-        return mappedLessonLikes;
+        var mappedLessonLike = _mapper.Map<GetLessonLikeResponse>(lessonLike);
+        return mappedLessonLike;
     }
 
     public async Task<IPaginate<GetListLessonLikeResponse>> GetByAccountIdAsync(Guid accountId)

@@ -56,11 +56,11 @@ public class ProjectManager : IProjectService
         return mappedListed;
     }
 
-    public async Task<GetListProjectResponse> GetByIdAsync(Guid id)
+    public async Task<GetProjectResponse> GetByIdAsync(Guid id)
     {
         Project project = await _projectDal.GetAsync(
             predicate: p => p.Id == id);
-        var mappedProduct = _mapper.Map<GetListProjectResponse>(project);
+        var mappedProduct = _mapper.Map<GetProjectResponse>(project);
         return mappedProduct;
     }
 }

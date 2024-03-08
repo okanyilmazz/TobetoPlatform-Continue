@@ -45,7 +45,7 @@ public class CompetenceCategoriesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Competences.Get")]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateCompetenceCategoryRequest createCompetenceCategoryRequest)
     {
         var result = await _competenceCategoryService.AddAsync(createCompetenceCategoryRequest);
@@ -56,7 +56,7 @@ public class CompetenceCategoriesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Competences.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteCompetenceCategoryRequest deleteCompetenceCategoryRequest)
     {
         var result = await _competenceCategoryService.DeleteAsync(deleteCompetenceCategoryRequest);
@@ -67,7 +67,7 @@ public class CompetenceCategoriesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Competences.Get")]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateCompetenceCategoryRequest updateCompetenceCategoryRequest)
     {
         var result = await _competenceCategoryService.UpdateAsync(updateCompetenceCategoryRequest);

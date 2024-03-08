@@ -11,6 +11,6 @@ public interface IAccountSessionService
     Task<DeletedAccountSessionResponse> DeleteAsync(DeleteAccountSessionRequest deleteAccountSessionRequest);
     Task<IPaginate<GetListAccountSessionResponse>> GetListAsync(PageRequest pageRequest);
     Task<IPaginate<GetListAccountSessionResponse>> GetByAccountIdAsync(Guid accountId);    
-    Task<GetListAccountSessionResponse> GetByIdAsync(Guid id);
-    Task<GetListAccountSessionResponse> GetByAccountAndSessionIdAsync(Guid accountId, Guid sessionId);
+    Task<GetAccountSessionResponse> GetByIdAsync(Guid id);
+    Task<GetAccountSessionResponse> GetByAccountAndSessionIdAsync(Guid accountId, Guid sessionId);
 }

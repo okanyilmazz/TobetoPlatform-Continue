@@ -49,7 +49,7 @@ public class AnnouncementReadsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("AnnouncementReads.Get")]
     [CustomValidation(typeof(CreateAnnouncementReadRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateAnnouncementReadRequest createAnnouncementReadRequest)
     {
         var result = await _announcementReadService.AddAsync(createAnnouncementReadRequest);
@@ -61,7 +61,7 @@ public class AnnouncementReadsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("AnnouncementReads.Get")]
     [CustomValidation(typeof(UpdateAnnouncementReadRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateAnnouncementReadRequest updateAnnouncementReadRequest)
     {
         var result = await _announcementReadService.UpdateAsync(updateAnnouncementReadRequest);
@@ -72,7 +72,7 @@ public class AnnouncementReadsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AnnouncementReads.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteAnnouncementReadRequest deleteAnnouncementReadRequest)
     {
         var result = await _announcementReadService.DeleteAsync(deleteAnnouncementReadRequest);

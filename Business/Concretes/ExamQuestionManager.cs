@@ -40,14 +40,14 @@ public class ExamQuestionManager : IExamQuestionService
         return createdExamQuestionResponse;
     }
 
-    public async Task<GetListExamQuestionResponse> GetByIdAsync(Guid id)
+    public async Task<GetExamQuestionResponse> GetByIdAsync(Guid id)
     {
         var examQuestion = await _examQuestionDal.GetAsync(
              predicate: e => e.Id == id,
              include: eq => eq.
              Include(eq => eq.Exam).
              Include(eq => eq.Question));
-        var mappedExamQuestion = _mapper.Map<GetListExamQuestionResponse>(examQuestion);
+        var mappedExamQuestion = _mapper.Map<GetExamQuestionResponse>(examQuestion);
         return mappedExamQuestion;
     }
 

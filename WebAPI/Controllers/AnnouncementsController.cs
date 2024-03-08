@@ -48,7 +48,7 @@ public class AnnouncementsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Announcements.Get")]
     [CustomValidation(typeof(CreateAnnouncementRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateAnnouncementRequest createAnnouncementRequest)
     {
         var result = await _announcementService.AddAsync(createAnnouncementRequest);
@@ -60,7 +60,7 @@ public class AnnouncementsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Announcements.Get")]
     [CustomValidation(typeof(UpdateAnnouncementRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateAnnouncementRequest updateAnnouncementRequest)
     {
         var result = await _announcementService.UpdateAsync(updateAnnouncementRequest);
@@ -71,7 +71,7 @@ public class AnnouncementsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Announcements.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteAnnouncementRequest deleteAnnouncementRequest)
     {
         var result = await _announcementService.DeleteAsync(deleteAnnouncementRequest);

@@ -126,14 +126,14 @@ public class SessionManager : ISessionService
         return mappedSession;
     }
 
-    public async Task<GetListSessionResponse> GetByIdAsync(Guid id)
+    public async Task<GetSessionResponse> GetByIdAsync(Guid id)
     {
         var session = await _sessionDal.GetAsync(
        predicate: s => s.Id == id,
        include: s => s
        .Include(s => s.Lesson));
 
-        var mappedSession = _mapper.Map<GetListSessionResponse>(session);
+        var mappedSession = _mapper.Map<GetSessionResponse>(session);
         return mappedSession;
     }
 

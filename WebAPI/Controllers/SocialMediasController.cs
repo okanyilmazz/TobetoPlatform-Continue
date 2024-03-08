@@ -58,7 +58,7 @@ public class SocialMediasController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("SocialMedias.Get")]
     [CustomValidation(typeof(CreateSocialMediaRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateSocialMediaRequest createSocialMediaRequest)
     {
         var result = await _socialMediaService.AddAsync(createSocialMediaRequest);
@@ -69,7 +69,7 @@ public class SocialMediasController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("SocialMedias.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteSocialMediaRequest deleteSocialMediaRequest)
     {
         var result = await _socialMediaService.DeleteAsync(deleteSocialMediaRequest);
@@ -81,7 +81,7 @@ public class SocialMediasController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("SocialMedias.Get")]
     [CustomValidation(typeof(UpdateSocialMediaRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateSocialMediaRequest updateSocialMediaRequest)
     {
         var result = await _socialMediaService.UpdateAsync(updateSocialMediaRequest);

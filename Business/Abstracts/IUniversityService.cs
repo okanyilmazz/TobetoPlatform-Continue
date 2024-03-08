@@ -10,5 +10,5 @@ public interface IUniversityService
     Task<UpdatedUniversityResponse> UpdateAsync(UpdateUniversityRequest updateUniversityRequest);
     Task<DeletedUniversityResponse> DeleteAsync(DeleteUniversityRequest deleteUniversityRequest);
     Task<IPaginate<GetListUniversityResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListUniversityResponse> GetByIdAsync(Guid id);
+    Task<GetUniversityResponse> GetByIdAsync(Guid id);
 }

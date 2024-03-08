@@ -1,8 +1,7 @@
-﻿namespace Business.Dtos.Responses.ProgrammingLanguageResponses
+﻿namespace Business.Dtos.Responses.ProgrammingLanguageResponses;
+
+public class UpdatedProgrammingLanguageResponse
 {
-    public class UpdatedProgrammingLanguageResponse
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-    }
+    public Guid Id { get; set; }
+    public string Name { get; set; }
 }

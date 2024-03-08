@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.AccountUniversityRequests;
-using Business.Dtos.Responses.AccountSocialMediaResponses;
 using Business.Dtos.Responses.AccountUniversityResponses;
 using Business.Rules.BusinessRules;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
-using DataAccess.Concretes;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 
@@ -59,17 +57,17 @@ public class AccountUniversityManager : IAccountUniversityService
         return mappedAccountUniversities;
     }
 
-    public async Task<GetListAccountUniversityResponse> GetByIdAsync(Guid Id)
+    public async Task<GetAccountUniversityResponse> GetByIdAsync(Guid Id)
     {
-        var accountUniversities = await _accountUniversityDal.GetAsync(
+        var accountUniversity = await _accountUniversityDal.GetAsync(
             predicate: a => a.Id == Id,
             include: au => au
             .Include(au => au.University)
             .Include(au => au.DegreeType)
             .Include(au => au.UniversityDepartment)
             .Include(au => au.Account).ThenInclude(a => a.User));
-        var mappedAccountUniversitie = _mapper.Map<GetListAccountUniversityResponse>(accountUniversities);
-        return mappedAccountUniversitie;
+        var mappedAccountUniversity = _mapper.Map<GetAccountUniversityResponse>(accountUniversity);
+        return mappedAccountUniversity;
     }
 
     public async Task<IPaginate<GetListAccountUniversityResponse>> GetListAsync(PageRequest pageRequest)

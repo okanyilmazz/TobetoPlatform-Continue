@@ -10,5 +10,5 @@ public interface ISubjectService
     Task<DeletedSubjectResponse> DeleteAsync(DeleteSubjectRequest deleteSubjectRequest);
     Task<UpdatedSubjectResponse> UpdateAsync(UpdateSubjectRequest updateSubjectRequest);
     Task<IPaginate<GetListSubjectResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListSubjectResponse> GetByIdAsync(Guid id);
+    Task<GetSubjectResponse> GetByIdAsync(Guid id);
 }

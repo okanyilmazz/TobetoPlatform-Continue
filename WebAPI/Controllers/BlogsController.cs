@@ -48,7 +48,7 @@ public class BlogsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Blogs.Get")]
     [CustomValidation(typeof(CreateBlogRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateBlogRequest createBlogRequest)
     {
         var result = await _blogService.AddAsync(createBlogRequest);
@@ -59,7 +59,7 @@ public class BlogsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Blogs.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteBlogRequest deleteBlogRequest)
     {
         var result = await _blogService.DeleteAsync(deleteBlogRequest);
@@ -71,7 +71,7 @@ public class BlogsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Blogs.Get")]
     [CustomValidation(typeof(UpdateBlogRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateBlogRequest updateBlogRequest)
     {
         var result = await _blogService.UpdateAsync(updateBlogRequest);

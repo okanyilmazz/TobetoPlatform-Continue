@@ -39,7 +39,7 @@ public class AccountAnswerManager : IAccountAnswerService
         return deletedAccountAnswerResponse;
     }
 
-    public async Task<GetListAccountAnswerResponse> GetByIdAsync(Guid id)
+    public async Task<GetAccountAnswerResponse> GetByIdAsync(Guid id)
     {
         var accountAnswers = await _accountAnswerDal.GetAsync(
             predicate: a => a.Id == id,
@@ -47,7 +47,7 @@ public class AccountAnswerManager : IAccountAnswerService
             .Include(a => a.Exam)
             .Include(a => a.Account).ThenInclude(a => a.User)
             .Include(a => a.Question));
-        var mappedAccountAnswers = _mapper.Map<GetListAccountAnswerResponse>(accountAnswers);
+        var mappedAccountAnswers = _mapper.Map<GetAccountAnswerResponse>(accountAnswers);
         return mappedAccountAnswers;
     }
 

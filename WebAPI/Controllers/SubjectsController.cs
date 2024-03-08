@@ -47,7 +47,7 @@ public class SubjectsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Subjects.Get")]
     [CustomValidation(typeof(CreateSubjectRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateSubjectRequest createLessonSubjectRequest)
     {
         var result = await _subjectService.AddAsync(createLessonSubjectRequest);
@@ -59,7 +59,7 @@ public class SubjectsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Subjects.Get")]
     [CustomValidation(typeof(UpdateSubjectRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateSubjectRequest updateLessonSubjectRequest)
     {
         var result = await _subjectService.UpdateAsync(updateLessonSubjectRequest);
@@ -70,7 +70,7 @@ public class SubjectsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Subjects.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync(DeleteSubjectRequest deleteLessonSubjectRequest)
     {
         var result = await _subjectService.DeleteAsync(deleteLessonSubjectRequest);

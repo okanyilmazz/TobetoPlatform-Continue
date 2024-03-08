@@ -10,6 +10,6 @@ public interface IDistrictService
     Task<DeletedDistrictResponse> DeleteAsync(DeleteDistrictRequest deleteDistrictRequest);
     Task<UpdatedDistrictResponse> UpdateAsync(UpdateDistrictRequest updateDistrictRequest);
     Task<IPaginate<GetListDistrictResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListDistrictResponse> GetByIdAsync(Guid id);
+    Task<GetDistrictResponse> GetByIdAsync(Guid id);
     Task<IPaginate<GetListDistrictResponse>> GetByCityIdAsync(Guid cityId);
 }

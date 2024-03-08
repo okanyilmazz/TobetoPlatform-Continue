@@ -1,8 +1,7 @@
-﻿namespace Business.Dtos.Responses.LessonModuleResponses
+﻿namespace Business.Dtos.Responses.LessonModuleResponses;
+
+public class CreatedLessonModuleResponse
 {
-    public class CreatedLessonModuleResponse
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-    }
+    public Guid Id { get; set; }
+    public string Name { get; set; }
 }

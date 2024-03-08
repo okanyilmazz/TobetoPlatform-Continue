@@ -39,10 +39,10 @@ public class EducationProgramSubjectManager : IEducationProgramSubjectService
         return deletedEducationProgramSubjectResponse;
     }
 
-    public async Task<GetListEducationProgramSubjectResponse> GetByIdAsync(Guid id)
+    public async Task<GetEducationProgramSubjectResponse> GetByIdAsync(Guid id)
     {
         var educationProgramSubject = await _educationProgramSubjectDal.GetAsync(eps => eps.Id == id);
-        var mappedEducationProgramSubject = _mapper.Map<GetListEducationProgramSubjectResponse>(educationProgramSubject);
+        var mappedEducationProgramSubject = _mapper.Map<GetEducationProgramSubjectResponse>(educationProgramSubject);
         return mappedEducationProgramSubject;
     }
 

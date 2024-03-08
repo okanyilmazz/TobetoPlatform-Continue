@@ -13,6 +13,6 @@ public interface IEducationProgramService
     Task<IPaginate<GetListEducationProgramResponse>> GetListAsync(PageRequest pageRequest);
     Task<IPaginate<GetListEducationProgramResponse>> GetByAccountIdAsync(Guid accountId,PageRequest pageRequest);
     Task<IPaginate<GetListEducationProgramResponse>> GetByOccupationClassIdAsync(Guid occupationClassId);
-    Task<GetListEducationProgramResponse> GetByIdAsync(Guid id);
+    Task<GetEducationProgramResponse> GetByIdAsync(Guid id);
     Task<IPaginate<GetListEducationProgramResponse>> GetListByFiltered(EducationProgramFilterRequest educationProgramFilterRequest);
 }

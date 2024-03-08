@@ -50,10 +50,10 @@ public class SocialMediaManager : ISocialMediaService
         return mappedSocialMedias;
     }
 
-    public async Task<GetListSocialMediaResponse> GetByIdAsync(Guid id)
+    public async Task<GetSocialMediaResponse> GetByIdAsync(Guid id)
     {
         var socialMedia = await _socialMediaDal.GetAsync(s => s.Id == id);
-        var mappedSocialMedia = _mapper.Map<GetListSocialMediaResponse>(socialMedia);
+        var mappedSocialMedia = _mapper.Map<GetSocialMediaResponse>(socialMedia);
         return mappedSocialMedia;
     }
 

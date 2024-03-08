@@ -95,9 +95,9 @@ public class LessonManager : ILessonService
         return mappedLesson;
     }
 
-    public async Task<GetListLessonResponse> GetByIdAsync(Guid id)
+    public async Task<GetLessonResponse> GetByIdAsync(Guid id)
     {
-        var lessons = await _lessonDal.GetAsync(
+        var lesson = await _lessonDal.GetAsync(
             predicate: l => l.Id == id,
             include: l => l.
             Include(ep => ep.Language).
@@ -105,7 +105,7 @@ public class LessonManager : ILessonService
             Include(ep => ep.LessonModule).
             Include(ep => ep.ProductionCompany).
             Include(ep => ep.LessonSubType));
-        var mappedLessons = _mapper.Map<GetListLessonResponse>(lessons);
-        return mappedLessons;
+        var mappedLesson = _mapper.Map<GetLessonResponse>(lesson);
+        return mappedLesson;
     }
 }

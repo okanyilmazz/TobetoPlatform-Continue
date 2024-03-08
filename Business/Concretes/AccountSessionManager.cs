@@ -43,10 +43,10 @@ public class AccountSessionManager : IAccountSessionService
 
     }
 
-    public async Task<GetListAccountSessionResponse> GetByIdAsync(Guid id)
+    public async Task<GetAccountSessionResponse> GetByIdAsync(Guid id)
     {
         var accountSession = await _accountSessionDal.GetAsync(a => a.Id == id);
-        var mappedAccountSession = _mapper.Map<GetListAccountSessionResponse>(accountSession);
+        var mappedAccountSession = _mapper.Map<GetAccountSessionResponse>(accountSession);
         return mappedAccountSession;
     }
 
@@ -60,11 +60,11 @@ public class AccountSessionManager : IAccountSessionService
     }
 
 
-    public async Task<GetListAccountSessionResponse> GetByAccountAndSessionIdAsync(Guid accountId, Guid sessionId)
+    public async Task<GetAccountSessionResponse> GetByAccountAndSessionIdAsync(Guid accountId, Guid sessionId)
     {
         var accountSession = await _accountSessionDal.GetAsync(
             predicate: a => a.AccountId == accountId && a.SessionId == sessionId);
-        var mappedAccountSession = _mapper.Map<GetListAccountSessionResponse>(accountSession);
+        var mappedAccountSession = _mapper.Map<GetAccountSessionResponse>(accountSession);
         return mappedAccountSession;
     }
 

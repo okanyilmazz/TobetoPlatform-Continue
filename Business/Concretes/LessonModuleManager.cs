@@ -58,10 +58,10 @@ public class LessonModuleManager : ILessonModuleService
         return mappedListed;
     }
 
-    public async Task<GetListLessonModuleResponse> GetByIdAsync(Guid id)
+    public async Task<GetLessonModuleResponse> GetByIdAsync(Guid id)
     {
         var lessonModule = await _lessonModuleDal.GetAsync(lm => lm.Id == id);
-        var mappedLessonModeuleId = _mapper.Map<GetListLessonModuleResponse>(lessonModule);
-        return mappedLessonModeuleId;
+        var mappedLessonModule = _mapper.Map<GetLessonModuleResponse>(lessonModule);
+        return mappedLessonModule;
     }
 }

@@ -2,11 +2,9 @@
 using Business.Abstracts;
 using Business.Dtos.Requests.AccountOccupationClassRequests;
 using Business.Dtos.Responses.AccountOccupationClassResponses;
-using Business.Dtos.Responses.UserOperationClaimResponses;
 using Business.Rules.BusinessRules;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
-using DataAccess.Concretes;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 
@@ -56,14 +54,14 @@ public class AccountOccupationClassManager : IAccountOccupationClassService
         return mappedListed;
     }
 
-    public async Task<GetListAccountOccupationClassResponse> GetByIdAsync(Guid id)
+    public async Task<GetAccountOccupationClassResponse> GetByIdAsync(Guid id)
     {
         var accountOccupationClassList = await _accountOccupationClassDal.GetAsync(
             predicate: a => a.Id == id,
             include: aoc => aoc.
             Include(aoc => aoc.OccupationClass)
             .Include(aoc => aoc.Account).ThenInclude(a => a.User));
-        var mappedAccountOccupationClass = _mapper.Map<GetListAccountOccupationClassResponse>(accountOccupationClassList);
+        var mappedAccountOccupationClass = _mapper.Map<GetAccountOccupationClassResponse>(accountOccupationClassList);
         return mappedAccountOccupationClass;
     }
 

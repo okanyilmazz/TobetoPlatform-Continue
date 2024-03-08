@@ -47,7 +47,7 @@ public class AccountHomeworksController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountHomeworks.Get")]
     [CustomValidation(typeof(CreateAccountHomeworkRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateAccountHomeworkRequest createAccountHomeworkRequest)
     {
         var result = await _accountHomeworkService.AddAsync(createAccountHomeworkRequest);
@@ -59,7 +59,7 @@ public class AccountHomeworksController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountHomeworks.Get")]
     [CustomValidation(typeof(UpdateAccountHomeworkRequestValidator))]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountHomeworkRequest deleteAccountHomeworkRequest)
     {
         var result = await _accountHomeworkService.DeleteAsync(deleteAccountHomeworkRequest);
@@ -70,7 +70,7 @@ public class AccountHomeworksController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountHomeworks.Get")]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateAccountHomeworkRequest updateAccountHomeworkRequest)
     {
         var result = await _accountHomeworkService.UpdateAsync(updateAccountHomeworkRequest);

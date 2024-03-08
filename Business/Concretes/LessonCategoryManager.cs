@@ -39,10 +39,10 @@ public class LessonCategoryManager : ILessonCategoryService
         return mappedLessonCategory;
     }
 
-    public async Task<GetListLessonCategoryResponse> GetByIdAsync(Guid id)
+    public async Task<GetLessonCategoryResponse> GetByIdAsync(Guid id)
     {
-        var lessonCategory = await _lessonCategoryDal.GetListAsync(h => h.Id == id);
-        return _mapper.Map<GetListLessonCategoryResponse>(lessonCategory.Items.FirstOrDefault());
+        var lessonCategory = await _lessonCategoryDal.GetAsync(h => h.Id == id);
+        return _mapper.Map<GetLessonCategoryResponse>(lessonCategory);
     }
 
     public async Task<IPaginate<GetListLessonCategoryResponse>> GetListAsync(PageRequest pageRequest)

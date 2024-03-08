@@ -10,8 +10,6 @@ public interface IExamResultService
     Task<CreatedExamResultResponse> AddAsync(CreateExamResultRequest createExamResultRequest);
     Task<UpdatedExamResultResponse> UpdateAsync(UpdateExamResultRequest updateExamResultRequest);
     Task<DeletedExamResultResponse> DeleteAsync(DeleteExamResultRequest deleteExamResultRequest);
-    Task<GetListExamResultResponse> GetByIdAsync(Guid id);
+    Task<GetExamResultResponse> GetByIdAsync(Guid id);
     Task<IPaginate<GetListExamResultResponse>> GetByAccountIdAsync(Guid accountId);
-
 }
-

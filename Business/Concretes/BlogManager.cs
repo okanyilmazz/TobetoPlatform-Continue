@@ -41,11 +41,11 @@ public class BlogManager : IBlogService
         return deletedBlogResponse;
     }
 
-    public async Task<GetListBlogResponse> GetByIdAsync(Guid Id)
+    public async Task<GetBlogResponse> GetByIdAsync(Guid Id)
     {
-        var blogs = await _blogDal.GetAsync(b => b.Id == Id);
-        var mappedBlogs = _mapper.Map<GetListBlogResponse>(blogs);
-        return mappedBlogs;
+        var blog = await _blogDal.GetAsync(b => b.Id == Id);
+        var mappedBlog = _mapper.Map<GetBlogResponse>(blog);
+        return mappedBlog;
     }
 
     public async Task<IPaginate<GetListBlogResponse>> GetListAsync(PageRequest pageRequest)

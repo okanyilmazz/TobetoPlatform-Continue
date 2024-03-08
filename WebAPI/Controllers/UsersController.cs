@@ -70,7 +70,7 @@ public class UsersController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Users.Get")]
     [CustomValidation(typeof(CreateUserRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateUserRequest createUserRequest)
     {
         var result = await _userService.AddAsync(createUserRequest);
@@ -82,7 +82,7 @@ public class UsersController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Users.Get")]
     [CustomValidation(typeof(UpdateUserRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateUserRequest updateUserRequest)
     {
         var result = await _userService.UpdateAsync(updateUserRequest);
@@ -93,7 +93,7 @@ public class UsersController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Users.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteUserRequest deleteProductRequest)
     {
         var result = await _userService.DeleteAsync(deleteProductRequest);

@@ -41,14 +41,14 @@ public class ExamOccupationClassManager : IExamOccupationClassService
         return deletedExamOccupationClassResponse;
     }
 
-    public async Task<GetListExamOccupationClassResponse> GetByIdAsync(Guid id)
+    public async Task<GetExamOccupationClassResponse> GetByIdAsync(Guid id)
     {
         var examOccupationClass = await _examOccupationClassDal.GetAsync(
             predicate: eoc => eoc.Id == id,
             include: eoc => eoc
             .Include(eoc => eoc.Exam)
             .Include(eoc => eoc.OccupationClass));
-        return _mapper.Map<GetListExamOccupationClassResponse>(examOccupationClass);
+        return _mapper.Map<GetExamOccupationClassResponse>(examOccupationClass);
     }
 
     public async Task<IPaginate<GetListExamOccupationClassResponse>> GetListAsync(PageRequest pageRequest)

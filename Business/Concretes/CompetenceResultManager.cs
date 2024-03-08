@@ -2,10 +2,8 @@
 using Business.Abstracts;
 using Business.Dtos.Requests.CompetenceResultRequests;
 using Business.Dtos.Responses.CompetenceResultResponses;
-using Business.Dtos.Responses.ExamResultResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
-using DataAccess.Concretes;
 using Entities.Concretes;
 
 namespace Business.Concretes;
@@ -43,10 +41,10 @@ public class CompetenceResultManager : ICompetenceResultService
         return mappedCompetenceResult;
     }
 
-    public async Task<GetListCompetenceResultResponse> GetByIdAsync(Guid id)
+    public async Task<GetCompetenceResultResponse> GetByIdAsync(Guid id)
     {
         var competenceResult = await _competenceResultDal.GetAsync(p => p.Id == id);
-        var mappedCompetenceResult = _mapper.Map<GetListCompetenceResultResponse>(competenceResult);
+        var mappedCompetenceResult = _mapper.Map<GetCompetenceResultResponse>(competenceResult);
         return mappedCompetenceResult;
     }
 

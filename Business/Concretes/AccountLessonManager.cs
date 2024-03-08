@@ -38,14 +38,14 @@ public class AccountLessonManager : IAccountLessonService
         return deletedAccountLessonResponse;
     }
 
-    public async Task<GetListAccountLessonResponse> GetByIdAsync(Guid id)
+    public async Task<GetAccountLessonResponse> GetByIdAsync(Guid id)
     {
         var AccountLessonListed = await _accountLessonDal.GetAsync(
             predicate: a => a.Id == id,
             include: al => al
             .Include(al => al.Account).ThenInclude(a => a.User)
             .Include(al => al.Lesson));
-        var mappedListed = _mapper.Map<GetListAccountLessonResponse>(AccountLessonListed);
+        var mappedListed = _mapper.Map<GetAccountLessonResponse>(AccountLessonListed);
         return mappedListed;
     }
 
@@ -60,14 +60,14 @@ public class AccountLessonManager : IAccountLessonService
         return mappedListed;
     }
 
-    public async Task<GetListAccountLessonResponse> GetByAccountIdAndLessonIdAsync(Guid accountId, Guid lessonId)
+    public async Task<GetAccountLessonResponse> GetByAccountIdAndLessonIdAsync(Guid accountId, Guid lessonId)
     {
         var accountLesson = await _accountLessonDal.GetAsync(
             predicate: a => a.AccountId == accountId && a.LessonId == lessonId,
             include: al => al
             .Include(al => al.Account).ThenInclude(a => a.User)
             .Include(al => al.Lesson));
-        var mappedListed = _mapper.Map<GetListAccountLessonResponse>(accountLesson);
+        var mappedListed = _mapper.Map<GetAccountLessonResponse>(accountLesson);
         return mappedListed;
     }
 

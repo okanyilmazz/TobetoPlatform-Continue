@@ -41,14 +41,14 @@ public class CityManager : ICityService
         return deletedCityResponse;
     }
 
-    public async Task<GetListCityResponse> GetByIdAsync(Guid id)
+    public async Task<GetCityResponse> GetByIdAsync(Guid id)
     {
         var city = await _cityDal.GetAsync(
-        predicate: c => c.Id == id,
-       include: c => c
-      .Include(c => c.Country));
+            predicate: c => c.Id == id,
+            include: c => c
+            .Include(c => c.Country));
 
-        var mappedCity = _mapper.Map<GetListCityResponse>(city);
+        var mappedCity = _mapper.Map<GetCityResponse>(city);
         return mappedCity;
     }
 

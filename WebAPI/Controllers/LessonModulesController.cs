@@ -47,7 +47,7 @@ public class LessonModulesController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("LessonModules.Get")]
     [CustomValidation(typeof(CreateLessonModuleRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateLessonModuleRequest createLessonModuleRequest)
     {
         var result = await _lessonModuleService.AddAsync(createLessonModuleRequest);
@@ -59,7 +59,7 @@ public class LessonModulesController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("LessonModules.Get")]
     [CustomValidation(typeof(UpdateLessonModuleRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateLessonModuleRequest updateLessonModuleRequest)
     {
         var result = await _lessonModuleService.UpdateAsync(updateLessonModuleRequest);
@@ -70,7 +70,7 @@ public class LessonModulesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("LessonModules.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteLessonModuleRequest deleteLessonModuleRequest)
     {
         var result = await _lessonModuleService.DeleteAsync(deleteLessonModuleRequest);

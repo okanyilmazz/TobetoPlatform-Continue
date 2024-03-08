@@ -57,7 +57,7 @@ public class AccountActivityMapsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountActivityMaps.Get")]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateAccountActivityMapRequest createAccountActivityMapRequest)
     {
         var result = await _accountActivityMapService.AddAsync(createAccountActivityMapRequest);
@@ -68,7 +68,7 @@ public class AccountActivityMapsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountActivityMaps.Get")]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateAccountActivityMapRequest updateAccountActivityMapRequest)
     {
         var result = await _accountActivityMapService.UpdateAsync(updateAccountActivityMapRequest);
@@ -78,7 +78,7 @@ public class AccountActivityMapsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountActivityMaps.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountActivityMapRequest deleteAccountActivityMapRequest)
     {
         var result = await _accountActivityMapService.DeleteAsync(deleteAccountActivityMapRequest);

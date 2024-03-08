@@ -48,7 +48,7 @@ public class UniversityDepartmentsController : Controller
     [Logging(typeof(FileLogger))]
     [CacheRemove("UniversityDepartments.Get")]
     [CustomValidation(typeof(CreateUniversityDepartmentRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateUniversityDepartmentRequest createUniversityDepartmentRequest)
     {
         var result = await _universityDepartmentService.AddAsync(createUniversityDepartmentRequest);
@@ -60,7 +60,7 @@ public class UniversityDepartmentsController : Controller
     [Logging(typeof(FileLogger))]
     [CacheRemove("UniversityDepartments.Get")]
     [CustomValidation(typeof(UpdateUniversityDepartmentRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateUniversityDepartmentRequest updateUniversityDepartmentRequest)
     {
         var result = await _universityDepartmentService.UpdateAsync(updateUniversityDepartmentRequest);
@@ -71,7 +71,7 @@ public class UniversityDepartmentsController : Controller
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("UniversityDepartments.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteUniversityDepartmentRequest deleteUniversityDepartmentRequest)
     {
         var result = await _universityDepartmentService.DeleteAsync(deleteUniversityDepartmentRequest);

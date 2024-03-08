@@ -47,7 +47,7 @@ public class OccupationsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Occupations.Get")]
     [CustomValidation(typeof(CreateOccupationRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateOccupationRequest createOccupationRequest)
     {
         var result = await _occupationService.AddAsync(createOccupationRequest);
@@ -59,7 +59,7 @@ public class OccupationsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Occupations.Get")]
     [CustomValidation(typeof(UpdateOccupationRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateOccupationRequest updateOccupationRequest)
     {
         var result = await _occupationService.UpdateAsync(updateOccupationRequest);
@@ -70,7 +70,7 @@ public class OccupationsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Occupations.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteOccupationRequest deleteOccupationRequest)
     {
         var result = await _occupationService.DeleteAsync(deleteOccupationRequest);

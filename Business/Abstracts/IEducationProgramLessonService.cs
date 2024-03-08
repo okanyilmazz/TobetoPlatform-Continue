@@ -10,6 +10,6 @@ public interface IEducationProgramLessonService
     Task<UpdatedEducationProgramLessonResponse> UpdateAsync(UpdateEducationProgramLessonRequest updateEducationProgramLessonRequest);
     Task<DeletedEducationProgramLessonResponse> DeleteAsync(DeleteEducationProgramLessonRequest deleteEducationProgramLessonRequest);
     Task<IPaginate<GetListEducationProgramLessonResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListEducationProgramLessonResponse> GetByIdAsync(Guid id);
+    Task<GetEducationProgramLessonResponse> GetByIdAsync(Guid id);
     Task<IPaginate<GetListEducationProgramLessonResponse>> GetByEducationProgramIdAsync(Guid educationProgramId);
 }

@@ -55,11 +55,11 @@ public class ActivityMapManager : IActivityMapService
         return mappedactivityMaps;
     }
 
-    public async Task<GetListActivityMapResponse> GetByIdAsync(Guid Id)
+    public async Task<GetActivityMapResponse> GetByIdAsync(Guid Id)
     {
         var activityMap = await _activityMapDal.GetAsync(
             predicate: b => b.Id == Id);
-        var mappedActivityMap = _mapper.Map<GetListActivityMapResponse>(activityMap);
+        var mappedActivityMap = _mapper.Map<GetActivityMapResponse>(activityMap);
         return mappedActivityMap;
     }
 

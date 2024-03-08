@@ -3,11 +3,9 @@ using Business.Abstracts;
 using Business.Dtos.Requests.EducationProgramRequests;
 using Business.Dtos.Requests.FilterRequest;
 using Business.Dtos.Responses.EducationProgramResponses;
-using Business.Dtos.Responses.ExamResponses;
 using Business.Rules.BusinessRules;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
-using DataAccess.Concretes;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 
@@ -138,10 +136,10 @@ public class EducationProgramManager : IEducationProgramService
         return mappedEducationProgram;
     }
 
-    public async Task<GetListEducationProgramResponse> GetByIdAsync(Guid id)
+    public async Task<GetEducationProgramResponse> GetByIdAsync(Guid id)
     {
         var educationProgram = await _educationProgramDal.GetAsync(ep => ep.Id == id);
-        var mappedEducationProgram = _mapper.Map<GetListEducationProgramResponse>(educationProgram);
+        var mappedEducationProgram = _mapper.Map<GetEducationProgramResponse>(educationProgram);
         return mappedEducationProgram;
     }
 }

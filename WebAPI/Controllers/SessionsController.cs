@@ -78,7 +78,7 @@ public class SessionsController : Controller
     [Logging(typeof(FileLogger))]
     [CacheRemove("Sessions.Get")]
     [CustomValidation(typeof(CreateSessionRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateSessionRequest createSessionRequest)
     {
         var result = await _sessionService.AddAsync(createSessionRequest);
@@ -90,7 +90,7 @@ public class SessionsController : Controller
     [Logging(typeof(FileLogger))]
     [CacheRemove("Sessions.Get")]
     [CustomValidation(typeof(UpdateSessionRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateSessionRequest updateSessionRequest)
     {
         var result = await _sessionService.UpdateAsync(updateSessionRequest);
@@ -101,7 +101,7 @@ public class SessionsController : Controller
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Sessions.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteSessionRequest deleteSessionRequest)
     {
         var result = await _sessionService.DeleteAsync(deleteSessionRequest);

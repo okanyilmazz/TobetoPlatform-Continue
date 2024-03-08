@@ -10,5 +10,5 @@ public interface ICompetenceTestQuestionService
     Task<UpdatedCompetenceTestQuestionResponse> UpdateAsync(UpdateCompetenceTestQuestionRequest updateCompetenceTestQuestionRequest);
     Task<DeletedCompetenceTestQuestionResponse> DeleteAsync(DeleteCompetenceTestQuestionRequest deleteCompetenceTestQuestionRequest);
     Task<IPaginate<GetListCompetenceTestQuestionResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListCompetenceTestQuestionResponse> GetByIdAsync(Guid id);
+    Task<GetCompetenceTestQuestionResponse> GetByIdAsync(Guid id);
 }

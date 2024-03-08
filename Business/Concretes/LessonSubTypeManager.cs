@@ -40,11 +40,11 @@ public class LessonSubTypeManager : ILessonSubTypeService
         return mappedLessonSubType;
     }
 
-    public async Task<GetListLessonSubTypeResponse> GetByIdAsync(Guid id)
+    public async Task<GetLessonSubTypeResponse> GetByIdAsync(Guid id)
     {
         var lessonSubType = await _lessonSubTypeDal.GetAsync(l => l.Id == id);
-        var mappedLessonSubTypeId = _mapper.Map<GetListLessonSubTypeResponse>(lessonSubType);
-        return mappedLessonSubTypeId;
+        var mappedLessonSubType = _mapper.Map<GetLessonSubTypeResponse>(lessonSubType);
+        return mappedLessonSubType;
     }
 
     public async Task<IPaginate<GetListLessonSubTypeResponse>> GetListAsync(PageRequest pageRequest)

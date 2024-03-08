@@ -51,25 +51,25 @@ public class AccountEducationProgramManager : IAccountEducationProgramService
         return mappedAccountEducationProgram;
     }
 
-    public async Task<GetListAccountEducationProgramResponse> GetByAccountIdAndEducationProgramIdAsync(Guid accountId, Guid educationProgramId)
+    public async Task<GetAccountEducationProgramResponse> GetByAccountIdAndEducationProgramIdAsync(Guid accountId, Guid educationProgramId)
     {
         var accountEducationProgram = await _accountEducationProgramDal.GetAsync(
            predicate: a => a.AccountId == accountId && a.EducationProgramId == educationProgramId,
            include: ah => ah
            .Include(ah => ah.Account).ThenInclude(a => a.User)
            .Include(ah => ah.EducationProgram));
-        var mappedAccountEducationProgram = _mapper.Map<GetListAccountEducationProgramResponse>(accountEducationProgram);
+        var mappedAccountEducationProgram = _mapper.Map<GetAccountEducationProgramResponse>(accountEducationProgram);
         return mappedAccountEducationProgram;
     }
 
-    public async Task<GetListAccountEducationProgramResponse> GetByIdAsync(Guid id)
+    public async Task<GetAccountEducationProgramResponse> GetByIdAsync(Guid id)
     {
         var accountEducationProgram = await _accountEducationProgramDal.GetAsync(
             predicate: a => a.Id == id,
             include: ah => ah
             .Include(ah => ah.Account).ThenInclude(a => a.User)
             .Include(ah => ah.EducationProgram));
-        var mappedAccountEducationProgram = _mapper.Map<GetListAccountEducationProgramResponse>(accountEducationProgram);
+        var mappedAccountEducationProgram = _mapper.Map<GetAccountEducationProgramResponse>(accountEducationProgram);
         return mappedAccountEducationProgram;
     }
 

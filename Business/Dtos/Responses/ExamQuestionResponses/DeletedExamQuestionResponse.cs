@@ -1,5 +1,4 @@
-﻿using System;
-namespace Business.Dtos.Responses.ExamQuestionResponses;
+﻿namespace Business.Dtos.Responses.ExamQuestionResponses;
 
 public class DeletedExamQuestionResponse
 {
@@ -7,4 +6,3 @@ public class DeletedExamQuestionResponse
     public Guid QuestionId { get; set; }
     public Guid ExamId { get; set; }
 }
-

@@ -1,10 +1,7 @@
-﻿namespace Business.Dtos.Responses.OperationClaimResponses
+﻿namespace Business.Dtos.Responses.OperationClaimResponses;
+
+public class CreatedOperationClaimResponse
 {
-    public class CreatedOperationClaimResponse
-    {
-        public Guid Id { get; set; }
-
-        public string Name { get; set; }
-
-    }
-} 
+    public Guid Id { get; set; }
+    public string Name { get; set; }
+}

@@ -39,11 +39,11 @@ public class ManagementProgramManager : IManagementProgramService
         return mappedManagementProgram;
     }
 
-    public async Task<GetListManagementProgramResponse> GetByIdAsync(Guid id)
+    public async Task<GetManagementProgramResponse> GetByIdAsync(Guid id)
     {
         var managementProgram = await _managementProgramDal.GetAsync(l => l.Id == id);
-        var mappedManagementProgramId = _mapper.Map<GetListManagementProgramResponse>(managementProgram);
-        return mappedManagementProgramId;
+        var mappedManagementProgram = _mapper.Map<GetManagementProgramResponse>(managementProgram);
+        return mappedManagementProgram;
     }
 
     public async Task<IPaginate<GetListManagementProgramResponse>> GetListAsync(PageRequest pageRequest)

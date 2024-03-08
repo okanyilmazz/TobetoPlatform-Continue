@@ -11,5 +11,5 @@ public interface IOccupationService
     Task<UpdatedOccupationResponse> UpdateAsync(UpdateOccupationRequest updateOccupationRequest);
     Task<DeletedOccupationResponse> DeleteAsync(DeleteOccupationRequest deleteOccupationRequest);
     Task<IPaginate<GetListOccupationResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListOccupationResponse> GetByIdAsync(Guid Id);
+    Task<GetOccupationResponse> GetByIdAsync(Guid Id);
 }

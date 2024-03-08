@@ -50,7 +50,7 @@ public class ActivityMapsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("ActivityMap.Get")]
     [CustomValidation(typeof(CreateActivityMapRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateActivityMapRequest createActivityMapRequest)
     {
         var result = await _activityMapService.AddAsync(createActivityMapRequest);
@@ -61,7 +61,7 @@ public class ActivityMapsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("ActivityMap.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteActivityMapRequest deleteActivityMapRequest)
     {
         var result = await _activityMapService.DeleteAsync(deleteActivityMapRequest);
@@ -73,7 +73,7 @@ public class ActivityMapsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("ActivityMap.Get")]
     [CustomValidation(typeof(UpdateActivityMapRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateActivityMapRequest updateActivityMapRequest)
     {
         var result = await _activityMapService.UpdateAsync(updateActivityMapRequest);

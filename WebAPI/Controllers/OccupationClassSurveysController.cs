@@ -47,7 +47,7 @@ public class OccupationClassSurveysController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("OccupationClassSurveys.Get")]
     [CustomValidation(typeof(CreateOccupationClassSurveyRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateOccupationClassSurveyRequest createOccupationClassSurveyRequest)
     {
         var result = await _occupationClassSurveyService.AddAsync(createOccupationClassSurveyRequest);
@@ -59,7 +59,7 @@ public class OccupationClassSurveysController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("OccupationClassSurveys.Get")]
     [CustomValidation(typeof(UpdateOccupationClassSurveyRequestValidator))]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteOccupationClassSurveyRequest deleteOccupationClassSurveyRequest)
     {
         var result = await _occupationClassSurveyService.DeleteAsync(deleteOccupationClassSurveyRequest);
@@ -70,7 +70,7 @@ public class OccupationClassSurveysController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("OccupationClassSurveys.Get")]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateOccupationClassSurveyRequest updateOccupationClassSurveyRequest)
     {
         var result = await _occupationClassSurveyService.UpdateAsync(updateOccupationClassSurveyRequest);

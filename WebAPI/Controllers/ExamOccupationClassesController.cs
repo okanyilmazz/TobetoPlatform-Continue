@@ -44,7 +44,7 @@ public class ExamOccupationClassesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("ExamOccupationClasses.Get")]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateExamOccupationClassRequest createExamOccupationClassRequest)
     {
         var result = await _examOccupationClassService.AddAsync(createExamOccupationClassRequest);
@@ -55,7 +55,7 @@ public class ExamOccupationClassesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("ExamOccupationClasses.Get")]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateExamOccupationClassRequest updateExamOccupationClassRequest)
     {
         var result = await _examOccupationClassService.UpdateAsync(updateExamOccupationClassRequest);
@@ -66,7 +66,7 @@ public class ExamOccupationClassesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("ExamOccupationClasses.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteExamOccupationClassRequest deleteExamOccupationClassRequest)
     {
         var result = await _examOccupationClassService.DeleteAsync(deleteExamOccupationClassRequest);

@@ -57,9 +57,9 @@ public class LanguageLevelManager : ILanguageLevelService
         return mappedListed;
     }
 
-    public async Task<GetListLanguageLevelResponse> GetByIdAsync(Guid id)
+    public async Task<GetLanguageLevelResponse> GetByIdAsync(Guid id)
     {
-        var languageLevel = await _languageLevelDal.GetListAsync(l => l.Id == id);
-        return _mapper.Map<GetListLanguageLevelResponse>(languageLevel.Items.FirstOrDefault());
+        var languageLevel = await _languageLevelDal.GetAsync(l => l.Id == id);
+        return _mapper.Map<GetLanguageLevelResponse>(languageLevel);
     }
 }

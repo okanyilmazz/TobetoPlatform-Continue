@@ -10,5 +10,5 @@ public interface IAccountAnswerService
     Task<UpdatedAccountAnswerResponse> UpdateAsync(UpdateAccountAnswerRequest updateAccountAnswerRequest);
     Task<DeletedAccountAnswerResponse> DeleteAsync(DeleteAccountAnswerRequest deleteAccountAnswerRequest);
     Task<IPaginate<GetListAccountAnswerResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListAccountAnswerResponse> GetByIdAsync(Guid id);
+    Task<GetAccountAnswerResponse> GetByIdAsync(Guid id);
 }

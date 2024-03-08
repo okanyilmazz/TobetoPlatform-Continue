@@ -10,5 +10,5 @@ public interface IEducationProgramOccupationClassService
     Task<UpdatedEducationProgramOccupationClassResponse> UpdateAsync(UpdateEducationProgramOccupationClassRequest updateEducationProgramOccupationClassRequest);
     Task<DeletedEducationProgramOccupationClassResponse> DeleteAsync(DeleteEducationProgramOccupationClassRequest deleteEducationProgramOccupationClassRequest);
     Task<IPaginate<GetListEducationProgramOccupationClassResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListEducationProgramOccupationClassResponse> GetByIdAsync(Guid id);
+    Task<GetEducationProgramOccupationClassResponse> GetByIdAsync(Guid id);
 }

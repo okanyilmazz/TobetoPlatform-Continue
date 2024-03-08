@@ -67,10 +67,10 @@ public class OperationClaimManager : IOperationClaimService
         return updatedOperationClaimResponse;
     }
 
-    public async Task<GetListOperationClaimResponse> GetByRoleName(string roleName)
+    public async Task<GetOperationClaimResponse> GetByRoleName(string roleName)
     {
         OperationClaim operationClaim = await _operationClaimDal.GetAsync(oc => oc.Name.ToUpper() == roleName.ToUpper());
-        GetListOperationClaimResponse mappedOperationClaim = _mapper.Map<GetListOperationClaimResponse>(operationClaim);
+        GetOperationClaimResponse mappedOperationClaim = _mapper.Map<GetOperationClaimResponse>(operationClaim);
         return mappedOperationClaim;
     }
 }

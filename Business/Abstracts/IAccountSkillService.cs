@@ -11,6 +11,6 @@ public interface IAccountSkillService
     Task<UpdatedAccountSkillResponse> UpdateAsync(UpdateAccountSkillRequest updateAccountSkillRequest);
     Task<DeletedAccountSkillResponse> DeleteAsync(DeleteAccountSkillRequest deleteAccountSkillRequest);
     Task<IPaginate<GetListAccountSkillResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListAccountSkillResponse> GetByIdAsync(Guid id);
+    Task<GetAccountSkillResponse> GetByIdAsync(Guid id);
     Task<IPaginate<GetListAccountSkillResponse>> GetByAccountIdAsync(Guid accountId, PageRequest pageRequest);
 }

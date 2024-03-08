@@ -40,23 +40,23 @@ public class AddressManager : IAddressService
         return deletedAddressResponse;
     }
 
-    public async Task<GetListAddressResponse> GetByIdAsync(Guid Id)
+    public async Task<GetAddressResponse> GetByIdAsync(Guid Id)
     {
-        var addresss = await _addressDal.GetAsync(
+        var address = await _addressDal.GetAsync(
             predicate: a => a.Id == Id,
             include: a => a
             .Include(a => a.District)
             .Include(a => a.City)
             .Include(a => a.Country));
-        var mappedAddresses = _mapper.Map<GetListAddressResponse>(addresss);
-        return mappedAddresses;
+        var mappedAddress = _mapper.Map<GetAddressResponse>(address);
+        return mappedAddress;
     }
 
-    public async Task<GetListAddressResponse> GetByAccountIdAsync(Guid accountId)
+    public async Task<GetAddressResponse> GetByAccountIdAsync(Guid accountId)
     {
         var accountAddress = await _addressDal.GetAsync(
             predicate: a => a.AccountId == accountId);
-        var mappedAccountAddress = _mapper.Map<GetListAddressResponse>(accountAddress);
+        var mappedAccountAddress = _mapper.Map<GetAddressResponse>(accountAddress);
         return mappedAccountAddress;
     }
 

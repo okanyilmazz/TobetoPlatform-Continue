@@ -40,11 +40,11 @@ public class EducationProgramLevelManager : IEducationProgramLevelService
         (deletedEducationProgramLevel);
         return deletedEducationProgramLevelResponse;
     }
-    public async Task<GetListEducationProgramLevelResponse> GetByIdAsync(Guid id)
-    {
 
+    public async Task<GetEducationProgramLevelResponse> GetByIdAsync(Guid id)
+    {
         var educationProgramLevel = await _educationProgramLevelDal.GetAsync(epl => epl.Id == id);
-        var mappedEducationProgramLevel = _mapper.Map<GetListEducationProgramLevelResponse>(educationProgramLevel);
+        var mappedEducationProgramLevel = _mapper.Map<GetEducationProgramLevelResponse>(educationProgramLevel);
         return mappedEducationProgramLevel;
     }
 

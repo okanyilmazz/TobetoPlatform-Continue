@@ -51,7 +51,7 @@ public class EducationProgramLikeManager : IEducationProgramLikeService
         return deletedEducationProgramLikeResponse;
     }
 
-    public async Task<GetListEducationProgramLikeResponse> GetByIdAsync(Guid id)
+    public async Task<GetEducationProgramLikeResponse> GetByIdAsync(Guid id)
     {
         var educationProgramLike = await _educationProgramLikeDal.GetAsync(
             predicate: l => l.Id == id,
@@ -59,8 +59,8 @@ public class EducationProgramLikeManager : IEducationProgramLikeService
             Include(l => l.EducationProgram).
             Include(l => l.Account));
 
-        var mappedEducationProgramLikes = _mapper.Map<GetListEducationProgramLikeResponse>(educationProgramLike);
-        return mappedEducationProgramLikes;
+        var mappedEducationProgramLike = _mapper.Map<GetEducationProgramLikeResponse>(educationProgramLike);
+        return mappedEducationProgramLike;
     }
 
     public async Task<IPaginate<GetListEducationProgramLikeResponse>> GetByAccountIdAsync(Guid accountId)
@@ -86,6 +86,19 @@ public class EducationProgramLikeManager : IEducationProgramLikeService
         var mappedEducationProgramLikes = _mapper.Map<Paginate<GetListEducationProgramLikeResponse>>(educationProgramLike);
         return mappedEducationProgramLikes;
     }
+
+    public async Task<GetEducationProgramLikeResponse> GetByEducationProgramIdAndAccountIdAsync(Guid educationProgramId, Guid accountId)
+    {
+        var educationProgramLike = await _educationProgramLikeDal.GetAsync(
+            predicate: l => l.EducationProgramId == educationProgramId && l.AccountId == accountId,
+            include: l => l.
+            Include(l => l.EducationProgram).
+            Include(l => l.Account));
+
+        var mappedEducationProgramLike = _mapper.Map<GetEducationProgramLikeResponse>(educationProgramLike);
+        return mappedEducationProgramLike;
+    }
+
 
     public async Task<IPaginate<GetListEducationProgramLikeResponse>> GetListAsync(PageRequest pageRequest)
     {

@@ -55,7 +55,7 @@ public class LanguagesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Languages.Get")]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateLanguageRequest createLanguageRequest)
     {
         var result = await _languageService.AddAsync(createLanguageRequest);
@@ -66,7 +66,7 @@ public class LanguagesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Languages.Get")]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateLanguageRequest updateLanguageRequest)
     {
         var result = await _languageService.UpdateAsync(updateLanguageRequest);
@@ -77,7 +77,7 @@ public class LanguagesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Languages.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteLanguageRequest deleteLanguageRequest)
     {
         var result = await _languageService.DeleteAsync(deleteLanguageRequest);

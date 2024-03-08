@@ -10,6 +10,6 @@ public interface IQuestionService
     Task<UpdatedQuestionResponse> UpdateAsync(UpdateQuestionRequest updateQuestionRequest);
     Task<DeletedQuestionResponse> DeleteAsync(DeleteQuestionRequest deleteQuestionRequest);
     Task<IPaginate<GetListQuestionResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListQuestionResponse> GetByIdAsync(Guid id);
+    Task<GetQuestionResponse> GetByIdAsync(Guid id);
     Task<IPaginate<GetListQuestionResponse>> GetByExamIdAsync(Guid examId, PageRequest pageRequest);
 }

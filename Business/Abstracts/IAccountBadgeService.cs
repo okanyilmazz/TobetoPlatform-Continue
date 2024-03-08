@@ -9,8 +9,8 @@ public interface IAccountBadgeService
     Task<CreatedAccountBadgeResponse> AddAsync(CreateAccountBadgeRequest createAccountBadgeRequest);
     Task<UpdatedAccountBadgeResponse> UpdateAsync(UpdateAccountBadgeRequest updateAccountBadgeRequest);
     Task<DeletedAccountBadgeResponse> DeleteAsync(DeleteAccountBadgeRequest deleteAccountBadgeRequest);
-    Task<GetListAccountBadgeResponse> GetByIdAsync(Guid Id);
+    Task<GetAccountBadgeResponse> GetByIdAsync(Guid Id);
     Task<IPaginate<GetListAccountBadgeResponse>> GetListAsync(PageRequest pageRequest);
     Task<IPaginate<GetListAccountBadgeResponse>> GetByAccountIdAsync(Guid Id);
-    Task<GetListAccountBadgeResponse> GetByAccountAndBadgeIdAsync(Guid accountId, Guid badgeId);
+    Task<GetAccountBadgeResponse> GetByAccountAndBadgeIdAsync(Guid accountId, Guid badgeId);
 }

@@ -44,7 +44,7 @@ public class ExamQuestionsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("ExamQuestions.Get")]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateExamQuestionRequest createExamQuestionRequest)
     {
         var result = await _examQuestionService.AddAsync(createExamQuestionRequest);
@@ -55,7 +55,7 @@ public class ExamQuestionsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("ExamQuestions.Get")]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateExamQuestionRequest updateExamQuestionRequest)
     {
         var result = await _examQuestionService.UpdateAsync(updateExamQuestionRequest);
@@ -66,7 +66,7 @@ public class ExamQuestionsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("ExamQuestions.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteExamQuestionRequest deleteExamQuestionRequest)
     {
         var result = await _examQuestionService.DeleteAsync(deleteExamQuestionRequest);

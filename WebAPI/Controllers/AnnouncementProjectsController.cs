@@ -47,7 +47,7 @@ public class AnnouncementProjectsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("AnnouncementProjects.Get")]
     [CustomValidation(typeof(CreateAnnouncementProjectRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateAnnouncementProjectRequest createAnnouncementProjectRequest)
     {
         var result = await _announcementProjectService.AddAsync(createAnnouncementProjectRequest);
@@ -59,7 +59,7 @@ public class AnnouncementProjectsController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("AnnouncementProjects.Get")]
     [CustomValidation(typeof(UpdateAnnouncementProjectRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateAnnouncementProjectRequest updateAnnouncementProjectRequest)
     {
         var result = await _announcementProjectService.UpdateAsync(updateAnnouncementProjectRequest);
@@ -70,7 +70,7 @@ public class AnnouncementProjectsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AnnouncementProjects.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteAnnouncementProjectRequest deleteAnnouncementProjectRequest)
     {
         var result = await _announcementProjectService.DeleteAsync(deleteAnnouncementProjectRequest);

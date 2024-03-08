@@ -69,14 +69,14 @@ public class AccountManager : IAccountService
         return mappedAccountSession;
     }
 
-    public async Task<GetListAccountResponse> GetByIdAsync(Guid id)
+    public async Task<GetAccountResponse> GetByIdAsync(Guid id)
     {
         var account = await _accountDal.GetAsync(
             predicate: a => a.Id == id,
             include: a => a
              .Include(a => a.User)
             .Include(a => a.AccountOccupationClasses).ThenInclude(aoc => aoc.OccupationClass));
-        var mappedAccount = _mapper.Map<GetListAccountResponse>(account);
+        var mappedAccount = _mapper.Map<GetAccountResponse>(account);
         return mappedAccount;
     }
 
@@ -105,18 +105,6 @@ public class AccountManager : IAccountService
         var mappedAccount = _mapper.Map<Paginate<GetListAccountResponse>>(account);
         return mappedAccount;
     }
-
-    public async Task<GetListAccountResponse> GetAsync(Guid id)
-    {
-        var account = await _accountDal.GetAsync(
-            predicate: a => a.Id == id,
-            include: a => a
-            .Include(a => a.User)
-            .Include(a => a.AccountOccupationClasses).ThenInclude(aoc => aoc.OccupationClass));
-        var mappedAccount = _mapper.Map<GetListAccountResponse>(account);
-        return mappedAccount;
-    }
-
 
     public async Task<UpdatedAccountResponse> UpdateAsync(UpdateAccountRequest updateAccountRequest)
     {

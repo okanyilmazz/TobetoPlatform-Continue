@@ -47,7 +47,7 @@ public class SurveysController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Surveys.Get")]
     [CustomValidation(typeof(CreateSurveyRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateSurveyRequest createSurveyRequest)
     {
         var result = await _surveyService.AddAsync(createSurveyRequest);
@@ -59,7 +59,7 @@ public class SurveysController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Surveys.Get")]
     [CustomValidation(typeof(UpdateSurveyRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateSurveyRequest updateSurveyRequest)
     {
         var result = await _surveyService.UpdateAsync(updateSurveyRequest);
@@ -70,7 +70,7 @@ public class SurveysController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Surveys.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteSurveyRequest deleteSurveyRequest)
     {
         var result = await _surveyService.DeleteAsync(deleteSurveyRequest);

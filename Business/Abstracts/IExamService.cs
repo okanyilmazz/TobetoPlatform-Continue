@@ -10,7 +10,6 @@ public interface IExamService
     Task<UpdatedExamResponse> UpdateAsync(UpdateExamRequest updateExamRequest);
     Task<DeletedExamResponse> DeleteAsync(DeleteExamRequest deleteExamRequest);
     Task<IPaginate<GetListExamResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListExamResponse> GetByIdAsync(Guid id);
+    Task<GetExamResponse> GetByIdAsync(Guid id);
     Task<IPaginate<GetListExamResponse>> GetByAccountIdAsync(Guid accountId, PageRequest pageRequest);
-
 }

@@ -10,7 +10,7 @@ public interface IAccountEducationProgramService
     Task<UpdatedAccountEducationProgramResponse> UpdateAsync(UpdateAccountEducationProgramRequest updateAccountEducationProgramRequest);
     Task<DeletedAccountEducationProgramResponse> DeleteAsync(DeleteAccountEducationProgramRequest deleteAccountEducationProgramRequest);
     Task<IPaginate<GetListAccountEducationProgramResponse>> GetListAsync(PageRequest pageRequest);
-    Task<GetListAccountEducationProgramResponse> GetByIdAsync(Guid id);
+    Task<GetAccountEducationProgramResponse> GetByIdAsync(Guid id);
     Task<IPaginate<GetListAccountEducationProgramResponse>> GetByAccountIdAsync(Guid accountId);
-    Task<GetListAccountEducationProgramResponse> GetByAccountIdAndEducationProgramIdAsync(Guid accountId, Guid educationProgramId);  
+    Task<GetAccountEducationProgramResponse> GetByAccountIdAndEducationProgramIdAsync(Guid accountId, Guid educationProgramId);  
 }

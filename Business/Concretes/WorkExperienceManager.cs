@@ -1,16 +1,10 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
-using Business.Dtos.Requests.BadgeRequests;
 using Business.Dtos.Requests.WorkExperienceResquests;
-using Business.Dtos.Responses.AnnouncementReadResponses;
-using Business.Dtos.Responses.BadgeResponses;
-using Business.Dtos.Responses.LessonLikeResponses;
-using Business.Dtos.Responses.OccupationClassResponses;
 using Business.Dtos.Responses.WorkExperienceResponses;
 using Business.Rules.BusinessRules;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
-using DataAccess.Concretes;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 
@@ -57,14 +51,14 @@ public class WorkExperienceManager : IWorkExperienceService
         return mappedWorkExperience;
     }
 
-    public async Task<GetListWorkExperienceResponse> GetByIdAsync(Guid id)
+    public async Task<GetWorkExperienceResponse> GetByIdAsync(Guid id)
     {
         var workExperience = await _workExperienceDal.GetAsync(
             predicate: we => we.Id == id,
             include: we => we
             .Include(we => we.City)
             .Include(we => we.Account).ThenInclude(we => we.User));
-        var mappedWorkExperience = _mapper.Map<GetListWorkExperienceResponse>(workExperience);
+        var mappedWorkExperience = _mapper.Map<GetWorkExperienceResponse>(workExperience);
         return mappedWorkExperience;
     }
 

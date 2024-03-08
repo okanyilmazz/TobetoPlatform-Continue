@@ -1,15 +1,11 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.UserOperationClaimRequests;
-using Business.Dtos.Responses.AccountLessonResponses;
-using Business.Dtos.Responses.BadgeResponses;
-using Business.Dtos.Responses.ExamResultResponses;
 using Business.Dtos.Responses.UserOperationClaimResponses;
 using Business.Rules.BusinessRules;
 using Core.DataAccess.Paging;
 using Core.Entities;
 using DataAccess.Abstracts;
-using DataAccess.Concretes;
 using Microsoft.EntityFrameworkCore;
 
 namespace Business.Concretes;
@@ -53,15 +49,15 @@ public class UserOperationClaimManager : IUserOperationClaimService
         return mappedExamResult;
     }
 
-    public async Task<GetListUserOperationClaimResponse> GetByUserIdAndOperationClaimId(Guid userId, Guid operationClaimId)
+    public async Task<GetUserOperationClaimResponse> GetByUserIdAndOperationClaimId(Guid userId, Guid operationClaimId)
     {
         var userOperationClaim = await _userOperationClaimDal.GetAsync(
            predicate: a => a.UserId == userId && a.OperationClaimId == operationClaimId,
            include: al => al
            .Include(al => al.OperationClaim)
            .Include(al => al.User));
-        var mappedListed = _mapper.Map<GetListUserOperationClaimResponse>(userOperationClaim);
-        return mappedListed;
+        var mappedUserOperationClaim = _mapper.Map<GetUserOperationClaimResponse>(userOperationClaim);
+        return mappedUserOperationClaim;
              
     }
 

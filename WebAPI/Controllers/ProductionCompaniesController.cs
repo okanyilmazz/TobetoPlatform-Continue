@@ -46,7 +46,7 @@ public class ProductionCompaniesController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("ProductionCompanies.Get")]
     [CustomValidation(typeof(CreateProductionCompanyRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateProductionCompanyRequest createProductionCompanyRequest)
     {
         var result = await _productionCompanyService.AddAsync(createProductionCompanyRequest);
@@ -58,7 +58,7 @@ public class ProductionCompaniesController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("ProductionCompanies.Get")]
     [CustomValidation(typeof(UpdateProductionCompanyRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateProductionCompanyRequest updateProductionCompanyRequest)
     {
         var result = await _productionCompanyService.UpdateAsync(updateProductionCompanyRequest);
@@ -69,7 +69,7 @@ public class ProductionCompaniesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("ProductionCompanies.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteProductionCompanyRequest deleteProductionCompanyRequest)
     {
         var result = await _productionCompanyService.DeleteAsync(deleteProductionCompanyRequest);

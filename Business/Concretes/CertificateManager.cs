@@ -8,9 +8,6 @@ using Core.DataAccess.Paging;
 using Core.Utilities.Helpers;
 using DataAccess.Abstracts;
 using Entities.Concretes;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Server.IIS.Core;
 
 namespace Business.Concretes;
 
@@ -67,10 +64,10 @@ public class CertificateManager : ICertificateService
         return mappedCertificate;
     }
 
-    public async Task<GetListCertificateResponse> GetByIdAsync(Guid id)
+    public async Task<GetCertificateResponse> GetByIdAsync(Guid id)
     {
         var certificate = await _certificateDal.GetAsync(c => c.Id == id);
-        var mappedCertificate = _mapper.Map<GetListCertificateResponse>(certificate);
+        var mappedCertificate = _mapper.Map<GetCertificateResponse>(certificate);
         return mappedCertificate;
     }
 
@@ -81,5 +78,3 @@ public class CertificateManager : ICertificateService
         return mappedCertificates;
     }
 }
-
-

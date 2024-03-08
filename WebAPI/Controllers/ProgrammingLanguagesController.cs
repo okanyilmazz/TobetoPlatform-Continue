@@ -47,7 +47,7 @@ public class ProgrammingLanguagesController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("ProgrammingLanguages.Get")]
     [CustomValidation(typeof(CreateProgrammingLanguageRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateProgrammingLanguageRequest createProgrammingLanguageRequest)
     {
         var result = await _programmingLanguageService.AddAsync(createProgrammingLanguageRequest);
@@ -59,7 +59,7 @@ public class ProgrammingLanguagesController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("ProgrammingLanguages.Get")]
     [CustomValidation(typeof(UpdateProgrammingLanguageRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest)
     {
         var result = await _programmingLanguageService.UpdateAsync(updateProgrammingLanguageRequest);
@@ -70,7 +70,7 @@ public class ProgrammingLanguagesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("ProgrammingLanguages.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteProgrammingLanguageRequest deleteProgrammingLanguageRequest)
     {
         var result = await _programmingLanguageService.DeleteAsync(deleteProgrammingLanguageRequest);

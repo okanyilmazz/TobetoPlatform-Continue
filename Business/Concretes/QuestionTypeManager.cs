@@ -7,7 +7,6 @@ using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
-using System.Text.Json.Nodes;
 
 namespace Business.Concretes;
 
@@ -42,19 +41,19 @@ public class QuestionTypeManager : IQuestionTypeService
         return deletedQuestionTypeResponse;
     }
 
-    public async Task<GetListQuestionTypeResponse> GetByIdAsync(Guid id)
+    public async Task<GetQuestionTypeResponse> GetByIdAsync(Guid id)
     {
         var questionType = await _questionTypeDal.GetAsync(ud => ud.Id == id);
-        var mappedQuestionType = _mapper.Map<GetListQuestionTypeResponse>(questionType);
+        var mappedQuestionType = _mapper.Map<GetQuestionTypeResponse>(questionType);
         return mappedQuestionType;
     }
 
-    public async Task<GetListQuestionTypeResponse> GetByQuestionIdAsync(Guid questionId)
+    public async Task<GetQuestionTypeResponse> GetByQuestionIdAsync(Guid questionId)
     {
         var questionType = await _questionTypeDal.GetAsync(
             include: qt => qt.Include(qt => qt.Questions),
             predicate: ud => ud.Questions.Any(q => q.Id == questionId));
-        var mappedQuestionType = _mapper.Map<GetListQuestionTypeResponse>(questionType);
+        var mappedQuestionType = _mapper.Map<GetQuestionTypeResponse>(questionType);
         return mappedQuestionType;
     }
 

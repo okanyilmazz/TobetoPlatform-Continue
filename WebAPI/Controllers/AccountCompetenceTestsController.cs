@@ -46,7 +46,7 @@ public class AccountCompetenceTestsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountCompetenceTest.Get")]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateAccountCompetenceTestRequest createAccountCompetenceTestRequest)
     {
         var result = await _accountCompetenceTestService.AddAsync(createAccountCompetenceTestRequest);
@@ -57,7 +57,7 @@ public class AccountCompetenceTestsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountCompetenceTest.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountCompetenceTestRequest deleteAccountCompetenceTestRequest)
     {
         var result = await _accountCompetenceTestService.DeleteAsync(deleteAccountCompetenceTestRequest);
@@ -68,7 +68,7 @@ public class AccountCompetenceTestsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountCompetenceTest.Get")]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateAccountCompetenceTestRequest updateAccountCompetenceTestRequest)
     {
         var result = await _accountCompetenceTestService.UpdateAsync(updateAccountCompetenceTestRequest);

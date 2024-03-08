@@ -1,5 +1,4 @@
-﻿using System;
-namespace Business.Dtos.Responses.ExamQuestionResponses;
+﻿namespace Business.Dtos.Responses.ExamQuestionResponses;
 
 public class GetListExamQuestionResponse
 {
@@ -7,4 +6,3 @@ public class GetListExamQuestionResponse
     public string QuestionName { get; set; }
     public string ExamName { get; set; }
 }
-

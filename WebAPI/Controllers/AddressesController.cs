@@ -59,7 +59,7 @@ public class AddressesController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Addresses.Get")]
     [CustomValidation(typeof(CreateAddressRequestValidator))]
-    [HttpPost("Add")]
+    [HttpPost]
     public async Task<IActionResult> AddAsync([FromBody] CreateAddressRequest createAddressRequest)
     {
         var result = await _addressService.AddAsync(createAddressRequest);
@@ -70,7 +70,7 @@ public class AddressesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Addresses.Get")]
-    [HttpPost("Delete")]
+    [HttpDelete]
     public async Task<IActionResult> DeleteAsync([FromBody] DeleteAddressRequest deleteAddressRequest)
     {
         var result = await _addressService.DeleteAsync(deleteAddressRequest);
@@ -82,7 +82,7 @@ public class AddressesController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("Addresses.Get")]
     [CustomValidation(typeof(UpdateAddressRequestValidator))]
-    [HttpPost("Update")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateAddressRequest updateAddressRequest)
     {
         var result = await _addressService.UpdateAsync(updateAddressRequest);

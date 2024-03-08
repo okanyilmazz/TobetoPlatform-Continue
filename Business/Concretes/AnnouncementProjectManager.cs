@@ -42,7 +42,7 @@ public class AnnouncementProjectManager : IAnnouncementProjectService
         return deletedAnnouncementProjectResponse;
     }
 
-    public async Task<GetListAnnouncementProjectResponse> GetByIdAsync(Guid Id)
+    public async Task<GetAnnouncementProjectResponse> GetByIdAsync(Guid Id)
     {
         var announcementProject = await _announcementProjectDal.GetAsync(
             predicate: a => a.Id == Id,
@@ -52,7 +52,7 @@ public class AnnouncementProjectManager : IAnnouncementProjectService
             .Include(ap => ap.Announcement.AnnouncementType)
 
             );
-        var mappedAnnouncementProject = _mapper.Map<GetListAnnouncementProjectResponse>(announcementProject);
+        var mappedAnnouncementProject = _mapper.Map<GetAnnouncementProjectResponse>(announcementProject);
         return mappedAnnouncementProject;
     }
 
