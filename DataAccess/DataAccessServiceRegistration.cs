@@ -96,6 +96,8 @@ public static class DataAccessServiceRegistration
         services.AddScoped<IAnnouncementTypeDal, EfAnnouncementTypeDal>();
         services.AddScoped<IAnnouncementReadDal, EfAnnouncementReadDal>();
         services.AddScoped<IAccountCompetenceTestDal, EfAccountCompetenceTestDal>();
+        services.AddScoped<IAccountViewLessonDal, EfAccountViewLessonDal>();
+
 
 
 

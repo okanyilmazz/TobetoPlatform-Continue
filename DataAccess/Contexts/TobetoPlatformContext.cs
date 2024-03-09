@@ -82,6 +82,7 @@ public class TobetoPlatformContext : DbContext
     public DbSet<EducationProgramLike> EducationProgramLikes { get; set; }
     public DbSet<AnnouncementType> AnnouncementTypes { get; set; }
     public DbSet<AnnouncementRead> AnnouncementReads { get; set; }
+    public DbSet<AccountViewLesson> AccountViewLessons { get; set; }
 
 
 

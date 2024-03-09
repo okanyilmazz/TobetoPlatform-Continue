@@ -29,4 +29,5 @@ public class Account : Entity<Guid>
     public virtual ICollection<LessonLike> LessonLikes { get; set; }
     public virtual ICollection<EducationProgramLike> EducationProgramLikes { get; set; }
     public virtual ICollection<AnnouncementRead> AnnouncementReads { get; set; }
+    public virtual ICollection<AccountViewLesson> AccountViewLessons { get; set; }    
 }

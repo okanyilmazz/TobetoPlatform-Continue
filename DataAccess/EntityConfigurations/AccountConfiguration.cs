@@ -26,7 +26,7 @@ public class AccountConfiguration : IEntityTypeConfiguration<Account>
 
         builder.HasMany(au => au.AccountUniversities);
         builder.HasMany(al => al.AccountLanguages);
-        builder.HasMany(asm => asm.AccountSocialMedias);
+        builder.HasMany(awl => awl.AccountSocialMedias);
         builder.HasMany(ah => ah.AccountHomeworks);
         builder.HasMany(al => al.AccountLessons);
         builder.HasMany(aoc => aoc.AccountOccupationClasses);
