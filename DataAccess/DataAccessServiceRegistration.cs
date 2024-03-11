@@ -97,9 +97,7 @@ public static class DataAccessServiceRegistration
         services.AddScoped<IAnnouncementReadDal, EfAnnouncementReadDal>();
         services.AddScoped<IAccountCompetenceTestDal, EfAccountCompetenceTestDal>();
         services.AddScoped<IAccountViewLessonDal, EfAccountViewLessonDal>();
-
-
-
+        services.AddScoped<IAccountFavoriteEducationProgramDal, EfAccountFavoriteEducationProgramDal>();
 
         return services;
     }

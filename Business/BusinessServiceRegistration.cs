@@ -89,12 +89,15 @@ public static class BusinessServiceRegistration
         services.AddScoped<ICompetenceTestQuestionService, CompetenceTestQuestionManager>();
         services.AddScoped<IAccountCompetenceTestService, AccountCompetenceTestManager>();
         services.AddScoped<IAccountViewLessonService, AccountViewLessonManager>();
+        services.AddScoped<IAccountFavoriteEducationProgramService, AccountFavoriteEducationProgramManager>();
 
 
 
         services.AddScoped<IOperationClaimService, OperationClaimManager>();
         services.AddScoped<IFileHelper, FileHelper>();
         services.AddScoped<ILessonLikeService, LessonLikeManager>();
+        services.AddScoped<IEducationProgramLikeService, EducationProgramLikeManager>();
+
         services.AddScoped<FileBusinessRules>();
         services.AddScoped<IAnnouncementTypeService, AnnouncementTypeManager>();
         services.AddScoped<IAnnouncementReadService, AnnouncementReadManager>();

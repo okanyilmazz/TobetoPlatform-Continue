@@ -1,6 +1,5 @@
 ﻿using Business.Abstracts;
 using Business.Dtos.Requests.EducationProgramLikeRequests;
-using Business.Dtos.Requests.EducationProgramLikeRequests;
 using Business.Rules.ValidationRules.FluentValidation.EducationProgramLikeValidators;
 using Core.CrossCuttingConcerns.Caching;
 using Core.CrossCuttingConcerns.Logging;
