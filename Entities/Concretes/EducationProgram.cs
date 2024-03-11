@@ -25,4 +25,5 @@ public class EducationProgram : Entity<Guid>
     public virtual ICollection<EducationProgramOccupationClass>? EducationProgramOccupationClasses { get; set; }
     public virtual ICollection<EducationProgramProgrammingLanguage>? EducationProgramProgrammingLanguages { get; set; }
     public virtual ICollection<EducationProgramSubject>? EducationProgramSubjects { get; set; }
+    public virtual ICollection<AccountFavoriteEducationProgram> AccountFavoriteEducationPrograms { get; set; }
 }
