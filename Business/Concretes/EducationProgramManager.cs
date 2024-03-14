@@ -16,14 +16,12 @@ public class EducationProgramManager : IEducationProgramService
     IEducationProgramDal _educationProgramDal;
     IMapper _mapper;
     EducationProgramBusinessRules _educationProgramBusinessRules;
-    IOccupationClassService _occupationClassService;
 
-    public EducationProgramManager(IEducationProgramDal educationProgramDal, IMapper mapper, EducationProgramBusinessRules educationProgramBusinessRules, IOccupationClassService occupationClassService)
+    public EducationProgramManager(IEducationProgramDal educationProgramDal, IMapper mapper, EducationProgramBusinessRules educationProgramBusinessRules)
     {
         _educationProgramDal = educationProgramDal;
         _mapper = mapper;
         _educationProgramBusinessRules = educationProgramBusinessRules;
-        _occupationClassService = occupationClassService;
     }
 
     public async Task<CreatedEducationProgramResponse> AddAsync(CreateEducationProgramRequest createEducationProgramRequest)
@@ -110,12 +108,15 @@ public class EducationProgramManager : IEducationProgramService
 
     public async Task<IPaginate<GetListEducationProgramResponse>> GetByAccountIdAsync(Guid accountId, PageRequest pageRequest)
     {
-        var occupationClass = await _occupationClassService.GetByAccountIdAsync(accountId);
-        var educationProgram = await GetByOccupationClassIdAsync(occupationClass.Id);
+        var educationProgramList = await _educationProgramDal.GetListAsync(
+            include: e => e.Include(o => o.AccountEducationPrograms).ThenInclude(aep => aep.Account));
 
-        var mappedExams = _mapper.Map<Paginate<GetListEducationProgramResponse>>(educationProgram);
-        return mappedExams; 
+        var filteredEducationPrograms = educationProgramList
+            .Items.Where(e => e.AccountEducationPrograms.Any(s => s.AccountId == accountId)).ToList();
+        var mappedEducationProgram = _mapper.Map<Paginate<GetListEducationProgramResponse>>(filteredEducationPrograms);
+        return mappedEducationProgram;
     }
+
 
     public async Task<IPaginate<GetListEducationProgramResponse>> GetByOccupationClassIdAsync(Guid occupationClassId)
     {

@@ -13,8 +13,8 @@ public class AccountEducationProgramConfiguration : IEntityTypeConfiguration<Acc
         builder.Property(a => a.Id).HasColumnName("Id").IsRequired();
         builder.Property(a => a.AccountId).HasColumnName("AccountId").IsRequired();
         builder.Property(a => a.EducationProgramId).HasColumnName("EducationProgramId").IsRequired();
-        builder.Property(a => a.StatusPercent).HasColumnName("StatusPercent").IsRequired();
-        builder.Property(a => a.TimeSpent).HasColumnName("TimeSpent").IsRequired();
+        builder.Property(a => a.StatusPercent).HasColumnName("StatusPercent");
+        builder.Property(a => a.TimeSpent).HasColumnName("TimeSpent");
         
 
 

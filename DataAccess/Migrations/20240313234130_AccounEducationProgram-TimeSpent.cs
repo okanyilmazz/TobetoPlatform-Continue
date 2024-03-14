@@ -10,11 +10,11 @@ namespace DataAccess.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<double>(
+            migrationBuilder.AddColumn<int>(
                 name: "TimeSpent",
                 table: "AccountEducationPrograms",
-                type: "float",
-                nullable: false,
+                type: "int",
+                nullable: true,
                 defaultValue: 0.0);
         }
 
