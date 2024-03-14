@@ -1,4 +1,4 @@
-﻿using Business.Messages;
+using Business.Messages;
 using Core.Business.Rules;
 using DataAccess.Abstracts;
 

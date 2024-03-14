@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.AccountViewLessonRequest;
 using Business.Dtos.Requests.EducationProgramLikeRequests;
