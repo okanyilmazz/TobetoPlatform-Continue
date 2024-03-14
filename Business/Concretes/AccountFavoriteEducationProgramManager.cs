@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.AccountViewLessonRequest;
+using Business.Dtos.Requests.EducationProgramLikeRequests;
 using Business.Dtos.Responses.AccountFavoriteEducationProgramResponses;
 using Business.Rules.BusinessRules;
 using Core.DataAccess.Paging;
@@ -38,6 +39,16 @@ public class AccountFavoriteEducationProgramManager : IAccountFavoriteEducationP
         AccountFavoriteEducationProgram deletedAccountFavoriteEducationProgram = await _accountFavoriteEducationProgramDal.DeleteAsync(accountFavoriteEducationProgram);
         DeletedAccountFavoriteEducationProgramResponse deletedAccountFavoriteEducationProgramResponse = _mapper.Map<DeletedAccountFavoriteEducationProgramResponse>(deletedAccountFavoriteEducationProgram);
         return deletedAccountFavoriteEducationProgramResponse;
+    }
+
+    public async Task<DeletedAccountFavoriteEducationProgramResponse> DeleteByAccountIdAndEducationProgramIdAsync(DeleteAccountFavoriteEducationProgramRequest deleteAccountFavoriteEducationProgramRequest)
+    {
+        await _accountFavoriteEducationProgramBusinessRules.IsExistsAccountFavoriteEducationProgramByAccountIdAndEducationProgramId(deleteAccountFavoriteEducationProgramRequest.AccountId, deleteAccountFavoriteEducationProgramRequest.EducationProgramId);
+        AccountFavoriteEducationProgram accountFavoriteEducationProgram = await _accountFavoriteEducationProgramDal.GetAsync(
+        predicate: epl => epl.AccountId == deleteAccountFavoriteEducationProgramRequest.AccountId && epl.EducationProgramId == deleteAccountFavoriteEducationProgramRequest.EducationProgramId);
+        AccountFavoriteEducationProgram deletedAccountFavoriteEducationProgram = await _accountFavoriteEducationProgramDal.DeleteAsync(accountFavoriteEducationProgram, permanent: true);
+        DeletedAccountFavoriteEducationProgramResponse mappedDeletedAccountFavoriteEducationProgram = _mapper.Map<DeletedAccountFavoriteEducationProgramResponse>(deletedAccountFavoriteEducationProgram);
+        return mappedDeletedAccountFavoriteEducationProgram;
     }
 
     public async Task<GetAccountFavoriteEducationProgramResponse> GetByIdAsync(Guid id)
