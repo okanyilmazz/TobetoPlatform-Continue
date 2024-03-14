@@ -1,6 +1,7 @@
 ﻿using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 
 namespace DataAccess.EntityConfigurations;
 
@@ -13,6 +14,8 @@ public class AccountEducationProgramConfiguration : IEntityTypeConfiguration<Acc
         builder.Property(a => a.AccountId).HasColumnName("AccountId").IsRequired();
         builder.Property(a => a.EducationProgramId).HasColumnName("EducationProgramId").IsRequired();
         builder.Property(a => a.StatusPercent).HasColumnName("StatusPercent").IsRequired();
+        builder.Property(a => a.TimeSpent).HasColumnName("TimeSpent").IsRequired();
+        
 
 
         builder.HasIndex(indexExpression: a => a.Id, name: "UK_Id").IsUnique();

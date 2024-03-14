@@ -1,4 +1,4 @@
-﻿using Business.Messages;
+using Business.Messages;
 using Core.Business.Rules;
 using DataAccess.Abstracts;
 
@@ -16,6 +16,17 @@ public class AccountFavoriteEducationProgramBusinessRules : BaseBusinessRules
     {
         var result = await _accountFavoriteEducationProgramDal.GetAsync(
             predicate: a => a.Id == accountFavoriteEducationProgramId,
+            enableTracking: false);
+
+        if (result == null)
+        {
+            throw new BusinessException(BusinessMessages.DataNotFound);
+        }
+    }
+    public async Task IsExistsAccountFavoriteEducationProgramByAccountIdAndEducationProgramId(Guid accountId, Guid educationProgramId)
+    {
+        var result = await _accountFavoriteEducationProgramDal.GetAsync(
+            predicate: l => l.AccountId == accountId && l.EducationProgramId == educationProgramId,
             enableTracking: false);
 
         if (result == null)
