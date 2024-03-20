@@ -18,6 +18,7 @@ public class LessonConfiguration : IEntityTypeConfiguration<Lesson>
         builder.Property(l => l.ProductionCompanyId).HasColumnName("ProductionCompanyId").IsRequired();
         builder.Property(l => l.Name).HasColumnName("Name").IsRequired();
         builder.Property(l => l.LessonPath).HasColumnName("LessonPath").IsRequired();
+        builder.Property(l => l.ThumbnailPath).HasColumnName("ThumbnailPath");
         builder.Property(l => l.StartDate).HasColumnName("StartDate").IsRequired();
         builder.Property(l => l.EndDate).HasColumnName("EndDate").IsRequired();
         builder.Property(l => l.Duration).HasColumnName("Duration").IsRequired();
