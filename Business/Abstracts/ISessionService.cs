@@ -14,4 +14,5 @@ public interface ISessionService
     Task<UpdatedSessionResponse> UpdateAsync(UpdateSessionRequest updateSessionRequest);
     Task<DeletedSessionResponse> DeleteAsync(DeleteSessionRequest deleteSessionRequest);
     Task<IPaginate<GetListSessionResponse>> GetByLessonIdAsync(Guid lessonId);
+    Task<IPaginate<GetListSessionResponse>> GetByAccountAndLessonIdAsync(Guid accountId, Guid lessonId);    
 }

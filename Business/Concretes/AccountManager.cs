@@ -2,6 +2,7 @@
 using Business.Abstracts;
 using Business.Dtos.Requests.AccountRequests;
 using Business.Dtos.Responses.AccountResponses;
+using Business.Messages;
 using Business.Rules.BusinessRules;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
@@ -45,15 +46,33 @@ public class AccountManager : IAccountService
         return deletedAccountResponse;
     }
 
-    public async Task<IPaginate<GetListAccountResponse>> GetBySessionIdAsync(Guid sessionId)
+    public async Task<IPaginate<GetListAccountResponse>> GetStudentBySessionIdAsync(Guid sessionId)
     {
         var accountList = await _accountDal.GetListAsync(
-             include: e => e.Include(s => s.AccountSessions).ThenInclude(ask => ask.Session));
+            include: a => a
+            .Include(s => s.AccountSessions)
+            .ThenInclude(s => s.Session)
+            .Include(s => s.User),
 
-        var filteredAccounts = accountList
-            .Items.Where(e => e.AccountSessions.Any(s => s.SessionId == sessionId)).ToList();
+            predicate: a => a.AccountSessions
+            .Any(s => s.SessionId == sessionId && s.Account.User.UserOperationClaims
+            .Any(uoc => uoc.OperationClaim.Name == Roles.Student)));
+        var mappedAccounts = _mapper.Map<Paginate<GetListAccountResponse>>(accountList);
+        return mappedAccounts;
+    }
 
-        var mappedAccounts = _mapper.Map<Paginate<GetListAccountResponse>>(filteredAccounts);
+    public async Task<IPaginate<GetListAccountResponse>> GetInstructorBySessionIdAsync(Guid sessionId)
+    {
+        var accountList = await _accountDal.GetListAsync(
+            include: a => a
+            .Include(s => s.AccountSessions)
+            .ThenInclude(s => s.Session)
+            .Include(s => s.User),
+
+            predicate: a => a.AccountSessions
+            .Any(s => s.SessionId == sessionId && s.Account.User.UserOperationClaims
+            .Any(uoc => uoc.OperationClaim.Name == Roles.Instructor)));
+        var mappedAccounts = _mapper.Map<Paginate<GetListAccountResponse>>(accountList);
         return mappedAccounts;
     }
 
@@ -74,7 +93,7 @@ public class AccountManager : IAccountService
         var account = await _accountDal.GetAsync(
             predicate: a => a.Id == id,
             include: a => a
-             .Include(a => a.User)
+            .Include(a => a.User)
             .Include(a => a.AccountOccupationClasses).ThenInclude(aoc => aoc.OccupationClass));
         var mappedAccount = _mapper.Map<GetAccountResponse>(account);
         return mappedAccount;

@@ -36,10 +36,20 @@ public class AccountsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [Cache]
-    [HttpGet("GetBySessionId")]
-    public async Task<IActionResult> GetBySessionIdAsync(Guid id)
+    [HttpGet("GetStudentBySessionId")]
+    public async Task<IActionResult> GetStudentBySessionIdAsync(Guid sessionId)
     {
-        var result = await _accountService.GetBySessionIdAsync(id);
+        var result = await _accountService.GetStudentBySessionIdAsync(sessionId);
+        return Ok(result);
+    }
+
+    [Logging(typeof(MsSqlLogger))]
+    [Logging(typeof(FileLogger))]
+    [Cache]
+    [HttpGet("GetInstructorBySessionId")]
+    public async Task<IActionResult> GetInstructorBySessionIdAsync(Guid sessionId)
+    {
+        var result = await _accountService.GetInstructorBySessionIdAsync(sessionId);
         return Ok(result);
     }
 
