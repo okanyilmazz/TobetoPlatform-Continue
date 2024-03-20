@@ -44,24 +44,24 @@ public class SessionManager : ISessionService
 
     public async Task<IPaginate<GetListSessionResponse>> GetListWithInstructorAsync(PageRequest pageRequest)
     {
-        var test = await _sessionDal.GetListAsync();
         var session = await _sessionDal.GetListAsync(
             index: pageRequest.PageIndex,
             size: pageRequest.PageSize,
             include:s=>s
-               .Include(s => s.Lesson)
-                .ThenInclude(l => l.EducationProgramLessons)
-                .ThenInclude(epl => epl.EducationProgram)
-                .ThenInclude(ep => ep.EducationProgramOccupationClasses)
-                .ThenInclude(epoc => epoc.OccupationClass)
-                .Include(s => s.Lesson)
-                .ThenInclude(s => s.EducationProgramLessons)
-                .ThenInclude(s => s.EducationProgram)
-                .ThenInclude(s => s.EducationProgramOccupationClasses)
-                .ThenInclude(s => s.OccupationClass)
-                .ThenInclude(oc => oc.AccountOccupationClasses)
-                .ThenInclude(aoc => aoc.Account)
-                .ThenInclude(a => a.User),
+            .Include(s => s.Lesson)
+            .ThenInclude(l => l.EducationProgramLessons)
+            .ThenInclude(epl => epl.EducationProgram)
+            .ThenInclude(ep => ep.EducationProgramOccupationClasses)
+            .ThenInclude(epoc => epoc.OccupationClass)
+            .Include(s => s.Lesson)
+            .ThenInclude(s => s.EducationProgramLessons)
+            .ThenInclude(s => s.EducationProgram)
+            .ThenInclude(s => s.EducationProgramOccupationClasses)
+            .ThenInclude(s => s.OccupationClass)
+            .ThenInclude(oc => oc.AccountOccupationClasses)
+            .ThenInclude(aoc => aoc.Account)
+            .ThenInclude(a => a.User),
+
             predicate:s=>s.Lesson.EducationProgramLessons
             .Any(epl=>epl.EducationProgram.AccountEducationPrograms
             .Any(aep=>aep.Account.User.UserOperationClaims
@@ -80,20 +80,19 @@ public class SessionManager : ISessionService
             Any(a => a.Account.User.UserOperationClaims.
             Any(claim => claim.OperationClaim.Name == Roles.Instructor) && a.SessionId == id),
             include: s => s
-               .Include(s => s.Lesson)
-                .ThenInclude(l => l.EducationProgramLessons)
-                .ThenInclude(epl => epl.EducationProgram)
-                .ThenInclude(ep => ep.EducationProgramOccupationClasses)
-                .ThenInclude(epoc => epoc.OccupationClass)
-                .Include(s => s.Lesson)
-                .ThenInclude(s => s.EducationProgramLessons)
-                .ThenInclude(s => s.EducationProgram)
-                .ThenInclude(s => s.EducationProgramOccupationClasses)
-                .ThenInclude(s => s.OccupationClass)
-                .ThenInclude(oc => oc.AccountOccupationClasses)
-                .ThenInclude(aoc => aoc.Account)
-                .ThenInclude(a => a.User)
-                );
+            .Include(s => s.Lesson)
+            .ThenInclude(l => l.EducationProgramLessons)
+            .ThenInclude(epl => epl.EducationProgram)
+            .ThenInclude(ep => ep.EducationProgramOccupationClasses)
+            .ThenInclude(epoc => epoc.OccupationClass)
+            .Include(s => s.Lesson)
+            .ThenInclude(s => s.EducationProgramLessons)
+            .ThenInclude(s => s.EducationProgram)
+            .ThenInclude(s => s.EducationProgramOccupationClasses)
+            .ThenInclude(s => s.OccupationClass)
+            .ThenInclude(oc => oc.AccountOccupationClasses)
+            .ThenInclude(aoc => aoc.Account)
+            .ThenInclude(a => a.User));
 
         var mappedSession = _mapper.Map<Paginate<GetListSessionResponse>>(session);
         return mappedSession;
@@ -106,21 +105,19 @@ public class SessionManager : ISessionService
             index: pageRequest.PageIndex,
             size: pageRequest.PageSize,
             include: s => s
-                .Include(s => s.Lesson)
-                .ThenInclude(l => l.EducationProgramLessons)
-                .ThenInclude(epl => epl.EducationProgram)
-                .ThenInclude(ep => ep.EducationProgramOccupationClasses)
-                .ThenInclude(epoc => epoc.OccupationClass)
-                .Include(s => s.Lesson)
-                .ThenInclude(s => s.EducationProgramLessons)
-                .ThenInclude(s => s.EducationProgram)
-                .ThenInclude(s => s.EducationProgramOccupationClasses)
-                .ThenInclude(s => s.OccupationClass)
-                .ThenInclude(oc => oc.AccountOccupationClasses)
-                .ThenInclude(aoc => aoc.Account)
-                .ThenInclude(a => a.User)
-
-            );
+            .Include(s => s.Lesson)
+            .ThenInclude(l => l.EducationProgramLessons)
+            .ThenInclude(epl => epl.EducationProgram)
+            .ThenInclude(ep => ep.EducationProgramOccupationClasses)
+            .ThenInclude(epoc => epoc.OccupationClass)
+            .Include(s => s.Lesson)
+            .ThenInclude(s => s.EducationProgramLessons)
+            .ThenInclude(s => s.EducationProgram)
+            .ThenInclude(s => s.EducationProgramOccupationClasses)
+            .ThenInclude(s => s.OccupationClass)
+            .ThenInclude(oc => oc.AccountOccupationClasses)
+            .ThenInclude(aoc => aoc.Account)
+            .ThenInclude(a => a.User));
 
         var mappedSession = _mapper.Map<Paginate<GetListSessionResponse>>(session);
         return mappedSession;
@@ -143,6 +140,23 @@ public class SessionManager : ISessionService
             predicate: s => s.LessonId == lessonId,
             include: s => s
             .Include(s => s.Lesson));
+
+        var mappedSession = _mapper.Map<Paginate<GetListSessionResponse>>(session);
+        return mappedSession;
+    }
+
+    public async Task<IPaginate<GetListSessionResponse>> GetByAccountAndLessonIdAsync(Guid accountId,Guid lessonId)
+    {
+        var session = await _sessionDal.GetListAsync(
+           predicate: s => s.LessonId == lessonId &&
+            s.AccountSessions.Any(a => a.AccountId == accountId && a.Status==true),
+            include: s => s
+            .Include(s => s.Lesson)
+            .Include(s => s.AccountSessions)
+            .Include(s => s.Lesson).ThenInclude(l => l.EducationProgramLessons)
+            .ThenInclude(epl => epl.EducationProgram.EducationProgramOccupationClasses)
+            .ThenInclude(epoc => epoc.OccupationClass.AccountOccupationClasses)
+            .ThenInclude(aoc => aoc.Account.User));
 
         var mappedSession = _mapper.Map<Paginate<GetListSessionResponse>>(session);
         return mappedSession;

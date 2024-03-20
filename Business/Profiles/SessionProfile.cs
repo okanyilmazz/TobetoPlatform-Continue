@@ -23,13 +23,15 @@ public class SessionProfile : Profile
             .ForMember(dest => dest.LessonName, opt => opt.MapFrom(src => src.Lesson.Name))
             .ForMember(dest => dest.OccupationClassName, opt => opt.MapFrom(src => MapOccupationClassName(src)))
             .ForMember(dest => dest.AccountName, opt => opt.MapFrom(src => MapAccountName(src)))
+            .ForMember(dest => dest.AccountId, opt => opt.MapFrom(src => MapAccountId(src)))
             .ReverseMap();
 
         CreateMap<Session, GetSessionResponse>()
-       .ForMember(dest => dest.LessonName, opt => opt.MapFrom(src => src.Lesson.Name))
-       .ForMember(dest => dest.OccupationClassName, opt => opt.MapFrom(src => MapOccupationClassName(src)))
-       .ForMember(dest => dest.AccountName, opt => opt.MapFrom(src => MapAccountName(src)))
-       .ReverseMap();
+            .ForMember(destinationMember:dest => dest.LessonName, memberOptions: opt => opt.MapFrom(src => src.Lesson.Name))
+            .ForMember(destinationMember:dest => dest.OccupationClassName, memberOptions: opt => opt.MapFrom(src => MapOccupationClassName(src)))
+            .ForMember(destinationMember:dest => dest.AccountName, memberOptions: opt => opt.MapFrom(src => MapAccountName(src)))
+            .ForMember(destinationMember: dest => dest.AccountId, memberOptions: opt => opt.MapFrom(src => MapAccountId(src)))
+            .ReverseMap();
     }
 
     private static string MapOccupationClassName(Session src)
@@ -51,4 +53,14 @@ public class SessionProfile : Profile
         return string.Join(", ", accountNames);
     }
 
+    private static Guid MapAccountId(Session src)
+    {
+        var accountId = src.Lesson.EducationProgramLessons
+            .SelectMany(epl => epl.EducationProgram.EducationProgramOccupationClasses
+                .SelectMany(epoc => epoc.OccupationClass.AccountOccupationClasses
+                    .Select(aoc => aoc.Account.Id)))
+            .FirstOrDefault();
+
+        return accountId;
+    }
 }

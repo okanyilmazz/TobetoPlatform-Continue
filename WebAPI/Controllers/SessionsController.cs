@@ -45,6 +45,17 @@ public class SessionsController : Controller
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [Cache(60)]
+    [HttpGet("GetByAccountAndLessonId")]
+    public async Task<IActionResult> GetByAccountAndLessonIdAsync(Guid accountId, Guid lessonId)
+    {
+        var result = await _sessionService.GetByAccountAndLessonIdAsync(accountId,lessonId);
+        return Ok(result);
+    }
+
+
+    [Logging(typeof(MsSqlLogger))]
+    [Logging(typeof(FileLogger))]
+    [Cache(60)]
     [HttpGet("GetListWithInstructor")]
     public async Task<IActionResult> GetListWithInstructorAsync([FromQuery] PageRequest pageRequest)
     {

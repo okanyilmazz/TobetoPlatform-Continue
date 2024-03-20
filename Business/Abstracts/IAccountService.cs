@@ -10,7 +10,8 @@ public interface IAccountService
     Task<UpdatedAccountResponse> UpdateAsync(UpdateAccountRequest updateAccountRequest);
     Task<DeletedAccountResponse> DeleteAsync(DeleteAccountRequest deleteAccountRequest);
     Task<IPaginate<GetListAccountResponse>> GetListAsync(PageRequest pageRequest);
-    Task<IPaginate<GetListAccountResponse>> GetBySessionIdAsync(Guid id);
+    Task<IPaginate<GetListAccountResponse>> GetStudentBySessionIdAsync(Guid sessionId);
+    Task<IPaginate<GetListAccountResponse>> GetInstructorBySessionIdAsync(Guid sessionId);
     Task<GetAccountResponse> GetByIdAsync(Guid id);
     Task<IPaginate<GetListAccountResponse>> GetByLessonIdForLikeAsync(Guid lessonId, PageRequest pageRequest);
     Task<IPaginate<GetListAccountResponse>> GetByEducationProgramIdForLikeAsync(Guid educationProgramId, PageRequest pageRequest);   

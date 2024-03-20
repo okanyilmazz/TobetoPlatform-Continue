@@ -83,7 +83,7 @@ public class AccountSessionManager : IAccountSessionService
 
     public async Task<UpdatedAccountSessionResponse> UpdateAsync(UpdateAccountSessionRequest updateAccountSessionRequest)
     {
-        await _accountSessionBusinessRules.IsExistsAccountSession(updateAccountSessionRequest.SessionId);
+        await _accountSessionBusinessRules.IsExistsAccountSession(updateAccountSessionRequest.Id);
         AccountSession accountSession = _mapper.Map<AccountSession>(updateAccountSessionRequest);
         AccountSession updatedAccountSession = await _accountSessionDal.UpdateAsync(accountSession);
         UpdatedAccountSessionResponse updatedAccountSessionResponse = _mapper.Map<UpdatedAccountSessionResponse>(updatedAccountSession);
