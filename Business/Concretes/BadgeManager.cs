@@ -30,10 +30,10 @@ public class BadgeManager : IBadgeService
         return createdBadgeResponse;
     }
 
-    public async Task<DeletedBadgeResponse> DeleteAsync(DeleteBadgeRequest deleteBadgeRequest)
+    public async Task<DeletedBadgeResponse> DeleteAsync(Guid id)
     {
-        await _badgeBusinessRules.IsExistsBadge(deleteBadgeRequest.Id);
-        Badge badge = await _badgeDal.GetAsync(predicate: l => l.Id == deleteBadgeRequest.Id);
+        await _badgeBusinessRules.IsExistsBadge(id);
+        Badge badge = await _badgeDal.GetAsync(predicate: l => l.Id == id);
         Badge deletedBadge = await _badgeDal.DeleteAsync(badge);
         DeletedBadgeResponse deletedBadgeResponse = _mapper.Map<DeletedBadgeResponse>(deletedBadge);
         return deletedBadgeResponse;

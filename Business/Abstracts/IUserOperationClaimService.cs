@@ -8,7 +8,7 @@ public interface IUserOperationClaimService
 {
     Task<CreatedUserOperationClaimResponse> AddAsync(CreateUserOperationClaimRequest createUserOperationClaimRequest);
     Task<UpdatedUserOperationClaimResponse> UpdateAsync(UpdateUserOperationClaimRequest updateUserOperationClaimRequest);
-    Task<DeletedUserOperationClaimResponse> DeleteAsync(DeleteUserOperationClaimRequest deleteUserOperationClaimRequest);
+    Task<DeletedUserOperationClaimResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListUserOperationClaimResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetUserOperationClaimResponse> GetByUserIdAndOperationClaimId(Guid userId, Guid operationClaimId);
     Task <IPaginate<GetListUserOperationClaimResponse>> GetByUserId(Guid userId );

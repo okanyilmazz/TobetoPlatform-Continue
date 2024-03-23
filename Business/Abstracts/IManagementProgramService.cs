@@ -9,6 +9,6 @@ public interface IManagementProgramService
     Task<IPaginate<GetListManagementProgramResponse>> GetListAsync(PageRequest pageRequest);
     Task<CreatedManagementProgramResponse> AddAsync(CreateManagementProgramRequest createManagementProgramRequest);
     Task<UpdatedManagementProgramResponse> UpdateAsync(UpdateManagementProgramRequest updateManagementProgramRequest);
-    Task<DeletedManagementProgramResponse> DeleteAsync(DeleteManagementProgramRequest deleteManagementProgramRequest);
+    Task<DeletedManagementProgramResponse> DeleteAsync(Guid id);
     Task<GetManagementProgramResponse> GetByIdAsync(Guid id);
 }

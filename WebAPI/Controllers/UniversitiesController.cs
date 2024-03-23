@@ -69,10 +69,10 @@ public class UniversitiesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Universities.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteUniversityRequest deleteUniversityRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _universityService.DeleteAsync(deleteUniversityRequest);
+        var result = await _universityService.DeleteAsync(id);
         return Ok(result);
     }
 }

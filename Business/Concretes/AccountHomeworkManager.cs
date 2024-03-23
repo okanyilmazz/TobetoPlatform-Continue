@@ -31,10 +31,10 @@ public class AccountHomeworkManager : IAccountHomeworkService
         return createdAccountHomeworkResponse;
     }
 
-    public async Task<DeletedAccountHomeworkResponse> DeleteAsync(DeleteAccountHomeworkRequest deleteAccountHomeworkRequest)
+    public async Task<DeletedAccountHomeworkResponse> DeleteAsync(Guid id)
     {
-        await _accountHomeworkBusinessRules.IsExistsAccountHomework(deleteAccountHomeworkRequest.Id);
-        AccountHomework accountHomework = await _accountHomeworkDal.GetAsync(predicate: a => a.Id == deleteAccountHomeworkRequest.Id);
+        await _accountHomeworkBusinessRules.IsExistsAccountHomework(id);
+        AccountHomework accountHomework = await _accountHomeworkDal.GetAsync(predicate: a => a.Id == id);
         AccountHomework deletedAccountHomework = await _accountHomeworkDal.DeleteAsync(accountHomework);
         DeletedAccountHomeworkResponse deletedAccountHomeworkeResponse = _mapper.Map<DeletedAccountHomeworkResponse>(deletedAccountHomework);
         return deletedAccountHomeworkeResponse;

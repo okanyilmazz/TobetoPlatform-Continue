@@ -31,10 +31,10 @@ public class AccountBadgeManager : IAccountBadgeService
         return createdAccountBadgeResponse;
     }
 
-    public async Task<DeletedAccountBadgeResponse> DeleteAsync(DeleteAccountBadgeRequest deleteAccountBadgeRequest)
+    public async Task<DeletedAccountBadgeResponse> DeleteAsync(Guid id)
     {
-        await _accountBadgeBusinessRules.IsExistsAccountBadge(deleteAccountBadgeRequest.Id);
-        AccountBadge accountBadge = await _accountBadgeDal.GetAsync(predicate: ab => ab.Id == deleteAccountBadgeRequest.Id);
+        await _accountBadgeBusinessRules.IsExistsAccountBadge(id);
+        AccountBadge accountBadge = await _accountBadgeDal.GetAsync(predicate: ab => ab.Id == id);
         AccountBadge deletedAccountBadge = await _accountBadgeDal.DeleteAsync(accountBadge);
         DeletedAccountBadgeResponse deletedAccountBadgeResponse = _mapper.Map<DeletedAccountBadgeResponse>(deletedAccountBadge);
         return deletedAccountBadgeResponse;

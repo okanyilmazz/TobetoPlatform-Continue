@@ -32,10 +32,10 @@ public class AccountUniversityManager : IAccountUniversityService
         return createdAccountUniversityResponse;
     }
 
-    public async Task<DeletedAccountUniversityResponse> DeleteAsync(DeleteAccountUniversityRequest deleteAccountUniversityRequest)
+    public async Task<DeletedAccountUniversityResponse> DeleteAsync(Guid id)
     {
-        await _accountUniversityBusinessRules.IsExistsAccountUniversity(deleteAccountUniversityRequest.Id);
-        AccountUniversity accountUniversity = await _accountUniversityDal.GetAsync(predicate: au => au.Id == deleteAccountUniversityRequest.Id);
+        await _accountUniversityBusinessRules.IsExistsAccountUniversity(id);
+        AccountUniversity accountUniversity = await _accountUniversityDal.GetAsync(predicate: au => au.Id == id);
         AccountUniversity deletedAccountUniversity = await _accountUniversityDal.DeleteAsync(accountUniversity);
         DeletedAccountUniversityResponse deletedAccountUniversityResponse = _mapper.Map<DeletedAccountUniversityResponse>(deletedAccountUniversity);
         return deletedAccountUniversityResponse;

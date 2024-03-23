@@ -70,10 +70,10 @@ public class ProgrammingLanguagesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("ProgrammingLanguages.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteProgrammingLanguageRequest deleteProgrammingLanguageRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _programmingLanguageService.DeleteAsync(deleteProgrammingLanguageRequest);
+        var result = await _programmingLanguageService.DeleteAsync(id);
         return Ok(result);
     }
 }

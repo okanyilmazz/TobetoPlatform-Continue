@@ -80,10 +80,10 @@ public class AccountUniversitiesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountUniversities.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountUniversityRequest deleteAccountUniversityRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _accountUniversityService.DeleteAsync(deleteAccountUniversityRequest);
+        var result = await _accountUniversityService.DeleteAsync(id);
         return Ok(result);
     }
 }

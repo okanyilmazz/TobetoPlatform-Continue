@@ -10,7 +10,7 @@ public interface ISocialMediaService
     Task<IPaginate<GetListSocialMediaResponse>> GetByAccountIdAsync(Guid Id);
     Task<GetSocialMediaResponse> GetByIdAsync(Guid id);
     Task<CreatedSocialMediaResponse> AddAsync(CreateSocialMediaRequest createSocialMediaRequest);
-    Task<DeletedSocialMediaResponse> DeleteAsync(DeleteSocialMediaRequest deleteSocialMediaRequest);
+    Task<DeletedSocialMediaResponse> DeleteAsync(Guid id);
     Task<UpdatedSocialMediaResponse> UpdateAsync(UpdateSocialMediaRequest updateSocialMediaRequest);
 }
 

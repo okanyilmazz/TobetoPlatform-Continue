@@ -8,7 +8,7 @@ public interface IContactService
 {
     Task<CreatedContactResponse> AddAsync(CreateContactRequest createContactRequest);
     Task<UpdatedContactResponse> UpdateAsync(UpdateContactRequest updateContactRequest);
-    Task<DeletedContactResponse> DeleteAsync(DeleteContactRequest deleteContactRequest);
+    Task<DeletedContactResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListContactResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetContactResponse> GetByIdAsync(Guid id);
 }

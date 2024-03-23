@@ -8,7 +8,7 @@ public interface IProductionCompanyService
 {
     Task<CreatedProductionCompanyResponse> AddAsync(CreateProductionCompanyRequest createProductionCompanyRequest);
     Task<UpdatedProductionCompanyResponse> UpdateAsync(UpdateProductionCompanyRequest updateProductionCompanyRequest);
-    Task<DeletedProductionCompanyResponse> DeleteAsync(DeleteProductionCompanyRequest deleteProductionCompanyRequest);
+    Task<DeletedProductionCompanyResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListProductionCompanyResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetProductionCompanyResponse> GetByIdAsync(Guid id);
 }

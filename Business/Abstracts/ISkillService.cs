@@ -7,7 +7,7 @@ namespace Business.Abstracts;
 public interface ISkillService
 {
     Task<CreatedSkillResponse> AddAsync(CreateSkillRequest createSkillRequest);
-    Task<DeletedSkillResponse> DeleteAsync(DeleteSkillRequest deleteSkillRequest);
+    Task<DeletedSkillResponse> DeleteAsync(Guid id);
     Task<UpdatedSkillResponse> UpdateAsync(UpdateSkillRequest updateSkillRequest);
     Task<IPaginate<GetListSkillResponse>> GetListAsync(PageRequest pageRequest);
     Task<IPaginate<GetListSkillResponse>> GetByAccountIdAsync(Guid id);

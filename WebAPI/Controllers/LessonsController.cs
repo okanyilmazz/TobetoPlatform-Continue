@@ -91,10 +91,10 @@ public class LessonsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Lessons.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteLessonRequest deleteLessonRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _lessonService.DeleteAsync(deleteLessonRequest);
+        var result = await _lessonService.DeleteAsync(id);
         return Ok(result);
     }
 }

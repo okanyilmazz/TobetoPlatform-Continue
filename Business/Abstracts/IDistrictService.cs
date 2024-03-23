@@ -7,7 +7,7 @@ namespace Business.Abstracts;
 public interface IDistrictService
 {
     Task<CreatedDistrictResponse> AddAsync(CreateDistrictRequest createDistrictRequest);
-    Task<DeletedDistrictResponse> DeleteAsync(DeleteDistrictRequest deleteDistrictRequest);
+    Task<DeletedDistrictResponse> DeleteAsync(Guid id);
     Task<UpdatedDistrictResponse> UpdateAsync(UpdateDistrictRequest updateDistrictRequest);
     Task<IPaginate<GetListDistrictResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetDistrictResponse> GetByIdAsync(Guid id);

@@ -70,10 +70,10 @@ public class ContactsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Contacts.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteContactRequest deleteContactRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _contactService.DeleteAsync(deleteContactRequest);
+        var result = await _contactService.DeleteAsync(id);
         return Ok(result);
     }
 }

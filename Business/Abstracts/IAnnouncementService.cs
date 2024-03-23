@@ -9,7 +9,7 @@ public interface IAnnouncementService
     Task<CreatedAnnouncementResponse> AddAsync(CreateAnnouncementRequest createAnnouncementRequest);
     Task<UpdatedAnnouncementResponse> UpdateAsync(UpdateAnnouncementRequest updateAnnouncementRequest);
 
-    Task<DeletedAnnouncementResponse> DeleteAsync(DeleteAnnouncementRequest deleteAnnouncementRequest);
+    Task<DeletedAnnouncementResponse> DeleteAsync(Guid id);
 
     Task<IPaginate<GetListAnnouncementResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetAnnouncementResponse> GetByIdAsync(Guid Id);

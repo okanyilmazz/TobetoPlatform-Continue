@@ -31,10 +31,10 @@ public class AccountOccupationClassManager : IAccountOccupationClassService
         return mappedAccountOccupationClass;
     }
 
-    public async Task<DeletedAccountOccupationClassResponse> DeleteAsync(DeleteAccountOccupationClassRequest deleteAccountOccupationClassRequest)
+    public async Task<DeletedAccountOccupationClassResponse> DeleteAsync(Guid id)
     {
-        await _accountOccupationClassRules.IsExistsAccountOccupationClass(deleteAccountOccupationClassRequest.Id);
-        AccountOccupationClass accountOccupationClass = await _accountOccupationClassDal.GetAsync(predicate: a => a.Id == deleteAccountOccupationClassRequest.Id);
+        await _accountOccupationClassRules.IsExistsAccountOccupationClass(id);
+        AccountOccupationClass accountOccupationClass = await _accountOccupationClassDal.GetAsync(predicate: a => a.Id == id);
         AccountOccupationClass deletedAccountOccupationClass = await _accountOccupationClassDal.DeleteAsync(accountOccupationClass);
         var mappedAccountOccupationClass = _mapper.Map<DeletedAccountOccupationClassResponse>(deletedAccountOccupationClass);
         return mappedAccountOccupationClass;

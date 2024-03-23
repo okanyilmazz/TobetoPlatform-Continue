@@ -80,10 +80,10 @@ public class AccountSocialMediasController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountSocialMedias.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountSocialMediaRequest deleteAccountSocialMediaRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _accountSocialMediaService.DeleteAsync(deleteAccountSocialMediaRequest);
+        var result = await _accountSocialMediaService.DeleteAsync(id);
         return Ok(result);
     }
 }

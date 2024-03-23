@@ -68,10 +68,10 @@ public class AccountAnswersController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountAnswers.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountAnswerRequest deleteAccountAnswerRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _accountAnswersService.DeleteAsync(deleteAccountAnswerRequest);
+        var result = await _accountAnswersService.DeleteAsync(id);
         return Ok(result);
     }
 }

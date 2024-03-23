@@ -30,10 +30,10 @@ public class AccountAnswerManager : IAccountAnswerService
         return createdAccountAnswerResponse;
     }
 
-    public async Task<DeletedAccountAnswerResponse> DeleteAsync(DeleteAccountAnswerRequest deleteAccountAnswerRequest)
+    public async Task<DeletedAccountAnswerResponse> DeleteAsync(Guid id)
     {
-        await _accountAnswerBusinessRules.IsExistsAccountAnswer(deleteAccountAnswerRequest.Id);
-        AccountAnswer accountAnswer = await _accountAnswerDal.GetAsync(predicate: l => l.Id == deleteAccountAnswerRequest.Id);
+        await _accountAnswerBusinessRules.IsExistsAccountAnswer(id);
+        AccountAnswer accountAnswer = await _accountAnswerDal.GetAsync(predicate: l => l.Id == id);
         AccountAnswer deletedAccountAnswer = await _accountAnswerDal.DeleteAsync(accountAnswer);
         DeletedAccountAnswerResponse deletedAccountAnswerResponse = _mapper.Map<DeletedAccountAnswerResponse>(deletedAccountAnswer);
         return deletedAccountAnswerResponse;

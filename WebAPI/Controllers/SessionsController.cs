@@ -112,10 +112,10 @@ public class SessionsController : Controller
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Sessions.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteSessionRequest deleteSessionRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _sessionService.DeleteAsync(deleteSessionRequest);
+        var result = await _sessionService.DeleteAsync(id);
         return Ok(result);
     }
 }

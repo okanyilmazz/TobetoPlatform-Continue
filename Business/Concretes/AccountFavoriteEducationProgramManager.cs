@@ -1,7 +1,6 @@
 using AutoMapper;
 using Business.Abstracts;
-using Business.Dtos.Requests.AccountViewLessonRequest;
-using Business.Dtos.Requests.EducationProgramLikeRequests;
+using Business.Dtos.Requests.AccountFavoriteEducationProgramRequests;
 using Business.Dtos.Responses.AccountFavoriteEducationProgramResponses;
 using Business.Rules.BusinessRules;
 using Core.DataAccess.Paging;
@@ -32,10 +31,10 @@ public class AccountFavoriteEducationProgramManager : IAccountFavoriteEducationP
     }
 
 
-    public async Task<DeletedAccountFavoriteEducationProgramResponse> DeleteAsync(DeleteAccountFavoriteEducationProgramRequest deleteAccountFavoriteEducationProgramRequest)
+    public async Task<DeletedAccountFavoriteEducationProgramResponse> DeleteAsync(Guid id)
     {
-        await _accountFavoriteEducationProgramBusinessRules.IsExistsAccountFavoriteEducationProgram(deleteAccountFavoriteEducationProgramRequest.Id);
-        AccountFavoriteEducationProgram accountFavoriteEducationProgram = await _accountFavoriteEducationProgramDal.GetAsync(predicate: a => a.Id == deleteAccountFavoriteEducationProgramRequest.Id);
+        await _accountFavoriteEducationProgramBusinessRules.IsExistsAccountFavoriteEducationProgram(id);
+        AccountFavoriteEducationProgram accountFavoriteEducationProgram = await _accountFavoriteEducationProgramDal.GetAsync(predicate: a => a.Id == id);
         AccountFavoriteEducationProgram deletedAccountFavoriteEducationProgram = await _accountFavoriteEducationProgramDal.DeleteAsync(accountFavoriteEducationProgram);
         DeletedAccountFavoriteEducationProgramResponse deletedAccountFavoriteEducationProgramResponse = _mapper.Map<DeletedAccountFavoriteEducationProgramResponse>(deletedAccountFavoriteEducationProgram);
         return deletedAccountFavoriteEducationProgramResponse;

@@ -1,4 +1,4 @@
-﻿using Business.Dtos.Requests.AccountViewLessonRequest;
+﻿using Business.Dtos.Requests.AccountViewLessonRequests;
 using Business.Dtos.Responses.AccountViewLessonResponses;
 using Core.DataAccess.Paging;
 
@@ -8,7 +8,7 @@ public interface IAccountViewLessonService
 {
     Task<CreatedAccountViewLessonResponse> AddAsync(CreateAccountViewLessonRequest createAccountViewLessonRequest);
     Task<UpdatedAccountViewLessonResponse> UpdateAsync(UpdateAccountViewLessonRequest updateAccountViewLessonRequest);
-    Task<DeletedAccountViewLessonResponse> DeleteAsync(DeleteAccountViewLessonRequest deleteAccountViewLessonRequest);
+    Task<DeletedAccountViewLessonResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListAccountViewLessonResponse>> GetListAsync(PageRequest pageRequest);
     Task<IPaginate<GetListAccountViewLessonResponse>> GetByAccountIdAsync(Guid accountId);
     Task<IPaginate<GetListAccountViewLessonResponse>> GetByLessonIdAsync(Guid lessonId);

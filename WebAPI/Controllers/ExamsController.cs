@@ -79,10 +79,10 @@ public class ExamsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Exams.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteExamRequest deleteExamRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _examService.DeleteAsync(deleteExamRequest);
+        var result = await _examService.DeleteAsync(id);
         return Ok(result);
     }
 }

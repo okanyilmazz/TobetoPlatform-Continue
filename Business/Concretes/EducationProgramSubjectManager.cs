@@ -30,10 +30,10 @@ public class EducationProgramSubjectManager : IEducationProgramSubjectService
         return mappedEducationProgramSubject;
     }
 
-    public async Task<DeletedEducationProgramSubjectResponse> DeleteAsync(DeleteEducationProgramSubjectRequest deleteEducationProgramSubjectRequest)
+    public async Task<DeletedEducationProgramSubjectResponse> DeleteAsync(Guid id)
     {
-        await _educationProgramSubjectBusinessRules.IsExistsEducationProgramSubject(deleteEducationProgramSubjectRequest.Id);
-        EducationProgramSubject educationProgramSubject = await _educationProgramSubjectDal.GetAsync(predicate: eps => eps.Id == deleteEducationProgramSubjectRequest.Id);
+        await _educationProgramSubjectBusinessRules.IsExistsEducationProgramSubject(id);
+        EducationProgramSubject educationProgramSubject = await _educationProgramSubjectDal.GetAsync(predicate: eps => eps.Id == id);
         EducationProgramSubject deletedEducationProgramSubject = await _educationProgramSubjectDal.DeleteAsync(educationProgramSubject);
         DeletedEducationProgramSubjectResponse deletedEducationProgramSubjectResponse = _mapper.Map<DeletedEducationProgramSubjectResponse>(deletedEducationProgramSubject);
         return deletedEducationProgramSubjectResponse;

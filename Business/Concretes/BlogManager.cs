@@ -32,10 +32,10 @@ public class BlogManager : IBlogService
         return createdBlogResponse;
     }
 
-    public async Task<DeletedBlogResponse> DeleteAsync(DeleteBlogRequest deleteBlogRequest)
+    public async Task<DeletedBlogResponse> DeleteAsync(Guid id)
     {
-        await _blogBusinessRules.IsExistsBlog(deleteBlogRequest.Id);
-        Blog blog = await _blogDal.GetAsync(predicate: l => l.Id == deleteBlogRequest.Id);
+        await _blogBusinessRules.IsExistsBlog(id);
+        Blog blog = await _blogDal.GetAsync(predicate: l => l.Id == id);
         Blog deletedBlog = await _blogDal.DeleteAsync(blog);
         DeletedBlogResponse deletedBlogResponse = _mapper.Map<DeletedBlogResponse>(deletedBlog);
         return deletedBlogResponse;

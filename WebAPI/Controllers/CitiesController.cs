@@ -58,10 +58,10 @@ public class CitiesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Cities.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteCityRequest deleteCityRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _cityService.DeleteAsync(deleteCityRequest);
+        var result = await _cityService.DeleteAsync(id);
         return Ok(result);
     }
 

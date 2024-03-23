@@ -7,7 +7,7 @@ namespace Business.Abstracts;
 public interface ILessonService
 {
     Task<CreatedLessonResponse> AddAsync(CreateLessonRequest createLessonRequest);
-    Task<DeletedLessonResponse> DeleteAsync(DeleteLessonRequest deleteLessonRequest);
+    Task<DeletedLessonResponse> DeleteAsync(Guid id);
     Task<UpdatedLessonResponse> UpdateAsync(UpdateLessonRequest updateLessonRequest);
     Task<IPaginate<GetListLessonResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetLessonResponse> GetByIdAsync(Guid id);

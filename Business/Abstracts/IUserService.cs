@@ -10,7 +10,7 @@ public interface IUserService
     Task<IPaginate<GetListUserResponse>> GetListAsync(PageRequest pageRequest);
     Task<CreatedUserResponse> AddAsync(CreateUserRequest createUserRequest);
     Task<UpdatedUserResponse> UpdateAsync(UpdateUserRequest updateUserRequest);
-    Task<DeletedUserResponse> DeleteAsync(DeleteUserRequest deleteUserRequest);
+    Task<DeletedUserResponse> DeleteAsync(Guid id);
     Task<GetUserResponse> GetByIdAsync(Guid? id);
     Task<GetUserResponse> GetByMailAsync(string email);
     Task<List<OperationClaim>> GetClaimsAsync(User user);

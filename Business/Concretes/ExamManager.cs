@@ -32,10 +32,10 @@ public class ExamManager : IExamService
         return responseExam;
     }
 
-    public async Task<DeletedExamResponse> DeleteAsync(DeleteExamRequest deleteExamRequest)
+    public async Task<DeletedExamResponse> DeleteAsync(Guid id)
     {
-        await _examBusinessRules.IsExistsExam(deleteExamRequest.Id);
-        Exam exam = await _examDal.GetAsync(predicate: e => e.Id == deleteExamRequest.Id);
+        await _examBusinessRules.IsExistsExam(id);
+        Exam exam = await _examDal.GetAsync(predicate: e => e.Id == id);
         Exam deletedExam = await _examDal.DeleteAsync(exam);
         DeletedExamResponse deletedExamResponse = _mapper.Map<DeletedExamResponse>(deletedExam);
         return deletedExamResponse;

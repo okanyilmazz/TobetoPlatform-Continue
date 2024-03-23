@@ -54,10 +54,10 @@ public class LessonCategoriesController : ControllerBase
     }
 
     [CacheRemove("LessonCategories.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteLessonCategoryRequest deleteLessonCategoryRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _lessonCategoryService.DeleteAsync(deleteLessonCategoryRequest);
+        var result = await _lessonCategoryService.DeleteAsync(id);
         return Ok(result);
     }
 }

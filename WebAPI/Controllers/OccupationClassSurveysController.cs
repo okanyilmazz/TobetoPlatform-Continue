@@ -59,10 +59,10 @@ public class OccupationClassSurveysController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("OccupationClassSurveys.Get")]
     [CustomValidation(typeof(UpdateOccupationClassSurveyRequestValidator))]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteOccupationClassSurveyRequest deleteOccupationClassSurveyRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _occupationClassSurveyService.DeleteAsync(deleteOccupationClassSurveyRequest);
+        var result = await _occupationClassSurveyService.DeleteAsync(id);
         return Ok(result);
     }
 

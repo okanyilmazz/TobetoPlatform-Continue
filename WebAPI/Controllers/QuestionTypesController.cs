@@ -91,11 +91,10 @@ public class QuestionTypesController : Controller
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("QuestionTypes.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteQuestionTypeRequest deleteQuestionTypeRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _questionTypeService.DeleteAsync(deleteQuestionTypeRequest);
+        var result = await _questionTypeService.DeleteAsync(id);
         return Ok(result);
     }
 }
-

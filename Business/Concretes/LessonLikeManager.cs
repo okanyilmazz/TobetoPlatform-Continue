@@ -31,11 +31,11 @@ public class LessonLikeManager : ILessonLikeService
         return createdLessonLikeResponse;
     }
 
-    public async Task<DeletedLessonLikeResponse> DeleteAsync(DeleteLessonLikeRequest deleteLessonLikeRequest)
+    public async Task<DeletedLessonLikeResponse> DeleteAsync(Guid id)
     {
-        await _lessonLikeBusinessRules.IsExistsLessonLike(deleteLessonLikeRequest.Id);
+        await _lessonLikeBusinessRules.IsExistsLessonLike(id);
         LessonLike lessonLike = await _lessonLikeDal.GetAsync(
-            predicate: l => l.Id == deleteLessonLikeRequest.Id);
+            predicate: l => l.Id == id);
         LessonLike deletedLessonLike = await _lessonLikeDal.DeleteAsync(lessonLike);
         DeletedLessonLikeResponse deletedLessonLikeResponse = _mapper.Map<DeletedLessonLikeResponse>(deletedLessonLike);
         return deletedLessonLikeResponse;

@@ -7,7 +7,7 @@ namespace Business.Abstracts;
 public interface IEducationProgramProgrammingLanguageService
 {
     Task<CreatedEducationProgramProgrammingLanguageResponse> AddAsync(CreateEducationProgramProgrammingLanguageRequest createEducationProgramProgrammingLanguageRequest);
-    Task<DeletedEducationProgramProgrammingLanguageResponse> DeleteAsync(DeleteEducationProgramProgrammingLanguageRequest deleteEducationProgramProgrammingLanguageRequest);
+    Task<DeletedEducationProgramProgrammingLanguageResponse> DeleteAsync(Guid id);
     Task<UpdatedEducationProgramProgrammingLanguageResponse> UpdateAsync(UpdateEducationProgramProgrammingLanguageRequest updateEducationProgramProgrammingLanguageRequest);
     Task<IPaginate<GetListEducationProgramProgrammingLanguageResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetEducationProgramProgrammingLanguageResponse> GetByIdAsync(Guid id);

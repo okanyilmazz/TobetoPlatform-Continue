@@ -7,7 +7,7 @@ namespace Business.Abstracts;
 public interface IHomeworkService
 {
     Task<CreatedHomeworkResponse> AddAsync(CreateHomeworkRequest createHomeworkRequest);
-    Task<DeletedHomeworkResponse> DeleteAsync(DeleteHomeworkRequest deleteHomeworkRequest);
+    Task<DeletedHomeworkResponse> DeleteAsync(Guid id);
     Task<UpdatedHomeworkResponse> UpdateAsync(UpdateHomeworkRequest updateHomeworkRequest);
     Task<IPaginate<GetListHomeworkResponse>> GetListAsync(PageRequest pageRequest);
     Task<IPaginate<GetListHomeworkResponse>> GetByAccountIdAsync(Guid accountId);

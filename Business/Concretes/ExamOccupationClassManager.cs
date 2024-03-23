@@ -32,10 +32,10 @@ public class ExamOccupationClassManager : IExamOccupationClassService
         return createdExamOccupationClassResponse;
     }
 
-    public async Task<DeletedExamOccupationClassResponse> DeleteAsync(DeleteExamOccupationClassRequest deleteExamOccupationClassRequest)
+    public async Task<DeletedExamOccupationClassResponse> DeleteAsync(Guid id)
     {
-        await _examOccupationClassBusinessRules.IsExistsExamOccupationClass(deleteExamOccupationClassRequest.Id);
-        ExamOccupationClass examOccupationClass = await _examOccupationClassDal.GetAsync(predicate: eoc => eoc.Id == deleteExamOccupationClassRequest.Id);
+        await _examOccupationClassBusinessRules.IsExistsExamOccupationClass(id);
+        ExamOccupationClass examOccupationClass = await _examOccupationClassDal.GetAsync(predicate: eoc => eoc.Id == id);
         ExamOccupationClass deletedExamOccupationClass = await _examOccupationClassDal.DeleteAsync(examOccupationClass);
         DeletedExamOccupationClassResponse deletedExamOccupationClassResponse = _mapper.Map<DeletedExamOccupationClassResponse>(deletedExamOccupationClass);
         return deletedExamOccupationClassResponse;

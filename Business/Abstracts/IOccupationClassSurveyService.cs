@@ -8,7 +8,7 @@ public interface IOccupationClassSurveyService
 {
     Task<CreatedOccupationClassSurveyResponse> AddAsync(CreateOccupationClassSurveyRequest createOccupationClassSurveyRequest);
     Task<UpdatedOccupationClassSurveyResponse> UpdateAsync(UpdateOccupationClassSurveyRequest updateOccupationClassSurveyRequest);
-    Task<DeletedOccupationClassSurveyResponse> DeleteAsync(DeleteOccupationClassSurveyRequest deleteOccupationClassSurveyRequest);
+    Task<DeletedOccupationClassSurveyResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListOccupationClassSurveyResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetOccupationClassSurveyResponse> GetByIdAsync(Guid Id);
 }

@@ -59,10 +59,10 @@ public class BlogsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Blogs.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteBlogRequest deleteBlogRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _blogService.DeleteAsync(deleteBlogRequest);
+        var result = await _blogService.DeleteAsync(id);
         return Ok(result);
     }
 

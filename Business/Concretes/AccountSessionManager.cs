@@ -33,10 +33,10 @@ public class AccountSessionManager : IAccountSessionService
 
     }
 
-    public async Task<DeletedAccountSessionResponse> DeleteAsync(DeleteAccountSessionRequest deleteAccountSessionRequest)
+    public async Task<DeletedAccountSessionResponse> DeleteAsync(Guid id)
     {
-        await _accountSessionBusinessRules.IsExistsAccountSession(deleteAccountSessionRequest.Id);
-        AccountSession accountSession = await _accountSessionDal.GetAsync(predicate: a => a.Id == deleteAccountSessionRequest.Id);
+        await _accountSessionBusinessRules.IsExistsAccountSession(id);
+        AccountSession accountSession = await _accountSessionDal.GetAsync(predicate: a => a.Id == id);
         AccountSession deletedAccountSession = await _accountSessionDal.DeleteAsync(accountSession);
         DeletedAccountSessionResponse createdAccountSessionResponse = _mapper.Map<DeletedAccountSessionResponse>(deletedAccountSession);
         return createdAccountSessionResponse;

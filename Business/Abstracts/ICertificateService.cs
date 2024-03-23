@@ -8,7 +8,7 @@ public interface ICertificateService
 {
     Task<CreatedCertificateResponse> AddAsync(CreateCertificateRequest createCertificateRequest, string currentPath);
     Task<UpdatedCertificateResponse> UpdateAsync(UpdateCertificateRequest updateCertificateRequest);
-    Task<DeletedCertificateResponse> DeleteAsync(DeleteCertificateRequest deleteCertificateRequest);
+    Task<DeletedCertificateResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListCertificateResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetCertificateResponse> GetByIdAsync(Guid id);
     Task<IPaginate<GetListCertificateResponse>> GetByAccountIdAsync(Guid accountId);

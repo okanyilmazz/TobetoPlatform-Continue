@@ -40,10 +40,10 @@ public class OperationClaimManager : IOperationClaimService
         var operationClaimResponse = _mapper.Map<List<GetListOperationClaimResponse>>(operationClaims.Items);
         return operationClaimResponse;
     }
-    public async Task<DeletedOperationClaimResponse> DeleteAsync(DeleteOperationClaimRequest deleteOperationClaimRequest)
+    public async Task<DeletedOperationClaimResponse> DeleteAsync(Guid id)
     {
-        await _operationClaimBusinessRules.IsExistsOperationClaim(deleteOperationClaimRequest.Id);
-        OperationClaim operationClaim = await _operationClaimDal.GetAsync(predicate: op => op.Id == deleteOperationClaimRequest.Id);
+        await _operationClaimBusinessRules.IsExistsOperationClaim(id);
+        OperationClaim operationClaim = await _operationClaimDal.GetAsync(predicate: op => op.Id == id);
         OperationClaim deletedOperationClaim = await _operationClaimDal.DeleteAsync(operationClaim);
         DeletedOperationClaimResponse deletedOperationClaimResponse = _mapper.Map<DeletedOperationClaimResponse>(deletedOperationClaim);
         return deletedOperationClaimResponse;

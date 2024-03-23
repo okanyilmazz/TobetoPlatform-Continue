@@ -99,10 +99,10 @@ public class LessonLikesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("LessonLikes.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteLessonLikeRequest deleteLessonLikeRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _lessonLikeService.DeleteAsync(deleteLessonLikeRequest);
+        var result = await _lessonLikeService.DeleteAsync(id);
         return Ok(result);
     }
 

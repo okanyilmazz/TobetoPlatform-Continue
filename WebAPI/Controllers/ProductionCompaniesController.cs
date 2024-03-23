@@ -69,11 +69,10 @@ public class ProductionCompaniesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("ProductionCompanies.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteProductionCompanyRequest deleteProductionCompanyRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _productionCompanyService.DeleteAsync(deleteProductionCompanyRequest);
+        var result = await _productionCompanyService.DeleteAsync(id);
         return Ok(result);
     }
 }
-

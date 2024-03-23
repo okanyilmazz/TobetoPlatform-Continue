@@ -30,10 +30,10 @@ public class AccountActivityMapManager : IAccountActivityMapService
         return createdAccountActivityMapResponse;
     }
 
-    public async Task<DeletedAccountActivityMapResponse> DeleteAsync(DeleteAccountActivityMapRequest deleteAccountActivityMapRequest)
+    public async Task<DeletedAccountActivityMapResponse> DeleteAsync(Guid id)
     {
-        await _accountActivityMapBusinessRules.IsExistsAccountActivityMap(deleteAccountActivityMapRequest.Id);
-        AccountActivityMap accountActivityMap = await _accountActivityMapDal.GetAsync(predicate: ab => ab.Id == deleteAccountActivityMapRequest.Id);
+        await _accountActivityMapBusinessRules.IsExistsAccountActivityMap(id);
+        AccountActivityMap accountActivityMap = await _accountActivityMapDal.GetAsync(predicate: ab => ab.Id == id);
         AccountActivityMap deletedAccountActivityMap = await _accountActivityMapDal.DeleteAsync(accountActivityMap);
         DeletedAccountActivityMapResponse deletedAccountActivityMapResponse = _mapper.Map<DeletedAccountActivityMapResponse>(deletedAccountActivityMap);
         return deletedAccountActivityMapResponse;

@@ -7,7 +7,7 @@ namespace Business.Abstracts;
 public interface IEducationProgramLevelService
 {
     Task<CreatedEducationProgramLevelResponse> AddAsync(CreateEducationProgramLevelRequest createEducationProgramLevelRequest);
-    Task<DeletedEducationProgramLevelResponse> DeleteAsync(DeleteEducationProgramLevelRequest deleteEducationProgramLevelRequest);
+    Task<DeletedEducationProgramLevelResponse> DeleteAsync(Guid id);
     Task<UpdatedEducationProgramLevelResponse> UpdateAsync(UpdateEducationProgramLevelRequest updateEducationProgramLevelRequest);
     Task<IPaginate<GetListEducationProgramLevelResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetEducationProgramLevelResponse> GetByIdAsync(Guid id);

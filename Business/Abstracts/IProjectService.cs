@@ -10,5 +10,5 @@ public interface IProjectService
     Task<GetProjectResponse> GetByIdAsync(Guid id);
     Task<CreatedProjectResponse> AddAsync(CreateProjectRequest createProjectRequest);
     Task<UpdatedProjectResponse> UpdateAsync(UpdateProjectRequest updateProjectRequest);
-    Task<DeletedProjectResponse> DeleteAsync(DeleteProjectRequest deleteProjectRequest);
+    Task<DeletedProjectResponse> DeleteAsync(Guid id);
 }

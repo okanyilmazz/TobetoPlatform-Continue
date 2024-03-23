@@ -8,7 +8,7 @@ public interface ILessonLikeService
 {
     Task<CreatedLessonLikeResponse> AddAsync(CreateLessonLikeRequest createLessonLikeRequest);
     Task<UpdatedLessonLikeResponse> UpdateAsync(UpdateLessonLikeRequest updateLessonLikeRequest);
-    Task<DeletedLessonLikeResponse> DeleteAsync(DeleteLessonLikeRequest deleteLessonLikeRequest);
+    Task<DeletedLessonLikeResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListLessonLikeResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetLessonLikeResponse> GetByIdAsync(Guid id);
     Task<IPaginate<GetListLessonLikeResponse>> GetByAccountIdAsync(Guid accountId);

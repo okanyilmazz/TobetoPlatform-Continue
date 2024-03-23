@@ -29,10 +29,10 @@ public class WorkExperienceManager : IWorkExperienceService
         return createdWorkExperienceResponse;
     }
 
-    public async Task<DeletedWorkExperienceResponse> DeleteAsync(DeleteWorkExperienceRequest deleteWorkExperienceRequest)
+    public async Task<DeletedWorkExperienceResponse> DeleteAsync(Guid id)
     {
-        await _workExperienceBusinessRules.IsExistsWorkExperience(deleteWorkExperienceRequest.Id);
-        WorkExperience workExperience = await _workExperienceDal.GetAsync(predicate: we => we.Id == deleteWorkExperienceRequest.Id);
+        await _workExperienceBusinessRules.IsExistsWorkExperience(id);
+        WorkExperience workExperience = await _workExperienceDal.GetAsync(predicate: we => we.Id == id);
         WorkExperience deletedWorkExperience = await _workExperienceDal.DeleteAsync(workExperience);
         DeletedWorkExperienceResponse deletedWorkExperienceResponse = _mapper.Map<DeletedWorkExperienceResponse>(deletedWorkExperience);
         return deletedWorkExperienceResponse;       

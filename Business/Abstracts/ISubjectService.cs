@@ -7,7 +7,7 @@ namespace Business.Abstracts;
 public interface ISubjectService
 {
     Task<CreatedSubjectResponse> AddAsync(CreateSubjectRequest createSubjectRequest);
-    Task<DeletedSubjectResponse> DeleteAsync(DeleteSubjectRequest deleteSubjectRequest);
+    Task<DeletedSubjectResponse> DeleteAsync(Guid id);
     Task<UpdatedSubjectResponse> UpdateAsync(UpdateSubjectRequest updateSubjectRequest);
     Task<IPaginate<GetListSubjectResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetSubjectResponse> GetByIdAsync(Guid id);

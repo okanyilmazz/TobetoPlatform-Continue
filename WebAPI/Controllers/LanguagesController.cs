@@ -77,10 +77,10 @@ public class LanguagesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Languages.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteLanguageRequest deleteLanguageRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _languageService.DeleteAsync(deleteLanguageRequest);
+        var result = await _languageService.DeleteAsync(id);
         return Ok(result);
     }
 }

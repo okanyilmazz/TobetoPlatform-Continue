@@ -30,10 +30,10 @@ public class ContactManager : IContactService
         return createdContactResponse;
     }
 
-    public async Task<DeletedContactResponse> DeleteAsync(DeleteContactRequest deleteContactRequest)
+    public async Task<DeletedContactResponse> DeleteAsync(Guid id)
     {
-        await _contactBusinessRules.IsExistsContact(deleteContactRequest.Id);
-        Contact contact = await _contactDal.GetAsync(predicate: c => c.Id == deleteContactRequest.Id);
+        await _contactBusinessRules.IsExistsContact(id);
+        Contact contact = await _contactDal.GetAsync(predicate: c => c.Id == id);
         Contact deletedContact = await _contactDal.DeleteAsync(contact);
         DeletedContactResponse deletedContactResponse = _mapper.Map<DeletedContactResponse>(deletedContact);
         return deletedContactResponse;

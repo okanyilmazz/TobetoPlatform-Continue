@@ -8,7 +8,7 @@ public interface IOperationClaimService
 {
     Task<CreatedOperationClaimResponse> AddAsync(CreateOperationClaimRequest createOperationClaimRequest);
     Task<UpdatedOperationClaimResponse> UpdateAsync(UpdateOperationClaimRequest updateOperationClaimRequest);
-    Task<DeletedOperationClaimResponse> DeleteAsync(DeleteOperationClaimRequest deleteOperationClaimRequest);
+    Task<DeletedOperationClaimResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListOperationClaimResponse>> GetListAsync(PageRequest pageRequest);
     Task<List<GetListOperationClaimResponse>> GetByUserIdAsync(Guid userId);
     Task<GetOperationClaimResponse> GetByRoleName(string roleName);

@@ -32,10 +32,10 @@ public class SkillManager : ISkillService
         return createdSkillResponse;
     }
 
-    public async Task<DeletedSkillResponse> DeleteAsync(DeleteSkillRequest deleteSkillRequest)
+    public async Task<DeletedSkillResponse> DeleteAsync(Guid id)
     {
-        await _skillBusinessRules.IsExistsSkill(deleteSkillRequest.Id);
-        Skill skill = await _skillDal.GetAsync(predicate: s => s.Id == deleteSkillRequest.Id);
+        await _skillBusinessRules.IsExistsSkill(id);
+        Skill skill = await _skillDal.GetAsync(predicate: s => s.Id == id);
         Skill deletedSkill = await _skillDal.DeleteAsync(skill);
         DeletedSkillResponse deletedSkillResponse = _mapper.Map<DeletedSkillResponse>(deletedSkill);
         return deletedSkillResponse;

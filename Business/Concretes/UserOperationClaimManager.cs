@@ -31,10 +31,10 @@ public class UserOperationClaimManager : IUserOperationClaimService
         return createdUserOperationClaimResponse;
     }
 
-    public async Task<DeletedUserOperationClaimResponse> DeleteAsync(DeleteUserOperationClaimRequest deleteUserOperationClaimRequest)
+    public async Task<DeletedUserOperationClaimResponse> DeleteAsync(Guid id)
     {
-        await _userOperationClaimBusinessRules.IsExistsUserOperationClaim(deleteUserOperationClaimRequest.Id);
-        UserOperationClaim userOperationClaim = await _userOperationClaimDal.GetAsync(predicate: uop => uop.Id == deleteUserOperationClaimRequest.Id);
+        await _userOperationClaimBusinessRules.IsExistsUserOperationClaim(id);
+        UserOperationClaim userOperationClaim = await _userOperationClaimDal.GetAsync(predicate: uop => uop.Id == id);
         UserOperationClaim deletedUserOperationClaim = await _userOperationClaimDal.DeleteAsync(userOperationClaim);
         DeletedUserOperationClaimResponse deletedUserOperationClaimResponse = _mapper.Map<DeletedUserOperationClaimResponse>(deletedUserOperationClaim);
         return deletedUserOperationClaimResponse;

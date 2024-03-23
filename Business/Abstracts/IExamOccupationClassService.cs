@@ -8,7 +8,7 @@ public interface IExamOccupationClassService
 {
     Task<CreatedExamOccupationClassResponse> AddAsync(CreateExamOccupationClassRequest createExamOccupationClassRequest);
     Task<UpdatedExamOccupationClassResponse> UpdateAsync(UpdateExamOccupationClassRequest updateExamOccupationClassRequest);
-    Task<DeletedExamOccupationClassResponse> DeleteAsync(DeleteExamOccupationClassRequest deleteExamOccupationClassRequest);
+    Task<DeletedExamOccupationClassResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListExamOccupationClassResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetExamOccupationClassResponse> GetByIdAsync(Guid id);
 }

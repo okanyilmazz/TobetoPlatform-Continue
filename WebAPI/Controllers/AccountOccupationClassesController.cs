@@ -1,11 +1,10 @@
 ﻿using Business.Abstracts;
+using Business.Dtos.Requests.AccountOccupationClassRequests;
 using Core.CrossCuttingConcerns.Caching;
-using Core.CrossCuttingConcerns.Logging.SeriLog.Logger;
 using Core.CrossCuttingConcerns.Logging;
+using Core.CrossCuttingConcerns.Logging.SeriLog.Logger;
 using Core.DataAccess.Paging;
 using Microsoft.AspNetCore.Mvc;
-using Business.Dtos.Requests.AccountOccupationClassRequests;
-using Microsoft.Identity.Client;
 
 namespace WebAPI.Controllers;
 
@@ -83,10 +82,10 @@ public class AccountOccupationClassesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountOccupationClasses.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountOccupationClassRequest deleteOccupationClassOfAccountRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _accountOccupationClass.DeleteAsync(deleteOccupationClassOfAccountRequest);
+        var result = await _accountOccupationClass.DeleteAsync(id);
         return Ok(result);
     }
 }

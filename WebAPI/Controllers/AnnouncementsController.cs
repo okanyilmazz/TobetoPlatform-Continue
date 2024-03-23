@@ -71,10 +71,10 @@ public class AnnouncementsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Announcements.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteAnnouncementRequest deleteAnnouncementRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _announcementService.DeleteAsync(deleteAnnouncementRequest);
+        var result = await _announcementService.DeleteAsync(id);
         return Ok(result);
     }
 }

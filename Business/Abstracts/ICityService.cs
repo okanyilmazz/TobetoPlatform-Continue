@@ -8,7 +8,7 @@ public interface ICityService
 {
     Task<CreatedCityResponse> AddAsync(CreateCityRequest createCityRequest);
     Task<UpdatedCityResponse> UpdateAsync(UpdateCityRequest updateCityRequest);
-    Task<DeletedCityResponse> DeleteAsync(DeleteCityRequest deleteCityRequest);
+    Task<DeletedCityResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListCityResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetCityResponse> GetByIdAsync(Guid id);
 }

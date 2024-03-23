@@ -55,10 +55,10 @@ public class EducationProgramProgrammingLanguagesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("EducationProgramProgrammingLanguages.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteEducationProgramProgrammingLanguageRequest deleteEducationProgramProgrammingLanguageRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _educationProgramProgrammingLanguageService.DeleteAsync(deleteEducationProgramProgrammingLanguageRequest);
+        var result = await _educationProgramProgrammingLanguageService.DeleteAsync(id);
         return Ok(result);
     }
 

@@ -8,7 +8,7 @@ public interface IExamQuestionService
 	{
     Task<CreatedExamQuestionResponse> AddAsync(CreateExamQuestionRequest createExamQuestionRequest);
     Task<UpdatedExamQuestionResponse> UpdateAsync(UpdateExamQuestionRequest updateExamQuestionRequest);
-    Task<DeletedExamQuestionResponse> DeleteAsync(DeleteExamQuestionRequest deleteExamQuestionRequest);
+    Task<DeletedExamQuestionResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListExamQuestionResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetExamQuestionResponse> GetByIdAsync(Guid id);
 }

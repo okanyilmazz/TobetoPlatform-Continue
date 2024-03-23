@@ -30,10 +30,10 @@ public class UniversityDepartmentManager : IUniversityDepartmentService
         return createdUniversityDepartmentResponse;
     }
 
-    public async Task<DeletedUniversityDepartmentResponse> DeleteAsync(DeleteUniversityDepartmentRequest deleteUniversityDepartmentRequest)
+    public async Task<DeletedUniversityDepartmentResponse> DeleteAsync(Guid id)
     {
-        await _universityDepartmentRules.IsExistsUniversityDepartment(deleteUniversityDepartmentRequest.Id);
-        UniversityDepartment universityDepartment = _mapper.Map<UniversityDepartment>(deleteUniversityDepartmentRequest);
+        await _universityDepartmentRules.IsExistsUniversityDepartment(id);
+        UniversityDepartment universityDepartment = await _universityDepartmentDal.GetAsync(predicate: u => u.Id == id);
         UniversityDepartment deletedUniversityDepartment = await _universityDepartmentDal.DeleteAsync(universityDepartment);
         DeletedUniversityDepartmentResponse deletedUniversityDepartmentResponse = _mapper.Map<DeletedUniversityDepartmentResponse>(deletedUniversityDepartment);
         return deletedUniversityDepartmentResponse;

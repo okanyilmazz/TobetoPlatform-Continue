@@ -8,7 +8,7 @@ public interface IAccountHomeworkService
 {
     Task<CreatedAccountHomeworkResponse> AddAsync(CreateAccountHomeworkRequest createAccountHomeworkRequest);
     Task<UpdatedAccountHomeworkResponse> UpdateAsync(UpdateAccountHomeworkRequest updateAccountHomeworkRequest);
-    Task<DeletedAccountHomeworkResponse> DeleteAsync(DeleteAccountHomeworkRequest deleteAccountHomeworkRequest);
+    Task<DeletedAccountHomeworkResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListAccountHomeworkResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetAccountHomeworkResponse> GetByIdAsync(Guid id);
 }

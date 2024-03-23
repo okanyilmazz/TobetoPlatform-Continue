@@ -32,10 +32,10 @@ public class HomeworkManager : IHomeworkService
 
     }
 
-    public async Task<DeletedHomeworkResponse> DeleteAsync(DeleteHomeworkRequest deleteHomeworkRequest)
+    public async Task<DeletedHomeworkResponse> DeleteAsync(Guid id)
     {
-        await _homeworkBusinessRules.IsExistsHomework(deleteHomeworkRequest.Id);
-        Homework homework = await _homeworkDal.GetAsync(predicate: l => l.Id == deleteHomeworkRequest.Id);
+        await _homeworkBusinessRules.IsExistsHomework(id);
+        Homework homework = await _homeworkDal.GetAsync(predicate: l => l.Id == id);
         Homework deletedHomework = await _homeworkDal.DeleteAsync(homework);
         DeletedHomeworkResponse deletedHomeworkResponse = _mapper.Map<DeletedHomeworkResponse>(deletedHomework);
         return deletedHomeworkResponse;

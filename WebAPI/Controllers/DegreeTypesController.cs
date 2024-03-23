@@ -60,10 +60,10 @@ public class DegreeTypesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("DegreeTypes.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteDegreeTypeRequest deleteDegreeTypeRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _degreeTypeService.DeleteAsync(deleteDegreeTypeRequest);
+        var result = await _degreeTypeService.DeleteAsync(id);
         return Ok(result);
     }
 

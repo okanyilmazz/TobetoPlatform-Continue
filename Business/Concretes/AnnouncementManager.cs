@@ -32,10 +32,10 @@ public class AnnouncementManager : IAnnouncementService
 
     }
 
-    public async Task<DeletedAnnouncementResponse> DeleteAsync(DeleteAnnouncementRequest deleteAnnouncementRequest)
+    public async Task<DeletedAnnouncementResponse> DeleteAsync(Guid id)
     {
-        await _announcementBusinessRules.IsExistsAnnouncement(deleteAnnouncementRequest.Id);
-        Announcement announcement = await _announcementDal.GetAsync(predicate: a => a.Id == deleteAnnouncementRequest.Id);
+        await _announcementBusinessRules.IsExistsAnnouncement(id);
+        Announcement announcement = await _announcementDal.GetAsync(predicate: a => a.Id == id);
         Announcement deletedAnnouncemenProject = await _announcementDal.DeleteAsync(announcement);
         DeletedAnnouncementResponse deletedAnnouncementResponse = _mapper.Map<DeletedAnnouncementResponse>(deletedAnnouncemenProject);
         return deletedAnnouncementResponse;

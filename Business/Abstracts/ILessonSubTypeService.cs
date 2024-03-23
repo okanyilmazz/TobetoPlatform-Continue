@@ -8,7 +8,7 @@ public interface ILessonSubTypeService
 {
     Task<CreatedLessonSubTypeResponse> AddAsync(CreateLessonSubTypeRequest createLessonSubTypeRequest);
     Task<UpdatedLessonSubTypeResponse> UpdateAsync(UpdateLessonSubTypeRequest updateLessonSubTypeRequest);
-    Task<DeletedLessonSubTypeResponse> DeleteAsync(DeleteLessonSubTypeRequest deleteLessonSubTypeRequest);
+    Task<DeletedLessonSubTypeResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListLessonSubTypeResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetLessonSubTypeResponse> GetByIdAsync(Guid id);
 }

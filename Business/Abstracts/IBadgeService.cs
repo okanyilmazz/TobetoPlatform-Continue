@@ -8,7 +8,7 @@ public interface IBadgeService
 {
     Task<CreatedBadgeResponse> AddAsync(CreateBadgeRequest createBadgeRequest);
     Task<UpdatedBadgeResponse> UpdateAsync(UpdateBadgeRequest updateBadgeRequest);
-    Task<DeletedBadgeResponse> DeleteAsync(DeleteBadgeRequest deleteBadgeRequest);
+    Task<DeletedBadgeResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListBadgeResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetBadgeResponse> GetByIdAsync(Guid Id);
     Task<IPaginate<GetListBadgeResponse>> GetByAccountIdAsync(Guid id);

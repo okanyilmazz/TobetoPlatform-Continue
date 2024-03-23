@@ -31,10 +31,10 @@ public class LanguageManager : ILanguageService
         return responseLanguage;
     }
 
-    public async Task<DeletedLanguageResponse> DeleteAsync(DeleteLanguageRequest deleteLanguageRequest)
+    public async Task<DeletedLanguageResponse> DeleteAsync(Guid id)
     {
-        await _languageBusinessRules.IsExistsLanguage(deleteLanguageRequest.Id);
-        Language language = await _languageDal.GetAsync(predicate: l => l.Id == deleteLanguageRequest.Id);
+        await _languageBusinessRules.IsExistsLanguage(id);
+        Language language = await _languageDal.GetAsync(predicate: l => l.Id == id);
         var deletedLanguage = await _languageDal.DeleteAsync(language);
         var responseLanguage = _mapper.Map<DeletedLanguageResponse>(deletedLanguage);
         return responseLanguage;

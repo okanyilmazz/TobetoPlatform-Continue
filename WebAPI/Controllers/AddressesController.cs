@@ -70,10 +70,10 @@ public class AddressesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Addresses.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteAddressRequest deleteAddressRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _addressService.DeleteAsync(deleteAddressRequest);
+        var result = await _addressService.DeleteAsync(id);
         return Ok(result);
     }
 

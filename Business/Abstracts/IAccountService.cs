@@ -8,7 +8,7 @@ public interface IAccountService
 {
     Task<CreatedAccountResponse> AddAsync(CreateAccountRequest createAccountRequest);
     Task<UpdatedAccountResponse> UpdateAsync(UpdateAccountRequest updateAccountRequest);
-    Task<DeletedAccountResponse> DeleteAsync(DeleteAccountRequest deleteAccountRequest);
+    Task<DeletedAccountResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListAccountResponse>> GetListAsync(PageRequest pageRequest);
     Task<IPaginate<GetListAccountResponse>> GetStudentBySessionIdAsync(Guid sessionId);
     Task<IPaginate<GetListAccountResponse>> GetInstructorBySessionIdAsync(Guid sessionId);

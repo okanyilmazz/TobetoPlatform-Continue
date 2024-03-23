@@ -30,10 +30,10 @@ public class ProgrammingLanguageManager : IProgrammingLanguageService
         return createdProgrammingLanguageResponse;
     }
 
-    public async Task<DeletedProgrammingLanguageResponse> DeleteAsync(DeleteProgrammingLanguageRequest deleteProgrammingLanguageRequest)
+    public async Task<DeletedProgrammingLanguageResponse> DeleteAsync(Guid id)
     {
-        await _programmingLanguageBusinessRules.IsExistsProgrammingLanguage(deleteProgrammingLanguageRequest.Id);
-        ProgrammingLanguage programmingLanguage = await _programmingLanguageDal.GetAsync(predicate: a => a.Id == deleteProgrammingLanguageRequest.Id);
+        await _programmingLanguageBusinessRules.IsExistsProgrammingLanguage(id);
+        ProgrammingLanguage programmingLanguage = await _programmingLanguageDal.GetAsync(predicate: a => a.Id == id);
         ProgrammingLanguage deletedProgrammingLanguage = await _programmingLanguageDal.DeleteAsync(programmingLanguage);
         DeletedProgrammingLanguageResponse createdProgrammingLanguageResponse = _mapper.Map<DeletedProgrammingLanguageResponse>(deletedProgrammingLanguage);
         return createdProgrammingLanguageResponse;

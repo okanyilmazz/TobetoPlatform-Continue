@@ -1,4 +1,4 @@
-﻿namespace Business.Dtos.Requests.AccountViewLessonRequest;
+﻿namespace Business.Dtos.Requests.AccountFavoriteEducationProgramRequests;
 
 public class CreateAccountFavoriteEducationProgramRequest
 {

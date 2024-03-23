@@ -70,10 +70,10 @@ public class SubjectsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Subjects.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync(DeleteSubjectRequest deleteLessonSubjectRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _subjectService.DeleteAsync(deleteLessonSubjectRequest);
+        var result = await _subjectService.DeleteAsync(id);
         return Ok(result);
     }
 }

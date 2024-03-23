@@ -78,10 +78,10 @@ public class AccountActivityMapsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountActivityMaps.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountActivityMapRequest deleteAccountActivityMapRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _accountActivityMapService.DeleteAsync(deleteAccountActivityMapRequest);
+        var result = await _accountActivityMapService.DeleteAsync(id);
         return Ok(result);
     }
 }

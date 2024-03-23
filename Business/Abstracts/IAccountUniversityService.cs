@@ -9,7 +9,7 @@ public interface IAccountUniversityService
 {
     Task<CreatedAccountUniversityResponse> AddAsync(CreateAccountUniversityRequest createAccountUniversityRequest);
     Task<UpdatedAccountUniversityResponse> UpdateAsync(UpdateAccountUniversityRequest updateAccountUniversityRequest);
-    Task<DeletedAccountUniversityResponse> DeleteAsync(DeleteAccountUniversityRequest deleteAccountUniversityRequest);
+    Task<DeletedAccountUniversityResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListAccountUniversityResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetAccountUniversityResponse> GetByIdAsync(Guid Id);
     Task<IPaginate<GetListAccountUniversityResponse>> GetByAccountIdAsync(Guid accountId, PageRequest pageRequest);

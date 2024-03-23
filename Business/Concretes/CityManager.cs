@@ -32,10 +32,10 @@ public class CityManager : ICityService
         return createdCityResponse;
     }
 
-    public async Task<DeletedCityResponse> DeleteAsync(DeleteCityRequest deleteCityRequest)
+    public async Task<DeletedCityResponse> DeleteAsync(Guid id)
     {
-        await _cityBusinessRules.IsExistsCity(deleteCityRequest.Id);
-        City City = await _cityDal.GetAsync(predicate: c => c.Id == deleteCityRequest.Id);
+        await _cityBusinessRules.IsExistsCity(id);
+        City City = await _cityDal.GetAsync(predicate: c => c.Id == id);
         City deletedCity = await _cityDal.DeleteAsync(City);
         DeletedCityResponse deletedCityResponse = _mapper.Map<DeletedCityResponse>(deletedCity);
         return deletedCityResponse;

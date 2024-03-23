@@ -31,10 +31,10 @@ public class EducationProgramProgrammingLanguageManager : IEducationProgramProgr
         return createdEducationProgramProgrammingLanguageResponse;
     }
 
-    public async Task<DeletedEducationProgramProgrammingLanguageResponse> DeleteAsync(DeleteEducationProgramProgrammingLanguageRequest deleteEducationProgramProgrammingLanguageRequest)
+    public async Task<DeletedEducationProgramProgrammingLanguageResponse> DeleteAsync(Guid id)
     {
-        await _educationProgramProgrammingLanguageBusinessRules.IsExistsEducationProgramProgrammingLanguage(deleteEducationProgramProgrammingLanguageRequest.Id);
-        EducationProgramProgrammingLanguage educationProgramProgrammingLanguage = await _educationProgramProgrammingLanguageDal.GetAsync(predicate: l => l.Id == deleteEducationProgramProgrammingLanguageRequest.Id);
+        await _educationProgramProgrammingLanguageBusinessRules.IsExistsEducationProgramProgrammingLanguage(id);
+        EducationProgramProgrammingLanguage educationProgramProgrammingLanguage = await _educationProgramProgrammingLanguageDal.GetAsync(predicate: l => l.Id == id);
         EducationProgramProgrammingLanguage deletedEducationProgramProgrammingLanguage = await _educationProgramProgrammingLanguageDal.DeleteAsync(educationProgramProgrammingLanguage);
         DeletedEducationProgramProgrammingLanguageResponse deletedEducationProgramProgrammingLanguageResponse = _mapper.Map<DeletedEducationProgramProgrammingLanguageResponse>(deletedEducationProgramProgrammingLanguage);
         return deletedEducationProgramProgrammingLanguageResponse;

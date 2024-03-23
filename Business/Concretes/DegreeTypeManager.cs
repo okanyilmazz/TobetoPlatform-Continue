@@ -31,10 +31,10 @@ public class DegreeTypeManager : IDegreeTypeService
         return createddegreeTypeResponse;
     }
 
-    public async Task<DeletedDegreeTypeResponse> DeleteAsync(DeleteDegreeTypeRequest deleteDegreeTypeRequest)
+    public async Task<DeletedDegreeTypeResponse> DeleteAsync(Guid id)
     {
-        await _degreeTypeBusinessRules.IsExistsDegreeType(deleteDegreeTypeRequest.Id);
-        DegreeType degreeType = await _degreeTypeDal.GetAsync(predicate: d => d.Id == deleteDegreeTypeRequest.Id);
+        await _degreeTypeBusinessRules.IsExistsDegreeType(id);
+        DegreeType degreeType = await _degreeTypeDal.GetAsync(predicate: d => d.Id == id);
         DegreeType deleteddegreeType = await _degreeTypeDal.DeleteAsync(degreeType);
         DeletedDegreeTypeResponse deleteddegreeTypeResponse =
         _mapper.Map<DeletedDegreeTypeResponse>(deleteddegreeType);
