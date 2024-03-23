@@ -39,10 +39,10 @@ public class LanguageLevelManager : ILanguageLevelService
         return responseLanguageLevel;
     }
 
-    public async Task<DeletedLanguageLevelResponse> DeleteAsync(DeleteLanguageLevelRequest deleteLanguageLevelRequest)
+    public async Task<DeletedLanguageLevelResponse> DeleteAsync(Guid id)
     {
-        await _languageLevelBusinessRules.IsExistsLanguageLevel(deleteLanguageLevelRequest.Id);
-        LanguageLevel languageLevel = await _languageLevelDal.GetAsync(predicate: l => l.Id == deleteLanguageLevelRequest.Id);
+        await _languageLevelBusinessRules.IsExistsLanguageLevel(id);
+        LanguageLevel languageLevel = await _languageLevelDal.GetAsync(predicate: l => l.Id == id);
         LanguageLevel deletedLanguageLevel = await _languageLevelDal.DeleteAsync(languageLevel);
         DeletedLanguageLevelResponse deletedLanguageLevelResponse = _mapper.Map<DeletedLanguageLevelResponse>(deletedLanguageLevel);
         return deletedLanguageLevelResponse;

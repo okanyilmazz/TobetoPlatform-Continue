@@ -70,10 +70,10 @@ public class SurveysController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Surveys.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteSurveyRequest deleteSurveyRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _surveyService.DeleteAsync(deleteSurveyRequest);
+        var result = await _surveyService.DeleteAsync(id);
         return Ok(result);
     }
 }

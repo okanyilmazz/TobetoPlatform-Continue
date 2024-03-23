@@ -31,10 +31,10 @@ public class OccupationClassManager : IOccupationClassService
         return createdOccupationClassResponse;
     }
 
-    public async Task<DeletedOccupationClassResponse> DeleteAsync(DeleteOccupationClassRequest deleteOccupationClassRequest)
+    public async Task<DeletedOccupationClassResponse> DeleteAsync(Guid id)
     {
-        await _occupationClassBusinessRules.IsExistsOccupationClass(deleteOccupationClassRequest.Id);
-        OccupationClass occupationClass = await _occupationClassDal.GetAsync(predicate: o => o.Id == deleteOccupationClassRequest.Id);
+        await _occupationClassBusinessRules.IsExistsOccupationClass(id);
+        OccupationClass occupationClass = await _occupationClassDal.GetAsync(predicate: o => o.Id == id);
         OccupationClass deletedOccupationClass = await _occupationClassDal.DeleteAsync(occupationClass);
         DeletedOccupationClassResponse deletedOccupationClassResponse = _mapper.Map<DeletedOccupationClassResponse>(deletedOccupationClass);
         return deletedOccupationClassResponse;

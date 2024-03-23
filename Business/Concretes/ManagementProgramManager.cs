@@ -30,10 +30,10 @@ public class ManagementProgramManager : IManagementProgramService
         return mappedManagementProgram;
     }
 
-    public async Task<DeletedManagementProgramResponse> DeleteAsync(DeleteManagementProgramRequest deleteManagementProgramRequest)
+    public async Task<DeletedManagementProgramResponse> DeleteAsync(Guid id)
     {
-        await _managementProgramBusinessRules.IsExistsManagementProgram(deleteManagementProgramRequest.Id);
-        ManagementProgram managementProgram = _mapper.Map<ManagementProgram>(deleteManagementProgramRequest);
+        await _managementProgramBusinessRules.IsExistsManagementProgram(id);
+        ManagementProgram managementProgram = await _managementProgramDal.GetAsync(predicate: m => m.Id == id);
         ManagementProgram deletedManagementProgram = await _managementProgramDal.DeleteAsync(managementProgram);
         var mappedManagementProgram = _mapper.Map<DeletedManagementProgramResponse>(deletedManagementProgram);
         return mappedManagementProgram;

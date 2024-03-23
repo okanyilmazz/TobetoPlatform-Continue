@@ -70,10 +70,10 @@ public class ProjectsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Projects.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteProjectRequest deleteProjectRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _projectService.DeleteAsync(deleteProjectRequest);
+        var result = await _projectService.DeleteAsync(id);
         return Ok(result);
     }
 }

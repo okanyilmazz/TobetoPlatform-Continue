@@ -8,7 +8,7 @@ public interface IAccountCompetenceTestService
 {
     Task<CreatedAccountCompetenceTestResponse> AddAsync(CreateAccountCompetenceTestRequest createAccountCompetenceTestRequest);
     Task<UpdatedAccountCompetenceTestResponse> UpdateAsync(UpdateAccountCompetenceTestRequest updateAccountCompetenceTestRequest);
-    Task<DeletedAccountCompetenceTestResponse> DeleteAsync(DeleteAccountCompetenceTestRequest deleteAccountCompetenceTestRequest);
+    Task<DeletedAccountCompetenceTestResponse> DeleteAsync(Guid id);
     Task<GetAccountCompetenceTestResponse> GetByIdAsync(Guid Id);
     Task<IPaginate<GetListAccountCompetenceTestResponse>> GetListAsync(PageRequest pageRequest);
 }

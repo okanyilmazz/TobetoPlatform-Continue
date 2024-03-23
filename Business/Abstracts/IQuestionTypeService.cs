@@ -9,7 +9,7 @@ public interface IQuestionTypeService
     Task<IPaginate<GetListQuestionTypeResponse>> GetListAsync(PageRequest pageRequest);
     Task<CreatedQuestionTypeResponse> AddAsync(CreateQuestionTypeRequest createQuestionTypeRequest);
     Task<UpdatedQuestionTypeResponse> UpdateAsync(UpdateQuestionTypeRequest updateQuestionTypeRequest);
-    Task<DeletedQuestionTypeResponse> DeleteAsync(DeleteQuestionTypeRequest deleteQuestionTypeRequest);
+    Task<DeletedQuestionTypeResponse> DeleteAsync(Guid id);
     Task<GetQuestionTypeResponse> GetByIdAsync(Guid id);
     Task<GetQuestionTypeResponse> GetByQuestionIdAsync(Guid questionId);
     Task<GetListQuestionTypeNameResponse> GetByExamIdAsync(Guid examId, PageRequest pageRequest);

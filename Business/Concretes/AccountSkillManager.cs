@@ -38,10 +38,10 @@ public class AccountSkillManager : IAccountSkillService
         return createdAccountSkillResponses;
     }
 
-    public async Task<DeletedAccountSkillResponse> DeleteAsync(DeleteAccountSkillRequest deleteAccountSkillRequest)
+    public async Task<DeletedAccountSkillResponse> DeleteAsync(Guid id)
     {
-        await _accountSkillBusinessRules.IsExistsAccountSkill(deleteAccountSkillRequest.Id);
-        AccountSkill accountSkill = await _accountSkillDal.GetAsync(predicate: a => a.Id == deleteAccountSkillRequest.Id);
+        await _accountSkillBusinessRules.IsExistsAccountSkill(id);
+        AccountSkill accountSkill = await _accountSkillDal.GetAsync(predicate: a => a.Id == id);
         AccountSkill deletedAccountSkill = await _accountSkillDal.DeleteAsync(accountSkill);
         DeletedAccountSkillResponse deletedAccountSkillResponse = _mapper.Map<DeletedAccountSkillResponse>(deletedAccountSkill);
         return deletedAccountSkillResponse;

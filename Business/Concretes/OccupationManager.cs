@@ -30,10 +30,10 @@ public class OccupationManager : IOccupationService
         return createdOccupationResponse;
     }
 
-    public async Task<DeletedOccupationResponse> DeleteAsync(DeleteOccupationRequest deleteOccupationRequest)
+    public async Task<DeletedOccupationResponse> DeleteAsync(Guid id)
     {
-        await _occupationBusinessRules.IsExistsOccupation(deleteOccupationRequest.Id);
-        Occupation occupation = await _occupationDal.GetAsync(predicate: c => c.Id == deleteOccupationRequest.Id);
+        await _occupationBusinessRules.IsExistsOccupation(id);
+        Occupation occupation = await _occupationDal.GetAsync(predicate: c => c.Id == id);
         Occupation deletedOccupation = await _occupationDal.DeleteAsync(occupation);
         DeletedOccupationResponse deletedOccupationResponse = _mapper.Map<DeletedOccupationResponse>(deletedOccupation);
         return deletedOccupationResponse;

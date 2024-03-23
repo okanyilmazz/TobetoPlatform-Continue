@@ -31,10 +31,10 @@ public class CompetenceTestQuestionManager : ICompetenceTestQuestionService
         return createdCompetenceTestQuestionResponse;
     }
 
-    public async Task<DeletedCompetenceTestQuestionResponse> DeleteAsync(DeleteCompetenceTestQuestionRequest deleteCompetenceTestQuestionRequest)
+    public async Task<DeletedCompetenceTestQuestionResponse> DeleteAsync(Guid id)
     {
-        await _competenceTestQuestionBusinessRules.IsExistsCompetenceTestQuestion(deleteCompetenceTestQuestionRequest.Id);
-        CompetenceTestQuestion competenceTestQuestion = await _competenceTestQuestionDal.GetAsync(predicate: a => a.Id == deleteCompetenceTestQuestionRequest.Id);
+        await _competenceTestQuestionBusinessRules.IsExistsCompetenceTestQuestion(id);
+        CompetenceTestQuestion competenceTestQuestion = await _competenceTestQuestionDal.GetAsync(predicate: a => a.Id == id);
         CompetenceTestQuestion deletedCompetenceTestQuestion = await _competenceTestQuestionDal.DeleteAsync(competenceTestQuestion);
         DeletedCompetenceTestQuestionResponse createdCompetenceTestQuestionResponse = _mapper.Map<DeletedCompetenceTestQuestionResponse>(deletedCompetenceTestQuestion);
         return createdCompetenceTestQuestionResponse;

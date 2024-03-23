@@ -5,6 +5,7 @@ using Business.Dtos.Responses.LessonSubTypeResponses;
 using Business.Rules.BusinessRules;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
+using DataAccess.Concretes;
 using Entities.Concretes;
 
 namespace Business.Concretes;
@@ -31,10 +32,10 @@ public class LessonSubTypeManager : ILessonSubTypeService
         return mappedLessonSubType;
     }
 
-    public async Task<DeletedLessonSubTypeResponse> DeleteAsync(DeleteLessonSubTypeRequest deleteLessonSubTypeRequest)
+    public async Task<DeletedLessonSubTypeResponse> DeleteAsync(Guid id)
     {
-        await _lessonSubTypeBusinessRules.IsExistsLessonSubType(deleteLessonSubTypeRequest.Id);
-        LessonSubType lessonSubType = _mapper.Map<LessonSubType>(deleteLessonSubTypeRequest);
+        await _lessonSubTypeBusinessRules.IsExistsLessonSubType(id);
+        LessonSubType lessonSubType = await _lessonSubTypeDal.GetAsync(predicate: l => l.Id == id);
         LessonSubType deletedLessonSubType = await _lessonSubTypeDal.DeleteAsync(lessonSubType);
         var mappedLessonSubType = _mapper.Map<DeletedLessonSubTypeResponse>(deletedLessonSubType);
         return mappedLessonSubType;

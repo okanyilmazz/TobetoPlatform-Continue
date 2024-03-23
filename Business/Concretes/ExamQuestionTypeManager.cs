@@ -31,10 +31,10 @@ public class ExamQuestionTypeManager : IExamQuestionTypeService
         return createdExamQuestionTypeResponse;
     }
 
-    public async Task<DeletedExamQuestionTypeResponse> DeleteAsync(DeleteExamQuestionTypeRequest deleteExamQuestionTypeRequest)
+    public async Task<DeletedExamQuestionTypeResponse> DeleteAsync(Guid id)
     {
-        await _examQuestionTypeBusinessRules.IsExistsExamQuestionType(deleteExamQuestionTypeRequest.Id);
-        ExamQuestionType examQuestionType= await _examQuestionTypeDal.GetAsync(predicate: eq => eq.Id == deleteExamQuestionTypeRequest.Id);
+        await _examQuestionTypeBusinessRules.IsExistsExamQuestionType(id);
+        ExamQuestionType examQuestionType= await _examQuestionTypeDal.GetAsync(predicate: eq => eq.Id == id);
         ExamQuestionType deletedExamQuestionType = await _examQuestionTypeDal.DeleteAsync(examQuestionType);
         DeletedExamQuestionTypeResponse deletedExamQuestionTypeResponse = _mapper.Map<DeletedExamQuestionTypeResponse>(examQuestionType);
         return deletedExamQuestionTypeResponse;

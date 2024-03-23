@@ -31,10 +31,10 @@ public class LessonManager : ILessonService
         return createdLessonResponse;
     }
 
-    public async Task<DeletedLessonResponse> DeleteAsync(DeleteLessonRequest deleteLessonRequest)
+    public async Task<DeletedLessonResponse> DeleteAsync(Guid id)
     {
-        await _lessonBusinessRules.IsExistsLesson(deleteLessonRequest.Id);
-        Lesson lesson = await _lessonDal.GetAsync(predicate: l => l.Id == deleteLessonRequest.Id);
+        await _lessonBusinessRules.IsExistsLesson(id);
+        Lesson lesson = await _lessonDal.GetAsync(predicate: l => l.Id == id);
         Lesson deletedLesson = await _lessonDal.DeleteAsync(lesson);
         DeletedLessonResponse deletedLessonResponse = _mapper.Map<DeletedLessonResponse>(deletedLesson);
         return deletedLessonResponse;

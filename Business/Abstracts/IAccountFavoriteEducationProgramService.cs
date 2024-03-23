@@ -1,5 +1,4 @@
-using Business.Dtos.Requests.AccountViewLessonRequest;
-using Business.Dtos.Requests.EducationProgramLikeRequests;
+using Business.Dtos.Requests.AccountFavoriteEducationProgramRequests;
 using Business.Dtos.Responses.AccountFavoriteEducationProgramResponses;
 using Core.DataAccess.Paging;
 
@@ -9,7 +8,7 @@ public interface IAccountFavoriteEducationProgramService
 {
     Task<CreatedAccountFavoriteEducationProgramResponse> AddAsync(CreateAccountFavoriteEducationProgramRequest createAccountFavoriteEducationProgramRequest);
     Task<UpdatedAccountFavoriteEducationProgramResponse> UpdateAsync(UpdateAccountFavoriteEducationProgramRequest updateAccountFavoriteEducationProgramRequest);
-    Task<DeletedAccountFavoriteEducationProgramResponse> DeleteAsync(DeleteAccountFavoriteEducationProgramRequest deleteAccountFavoriteEducationProgramRequest);
+    Task<DeletedAccountFavoriteEducationProgramResponse> DeleteAsync(Guid id);
     Task<DeletedAccountFavoriteEducationProgramResponse> DeleteByAccountIdAndEducationProgramIdAsync(DeleteAccountFavoriteEducationProgramRequest deleteAccountFavoriteEducationProgramRequest);
     Task<IPaginate<GetListAccountFavoriteEducationProgramResponse>> GetListAsync(PageRequest pageRequest);
     Task<IPaginate<GetListAccountFavoriteEducationProgramResponse>> GetByAccountIdAsync(Guid accountId);

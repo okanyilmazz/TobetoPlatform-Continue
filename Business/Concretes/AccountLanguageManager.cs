@@ -29,10 +29,10 @@ public class AccountLanguageManager : IAccountLanguageService
         return responseAccountLanguage;
     }
 
-    public async Task<DeletedAccountLanguageResponse> DeleteAsync(DeleteAccountLanguageRequest deleteAccountLanguageRequest)
+    public async Task<DeletedAccountLanguageResponse> DeleteAsync(Guid id)
     {
-        await _accountLanguageBusinessRules.IsExistsAccountLanguage(deleteAccountLanguageRequest.Id);
-        AccountLanguage accountLanguage = await _accountLanguageDal.GetAsync(predicate: a => a.Id == deleteAccountLanguageRequest.Id);
+        await _accountLanguageBusinessRules.IsExistsAccountLanguage(id);
+        AccountLanguage accountLanguage = await _accountLanguageDal.GetAsync(predicate: a => a.Id == id);
         var deletedAccountLanguage = await _accountLanguageDal.DeleteAsync(accountLanguage);
         var responseAccountLanguage = _mapper.Map<DeletedAccountLanguageResponse>(deletedAccountLanguage);
         return responseAccountLanguage;

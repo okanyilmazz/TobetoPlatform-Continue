@@ -8,7 +8,7 @@ public interface ILessonCategoryService
 {
     Task<CreatedLessonCategoryResponse> AddAsync(CreateLessonCategoryRequest createLessonCategoryRequest);
     Task<UpdatedLessonCategoryResponse> UpdateAsync(UpdateLessonCategoryRequest updateLessonCategoryRequest);
-    Task<DeletedLessonCategoryResponse> DeleteAsync(DeleteLessonCategoryRequest deleteLessonCategoryRequest);
+    Task<DeletedLessonCategoryResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListLessonCategoryResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetLessonCategoryResponse> GetByIdAsync(Guid id);
 }

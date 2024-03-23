@@ -67,10 +67,10 @@ public class DistrictsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Districts.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteDistrictRequest deleteDistrictRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _districtService.DeleteAsync(deleteDistrictRequest);
+        var result = await _districtService.DeleteAsync(id);
         return Ok(result);
     }
 

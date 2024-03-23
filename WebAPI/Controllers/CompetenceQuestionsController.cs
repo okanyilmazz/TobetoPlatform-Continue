@@ -56,10 +56,10 @@ namespace WebAPI.Controllers
         [Logging(typeof(MsSqlLogger))]
         [Logging(typeof(FileLogger))]
         [CacheRemove("CompetenceQuestions.Get")]
-        [HttpDelete]
-        public async Task<IActionResult> DeleteAsync([FromBody] DeleteCompetenceQuestionRequest deleteCompetenceQuestionRequest)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
         {
-            var result = await _competenceQuestionService.DeleteAsync(deleteCompetenceQuestionRequest);
+            var result = await _competenceQuestionService.DeleteAsync(id);
             return Ok(result);
         }
 

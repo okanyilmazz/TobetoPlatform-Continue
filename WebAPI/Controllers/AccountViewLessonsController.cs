@@ -1,5 +1,5 @@
 ﻿using Business.Abstracts;
-using Business.Dtos.Requests.AccountViewLessonRequest;
+using Business.Dtos.Requests.AccountViewLessonRequests;
 using Core.CrossCuttingConcerns.Caching;
 using Core.CrossCuttingConcerns.Logging;
 using Core.CrossCuttingConcerns.Logging.SeriLog.Logger;
@@ -92,10 +92,10 @@ public class AccountViewLessonsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountViewLessons.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountViewLessonRequest deleteAccountViewLessonRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _accountViewLessonsService.DeleteAsync(deleteAccountViewLessonRequest);
+        var result = await _accountViewLessonsService.DeleteAsync(id);
         return Ok(result);
     }
 }

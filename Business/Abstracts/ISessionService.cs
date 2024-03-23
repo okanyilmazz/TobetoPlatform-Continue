@@ -12,7 +12,7 @@ public interface ISessionService
     Task<GetSessionResponse> GetByIdAsync(Guid id);
     Task<CreatedSessionResponse> AddAsync(CreateSessionRequest createSessionRequest);
     Task<UpdatedSessionResponse> UpdateAsync(UpdateSessionRequest updateSessionRequest);
-    Task<DeletedSessionResponse> DeleteAsync(DeleteSessionRequest deleteSessionRequest);
+    Task<DeletedSessionResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListSessionResponse>> GetByLessonIdAsync(Guid lessonId);
     Task<IPaginate<GetListSessionResponse>> GetByAccountAndLessonIdAsync(Guid accountId, Guid lessonId);    
 }

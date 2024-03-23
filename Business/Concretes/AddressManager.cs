@@ -31,10 +31,10 @@ public class AddressManager : IAddressService
         return createdAddressResponse;
     }
 
-    public async Task<DeletedAddressResponse> DeleteAsync(DeleteAddressRequest deleteAddressRequest)
+    public async Task<DeletedAddressResponse> DeleteAsync(Guid id)
     {
-        await _addressBusinessRules.IsExistsAdress(deleteAddressRequest.Id);
-        Address address = await _addressDal.GetAsync(predicate: l => l.Id == deleteAddressRequest.Id);
+        await _addressBusinessRules.IsExistsAdress(id);
+        Address address = await _addressDal.GetAsync(predicate: l => l.Id == id);
         Address deletedAddress = await _addressDal.DeleteAsync(address);
         DeletedAddressResponse deletedAddressResponse = _mapper.Map<DeletedAddressResponse>(deletedAddress);
         return deletedAddressResponse;

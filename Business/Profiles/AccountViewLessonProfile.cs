@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Business.Dtos.Requests.AccountViewLessonRequest;
+using Business.Dtos.Requests.AccountViewLessonRequests;
 using Business.Dtos.Responses.AccountViewLessonResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;

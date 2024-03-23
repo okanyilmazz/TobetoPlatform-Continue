@@ -33,10 +33,10 @@ public class ActivityMapManager : IActivityMapService
         return createdActivityMapResponse;
     }
 
-    public async Task<DeletedActivityMapResponse> DeleteAsync(DeleteActivityMapRequest deleteActivityMapRequest)
+    public async Task<DeletedActivityMapResponse> DeleteAsync(Guid id)
     {
-        await _activityMapBusinessRules.IsExistsActivityMap(deleteActivityMapRequest.Id.Value);
-        ActivityMap activityMap = await _activityMapDal.GetAsync(predicate: l => l.Id == deleteActivityMapRequest.Id);
+        await _activityMapBusinessRules.IsExistsActivityMap(id);
+        ActivityMap activityMap = await _activityMapDal.GetAsync(predicate: l => l.Id == id);
         ActivityMap deletedActivityMap = await _activityMapDal.DeleteAsync(activityMap);
         DeletedActivityMapResponse deletedActivityMapResponse = _mapper.Map<DeletedActivityMapResponse>(deletedActivityMap);
         return deletedActivityMapResponse;

@@ -8,7 +8,7 @@ public interface ICompetenceResultService
 {
     Task<CreatedCompetenceResultResponse> AddAsync(CreateCompetenceResultRequest createCompetenceResultRequest);
     Task<UpdatedCompetenceResultResponse> UpdateAsync(UpdateCompetenceResultRequest updateCompetenceResultRequest);
-    Task<DeletedCompetenceResultResponse> DeleteAsync(DeleteCompetenceResultRequest deleteCompetenceResultRequest);
+    Task<DeletedCompetenceResultResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListCompetenceResultResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetCompetenceResultResponse> GetByIdAsync(Guid id);
     Task<IPaginate<GetListCompetenceResultResponse>> GetByAccountIdAsync(Guid accountId, PageRequest pageRequest);

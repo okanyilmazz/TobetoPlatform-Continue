@@ -31,10 +31,10 @@ public class SocialMediaManager : ISocialMediaService
         return createdSocialMediaResponse;
     }
 
-    public async Task<DeletedSocialMediaResponse> DeleteAsync(DeleteSocialMediaRequest deleteSocialMediaRequest)
+    public async Task<DeletedSocialMediaResponse> DeleteAsync(Guid id)
     {
-        await _socialMediaBusinessRules.IsExistsSocialMedia(deleteSocialMediaRequest.Id);
-        SocialMedia socialMedia = await _socialMediaDal.GetAsync(predicate: s => s.Id == deleteSocialMediaRequest.Id);
+        await _socialMediaBusinessRules.IsExistsSocialMedia(id);
+        SocialMedia socialMedia = await _socialMediaDal.GetAsync(predicate: s => s.Id == id);
         SocialMedia deletedSocialMedia = await _socialMediaDal.DeleteAsync(socialMedia);
         DeletedSocialMediaResponse deletedSocialMediaResponse = _mapper.Map<DeletedSocialMediaResponse>(deletedSocialMedia);
         return deletedSocialMediaResponse;

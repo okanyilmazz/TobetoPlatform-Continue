@@ -70,10 +70,10 @@ public class MediaNewsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("MediaNews.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteMediaNewRequest deleteMediaNewRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _mediaNewService.DeleteAsync(deleteMediaNewRequest);
+        var result = await _mediaNewService.DeleteAsync(id);
         return Ok(result);
     }
 }

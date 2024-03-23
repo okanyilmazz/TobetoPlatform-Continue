@@ -33,10 +33,10 @@ public class SessionManager : ISessionService
         return createdSessionResponse;
     }
 
-    public async Task<DeletedSessionResponse> DeleteAsync(DeleteSessionRequest deleteSessionRequest)
+    public async Task<DeletedSessionResponse> DeleteAsync(Guid id)
     {
-        await _sessionBusinessRules.IsExistsSession(deleteSessionRequest.Id);
-        Session session = await _sessionDal.GetAsync(predicate: s => s.Id == deleteSessionRequest.Id);
+        await _sessionBusinessRules.IsExistsSession(id);
+        Session session = await _sessionDal.GetAsync(predicate: s => s.Id == id);
         Session deletedSession = await _sessionDal.DeleteAsync(session);
         DeletedSessionResponse deletedSessionResponse = _mapper.Map<DeletedSessionResponse>(deletedSession);
         return deletedSessionResponse;

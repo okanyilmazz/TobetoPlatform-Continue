@@ -30,10 +30,10 @@ public class EducationProgramDevelopmentManager : IEducationProgramDevelopmentSe
         return createdEducationProgramDevelopmentResponse;
     }
 
-    public async Task<DeletedEducationProgramDevelopmentResponse> DeleteAsync(DeleteEducationProgramDevelopmentRequest deleteEducationProgramDevelopmentRequest)
+    public async Task<DeletedEducationProgramDevelopmentResponse> DeleteAsync(Guid id)
     {
-        await _educationProgramDevelopmentBusinesRules.IsExistsEducationProgramDevelopment(deleteEducationProgramDevelopmentRequest.Id);
-        EducationProgramDevelopment educationProgramDevelopment = await _educationProgramDevelopmentDal.GetAsync(predicate: epc => epc.Id == deleteEducationProgramDevelopmentRequest.Id);
+        await _educationProgramDevelopmentBusinesRules.IsExistsEducationProgramDevelopment(id);
+        EducationProgramDevelopment educationProgramDevelopment = await _educationProgramDevelopmentDal.GetAsync(predicate: epc => epc.Id == id);
         EducationProgramDevelopment deletedEducationProgramDevelopment = await _educationProgramDevelopmentDal.DeleteAsync(educationProgramDevelopment);
         DeletedEducationProgramDevelopmentResponse deletedEducationProgramDevelopmentResponse = _mapper.Map<DeletedEducationProgramDevelopmentResponse>(deletedEducationProgramDevelopment);
         return deletedEducationProgramDevelopmentResponse;
@@ -44,7 +44,7 @@ public class EducationProgramDevelopmentManager : IEducationProgramDevelopmentSe
         var educationProgramDevelopmentId = await _educationProgramDevelopmentDal.GetAsync(epc => epc.Id == id);
         var mappedEducationProgramDevelopment = _mapper.Map<GetEducationProgramDevelopmentResponse>(educationProgramDevelopmentId);
         return mappedEducationProgramDevelopment;
-    }      
+    }
 
     public async Task<IPaginate<GetListEducationProgramDevelopmentResponse>> GetListAsync(PageRequest pageRequest)
     {
@@ -59,7 +59,7 @@ public class EducationProgramDevelopmentManager : IEducationProgramDevelopmentSe
     {
         EducationProgramDevelopment educationProgramDevelopment = _mapper.Map<EducationProgramDevelopment>(updateEducationProgramDevelopmentRequest);
         EducationProgramDevelopment updatedEducationProgramDevelopment = await _educationProgramDevelopmentDal.UpdateAsync(educationProgramDevelopment);
-        UpdatedEducationProgramDevelopmentResponse updatedEducationProgramDevelopmentResponse= _mapper.Map<UpdatedEducationProgramDevelopmentResponse>(updatedEducationProgramDevelopment);
+        UpdatedEducationProgramDevelopmentResponse updatedEducationProgramDevelopmentResponse = _mapper.Map<UpdatedEducationProgramDevelopmentResponse>(updatedEducationProgramDevelopment);
         return updatedEducationProgramDevelopmentResponse;
     }
 }

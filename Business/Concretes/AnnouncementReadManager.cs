@@ -30,11 +30,11 @@ public class AnnouncementReadManager : IAnnouncementReadService
         return createdAnnouncementReadResponse; ;
     }
 
-    public async Task<DeletedAnnouncementReadResponse> DeleteAsync(DeleteAnnouncementReadRequest deleteAnnouncementReadRequest)
+    public async Task<DeletedAnnouncementReadResponse> DeleteAsync(Guid id)
     {
-        await _announcementReadBusinessRules.IsExistsAnnouncementRead(deleteAnnouncementReadRequest.Id);
+        await _announcementReadBusinessRules.IsExistsAnnouncementRead(id);
 
-        AnnouncementRead announcementRead = await _announcementReadDal.GetAsync(predicate: at => at.Id == deleteAnnouncementReadRequest.Id);
+        AnnouncementRead announcementRead = await _announcementReadDal.GetAsync(predicate: at => at.Id == id);
         AnnouncementRead deletedAnnouncementRead = await _announcementReadDal.DeleteAsync(announcementRead);
         DeletedAnnouncementReadResponse deletedAnnouncementReadResponse = _mapper.Map<DeletedAnnouncementReadResponse>(deletedAnnouncementRead);
         return deletedAnnouncementReadResponse;

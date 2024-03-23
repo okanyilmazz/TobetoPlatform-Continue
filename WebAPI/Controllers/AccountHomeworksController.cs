@@ -59,10 +59,10 @@ public class AccountHomeworksController : ControllerBase
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountHomeworks.Get")]
     [CustomValidation(typeof(UpdateAccountHomeworkRequestValidator))]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountHomeworkRequest deleteAccountHomeworkRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _accountHomeworkService.DeleteAsync(deleteAccountHomeworkRequest);
+        var result = await _accountHomeworkService.DeleteAsync(id);
         return Ok(result);
     }
 

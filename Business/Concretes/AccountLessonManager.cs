@@ -29,10 +29,10 @@ public class AccountLessonManager : IAccountLessonService
         return responseAccountLesson;
     }
 
-    public async Task<DeletedAccountLessonResponse> DeleteAsync(DeleteAccountLessonRequest deleteAccountLessonRequest)
+    public async Task<DeletedAccountLessonResponse> DeleteAsync(Guid id)
     {
-        await _accountLessonBusinessRules.IsExistsAccountLesson(deleteAccountLessonRequest.Id);
-        AccountLesson accountLesson = await _accountLessonDal.GetAsync(predicate: l => l.Id == deleteAccountLessonRequest.Id);
+        await _accountLessonBusinessRules.IsExistsAccountLesson(id);
+        AccountLesson accountLesson = await _accountLessonDal.GetAsync(predicate: l => l.Id == id);
         AccountLesson deletedAccountLesson = await _accountLessonDal.DeleteAsync(accountLesson);
         DeletedAccountLessonResponse deletedAccountLessonResponse = _mapper.Map<DeletedAccountLessonResponse>(deletedAccountLesson);
         return deletedAccountLessonResponse;

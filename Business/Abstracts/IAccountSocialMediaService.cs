@@ -8,7 +8,7 @@ public interface IAccountSocialMediaService
 {
     Task<CreatedAccountSocialMediaResponse> AddAsync(CreateAccountSocialMediaRequest createAccountSocialMediaRequest);
     Task<UpdatedAccountSocialMediaResponse> UpdateAsync(UpdateAccountSocialMediaRequest updateAccountSocialMediaRequest);
-    Task<DeletedAccountSocialMediaResponse> DeleteAsync(DeleteAccountSocialMediaRequest deleteAccountSocialMediaRequest);
+    Task<DeletedAccountSocialMediaResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListAccountSocialMediaResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetAccountSocialMediaResponse> GetByIdAsync(Guid Id);
     Task<IPaginate<GetListAccountSocialMediaResponse>> GetByAccountIdAsync(Guid accountId, PageRequest pageRequest);

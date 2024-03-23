@@ -9,7 +9,7 @@ public interface IEducationProgramService
 {
     Task<CreatedEducationProgramResponse> AddAsync(CreateEducationProgramRequest createEducationProgramRequest);
     Task<UpdatedEducationProgramResponse> UpdateAsync(UpdateEducationProgramRequest updateEducationProgramRequest);
-    Task<DeletedEducationProgramResponse> DeleteAsync(DeleteEducationProgramRequest deleteEducationProgramRequest);
+    Task<DeletedEducationProgramResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListEducationProgramResponse>> GetListAsync(PageRequest pageRequest);
     Task<IPaginate<GetListEducationProgramResponse>> GetByAccountIdAsync(Guid accountId,PageRequest pageRequest);
     Task<IPaginate<GetListEducationProgramResponse>> GetByOccupationClassIdAsync(Guid occupationClassId);

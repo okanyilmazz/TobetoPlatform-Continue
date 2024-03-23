@@ -2,16 +2,15 @@
 using Business.Dtos.Responses.AnnouncementProjectResponses;
 using Core.DataAccess.Paging;
 
-namespace Business.Abstracts
+namespace Business.Abstracts;
+
+public interface IAnnouncementProjectService
 {
-    public interface IAnnouncementProjectService
-    {
-        Task<CreatedAnnouncementProjectResponse> AddAsync(CreateAnnouncementProjectRequest createAnnouncementProjectRequest);
-        Task<UpdatedAnnouncementProjectResponse> UpdateAsync(UpdateAnnouncementProjectRequest updateAnnouncementProjectRequest);
+    Task<CreatedAnnouncementProjectResponse> AddAsync(CreateAnnouncementProjectRequest createAnnouncementProjectRequest);
+    Task<UpdatedAnnouncementProjectResponse> UpdateAsync(UpdateAnnouncementProjectRequest updateAnnouncementProjectRequest);
 
-        Task<DeletedAnnouncementProjectResponse> DeleteAsync(DeleteAnnouncementProjectRequest deleteAnnouncementProjectRequest);
+    Task<DeletedAnnouncementProjectResponse> DeleteAsync(Guid id);
 
-        Task<IPaginate<GetListAnnouncementProjectResponse>> GetListAsync(PageRequest pageRequest);
-        Task<GetAnnouncementProjectResponse> GetByIdAsync(Guid Id);
-    }
+    Task<IPaginate<GetListAnnouncementProjectResponse>> GetListAsync(PageRequest pageRequest);
+    Task<GetAnnouncementProjectResponse> GetByIdAsync(Guid Id);
 }

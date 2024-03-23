@@ -70,10 +70,10 @@ public class LessonModulesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("LessonModules.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteLessonModuleRequest deleteLessonModuleRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _lessonModuleService.DeleteAsync(deleteLessonModuleRequest);
+        var result = await _lessonModuleService.DeleteAsync(id);
         return Ok();
     }
 }

@@ -27,10 +27,9 @@ public class AccountCompetenceTestManager : IAccountCompetenceTestService
         return createdAccountCompetenceTestResponse;
     }
 
-    public async Task<DeletedAccountCompetenceTestResponse> DeleteAsync(DeleteAccountCompetenceTestRequest deleteAccountCompetenceTestRequest)
+    public async Task<DeletedAccountCompetenceTestResponse> DeleteAsync(Guid id)
     {
-        //await _cityBusinessRules.IsExistsCity(deleteCityRequest.Id);
-        AccountCompetenceTest accountCompetenceTest = await _accountCompetenceTestDal.GetAsync(predicate: c => c.Id == deleteAccountCompetenceTestRequest.Id);
+        AccountCompetenceTest accountCompetenceTest = await _accountCompetenceTestDal.GetAsync(predicate: c => c.Id == id);
         AccountCompetenceTest deletedAccountCompetenceTest = await _accountCompetenceTestDal.DeleteAsync(accountCompetenceTest);
         DeletedAccountCompetenceTestResponse deletedAccountCompetenceTestResponse = _mapper.Map<DeletedAccountCompetenceTestResponse>(deletedAccountCompetenceTest);
         return deletedAccountCompetenceTestResponse;

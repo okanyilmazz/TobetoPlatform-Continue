@@ -8,7 +8,7 @@ public interface IEducationProgramOccupationClassService
 {
     Task<CreatedEducationProgramOccupationClassResponse> AddAsync(CreateEducationProgramOccupationClassRequest createEducationProgramOccupationClassRequest);
     Task<UpdatedEducationProgramOccupationClassResponse> UpdateAsync(UpdateEducationProgramOccupationClassRequest updateEducationProgramOccupationClassRequest);
-    Task<DeletedEducationProgramOccupationClassResponse> DeleteAsync(DeleteEducationProgramOccupationClassRequest deleteEducationProgramOccupationClassRequest);
+    Task<DeletedEducationProgramOccupationClassResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListEducationProgramOccupationClassResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetEducationProgramOccupationClassResponse> GetByIdAsync(Guid id);
 }

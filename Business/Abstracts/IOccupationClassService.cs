@@ -8,7 +8,7 @@ public interface IOccupationClassService
 {
     Task<CreatedOccupationClassResponse> AddAsync(CreateOccupationClassRequest createOccupationClassRequest);
     Task<UpdatedOccupationClassResponse> UpdateAsync(UpdateOccupationClassRequest updateOccupationClassRequest);
-    Task<DeletedOccupationClassResponse> DeleteAsync(DeleteOccupationClassRequest deleteOccupationClassRequest);
+    Task<DeletedOccupationClassResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListOccupationClassResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetOccupationClassResponse> GetByIdAsync(Guid id);
     Task<GetOccupationClassResponse> GetByAccountIdAsync(Guid accountId);

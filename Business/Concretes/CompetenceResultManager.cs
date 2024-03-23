@@ -26,9 +26,9 @@ public class CompetenceResultManager : ICompetenceResultService
         return createdCompetenceResultResponse;
     }
 
-    public async Task<DeletedCompetenceResultResponse> DeleteAsync(DeleteCompetenceResultRequest deleteCompetenceResultRequest)
+    public async Task<DeletedCompetenceResultResponse> DeleteAsync(Guid id)
     {
-        CompetenceResult competenceResult = await _competenceResultDal.GetAsync(predicate: c => c.Id == deleteCompetenceResultRequest.Id);
+        CompetenceResult competenceResult = await _competenceResultDal.GetAsync(predicate: c => c.Id == id);
         CompetenceResult deletedCompetenceResult = await _competenceResultDal.DeleteAsync(competenceResult);
         DeletedCompetenceResultResponse deletedCompetenceResultResponse = _mapper.Map<DeletedCompetenceResultResponse>(deletedCompetenceResult);
         return deletedCompetenceResultResponse;

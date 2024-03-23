@@ -8,7 +8,7 @@ public interface IMediaNewService
 {
     Task<CreatedMediaNewResponse> AddAsync(CreateMediaNewRequest createMediaNewRequest);
     Task<UpdatedMediaNewResponse> UpdateAsync(UpdateMediaNewRequest updateMediaNewRequest);
-    Task<DeletedMediaNewResponse> DeleteAsync(DeleteMediaNewRequest deleteMediaNewRequest);
+    Task<DeletedMediaNewResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListMediaNewResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetMediaNewResponse> GetByIdAsync(Guid id);
 }

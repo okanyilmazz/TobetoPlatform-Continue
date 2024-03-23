@@ -37,10 +37,10 @@ public class ProjectManager : IProjectService
         return responseProject;
     }
 
-    public async Task<DeletedProjectResponse> DeleteAsync(DeleteProjectRequest deleteProjectRequest)
+    public async Task<DeletedProjectResponse> DeleteAsync(Guid id)
     {
-        await _projectBusinessRules.IsExistsProject(deleteProjectRequest.Id);
-        Project project = await _projectDal.GetAsync(predicate: l => l.Id == deleteProjectRequest.Id);
+        await _projectBusinessRules.IsExistsProject(id);
+        Project project = await _projectDal.GetAsync(predicate: l => l.Id == id);
         await _projectDal.DeleteAsync(project);
         DeletedProjectResponse responseProject = _mapper.Map<DeletedProjectResponse>(project);
         return responseProject;

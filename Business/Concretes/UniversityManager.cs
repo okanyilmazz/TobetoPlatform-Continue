@@ -30,10 +30,10 @@ public class UniversityManager : IUniversityService
         return createdUniversityResponse;
     }
 
-    public async Task<DeletedUniversityResponse> DeleteAsync(DeleteUniversityRequest deleteUniversityRequest)
+    public async Task<DeletedUniversityResponse> DeleteAsync(Guid id)
     {
-        await _universityBusinessRules.IsExistsUniversity(deleteUniversityRequest.Id);
-        University university = await _universityDal.GetAsync(predicate: u => u.Id == deleteUniversityRequest.Id);
+        await _universityBusinessRules.IsExistsUniversity(id);
+        University university = await _universityDal.GetAsync(predicate: u => u.Id == id);
         University deletedUniversity = await _universityDal.DeleteAsync(university);
         DeletedUniversityResponse deletedUniversityResponse = _mapper.Map<DeletedUniversityResponse>(deletedUniversity);
         return deletedUniversityResponse;

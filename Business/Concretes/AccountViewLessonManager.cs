@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
-using Business.Dtos.Requests.AccountViewLessonRequest;
+using Business.Dtos.Requests.AccountViewLessonRequests;
 using Business.Dtos.Responses.AccountViewLessonResponses;
 using Business.Rules.BusinessRules;
 using Core.DataAccess.Paging;
@@ -31,10 +31,10 @@ public class AccountViewLessonManager : IAccountViewLessonService
     }
 
 
-    public async Task<DeletedAccountViewLessonResponse> DeleteAsync(DeleteAccountViewLessonRequest deleteAccountViewLessonRequest)
+    public async Task<DeletedAccountViewLessonResponse> DeleteAsync(Guid id)
     {
-        await _accountViewLessonBusinessRules.IsExistsAccountViewLesson(deleteAccountViewLessonRequest.Id);
-        AccountViewLesson accountViewLesson = await _accountViewLessonDal.GetAsync(predicate: a => a.Id == deleteAccountViewLessonRequest.Id);
+        await _accountViewLessonBusinessRules.IsExistsAccountViewLesson(id);
+        AccountViewLesson accountViewLesson = await _accountViewLessonDal.GetAsync(predicate: a => a.Id == id);
         AccountViewLesson deletedAccountViewLesson = await _accountViewLessonDal.DeleteAsync(accountViewLesson);
         DeletedAccountViewLessonResponse deletedAccountViewLessonResponse = _mapper.Map<DeletedAccountViewLessonResponse>(deletedAccountViewLesson);
         return deletedAccountViewLessonResponse;

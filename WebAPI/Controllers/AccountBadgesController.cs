@@ -86,10 +86,10 @@ public class AccountBadgesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountBadges.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountBadgeRequest deleteAccountBadgeRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _accountBadgeService.DeleteAsync(deleteAccountBadgeRequest);
+        var result = await _accountBadgeService.DeleteAsync(id);
         return Ok(result);
     }
 }

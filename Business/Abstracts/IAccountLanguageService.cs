@@ -8,7 +8,7 @@ public interface IAccountLanguageService
 {
     Task<CreatedAccountLanguageResponse> AddAsync(CreateAccountLanguageRequest createAccountLanguageRequest);
     Task<UpdatedAccountLanguageResponse> UpdateAsync(UpdateAccountLanguageRequest updateAccountLanguageRequest);
-    Task<DeletedAccountLanguageResponse> DeleteAsync(DeleteAccountLanguageRequest deleteAccountLanguageRequest);
+    Task<DeletedAccountLanguageResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListAccountLanguageResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetAccountLanguageResponse> GetByIdAsync(Guid id);
     Task<IPaginate<GetListAccountLanguageResponse>> GetByAccountIdAsync(Guid accountId);

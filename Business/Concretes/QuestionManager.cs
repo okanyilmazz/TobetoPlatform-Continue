@@ -31,10 +31,10 @@ public class QuestionManager : IQuestionService
 
     }
 
-    public async Task<DeletedQuestionResponse> DeleteAsync(DeleteQuestionRequest deleteQuestionRequest)
+    public async Task<DeletedQuestionResponse> DeleteAsync(Guid id)
     {
-        await _questionBusinessRules.IsExistsQuestion(deleteQuestionRequest.Id);
-        Question question = await _questionDal.GetAsync(predicate: a => a.Id == deleteQuestionRequest.Id);
+        await _questionBusinessRules.IsExistsQuestion(id);
+        Question question = await _questionDal.GetAsync(predicate: a => a.Id == id);
         Question deletedQuestion = await _questionDal.DeleteAsync(question);
         DeletedQuestionResponse createdQuestionResponse = _mapper.Map<DeletedQuestionResponse>(deletedQuestion);
         return createdQuestionResponse;

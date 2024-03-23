@@ -30,10 +30,10 @@ public class SurveyManager : ISurveyService
         return createdSurveyResponse;
     }
 
-    public async Task<DeletedSurveyResponse> DeleteAsync(DeleteSurveyRequest deleteSurveyRequest)
+    public async Task<DeletedSurveyResponse> DeleteAsync(Guid id)
     {
-        await _surveyBusinessRules.IsExistsSurvey(deleteSurveyRequest.Id);
-        Survey survey = await _surveyDal.GetAsync(predicate: o => o.Id == deleteSurveyRequest.Id);
+        await _surveyBusinessRules.IsExistsSurvey(id);
+        Survey survey = await _surveyDal.GetAsync(predicate: o => o.Id == id);
         Survey deletedSurvey = await _surveyDal.DeleteAsync(survey);
         DeletedSurveyResponse deletedSurveyResponse = _mapper.Map<DeletedSurveyResponse>(deletedSurvey);
         return deletedSurveyResponse;

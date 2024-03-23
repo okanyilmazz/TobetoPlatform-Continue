@@ -93,10 +93,10 @@ public class UsersController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Users.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteUserRequest deleteProductRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _userService.DeleteAsync(deleteProductRequest);
+        var result = await _userService.DeleteAsync(id);
         return Ok(result);
     }
 
@@ -120,8 +120,4 @@ public class UsersController : ControllerBase
         var result = await _userService.GetByMailAsync(email);
             return Ok(result);
     }
-
-
-
-
 }

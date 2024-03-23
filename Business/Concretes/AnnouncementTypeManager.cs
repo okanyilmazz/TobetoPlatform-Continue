@@ -30,11 +30,11 @@ public class AnnouncementTypeManager : IAnnouncementTypeService
         return createdAnnouncementTypeResponse;
     }
 
-    public async Task<DeletedAnnouncementTypeResponse> DeleteAsync(DeleteAnnouncementTypeRequest deleteAnnouncementTypeRequest)
+    public async Task<DeletedAnnouncementTypeResponse> DeleteAsync(Guid id)
     {
-        await _announcementTypeBusinessRules.IsExistsAnnouncementType(deleteAnnouncementTypeRequest.Id);
+        await _announcementTypeBusinessRules.IsExistsAnnouncementType(id);
 
-        AnnouncementType announcementType = await _announcementTypeDal.GetAsync(predicate: at => at.Id == deleteAnnouncementTypeRequest.Id);
+        AnnouncementType announcementType = await _announcementTypeDal.GetAsync(predicate: at => at.Id == id);
         AnnouncementType deletedAnnouncementType = await _announcementTypeDal.DeleteAsync(announcementType);
         DeletedAnnouncementTypeResponse deletedAnnouncementTypeResponse = _mapper.Map<DeletedAnnouncementTypeResponse>(deletedAnnouncementType);
         return deletedAnnouncementTypeResponse;

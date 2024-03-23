@@ -66,10 +66,10 @@ public class CompetenceTestQuestionsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("CompetenceTestQuestions.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteCompetenceTestQuestionRequest deleteCompetenceTestQuestionRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _competenceTestQuestionService.DeleteAsync(deleteCompetenceTestQuestionRequest);
+        var result = await _competenceTestQuestionService.DeleteAsync(id);
         return Ok(result);
     }
 }

@@ -71,10 +71,10 @@ public class LessonSubTypesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("LessonSubTypes.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteLessonSubTypeRequest deleteLessonSubTypeRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _lessonSubTypeService.DeleteAsync(deleteLessonSubTypeRequest);
+        var result = await _lessonSubTypeService.DeleteAsync(id);
         return Ok(result);
     }
 }

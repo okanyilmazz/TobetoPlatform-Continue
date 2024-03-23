@@ -71,10 +71,10 @@ public class UniversityDepartmentsController : Controller
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("UniversityDepartments.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteUniversityDepartmentRequest deleteUniversityDepartmentRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _universityDepartmentService.DeleteAsync(deleteUniversityDepartmentRequest);
+        var result = await _universityDepartmentService.DeleteAsync(id);
         return Ok(result);
     }
 }

@@ -69,10 +69,10 @@ public class CountriesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Countries.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteCountryRequest deleteCountryRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _countryService.DeleteAsync(deleteCountryRequest);
+        var result = await _countryService.DeleteAsync(id);
         return Ok(result);
     }
 }

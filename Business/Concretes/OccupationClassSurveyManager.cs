@@ -32,10 +32,10 @@ public class OccupationClassSurveyManager : IOccupationClassSurveyService
         return createdOccupationClassSurveyResponse;
     }
 
-    public async Task<DeletedOccupationClassSurveyResponse> DeleteAsync(DeleteOccupationClassSurveyRequest deleteOccupationClassSurveyRequest)
+    public async Task<DeletedOccupationClassSurveyResponse> DeleteAsync(Guid id)
     {
-        await _occupationClassSurveyBusinessRules.IsExistsOccupationClassSurvey(deleteOccupationClassSurveyRequest.Id);
-        OccupationClassSurvey occupationClassSurvey = await _occupationClassSurveyDal.GetAsync(predicate: a => a.Id == deleteOccupationClassSurveyRequest.Id);
+        await _occupationClassSurveyBusinessRules.IsExistsOccupationClassSurvey(id);
+        OccupationClassSurvey occupationClassSurvey = await _occupationClassSurveyDal.GetAsync(predicate: a => a.Id == id);
         OccupationClassSurvey deletedOccupationClassSurvey = await _occupationClassSurveyDal.DeleteAsync(occupationClassSurvey);
         DeletedOccupationClassSurveyResponse deletedOccupationClassSurveyResponse = _mapper.Map<DeletedOccupationClassSurveyResponse>(deletedOccupationClassSurvey);
         return deletedOccupationClassSurveyResponse;

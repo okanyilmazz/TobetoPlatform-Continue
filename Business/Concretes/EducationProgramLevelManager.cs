@@ -30,11 +30,11 @@ public class EducationProgramLevelManager : IEducationProgramLevelService
         return mapperEducationProgram;
     }
 
-    public async Task<DeletedEducationProgramLevelResponse> DeleteAsync(DeleteEducationProgramLevelRequest deleteEducationProgramLevelRequest)
+    public async Task<DeletedEducationProgramLevelResponse> DeleteAsync(Guid id)
     {
-        await _educationProgramLevelBusinessRules.IsExistsEducationProgramLevel(deleteEducationProgramLevelRequest.Id);
+        await _educationProgramLevelBusinessRules.IsExistsEducationProgramLevel(id);
         EducationProgramLevel educationProgramLevel = await _educationProgramLevelDal.GetAsync(
-        predicate: epl => epl.Id == deleteEducationProgramLevelRequest.Id);
+        predicate: epl => epl.Id == id);
         EducationProgramLevel deletedEducationProgramLevel = await _educationProgramLevelDal.DeleteAsync(educationProgramLevel);
         DeletedEducationProgramLevelResponse deletedEducationProgramLevelResponse = _mapper.Map<DeletedEducationProgramLevelResponse>
         (deletedEducationProgramLevel);

@@ -8,7 +8,7 @@ public interface IUniversityService
 {
     Task<CreatedUniversityResponse> AddAsync(CreateUniversityRequest createUniversityRequest);
     Task<UpdatedUniversityResponse> UpdateAsync(UpdateUniversityRequest updateUniversityRequest);
-    Task<DeletedUniversityResponse> DeleteAsync(DeleteUniversityRequest deleteUniversityRequest);
+    Task<DeletedUniversityResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListUniversityResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetUniversityResponse> GetByIdAsync(Guid id);
 }

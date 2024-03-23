@@ -9,7 +9,7 @@ public interface IOccupationService
 
     Task<CreatedOccupationResponse> AddAsync(CreateOccupationRequest createOccupationRequest);
     Task<UpdatedOccupationResponse> UpdateAsync(UpdateOccupationRequest updateOccupationRequest);
-    Task<DeletedOccupationResponse> DeleteAsync(DeleteOccupationRequest deleteOccupationRequest);
+    Task<DeletedOccupationResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListOccupationResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetOccupationResponse> GetByIdAsync(Guid Id);
 }

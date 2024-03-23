@@ -5,6 +5,7 @@ using Business.Dtos.Responses.LessonCategoryResponses;
 using Business.Rules.BusinessRules;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
+using DataAccess.Concretes;
 using Entities.Concretes;
 
 namespace Business.Concretes;
@@ -30,10 +31,10 @@ public class LessonCategoryManager : ILessonCategoryService
         return mappedLessonCategory;
     }
 
-    public async Task<DeletedLessonCategoryResponse> DeleteAsync(DeleteLessonCategoryRequest deleteLessonCategoryRequest)
+    public async Task<DeletedLessonCategoryResponse> DeleteAsync(Guid id)
     {
-        await _lessonCategoryBusinessRules.IsExistsLessonCategory(deleteLessonCategoryRequest.Id);
-        LessonCategory lessonCategory = _mapper.Map<LessonCategory>(deleteLessonCategoryRequest);
+        await _lessonCategoryBusinessRules.IsExistsLessonCategory(id);
+        LessonCategory lessonCategory = await _lessonCategoryDal.GetAsync(predicate: l => l.Id == id);
         LessonCategory deletedLessonCategory = await _lessonCategoryDal.DeleteAsync(lessonCategory);
         var mappedLessonCategory = _mapper.Map<DeletedLessonCategoryResponse>(deletedLessonCategory);
         return mappedLessonCategory;

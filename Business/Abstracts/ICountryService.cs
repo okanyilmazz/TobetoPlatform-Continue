@@ -8,7 +8,7 @@ public interface ICountryService
 {
     Task<CreatedCountryResponse> AddAsync(CreateCountryRequest createCountryRequest);
     Task<UpdatedCountryResponse> UpdateAsync(UpdateCountryRequest updateCountryRequest);
-    Task<DeletedCountryResponse> DeleteAsync(DeleteCountryRequest deleteCountryRequest);
+    Task<DeletedCountryResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListCountryResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetCountryResponse> GetByIdAsync(Guid id);
 }

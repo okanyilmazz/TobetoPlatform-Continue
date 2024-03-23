@@ -70,10 +70,10 @@ public class OccupationsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Occupations.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteOccupationRequest deleteOccupationRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _occupationService.DeleteAsync(deleteOccupationRequest);
+        var result = await _occupationService.DeleteAsync(id);
         return Ok(result);
     }
 }

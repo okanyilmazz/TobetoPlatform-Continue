@@ -91,10 +91,10 @@ public class AccountSessionsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountSessions.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountSessionRequest deleteAccountSessionRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _accountSessionService.DeleteAsync(deleteAccountSessionRequest);
+        var result = await _accountSessionService.DeleteAsync(id);
         return Ok(result);
     }
 }

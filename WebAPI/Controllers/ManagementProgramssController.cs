@@ -55,10 +55,10 @@ public class ManagementProgramsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("ManagementPrograms.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteManagementProgramRequest deleteManagementProgramRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _managementProgramService.DeleteAsync(deleteManagementProgramRequest);
+        var result = await _managementProgramService.DeleteAsync(id);
         return Ok(result);
     }
 

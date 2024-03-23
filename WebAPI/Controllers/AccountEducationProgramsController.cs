@@ -90,10 +90,10 @@ public class AccountEducationProgramsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountEducationPrograms.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountEducationProgramRequest deleteAccountEducationProgramRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _accountEducationProgramService.DeleteAsync(deleteAccountEducationProgramRequest);
+        var result = await _accountEducationProgramService.DeleteAsync(id);
         return Ok(result);
     }
 }

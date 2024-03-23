@@ -77,10 +77,10 @@ public class HomeworksController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Homeworks.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteHomeworkRequest deleteHomeworkRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _homeworkService.DeleteAsync(deleteHomeworkRequest);
+        var result = await _homeworkService.DeleteAsync(id);
         return Ok(result);
     }
 

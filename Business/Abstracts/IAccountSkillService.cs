@@ -9,7 +9,7 @@ public interface IAccountSkillService
     Task<CreatedAccountSkillResponse> AddAsync(CreateAccountSkillRequest createAccountSkillRequest);
     Task<ICollection<CreatedAccountSkillResponse>> AddRangeAsync(ICollection<CreateAccountSkillRequest> createAccountSkillRequests);
     Task<UpdatedAccountSkillResponse> UpdateAsync(UpdateAccountSkillRequest updateAccountSkillRequest);
-    Task<DeletedAccountSkillResponse> DeleteAsync(DeleteAccountSkillRequest deleteAccountSkillRequest);
+    Task<DeletedAccountSkillResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListAccountSkillResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetAccountSkillResponse> GetByIdAsync(Guid id);
     Task<IPaginate<GetListAccountSkillResponse>> GetByAccountIdAsync(Guid accountId, PageRequest pageRequest);

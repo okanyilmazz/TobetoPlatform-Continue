@@ -1,4 +1,4 @@
-﻿using Business.Dtos.Requests.AccountViewLessonRequest;
+﻿using Business.Dtos.Requests.AccountViewLessonRequests;
 using FluentValidation;
 
 namespace Business.Rules.ValidationRules.FluentValidation.AccountViewLessonValidators;

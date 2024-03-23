@@ -9,6 +9,6 @@ public interface IUniversityDepartmentService
     Task<IPaginate<GetListUniversityDepartmentResponse>> GetListAsync(PageRequest pageRequest);
     Task<CreatedUniversityDepartmentResponse> AddAsync(CreateUniversityDepartmentRequest createUniversityDepartmentRequest);
     Task<UpdatedUniversityDepartmentResponse> UpdateAsync(UpdateUniversityDepartmentRequest updateUniversityDepartmentRequest);
-    Task<DeletedUniversityDepartmentResponse> DeleteAsync(DeleteUniversityDepartmentRequest deleteUniversityDepartmentRequest);
+    Task<DeletedUniversityDepartmentResponse> DeleteAsync(Guid id);
     Task<GetUniversityDepartmentResponse> GetByIdAsync(Guid id);
 }

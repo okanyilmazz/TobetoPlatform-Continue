@@ -77,10 +77,10 @@ public class AccountLanguagesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountLanguages.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountLanguageRequest deleteAccountLanguageRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _accountLanguageService.DeleteAsync(deleteAccountLanguageRequest);
+        var result = await _accountLanguageService.DeleteAsync(id);
         return Ok();
     }
 }

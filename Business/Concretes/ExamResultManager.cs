@@ -42,10 +42,10 @@ public class ExamResultManager : IExamResultService
         return mappedExamResults;
     }
 
-    public async Task<DeletedExamResultResponse> DeleteAsync(DeleteExamResultRequest deleteExamResultRequest)
+    public async Task<DeletedExamResultResponse> DeleteAsync(Guid id)
     {
-        await _examResultBusinessRules.IsExistsExamResult(deleteExamResultRequest.Id);
-        ExamResult examResult = await _examResultDal.GetAsync(predicate: er => er.Id == deleteExamResultRequest.Id);
+        await _examResultBusinessRules.IsExistsExamResult(id);
+        ExamResult examResult = await _examResultDal.GetAsync(predicate: er => er.Id == id);
         ExamResult deletedExamResult = await _examResultDal.DeleteAsync(examResult);
         DeletedExamResultResponse deletedExamResultResponse = _mapper.Map<DeletedExamResultResponse>(examResult);
         return deletedExamResultResponse;

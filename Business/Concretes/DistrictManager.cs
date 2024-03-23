@@ -32,11 +32,11 @@ public class DistrictManager : IDistrictService
 
     }
 
-    public async Task<DeletedDistrictResponse> DeleteAsync(DeleteDistrictRequest deleteDistrictRequest)
+    public async Task<DeletedDistrictResponse> DeleteAsync(Guid id)
     {
 
-        await _districtBusinessRules.IsExistsDistrict(deleteDistrictRequest.Id);
-        District district = await _districtDal.GetAsync(predicate: l => l.Id == deleteDistrictRequest.Id);
+        await _districtBusinessRules.IsExistsDistrict(id);
+        District district = await _districtDal.GetAsync(predicate: l => l.Id == id);
         District deletedDistrict = await _districtDal.DeleteAsync(district);
         DeletedDistrictResponse deletedDistrictResponse = _mapper.Map<DeletedDistrictResponse>(deletedDistrict);
         return deletedDistrictResponse;

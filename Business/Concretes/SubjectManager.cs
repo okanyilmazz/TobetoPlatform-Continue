@@ -30,10 +30,10 @@ public class SubjectManager : ISubjectService
         return responseSubject;
     }
 
-    public async Task<DeletedSubjectResponse> DeleteAsync(DeleteSubjectRequest deleteSubjectRequest)
+    public async Task<DeletedSubjectResponse> DeleteAsync(Guid id)
     {
-        await _subjectBusinessRules.IsExistSubject(deleteSubjectRequest.Id);
-        var subject = _mapper.Map<Subject>(deleteSubjectRequest);
+        await _subjectBusinessRules.IsExistSubject(id);
+        Subject subject = await _subjectDal.GetAsync(predicate: s => s.Id == id);
         var deletedSubject = await _subjectDal.DeleteAsync(subject);
         var responseSubject = _mapper.Map<DeletedSubjectResponse>(deletedSubject);
         return responseSubject;

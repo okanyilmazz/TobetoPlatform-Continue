@@ -7,7 +7,7 @@ namespace Business.Abstracts;
 public interface IWorkExperienceService
 {
     Task<CreatedWorkExperienceResponse> AddAsync(CreateWorkExperienceRequest createWorkExperienceRequest);
-    Task<DeletedWorkExperienceResponse> DeleteAsync(DeleteWorkExperienceRequest deleteWorkExperienceRequest);
+    Task<DeletedWorkExperienceResponse> DeleteAsync(Guid id);
     Task<UpdatedWorkExperienceResponse> UpdateAsync(UpdateWorkExperienceRequest updateWorkExperienceRequest);
     Task<IPaginate<GetListWorkExperienceResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetWorkExperienceResponse> GetByIdAsync(Guid id);

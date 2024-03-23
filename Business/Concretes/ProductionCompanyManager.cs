@@ -29,10 +29,10 @@ public class ProductionCompanyManager : IProductionCompanyService
         CreatedProductionCompanyResponse createdProductionCompanyResponse = _mapper.Map<CreatedProductionCompanyResponse>(addedProductionCompany);
         return createdProductionCompanyResponse;
     }
-    public async Task<DeletedProductionCompanyResponse> DeleteAsync(DeleteProductionCompanyRequest deleteProductionCompanyRequest)
+    public async Task<DeletedProductionCompanyResponse> DeleteAsync(Guid id)
     {
-        await _productionCompanyBusinessRules.IsExistsProductionCompany(deleteProductionCompanyRequest.Id);
-        ProductionCompany productionCompany = await _productionCompanyDal.GetAsync(predicate: a => a.Id == deleteProductionCompanyRequest.Id);
+        await _productionCompanyBusinessRules.IsExistsProductionCompany(id);
+        ProductionCompany productionCompany = await _productionCompanyDal.GetAsync(predicate: a => a.Id == id);
         ProductionCompany deletedProductionCompany = await _productionCompanyDal.DeleteAsync(productionCompany);
         DeletedProductionCompanyResponse deletedProductionCompanyResponse = _mapper.Map<DeletedProductionCompanyResponse>(deletedProductionCompany);
         return deletedProductionCompanyResponse;

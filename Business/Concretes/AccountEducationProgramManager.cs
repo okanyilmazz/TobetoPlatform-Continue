@@ -31,10 +31,10 @@ public class AccountEducationProgramManager : IAccountEducationProgramService
         return createdAccountEducationProgramResponse;
     }
 
-    public async Task<DeletedAccountEducationProgramResponse> DeleteAsync(DeleteAccountEducationProgramRequest deleteAccountEducationProgramRequest)
+    public async Task<DeletedAccountEducationProgramResponse> DeleteAsync(Guid id)
     {
-        await _accountEducationProgramBusinessRules.IsExistsAccountEducationProgram(deleteAccountEducationProgramRequest.Id);
-        AccountEducationProgram accountEducationProgram = await _accountEducationProgramDal.GetAsync(predicate: a => a.Id == deleteAccountEducationProgramRequest.Id);
+        await _accountEducationProgramBusinessRules.IsExistsAccountEducationProgram(id);
+        AccountEducationProgram accountEducationProgram = await _accountEducationProgramDal.GetAsync(predicate: a => a.Id == id);
         AccountEducationProgram deletedAccountEducationProgram = await _accountEducationProgramDal.DeleteAsync(accountEducationProgram);
         DeletedAccountEducationProgramResponse deletedAccountEducationProgrameResponse = _mapper.Map<DeletedAccountEducationProgramResponse>(deletedAccountEducationProgram);
         return deletedAccountEducationProgrameResponse;

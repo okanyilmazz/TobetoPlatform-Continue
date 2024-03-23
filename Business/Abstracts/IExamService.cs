@@ -8,7 +8,7 @@ public interface IExamService
 {
     Task<CreatedExamResponse> AddAsync(CreateExamRequest createExamRequest);
     Task<UpdatedExamResponse> UpdateAsync(UpdateExamRequest updateExamRequest);
-    Task<DeletedExamResponse> DeleteAsync(DeleteExamRequest deleteExamRequest);
+    Task<DeletedExamResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListExamResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetExamResponse> GetByIdAsync(Guid id);
     Task<IPaginate<GetListExamResponse>> GetByAccountIdAsync(Guid accountId, PageRequest pageRequest);

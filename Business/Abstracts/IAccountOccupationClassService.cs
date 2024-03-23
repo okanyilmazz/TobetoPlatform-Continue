@@ -8,7 +8,7 @@ public interface IAccountOccupationClassService
 {
     Task<CreatedAccountOccupationClassResponse> AddAsync(CreateAccountOccupationClassRequest createAccountOccupationClassRequest);
     Task<UpdatedAccountOccupationClassResponse> UpdateAsync(UpdateAccountOccupationClassRequest updateAccountOccupationClassRequest);
-    Task<DeletedAccountOccupationClassResponse> DeleteAsync(DeleteAccountOccupationClassRequest deleteAccountOccupationClassRequest);
+    Task<DeletedAccountOccupationClassResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListAccountOccupationClassResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetAccountOccupationClassResponse> GetByIdAsync(Guid id);
     Task<GetListAccountOccupationClassResponse> GetByAccountIdAndOccupationClassId(Guid accountId, Guid occupationClassId);

@@ -32,10 +32,10 @@ public class QuestionTypeManager : IQuestionTypeService
         return createdQuestionTypeResponse;
     }
 
-    public async Task<DeletedQuestionTypeResponse> DeleteAsync(DeleteQuestionTypeRequest deleteQuestionTypeRequest)
+    public async Task<DeletedQuestionTypeResponse> DeleteAsync(Guid id)
     {
-        await _questionTypeBusinessRules.IsExistsQuestionType(deleteQuestionTypeRequest.Id);
-        QuestionType questionType = await _questionTypeDal.GetAsync(predicate: q => q.Id == deleteQuestionTypeRequest.Id);
+        await _questionTypeBusinessRules.IsExistsQuestionType(id);
+        QuestionType questionType = await _questionTypeDal.GetAsync(predicate: q => q.Id == id);
         QuestionType deletedQuestionType = await _questionTypeDal.DeleteAsync(questionType, false);
         DeletedQuestionTypeResponse deletedQuestionTypeResponse = _mapper.Map<DeletedQuestionTypeResponse>(deletedQuestionType);
         return deletedQuestionTypeResponse;

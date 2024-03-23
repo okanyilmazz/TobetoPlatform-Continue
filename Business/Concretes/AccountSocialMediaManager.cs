@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.AccountSocialMediaRequests;
-using Business.Dtos.Responses.AccountSkillResponses;
 using Business.Dtos.Responses.AccountSocialMediaResponses;
 using Business.Rules.BusinessRules;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
-using DataAccess.Concretes;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 
@@ -32,9 +30,9 @@ public class AccountSocialMediaManager : IAccountSocialMediaService
         return createdAccountSocialMediaResponse;
     }
 
-    public async Task<DeletedAccountSocialMediaResponse> DeleteAsync(DeleteAccountSocialMediaRequest deleteAccountSocialMediaRequest)
+    public async Task<DeletedAccountSocialMediaResponse> DeleteAsync(Guid id)
     {
-        AccountSocialMedia accountSocialMedia = await _accountSocialMediaDal.GetAsync(predicate: a => a.Id == deleteAccountSocialMediaRequest.Id);
+        AccountSocialMedia accountSocialMedia = await _accountSocialMediaDal.GetAsync(predicate: a => a.Id == id);
         AccountSocialMedia deletedAccountSocialMedia = await _accountSocialMediaDal.DeleteAsync(accountSocialMedia);
         DeletedAccountSocialMediaResponse deletedAccountSocialMediaResponse = _mapper.Map<DeletedAccountSocialMediaResponse>(deletedAccountSocialMedia);
         return deletedAccountSocialMediaResponse;

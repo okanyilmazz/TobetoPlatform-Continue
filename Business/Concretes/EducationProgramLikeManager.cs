@@ -31,11 +31,11 @@ public class EducationProgramLikeManager : IEducationProgramLikeService
         return createdEducationProgramLikeResponse;
     }
 
-    public async Task<DeletedEducationProgramLikeResponse> DeleteAsync(DeleteEducationProgramLikeRequest deleteEducationProgramLikeRequest)
+    public async Task<DeletedEducationProgramLikeResponse> DeleteAsync(Guid id)
     {
-        await _educationProgramLikeBusinessRules.IsExistsEducationProgramLike(deleteEducationProgramLikeRequest.Id);
+        await _educationProgramLikeBusinessRules.IsExistsEducationProgramLike(id);
         EducationProgramLike educationProgramLike = await _educationProgramLikeDal.GetAsync(
-            predicate: l => l.Id == deleteEducationProgramLikeRequest.Id);
+            predicate: l => l.Id == id);
         EducationProgramLike deletedEducationProgramLike = await _educationProgramLikeDal.DeleteAsync(educationProgramLike);
         DeletedEducationProgramLikeResponse deletedEducationProgramLikeResponse = _mapper.Map<DeletedEducationProgramLikeResponse>(deletedEducationProgramLike);
         return deletedEducationProgramLikeResponse;

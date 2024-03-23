@@ -38,10 +38,10 @@ public class CertificateManager : ICertificateService
         return createdCertificateResponse;
     }
 
-    public async Task<DeletedCertificateResponse> DeleteAsync(DeleteCertificateRequest deleteCertificateRequest)
+    public async Task<DeletedCertificateResponse> DeleteAsync(Guid id)
     {
-        await _certificateBusinessRules.IsExistsCertificate(deleteCertificateRequest.Id);
-        Certificate certificate = await _certificateDal.GetAsync(predicate: l => l.Id == deleteCertificateRequest.Id);
+        await _certificateBusinessRules.IsExistsCertificate(id);
+        Certificate certificate = await _certificateDal.GetAsync(predicate: l => l.Id == id);
         Certificate deletedCertificate = await _certificateDal.DeleteAsync(certificate);
         DeletedCertificateResponse deletedCertificateResponse = _mapper.Map<DeletedCertificateResponse>(deletedCertificate);
         return deletedCertificateResponse;

@@ -1,5 +1,5 @@
 using Business.Abstracts;
-using Business.Dtos.Requests.AccountViewLessonRequest;
+using Business.Dtos.Requests.AccountFavoriteEducationProgramRequests;
 using Core.CrossCuttingConcerns.Caching;
 using Core.CrossCuttingConcerns.Logging;
 using Core.CrossCuttingConcerns.Logging.SeriLog.Logger;
@@ -92,10 +92,10 @@ public class AccountFavoriteEducationProgramsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("AccountFavoriteEducationPrograms.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteAccountFavoriteEducationProgramRequest deleteAccountFavoriteEducationProgramRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _accountFavoriteEducationProgramsService.DeleteAsync(deleteAccountFavoriteEducationProgramRequest);
+        var result = await _accountFavoriteEducationProgramsService.DeleteAsync(id);
         return Ok(result);
     }
 

@@ -56,10 +56,10 @@ public class CompetenceCategoriesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Competences.Get")]
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteCompetenceCategoryRequest deleteCompetenceCategoryRequest)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
-        var result = await _competenceCategoryService.DeleteAsync(deleteCompetenceCategoryRequest);
+        var result = await _competenceCategoryService.DeleteAsync(id);
         return Ok(result);
     }
 

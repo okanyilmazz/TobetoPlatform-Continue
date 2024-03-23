@@ -8,7 +8,7 @@ public interface IEducationProgramLikeService
 {
     Task<CreatedEducationProgramLikeResponse> AddAsync(CreateEducationProgramLikeRequest createEducationProgramLikeRequest);
     Task<UpdatedEducationProgramLikeResponse> UpdateAsync(UpdateEducationProgramLikeRequest updateEducationProgramLikeRequest);
-    Task<DeletedEducationProgramLikeResponse> DeleteAsync(DeleteEducationProgramLikeRequest deleteEducationProgramLikeRequest);
+    Task<DeletedEducationProgramLikeResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListEducationProgramLikeResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetEducationProgramLikeResponse> GetByIdAsync(Guid id);
     Task<GetEducationProgramLikeResponse> GetByEducationProgramIdAndAccountIdAsync(Guid educationProgramId, Guid accountId);

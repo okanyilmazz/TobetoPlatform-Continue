@@ -31,10 +31,10 @@ public class ExamQuestionManager : IExamQuestionService
         return createdExamQuestionResponse;
     }
 
-    public async Task<DeletedExamQuestionResponse> DeleteAsync(DeleteExamQuestionRequest deleteExamQuestionRequest)
+    public async Task<DeletedExamQuestionResponse> DeleteAsync(Guid id)
     {
-        await _examQuestionBusinessRules.IsExistsExamQuestion(deleteExamQuestionRequest.Id);
-        ExamQuestion examQuestion = await _examQuestionDal.GetAsync(predicate: a => a.Id == deleteExamQuestionRequest.Id);
+        await _examQuestionBusinessRules.IsExistsExamQuestion(id);
+        ExamQuestion examQuestion = await _examQuestionDal.GetAsync(predicate: a => a.Id == id);
         ExamQuestion deletedExamQuestion = await _examQuestionDal.DeleteAsync(examQuestion);
         DeletedExamQuestionResponse createdExamQuestionResponse = _mapper.Map<DeletedExamQuestionResponse>(deletedExamQuestion);
         return createdExamQuestionResponse;
