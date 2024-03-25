@@ -93,6 +93,18 @@ public class UsersController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Users.Get")]
+    [CustomValidation(typeof(UpdateUserRequestValidator))]
+    [HttpPut("UpdateResetToken")]
+    public async Task<IActionResult> UpdateResetTokenAsync([FromBody] ResetTokenUserRequest resetTokenUserRequest)
+    {
+        var result = await _userService.UpdateResetTokenAsync(resetTokenUserRequest);
+        return Ok(result);
+    }
+
+
+    [Logging(typeof(MsSqlLogger))]
+    [Logging(typeof(FileLogger))]
+    [CacheRemove("Users.Get")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {

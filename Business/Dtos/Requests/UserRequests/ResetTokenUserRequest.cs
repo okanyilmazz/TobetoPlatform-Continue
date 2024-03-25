@@ -2,6 +2,6 @@
 
 public class ResetTokenUserRequest
 {
-    public Guid UserId { get; set; }
-    public string ResetToken { get; set; }
+    public Guid Id { get; set; }
+    public string PasswordReset { get; set; }
 }
