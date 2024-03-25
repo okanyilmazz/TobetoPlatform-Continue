@@ -1,4 +1,4 @@
-﻿using Business.Abstracts;
+using Business.Abstracts;
 using Core.CrossCuttingConcerns.Caching;
 using Core.CrossCuttingConcerns.Logging.SeriLog.Logger;
 using Core.CrossCuttingConcerns.Logging;
@@ -86,6 +86,18 @@ public class UsersController : ControllerBase
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateUserRequest updateUserRequest)
     {
         var result = await _userService.UpdateAsync(updateUserRequest);
+        return Ok(result);
+    }
+
+
+    [Logging(typeof(MsSqlLogger))]
+    [Logging(typeof(FileLogger))]
+    [CacheRemove("Users.Get")]
+    [CustomValidation(typeof(UpdateUserRequestValidator))]
+    [HttpPut("UpdateResetToken")]
+    public async Task<IActionResult> UpdateResetTokenAsync([FromBody] ResetTokenUserRequest resetTokenUserRequest)
+    {
+        var result = await _userService.UpdateResetTokenAsync(resetTokenUserRequest);
         return Ok(result);
     }
 

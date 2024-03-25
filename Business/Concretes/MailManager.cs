@@ -27,11 +27,11 @@ public class MailManager : IMailService
         mail.IsBodyHtml = true;
 
         SmtpClient client = new();
+        client.UseDefaultCredentials = false;
         client.Credentials = new NetworkCredential(_configuration.GetSection("Smtp:Username").Value?.ToString(), _configuration.GetSection("Smtp:Token").Value?.ToString());
         client.Port = Convert.ToInt32(_configuration.GetSection("Smtp:Port").Value);
         client.Host = _configuration.GetSection("Smtp:Host").Value?.ToString();
         client.EnableSsl = true;
-
         await client.SendMailAsync(mail);
         return true;
     }

@@ -51,8 +51,6 @@ public class UserBusinessRules : BaseBusinessRules
 
     public async Task IsExistsResetToken(string resetToken)
     {
-        var test = await _userDal.GetListAsync();
-
         var result = await _userDal.GetAsync(
             predicate: a => a.PasswordReset == resetToken,
             enableTracking: false);
