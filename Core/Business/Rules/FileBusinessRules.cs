@@ -1,4 +1,5 @@
 ﻿using Core.Messages;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Core.Business.Rules;
 
@@ -12,7 +13,6 @@ public class FileBusinessRules : BaseBusinessRules
         {
             throw new BusinessException(CoreMessages.FileNotFound);
         }
-
     }
 
 
@@ -32,10 +32,9 @@ public class FileBusinessRules : BaseBusinessRules
 
     public async Task CheckFileExtension(string fileName)
     {
-        if(!fileName.Contains("png") || !fileName.Contains("pdf") || !fileName.Contains("jpg") || !fileName.Contains("jpeg"))
+        if (!fileName.Contains(".png") && !fileName.Contains(".pdf") && !fileName.Contains(".jpg") && !fileName.Contains(".jpeg"))
         {
             throw new BusinessException(CoreMessages.InvalidExtension);
-
         }
     }
 }

@@ -19,6 +19,14 @@ public class AccountProfile : Profile
         CreateMap<Account, DeleteAccountRequest>().ReverseMap();
         CreateMap<Account, DeletedAccountResponse>().ReverseMap();
 
+        CreateMap<Account, CreateAccountImageRequest>().ReverseMap();
+        CreateMap<Account, CreatedAccountImageResponse>().ReverseMap();
+
+        CreateMap<Account, UpdateAccountImageRequest>().ReverseMap();
+
+
+
+
         CreateMap<Account, GetAccountResponse>()
             .ForMember(destinationMember: response => response.FirstName,
             memberOptions: a => a.MapFrom(a => a.User.FirstName))
