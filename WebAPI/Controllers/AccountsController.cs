@@ -1,12 +1,13 @@
 ﻿using Business.Abstracts;
+using Business.Dtos.Requests.AccountRequests;
+using Business.Messages;
+using Business.Rules.ValidationRules.FluentValidation.AccountValidators;
 using Core.CrossCuttingConcerns.Caching;
-using Core.CrossCuttingConcerns.Logging.SeriLog.Logger;
 using Core.CrossCuttingConcerns.Logging;
+using Core.CrossCuttingConcerns.Logging.SeriLog.Logger;
 using Core.CrossCuttingConcerns.Validation;
 using Core.DataAccess.Paging;
 using Microsoft.AspNetCore.Mvc;
-using Business.Rules.ValidationRules.FluentValidation.AccountValidators;
-using Business.Dtos.Requests.AccountRequests;
 
 namespace WebAPI.Controllers;
 
@@ -15,10 +16,13 @@ namespace WebAPI.Controllers;
 public class AccountsController : ControllerBase
 {
     IAccountService _accountService;
+    public static IWebHostEnvironment _webHostEnvironment;
 
-    public AccountsController(IAccountService accountService)
+
+    public AccountsController(IAccountService accountService, IWebHostEnvironment webHostEnvironment)
     {
         _accountService = accountService;
+        _webHostEnvironment = webHostEnvironment;
     }
 
 
@@ -100,6 +104,28 @@ public class AccountsController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("Accounts.Get")]
+    [HttpPut("Image")]
+    public async Task<IActionResult> UpdateImageAsync([FromForm] UpdateAccountImageRequest updateAccountImageRequest)
+    {
+        await _accountService.UpdateImageAsync(updateAccountImageRequest);
+        return Ok(true);
+    }
+
+    [Logging(typeof(MsSqlLogger))]
+    [Logging(typeof(FileLogger))]
+    [CacheRemove("Accounts.Get")]
+    [HttpPost("Image")]
+    public async Task<IActionResult> AddImageAsync([FromForm] CreateAccountImageRequest createAccountImageRequest)
+    {
+        var currentPath = _webHostEnvironment.ContentRootPath + PathConstant.ImagePath;
+        var result = await _accountService.AddImageAsync(createAccountImageRequest, currentPath);
+        return Ok(result);
+    }
+
+
+    [Logging(typeof(MsSqlLogger))]
+    [Logging(typeof(FileLogger))]
+    [CacheRemove("Accounts.Get")]
     [CustomValidation(typeof(UpdateAccountRequestValidator))]
     [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] UpdateAccountRequest updateAccountRequest)
@@ -116,6 +142,16 @@ public class AccountsController : ControllerBase
     public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
     {
         var result = await _accountService.DeleteAsync(id);
+        return Ok(result);
+    }
+
+    [Logging(typeof(MsSqlLogger))]
+    [Logging(typeof(FileLogger))]
+    [CacheRemove("Accounts.Get")]
+    [HttpDelete("Image/{id}")]
+    public async Task<IActionResult> DeleteImageAsync([FromRoute] Guid id)
+    {
+        var result = await _accountService.DeleteImageAsync(id);
         return Ok(result);
     }
 }

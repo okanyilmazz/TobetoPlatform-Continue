@@ -1,4 +1,5 @@
-﻿using Business.Messages;
+﻿using Business.Dtos.Requests.CertificateRequests;
+using Business.Messages;
 using Core.Business.Rules;
 using DataAccess.Abstracts;
 
@@ -54,5 +55,11 @@ public class AccountBusinessRules : BaseBusinessRules
                 throw new BusinessException(BusinessMessages.DataAvailable);
             }
         }
+    }
+
+    public async Task<string> Test(string folderPath, string currentPath)
+    {
+        if (string.IsNullOrEmpty(folderPath)) return currentPath;
+        return folderPath;
     }
 }

@@ -7,6 +7,7 @@ namespace Business.Abstracts;
 public interface IAccountService
 {
     Task<CreatedAccountResponse> AddAsync(CreateAccountRequest createAccountRequest);
+    Task<DeletedAccountResponse> DeleteImageAsync(Guid id);
     Task<UpdatedAccountResponse> UpdateAsync(UpdateAccountRequest updateAccountRequest);
     Task<DeletedAccountResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListAccountResponse>> GetListAsync(PageRequest pageRequest);
@@ -15,4 +16,7 @@ public interface IAccountService
     Task<GetAccountResponse> GetByIdAsync(Guid id);
     Task<IPaginate<GetListAccountResponse>> GetByLessonIdForLikeAsync(Guid lessonId, PageRequest pageRequest);
     Task<IPaginate<GetListAccountResponse>> GetByEducationProgramIdForLikeAsync(Guid educationProgramId, PageRequest pageRequest);   
+ 
+    Task UpdateImageAsync(UpdateAccountImageRequest updateAccountImageRequest);
+    Task<CreatedAccountImageResponse> AddImageAsync(CreateAccountImageRequest createAccountImageRequest, string currentPath);
 }

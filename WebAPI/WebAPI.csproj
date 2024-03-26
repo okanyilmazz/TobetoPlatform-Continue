@@ -7,6 +7,18 @@
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Uploads\Files\Certificates\741dcf6e-765a-4b14-9443-1a40e1eb8ae3.jpg" />
+    <Content Remove="wwwroot\Uploads\Files\Certificates\9a9203f8-bbd5-4edb-8bfa-d714ce9af19a.jpg" />
+    <Content Remove="wwwroot\Uploads\Files\Images\0b12d38e-bc7d-474c-ae2a-355dfc5b9c59.jpg" />
+    <Content Remove="wwwroot\Uploads\Files\Images\20b927de-3333-4bc5-94f2-67d5d45fa065.jpg" />
+    <Content Remove="wwwroot\Uploads\Files\Images\600cf958-f05f-4b35-af8c-56ab75b3b867.jpg" />
+    <Content Remove="wwwroot\Uploads\Files\Images\66b5bff1-7a31-4e6e-b079-882e8ff7f4c1.jpg" />
+    <Content Remove="wwwroot\Uploads\Files\Images\ac9cd295-57a6-40bf-af32-08be77e03a98.jpg" />
+    <Content Remove="wwwroot\Uploads\Files\Images\cb7161d3-b1c4-4e79-9bcd-673c5acee22c.jpg" />
+    <Content Remove="wwwroot\Uploads\Files\Images\eee84365-a99a-4688-ac0d-1f7515de7c1c.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.14" />
@@ -30,6 +42,12 @@
   <ItemGroup>
     <Folder Include="Logs\" />
     <Folder Include="Uploads\Files\Certificates\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Uploads\Files\Certificates\741dcf6e-765a-4b14-9443-1a40e1eb8ae3.jpg" />
+    <None Include="wwwroot\Uploads\Files\Certificates\9a9203f8-bbd5-4edb-8bfa-d714ce9af19a.jpg" />
+    <None Include="wwwroot\Uploads\Files\Images\600cf958-f05f-4b35-af8c-56ab75b3b867.jpg" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="https://json.schemastore.org/azure-iot-edge-deployment-template-4.0.json" /></VisualStudio></ProjectExtensions>
