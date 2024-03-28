@@ -16,7 +16,6 @@ public class CountryProfile : Profile
         CreateMap<Country, UpdateCountryRequest>().ReverseMap();
         CreateMap<Country, UpdatedCountryResponse>().ReverseMap();
 
-        CreateMap<Country, DeleteCountryRequest>().ReverseMap();
         CreateMap<Country, DeletedCountryResponse>().ReverseMap();
 
         CreateMap<Country, GetListCountryResponse>().ReverseMap();

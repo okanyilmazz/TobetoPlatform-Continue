@@ -16,7 +16,6 @@ public class CompetenceCategoryProfile : Profile
         CreateMap<CompetenceCategory, UpdateCompetenceCategoryRequest>().ReverseMap();
         CreateMap<CompetenceCategory, UpdatedCompetenceCategoryResponse>().ReverseMap();
 
-        CreateMap<CompetenceCategory, DeleteCompetenceCategoryRequest>().ReverseMap();
         CreateMap<CompetenceCategory, DeletedCompetenceCategoryResponse>().ReverseMap();
 
         CreateMap<CompetenceCategory, GetListCompetenceCategoryResponse>().ReverseMap();

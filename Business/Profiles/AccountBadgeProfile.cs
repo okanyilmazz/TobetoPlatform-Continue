@@ -17,7 +17,6 @@ public class AccountBadgeProfile : Profile
         CreateMap<AccountBadge, UpdateAccountBadgeRequest>().ReverseMap();
         CreateMap<AccountBadge, UpdatedAccountBadgeResponse>().ReverseMap();
 
-        CreateMap<AccountBadge, DeleteAccountBadgeRequest>().ReverseMap();
         CreateMap<AccountBadge, DeletedAccountBadgeResponse>().ReverseMap();
 
         CreateMap<IPaginate<AccountBadge>, Paginate<GetListAccountBadgeResponse>>().ReverseMap();

@@ -12,7 +12,6 @@ public class LessonSubTypeProfile : Profile
     {
         CreateMap<LessonSubType, CreateLessonSubTypeRequest>().ReverseMap();
         CreateMap<LessonSubType, UpdateLessonSubTypeRequest>().ReverseMap();
-        CreateMap<LessonSubType, DeleteLessonSubTypeRequest>().ReverseMap();
 
         CreateMap<LessonSubType, CreatedLessonSubTypeResponse>().ReverseMap();
         CreateMap<LessonSubType, UpdatedLessonSubTypeResponse>().ReverseMap();

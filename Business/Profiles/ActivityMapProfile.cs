@@ -12,7 +12,6 @@ public class ActivityMapProfile : Profile
     {
         CreateMap<ActivityMap, CreateActivityMapRequest>().ReverseMap();
         CreateMap<ActivityMap, UpdateActivityMapRequest>().ReverseMap();
-        CreateMap<ActivityMap, DeleteActivityMapRequest>().ReverseMap();
 
         CreateMap<ActivityMap, CreatedActivityMapResponse>().ReverseMap();
         CreateMap<ActivityMap, UpdatedActivityMapResponse>().ReverseMap();

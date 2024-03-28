@@ -16,7 +16,6 @@ public class AnnouncementReadProfile : Profile
         CreateMap<AnnouncementRead, UpdateAnnouncementReadRequest>().ReverseMap();
         CreateMap<AnnouncementRead, UpdatedAnnouncementReadResponse>().ReverseMap();
 
-        CreateMap<AnnouncementRead, DeleteAnnouncementReadRequest>().ReverseMap();
         CreateMap<AnnouncementRead, DeletedAnnouncementReadResponse>().ReverseMap();
 
 

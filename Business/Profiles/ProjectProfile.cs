@@ -16,7 +16,6 @@ public class ProjectProfile: Profile
         CreateMap<Project, UpdateProjectRequest>().ReverseMap();
         CreateMap<Project, UpdatedProjectResponse>().ReverseMap();
 
-        CreateMap<Project, DeleteProjectRequest>().ReverseMap();
         CreateMap<Project, DeletedProjectResponse>().ReverseMap();
 
         CreateMap<Project, GetListProjectResponse>().ReverseMap();

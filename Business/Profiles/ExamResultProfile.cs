@@ -16,7 +16,6 @@ public class ExamResultProfile : Profile
         CreateMap<ExamResult, UpdateExamResultRequest>().ReverseMap();
         CreateMap<ExamResult, UpdatedExamResultResponse>().ReverseMap();
 
-        CreateMap<ExamResult, DeleteExamResultRequest>().ReverseMap();
         CreateMap<ExamResult, DeletedExamResultResponse>().ReverseMap();
 
         CreateMap<IPaginate<ExamResult>, Paginate<GetListExamResultResponse>>().ReverseMap();

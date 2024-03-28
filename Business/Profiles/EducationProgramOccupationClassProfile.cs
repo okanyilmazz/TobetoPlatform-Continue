@@ -13,7 +13,6 @@ public class EducationProgramOccupationClassProfile : Profile
         CreateMap<EducationProgramOccupationClass, CreateEducationProgramOccupationClassRequest>().ReverseMap();
         CreateMap<EducationProgramOccupationClass, CreatedEducationProgramOccupationClassResponse>().ReverseMap();
 
-        CreateMap<EducationProgramOccupationClass, DeleteEducationProgramOccupationClassRequest>().ReverseMap();
         CreateMap<EducationProgramOccupationClass, DeletedEducationProgramOccupationClassResponse>().ReverseMap();
 
         CreateMap<EducationProgramOccupationClass, UpdateEducationProgramOccupationClassRequest>().ReverseMap();

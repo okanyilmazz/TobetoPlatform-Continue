@@ -14,7 +14,6 @@ public class SessionProfile : Profile
         CreateMap<Session, UpdateSessionRequest>().ReverseMap();
         CreateMap<Session, UpdatedSessionResponse>().ReverseMap();
 
-        CreateMap<Session, DeleteSessionRequest>().ReverseMap();
         CreateMap<Session, DeletedSessionResponse>().ReverseMap();
 
         CreateMap<IPaginate<Session>, Paginate<GetListSessionResponse>>().ReverseMap();

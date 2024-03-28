@@ -16,7 +16,6 @@ public class AccountProfile : Profile
         CreateMap<Account, UpdateAccountRequest>().ReverseMap();
         CreateMap<Account, UpdatedAccountResponse>().ReverseMap();
 
-        CreateMap<Account, DeleteAccountRequest>().ReverseMap();
         CreateMap<Account, DeletedAccountResponse>().ReverseMap();
 
         CreateMap<Account, CreateAccountImageRequest>().ReverseMap();

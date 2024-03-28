@@ -16,7 +16,6 @@ public class ExamQuestionProfile : Profile
         CreateMap<ExamQuestion, UpdateExamQuestionRequest>().ReverseMap();
         CreateMap<ExamQuestion, UpdatedExamQuestionResponse>().ReverseMap();
 
-        CreateMap<ExamQuestion, DeleteExamQuestionRequest>().ReverseMap();
         CreateMap<ExamQuestion, DeletedExamQuestionResponse>().ReverseMap();
 
         CreateMap<ExamQuestion, GetExamQuestionResponse>().ReverseMap();

@@ -12,7 +12,6 @@ public class EducationProgramLevelProfile : Profile
     {
         CreateMap<EducationProgramLevel, CreateEducationProgramLevelRequest>().ReverseMap();
         CreateMap<EducationProgramLevel, UpdateEducationProgramLevelRequest>().ReverseMap();
-        CreateMap<EducationProgramLevel, DeleteEducationProgramLevelRequest>().ReverseMap();
 
         CreateMap<EducationProgramLevel, CreatedEducationProgramLevelResponse>().ReverseMap();
         CreateMap<EducationProgramLevel, UpdatedEducationProgramLevelResponse>().ReverseMap();

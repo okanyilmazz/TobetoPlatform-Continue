@@ -12,7 +12,6 @@ public class WorkExperienceProfile : Profile
     {
         CreateMap<WorkExperience, CreateWorkExperienceRequest>().ReverseMap();
         CreateMap<WorkExperience, UpdateWorkExperienceRequest>().ReverseMap();
-        CreateMap<WorkExperience, DeleteWorkExperienceRequest>().ReverseMap();
 
         CreateMap<WorkExperience, CreatedWorkExperienceResponse>().ReverseMap();
         CreateMap<WorkExperience, UpdatedWorkExperienceResponse>().ReverseMap();

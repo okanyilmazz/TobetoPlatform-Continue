@@ -16,7 +16,6 @@ public class ExamOccupationClassProfile : Profile
         CreateMap<ExamOccupationClass, UpdateExamOccupationClassRequest>().ReverseMap();
         CreateMap<ExamOccupationClass, UpdatedExamOccupationClassResponse>().ReverseMap();
 
-        CreateMap<ExamOccupationClass, DeleteExamOccupationClassRequest>().ReverseMap();
         CreateMap<ExamOccupationClass, DeletedExamOccupationClassResponse>().ReverseMap();
         CreateMap<ExamOccupationClass, GetExamOccupationClassResponse>().ReverseMap();
 

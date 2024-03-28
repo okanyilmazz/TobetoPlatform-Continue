@@ -16,7 +16,6 @@ public class SocialMediaProfile : Profile
         CreateMap<SocialMedia, UpdateSocialMediaRequest>().ReverseMap();
         CreateMap<SocialMedia, UpdatedSocialMediaResponse>().ReverseMap();
 
-        CreateMap<SocialMedia, DeleteSocialMediaRequest>().ReverseMap();
         CreateMap<SocialMedia, DeletedSocialMediaResponse>().ReverseMap();
 
         CreateMap<SocialMedia, GetListSocialMediaResponse>().ReverseMap();

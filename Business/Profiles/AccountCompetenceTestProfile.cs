@@ -16,7 +16,6 @@ public class AccountCompetenceTestProfile : Profile
         CreateMap<AccountCompetenceTest, UpdateAccountCompetenceTestRequest>().ReverseMap();
         CreateMap<AccountCompetenceTest, UpdatedAccountCompetenceTestResponse>().ReverseMap();
 
-        CreateMap<AccountCompetenceTest, DeleteAccountCompetenceTestRequest>().ReverseMap();
         CreateMap<AccountCompetenceTest, DeletedAccountCompetenceTestResponse>().ReverseMap();
 
 

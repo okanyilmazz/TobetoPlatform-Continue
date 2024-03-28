@@ -14,14 +14,10 @@ public class OperationClaimProfile : Profile
         CreateMap<OperationClaim, CreateOperationClaimRequest>().ReverseMap();
         CreateMap<OperationClaim, CreatedOperationClaimResponse>().ReverseMap();
 
-    CreateMap<OperationClaim, DeleteOperationClaimRequest>().ReverseMap();
-    CreateMap<OperationClaim, DeletedOperationClaimResponse>().ReverseMap();
+        CreateMap<OperationClaim, DeletedOperationClaimResponse>().ReverseMap();
 
         CreateMap<OperationClaim, UpdateOperationClaimRequest>().ReverseMap();
         CreateMap<OperationClaim, UpdatedOperationClaimResponse>().ReverseMap();
-
-        CreateMap<OperationClaim, DeleteOperationClaimRequest>().ReverseMap();
-        CreateMap<OperationClaim, DeletedOperationClaimResponse>().ReverseMap();
 
         CreateMap<OperationClaim, GetListOperationClaimResponse>().ReverseMap();
         CreateMap<OperationClaim, GetOperationClaimResponse>().ReverseMap();

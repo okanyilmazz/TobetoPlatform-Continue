@@ -12,7 +12,6 @@ public class AccountLessonProfile : Profile
     {
         CreateMap<AccountLesson, CreateAccountLessonRequest>().ReverseMap();
         CreateMap<AccountLesson, UpdateAccountLessonRequest>().ReverseMap();
-        CreateMap<AccountLesson, DeleteAccountLessonRequest>().ReverseMap();
 
         CreateMap<AccountLesson, CreatedAccountLessonResponse>().ReverseMap();
         CreateMap<AccountLesson, UpdatedAccountLessonResponse>().ReverseMap();

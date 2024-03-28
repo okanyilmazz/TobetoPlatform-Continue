@@ -16,7 +16,6 @@ public class ManagementProgramProfile:Profile
         CreateMap<ManagementProgram, UpdateManagementProgramRequest>().ReverseMap();
         CreateMap<ManagementProgram, UpdatedManagementProgramResponse>().ReverseMap();
 
-        CreateMap<ManagementProgram, DeleteManagementProgramRequest>().ReverseMap();
         CreateMap<ManagementProgram, DeletedManagementProgramResponse>().ReverseMap();
 
 

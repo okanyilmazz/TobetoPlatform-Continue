@@ -17,7 +17,6 @@ public class DistrictProfile : Profile
         CreateMap<District, UpdateDistrictRequest>().ReverseMap();
         CreateMap<District, UpdatedDistrictResponse>().ReverseMap();
 
-        CreateMap<District, DeleteDistrictRequest>().ReverseMap();
         CreateMap<District, DeletedDistrictResponse>().ReverseMap();
 
         CreateMap<District, GetDistrictResponse>()

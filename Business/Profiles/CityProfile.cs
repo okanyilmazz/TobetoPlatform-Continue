@@ -13,7 +13,6 @@ public class CityProfile : Profile
         CreateMap<City, CreateCityRequest>().ReverseMap();
         CreateMap<City, CreatedCityResponse>().ReverseMap();
 
-        CreateMap<City, DeleteCityRequest>().ReverseMap();
         CreateMap<City, DeletedCityResponse>().ReverseMap();
 
         CreateMap<City, UpdateCityRequest>().ReverseMap();

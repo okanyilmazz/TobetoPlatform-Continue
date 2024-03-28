@@ -16,7 +16,6 @@ public class AnnouncementTypeProfile : Profile
         CreateMap<AnnouncementType, UpdateAnnouncementTypeRequest>().ReverseMap();
         CreateMap<AnnouncementType, UpdatedAnnouncementTypeResponse>().ReverseMap();
 
-        CreateMap<AnnouncementType, DeleteAnnouncementTypeRequest>().ReverseMap();
         CreateMap<AnnouncementType, DeletedAnnouncementTypeResponse>().ReverseMap();
 
 

@@ -17,7 +17,6 @@ public class AccountActivityMapProfile : Profile
         CreateMap<AccountActivityMap, UpdateAccountActivityMapRequest>().ReverseMap();
         CreateMap<AccountActivityMap, UpdatedAccountActivityMapResponse>().ReverseMap();
 
-        CreateMap<AccountActivityMap, DeleteAccountActivityMapRequest>().ReverseMap();
         CreateMap<AccountActivityMap, DeletedAccountActivityMapResponse>().ReverseMap();
 
         CreateMap<IPaginate<AccountActivityMap>, Paginate<GetListAccountActivityMapResponse>>().ReverseMap();

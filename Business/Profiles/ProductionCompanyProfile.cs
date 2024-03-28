@@ -17,7 +17,6 @@ public class ProductionCompanyProfile : Profile
         CreateMap<ProductionCompany, UpdateProductionCompanyRequest>().ReverseMap();
         CreateMap<ProductionCompany, UpdatedProductionCompanyResponse>().ReverseMap();
 
-        CreateMap<ProductionCompany, DeleteProductionCompanyRequest>().ReverseMap();
         CreateMap<ProductionCompany, DeletedProductionCompanyResponse>().ReverseMap();
 
         CreateMap<ProductionCompany, GetListProductionCompanyResponse>().ReverseMap();

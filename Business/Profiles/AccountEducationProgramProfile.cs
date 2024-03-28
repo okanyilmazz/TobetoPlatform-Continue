@@ -16,7 +16,6 @@ public class AccountEducationProgramProfile : Profile
         CreateMap<AccountEducationProgram, UpdateAccountEducationProgramRequest>().ReverseMap();
         CreateMap<AccountEducationProgram, UpdatedAccountEducationProgramResponse>().ReverseMap();
 
-        CreateMap<AccountEducationProgram, DeleteAccountEducationProgramRequest>().ReverseMap();
         CreateMap<AccountEducationProgram, DeletedAccountEducationProgramResponse>().ReverseMap();
 
         CreateMap<IPaginate<AccountEducationProgram>, Paginate<GetListAccountEducationProgramResponse>>().ReverseMap();

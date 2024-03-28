@@ -19,7 +19,6 @@ public class UserProfile : Profile
         CreateMap<User, UpdateUserRequest>().ReverseMap();
         CreateMap<User, UpdatedUserResponse>().ReverseMap();
 
-        CreateMap<User, DeleteUserRequest>().ReverseMap();
         CreateMap<User, DeletedUserResponse>().ReverseMap();
 
         CreateMap<User, LoginAuthRequest>().ReverseMap();

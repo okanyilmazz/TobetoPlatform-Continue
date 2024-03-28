@@ -12,7 +12,6 @@ namespace Business.Profiles
         {
             CreateMap<Subject, CreateSubjectRequest>().ReverseMap();
             CreateMap<Subject, UpdateSubjectRequest>().ReverseMap();
-            CreateMap<Subject, DeleteSubjectRequest>().ReverseMap();
 
             CreateMap<Subject, CreatedSubjectResponse>().ReverseMap();
             CreateMap<Subject, UpdatedSubjectResponse>().ReverseMap();

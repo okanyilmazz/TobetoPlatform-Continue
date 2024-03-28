@@ -14,7 +14,6 @@ public class SkillProfile : Profile
         CreateMap<Skill, CreatedSkillResponse>().ReverseMap();
         CreateMap<Skill, UpdateSkillRequest>().ReverseMap();
         CreateMap<Skill, UpdatedSkillResponse>().ReverseMap();
-        CreateMap<Skill, DeleteSkillRequest>().ReverseMap();
         CreateMap<Skill, DeletedSkillResponse>().ReverseMap();
 
         CreateMap<IPaginate<Skill>, Paginate<GetListSkillResponse>>().ReverseMap();
