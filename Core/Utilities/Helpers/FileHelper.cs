@@ -26,11 +26,13 @@ public class FileHelper : IFileHelper
         File.Delete(deletedFilePath);
     }
 
-    public async Task Update(IFormFile file, string oldFilePath)
+    public async Task<string> Update(IFormFile file, string oldFilePath)
     {
         await _fileBusinessRules.CheckFileExist(oldFilePath);
         Delete(oldFilePath);
-        CreateFile(file, oldFilePath);
+        int index = oldFilePath.LastIndexOf('/');
+        string newFilePath = oldFilePath.Substring(0, index + 1);
+        return await Add(file, newFilePath);
     }
 
     public string CreateFile(IFormFile file, string destinationFolderPath)

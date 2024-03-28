@@ -1,14 +1,12 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.AccountRequests;
 using Business.Dtos.Responses.AccountResponses;
-using Business.Dtos.Responses.CertificateResponses;
 using Business.Messages;
 using Business.Rules.BusinessRules;
 using Core.DataAccess.Paging;
 using Core.Utilities.Helpers;
 using DataAccess.Abstracts;
-using DataAccess.Concretes;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Dynamic.Core;
@@ -153,7 +151,7 @@ public class AccountManager : IAccountService
         return mappedAccount;
     }
 
-    public async Task UpdateImageAsync(UpdateAccountImageRequest updateAccountImageRequest)
+    public async Task<UpdatedAccountImageResponse> UpdateImageAsync(UpdateAccountImageRequest updateAccountImageRequest)
     {
         await _accountBusinessRules.IsExistsAccount(updateAccountImageRequest.Id);
 
@@ -161,16 +159,26 @@ public class AccountManager : IAccountService
 
         #region
         //Account account = await _accountDal.GetAsync(predicate: a => a.Id == updateAccountImageRequest.Id);
-        //await _fileHelper.Update(updateAccountImageRequest.File, account.ProfilePhotoPath);
+        //string newAccountProfilePhotoPath = await _fileHelper.Update(updateAccountImageRequest.File, account.ProfilePhotoPath);
+        //account.ProfilePhotoPath = newAccountProfilePhotoPath;
+        //await _accountDal.UpdateAsync(account);
+        //var mappedAccount = _mapper.Map<UpdatedAccountImageResponse>(account);
+        //return mappedAccount;
         #endregion
 
         /* Localhost */
 
         #region
         Account account = await _accountDal.GetAsync(predicate: a => a.Id == updateAccountImageRequest.Id);
-        string accountProfilePath = account.ProfilePhotoPath.Substring(PathConstant.LocalBaseUrlImagePath.Length);
-        string newFolderPathForLocal = PathConstant.LocalImagePath + accountProfilePath;
-        await _fileHelper.Update(updateAccountImageRequest.File, newFolderPathForLocal);
+        string accountProfilePhotoPath = account.ProfilePhotoPath.Substring(PathConstant.LocalBaseUrlImagePath.Length);
+        string newFolderPathForLocal = PathConstant.LocalImagePath + accountProfilePhotoPath;
+        string newAccountProfilePhotoPath = await _fileHelper.Update(updateAccountImageRequest.File, newFolderPathForLocal);
+        string newProfilePhotoLocalPath = newAccountProfilePhotoPath.Replace(PathConstant.LocalImagePath, PathConstant.LocalBaseUrlImagePath);
+
+        account.ProfilePhotoPath = newProfilePhotoLocalPath;
+        await _accountDal.UpdateAsync(account);
+        var mappedAccount = _mapper.Map<UpdatedAccountImageResponse>(account);
+        return mappedAccount;
         #endregion
     }
 

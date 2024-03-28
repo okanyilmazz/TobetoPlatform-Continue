@@ -1,4 +1,4 @@
-﻿using Business.Abstracts;
+using Business.Abstracts;
 using Business.Dtos.Requests.AccountRequests;
 using Business.Messages;
 using Business.Rules.ValidationRules.FluentValidation.AccountValidators;
@@ -107,8 +107,8 @@ public class AccountsController : ControllerBase
     [HttpPut("Image")]
     public async Task<IActionResult> UpdateImageAsync([FromForm] UpdateAccountImageRequest updateAccountImageRequest)
     {
-        await _accountService.UpdateImageAsync(updateAccountImageRequest);
-        return Ok(true);
+        var result = await _accountService.UpdateImageAsync(updateAccountImageRequest);
+        return Ok(result);
     }
 
     [Logging(typeof(MsSqlLogger))]
