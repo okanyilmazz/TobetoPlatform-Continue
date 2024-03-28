@@ -39,6 +39,13 @@ public class AuthController : Controller
         return Ok(true);
     }
 
+    [HttpPost("ChangeForgotPassword")]
+    public async Task<IActionResult> ChangeForgotPasswordAsync([FromBody] ResetPasswordRequest resetPasswordRequest)
+    {
+        await _authService.ChangeForgotPassword(resetPasswordRequest);
+        return Ok(true);
+    }
+
     [HttpGet("PasswordReset")]
     public async Task<IActionResult> PasswordResetAsync([FromQuery] string email)
     {

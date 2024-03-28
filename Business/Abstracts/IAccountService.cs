@@ -15,8 +15,8 @@ public interface IAccountService
     Task<IPaginate<GetListAccountResponse>> GetInstructorBySessionIdAsync(Guid sessionId);
     Task<GetAccountResponse> GetByIdAsync(Guid id);
     Task<IPaginate<GetListAccountResponse>> GetByLessonIdForLikeAsync(Guid lessonId, PageRequest pageRequest);
-    Task<IPaginate<GetListAccountResponse>> GetByEducationProgramIdForLikeAsync(Guid educationProgramId, PageRequest pageRequest);   
- 
-    Task UpdateImageAsync(UpdateAccountImageRequest updateAccountImageRequest);
+    Task<IPaginate<GetListAccountResponse>> GetByEducationProgramIdForLikeAsync(Guid educationProgramId, PageRequest pageRequest);
+
+    Task<UpdatedAccountImageResponse> UpdateImageAsync(UpdateAccountImageRequest updateAccountImageRequest);
     Task<CreatedAccountImageResponse> AddImageAsync(CreateAccountImageRequest createAccountImageRequest, string currentPath);
 }

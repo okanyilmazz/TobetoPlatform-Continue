@@ -118,6 +118,17 @@ public class AuthManager : IAuthService
         await _userService.UpdatePasswordAsync(user);
     }
 
+    public async Task ChangeForgotPassword(ResetPasswordRequest resetPasswordRequest)
+    {
+        byte[] passwordHash, passwordSalt;
+        var userResponse = await _userService.GetByIdAsync(resetPasswordRequest.UserId);
+        HashingHelper.CreatePasswordHash(resetPasswordRequest.NewPassword, out passwordHash, out passwordSalt);
+        User user = _mapper.Map<User>(userResponse);
+        user.PasswordHash = passwordHash;
+        user.PasswordSalt = passwordSalt;
+        await _userService.UpdatePasswordAsync(user);
+    }
+
     public async Task<bool> PasswordResetAsync(string email)
     {
         GetUserResponse user = await _userService.GetByMailAsync(email);
