@@ -17,7 +17,6 @@ public class CompetenceResultProfile : Profile
         CreateMap<CompetenceResult, UpdateCompetenceResultRequest>().ReverseMap();
         CreateMap<CompetenceResult, UpdatedCompetenceResultResponse>().ReverseMap();
 
-        CreateMap<CompetenceResult, DeleteCompetenceResultRequest>().ReverseMap();
         CreateMap<CompetenceResult, DeletedCompetenceResultResponse>().ReverseMap();
 
         CreateMap<IPaginate<CompetenceResult>, Paginate<GetListCompetenceResultResponse>>().ReverseMap();

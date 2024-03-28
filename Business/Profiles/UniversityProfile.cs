@@ -16,7 +16,6 @@ public class UniversityProfile : Profile
         CreateMap<University, UpdateUniversityRequest>().ReverseMap();
         CreateMap<University, UpdatedUniversityResponse>().ReverseMap();
 
-        CreateMap<University, DeleteUniversityRequest>().ReverseMap();
         CreateMap<University, DeletedUniversityResponse>().ReverseMap();
 
         CreateMap<University, GetUniversityResponse>().ReverseMap();

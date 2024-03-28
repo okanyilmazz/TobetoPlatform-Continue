@@ -16,7 +16,6 @@ public class AccountUniversityProfile : Profile
         CreateMap<AccountUniversity, UpdateAccountUniversityRequest>().ReverseMap();
         CreateMap<AccountUniversity, UpdatedAccountUniversityResponse>().ReverseMap();
 
-        CreateMap<AccountUniversity, DeleteAccountUniversityRequest>().ReverseMap();
         CreateMap<AccountUniversity, DeletedAccountUniversityResponse>().ReverseMap();
 
         CreateMap<AccountUniversity, GetAccountUniversityResponse>()

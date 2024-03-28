@@ -16,7 +16,6 @@ public class ProgrammingLanguageProfile : Profile
         CreateMap<ProgrammingLanguage, UpdateProgrammingLanguageRequest>().ReverseMap();
         CreateMap<ProgrammingLanguage, UpdatedProgrammingLanguageResponse>().ReverseMap();
 
-        CreateMap<ProgrammingLanguage, DeleteProgrammingLanguageRequest>().ReverseMap();
         CreateMap<ProgrammingLanguage, DeletedProgrammingLanguageResponse>().ReverseMap();
 
         CreateMap<ProgrammingLanguage, GetListProgrammingLanguageResponse>().ReverseMap();

@@ -16,7 +16,6 @@ public class AccountAnswerProfile : Profile
         CreateMap<AccountAnswer, UpdateAccountAnswerRequest>().ReverseMap();
         CreateMap<AccountAnswer, UpdatedAccountAnswerResponse>().ReverseMap();
 
-        CreateMap<AccountAnswer, DeleteAccountAnswerRequest>().ReverseMap();
         CreateMap<AccountAnswer, DeletedAccountAnswerResponse>().ReverseMap();
         CreateMap<AccountAnswer, GetAccountAnswerResponse>()
             .ForMember(destinationMember: caar => caar.ExamName,

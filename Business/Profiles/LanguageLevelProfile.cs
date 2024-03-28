@@ -16,7 +16,6 @@ public class LanguageLevelProfile : Profile
         CreateMap<LanguageLevel, UpdateLanguageLevelRequest>().ReverseMap();
         CreateMap<LanguageLevel, UpdatedLanguageLevelResponse>().ReverseMap();
 
-        CreateMap<LanguageLevel, DeleteLanguageLevelRequest>().ReverseMap();
         CreateMap<LanguageLevel, DeletedLanguageLevelResponse>().ReverseMap();
 
         CreateMap<LanguageLevel, GetLanguageLevelResponse>().ReverseMap();

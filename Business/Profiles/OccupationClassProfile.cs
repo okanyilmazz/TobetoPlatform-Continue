@@ -13,7 +13,6 @@ public class OccupationClassProfile : Profile
         CreateMap<OccupationClass, CreateOccupationClassRequest>().ReverseMap();
         CreateMap<OccupationClass, CreatedOccupationClassResponse>().ReverseMap();
 
-        CreateMap<OccupationClass, DeleteOccupationClassRequest>().ReverseMap();
         CreateMap<OccupationClass, DeletedOccupationClassResponse>().ReverseMap();
 
         CreateMap<OccupationClass, UpdateOccupationClassRequest>().ReverseMap();

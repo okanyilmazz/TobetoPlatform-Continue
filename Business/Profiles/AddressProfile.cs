@@ -12,7 +12,6 @@ public class AddressProfile : Profile
     {
         CreateMap<Address, CreateAddressRequest>().ReverseMap();
         CreateMap<Address, UpdateAddressRequest>().ReverseMap();
-        CreateMap<Address, DeleteAddressRequest>().ReverseMap();
 
         CreateMap<Address, CreatedAddressResponse>().ReverseMap();
         CreateMap<Address, UpdatedAddressResponse>().ReverseMap();

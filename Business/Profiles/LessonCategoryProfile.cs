@@ -11,7 +11,6 @@ public class LessonCategoryProfile : Profile
     public LessonCategoryProfile()
     {
         CreateMap<LessonCategory, CreateLessonCategoryRequest>().ReverseMap();
-        CreateMap<LessonCategory, DeleteLessonCategoryRequest>().ReverseMap();
         CreateMap<LessonCategory, UpdateLessonCategoryRequest>().ReverseMap();
         CreateMap<LessonCategory, CreatedLessonCategoryResponse>().ReverseMap();
         CreateMap<LessonCategory, DeletedLessonCategoryResponse>().ReverseMap();

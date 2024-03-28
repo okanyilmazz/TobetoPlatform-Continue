@@ -16,7 +16,6 @@ public class AccountSkillProfile : Profile
         CreateMap<AccountSkill, UpdateAccountSkillRequest>().ReverseMap();
         CreateMap<AccountSkill, UpdatedAccountSkillResponse>().ReverseMap();
 
-        CreateMap<AccountSkill, DeleteAccountSkillRequest>().ReverseMap();
         CreateMap<AccountSkill, DeletedAccountSkillResponse>().ReverseMap();
 
         CreateMap<AccountSkill, GetAccountSkillResponse>()

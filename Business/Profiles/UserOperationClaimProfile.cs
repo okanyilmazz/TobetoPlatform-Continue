@@ -16,7 +16,6 @@ public class UserOperationClaimProfile : Profile
         CreateMap<UserOperationClaim, UpdateUserOperationClaimRequest>().ReverseMap();
         CreateMap<UserOperationClaim, UpdatedUserOperationClaimResponse>().ReverseMap();
 
-        CreateMap<UserOperationClaim, DeleteUserOperationClaimRequest>().ReverseMap();
         CreateMap<UserOperationClaim, DeletedUserOperationClaimResponse>().ReverseMap();
 
         CreateMap<UserOperationClaim, GetListUserOperationClaimResponse>()

@@ -16,7 +16,6 @@ public class QuestionTypeProfile : Profile
         CreateMap<QuestionType, UpdateQuestionTypeRequest>().ReverseMap();
         CreateMap<QuestionType, UpdatedQuestionTypeResponse>().ReverseMap();
 
-        CreateMap<QuestionType, DeleteQuestionTypeRequest>().ReverseMap();
         CreateMap<QuestionType, DeletedQuestionTypeResponse>().ReverseMap();
 
         CreateMap<QuestionType, GetQuestionTypeResponse>().ReverseMap();

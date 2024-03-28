@@ -16,7 +16,6 @@ public class CertificateProfile : Profile
         CreateMap<Certificate, UpdateCertificateRequest>().ReverseMap();
         CreateMap<Certificate, UpdatedCertificateResponse>().ReverseMap();
 
-        CreateMap<Certificate, DeleteCertificateRequest>().ReverseMap();
         CreateMap<Certificate, DeletedCertificateResponse>().ReverseMap();
 
         CreateMap<Certificate, GetListCertificateResponse>().ReverseMap();

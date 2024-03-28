@@ -16,7 +16,6 @@ public class AccountLanguageProfile : Profile
         CreateMap<AccountLanguage, UpdateAccountLanguageRequest>().ReverseMap();
         CreateMap<AccountLanguage, UpdatedAccountLanguageResponse>().ReverseMap();
 
-        CreateMap<AccountLanguage, DeleteAccountLanguageRequest>().ReverseMap();
         CreateMap<AccountLanguage, DeletedAccountLanguageResponse>().ReverseMap();
 
         CreateMap<IPaginate<AccountLanguage>, Paginate<GetListAccountLanguageResponse>>().ReverseMap();

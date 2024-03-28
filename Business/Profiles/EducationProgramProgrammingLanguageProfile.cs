@@ -14,7 +14,6 @@ public class EducationProgramProgrammingLanguageProfile : Profile
         CreateMap<EducationProgramProgrammingLanguage, CreateEducationProgramProgrammingLanguageRequest>().ReverseMap();
         CreateMap<EducationProgramProgrammingLanguage, CreatedEducationProgramProgrammingLanguageResponse>().ReverseMap();
 
-        CreateMap<EducationProgramProgrammingLanguage, DeleteEducationProgramProgrammingLanguageRequest>().ReverseMap();
         CreateMap<EducationProgramProgrammingLanguage, DeletedEducationProgramProgrammingLanguageResponse>().ReverseMap();
 
         CreateMap<EducationProgramProgrammingLanguage, UpdateEducationProgramProgrammingLanguageRequest>().ReverseMap();

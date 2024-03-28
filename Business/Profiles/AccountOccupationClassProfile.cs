@@ -12,7 +12,6 @@ public class AccountOccupationClassProfile : Profile
     {
         CreateMap<AccountOccupationClass, CreateAccountOccupationClassRequest>().ReverseMap();
         CreateMap<AccountOccupationClass, UpdateAccountOccupationClassRequest>().ReverseMap();
-        CreateMap<AccountOccupationClass, DeleteAccountOccupationClassRequest>().ReverseMap();
 
         CreateMap<AccountOccupationClass, CreatedAccountOccupationClassResponse>().ReverseMap();
         CreateMap<AccountOccupationClass, UpdatedAccountOccupationClassResponse>().ReverseMap();

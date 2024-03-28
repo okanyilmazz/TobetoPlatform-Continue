@@ -16,7 +16,6 @@ public class HomeworkProfile : Profile
         CreateMap<Homework, UpdateHomeworkRequest>().ReverseMap();
         CreateMap<Homework, UpdatedHomeworkResponse>().ReverseMap();
 
-        CreateMap<Homework, DeleteHomeworkRequest>().ReverseMap();
         CreateMap<Homework, DeletedHomeworkResponse>().ReverseMap();
 
         CreateMap<IPaginate<Homework>, Paginate<GetListHomeworkResponse>>().ReverseMap();

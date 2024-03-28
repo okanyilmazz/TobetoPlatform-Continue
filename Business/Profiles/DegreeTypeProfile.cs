@@ -13,7 +13,6 @@ public class DegreeTypeProfile : Profile
         CreateMap<DegreeType, CreateDegreeTypeRequest>().ReverseMap();
         CreateMap<DegreeType, CreatedDegreeTypeResponse>().ReverseMap();
 
-        CreateMap<DegreeType, DeleteDegreeTypeRequest>().ReverseMap();
         CreateMap<DegreeType, DeletedDegreeTypeResponse>().ReverseMap();
 
         CreateMap<DegreeType, UpdateDegreeTypeRequest>().ReverseMap();

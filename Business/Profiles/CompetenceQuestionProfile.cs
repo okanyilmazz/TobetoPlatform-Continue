@@ -16,7 +16,6 @@ public class CompetenceQuestionProfile : Profile
         CreateMap<CompetenceQuestion, UpdateCompetenceQuestionRequest>().ReverseMap();
         CreateMap<CompetenceQuestion, UpdatedCompetenceQuestionResponse>().ReverseMap();
 
-        CreateMap<CompetenceQuestion, DeleteCompetenceQuestionRequest>().ReverseMap();
         CreateMap<CompetenceQuestion, DeletedCompetenceQuestionResponse>().ReverseMap();
 
         CreateMap<CompetenceQuestion, GetListCompetenceQuestionResponse>().ReverseMap();

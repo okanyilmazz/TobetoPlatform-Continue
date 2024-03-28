@@ -16,7 +16,6 @@ public class MediaNewProfile : Profile
         CreateMap<MediaNew, UpdateMediaNewRequest>().ReverseMap();
         CreateMap<MediaNew, UpdatedMediaNewResponse>().ReverseMap();
 
-        CreateMap<MediaNew, DeleteMediaNewRequest>().ReverseMap();
         CreateMap<MediaNew, DeletedMediaNewResponse>().ReverseMap();
 
         CreateMap<MediaNew, GetListMediaNewResponse>().ReverseMap();

@@ -16,7 +16,6 @@ public class BlogProfile: Profile
         CreateMap<Blog, UpdateBlogRequest>().ReverseMap();
         CreateMap<Blog, UpdatedBlogResponse>().ReverseMap();
 
-        CreateMap<Blog, DeleteBlogRequest>().ReverseMap();
         CreateMap<Blog, DeletedBlogResponse>().ReverseMap();
 
 

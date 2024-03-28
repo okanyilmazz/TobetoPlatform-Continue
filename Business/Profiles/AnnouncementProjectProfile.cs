@@ -16,7 +16,6 @@ public class AnnouncementProjectProfile : Profile
         CreateMap<AnnouncementProject, UpdateAnnouncementProjectRequest>().ReverseMap();
         CreateMap<AnnouncementProject, UpdatedAnnouncementProjectResponse>().ReverseMap();
 
-        CreateMap<AnnouncementProject, DeleteAnnouncementProjectRequest>().ReverseMap();
         CreateMap<AnnouncementProject, DeletedAnnouncementProjectResponse>().ReverseMap();
         CreateMap<AnnouncementProject, GetAnnouncementProjectResponse>()
             .ForMember(destinationMember: response => response.Announcement, memberOptions:

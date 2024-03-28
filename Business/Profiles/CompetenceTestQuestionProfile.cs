@@ -16,7 +16,6 @@ public class CompetenceTestQuestionProfile : Profile
         CreateMap<CompetenceTestQuestion, UpdateCompetenceTestQuestionRequest>().ReverseMap();
         CreateMap<CompetenceTestQuestion, UpdatedCompetenceTestQuestionResponse>().ReverseMap();
 
-        CreateMap<CompetenceTestQuestion, DeleteCompetenceTestQuestionRequest>().ReverseMap();
         CreateMap<CompetenceTestQuestion, DeletedCompetenceTestQuestionResponse>().ReverseMap();
 
         CreateMap<IPaginate<CompetenceTestQuestion>, Paginate<GetListCompetenceTestQuestionResponse>>().ReverseMap();

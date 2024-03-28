@@ -16,7 +16,6 @@ public class AccountSessionProfile : Profile
         CreateMap<AccountSession, UpdateAccountSessionRequest>().ReverseMap();
         CreateMap<AccountSession, UpdatedAccountSessionResponse>().ReverseMap();
 
-        CreateMap<AccountSession, DeleteAccountSessionRequest>().ReverseMap();
         CreateMap<AccountSession, DeletedAccountSessionResponse>().ReverseMap();
 
         CreateMap<AccountSession, GetAccountSessionResponse>().ReverseMap();
