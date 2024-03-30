@@ -40,18 +40,16 @@ public class AccountOccupationClassManager : IAccountOccupationClassService
         return mappedAccountOccupationClass;
     }
 
-    public async Task<GetListAccountOccupationClassResponse> GetByAccountIdAndOccupationClassId(Guid accountId, Guid occupationClassId)
+    public async Task<GetAccountOccupationClassResponse> GetByAccountIdAndOccupationClassId(Guid accountId, Guid occupationClassId)
     {
-        var occupationClass = await _accountOccupationClassDal.GetListAsync();
-
         var accountOccupationClass = await
             _accountOccupationClassDal.GetAsync(
            predicate: a => a.AccountId == accountId && a.OccupationClassId == occupationClassId,
           include: aoc => aoc.
             Include(aoc => aoc.OccupationClass)
             .Include(aoc => aoc.Account).ThenInclude(a => a.User));
-        var mappedListed = _mapper.Map<GetListAccountOccupationClassResponse>(accountOccupationClass);
-        return mappedListed;
+        var mappedAccountOccupationClass = _mapper.Map<GetAccountOccupationClassResponse>(accountOccupationClass);
+        return mappedAccountOccupationClass;
     }
 
     public async Task<GetAccountOccupationClassResponse> GetByIdAsync(Guid id)
@@ -84,6 +82,6 @@ public class AccountOccupationClassManager : IAccountOccupationClassService
         AccountOccupationClass accountOccupationClass = _mapper.Map<AccountOccupationClass>(updateAccountOccupationClassRequest);
         AccountOccupationClass updateedAccountOccupationClass = await _accountOccupationClassDal.UpdateAsync(accountOccupationClass);
         var mappedAccountOccupationClass = _mapper.Map<UpdatedAccountOccupationClassResponse>(updateedAccountOccupationClass);
-        return mappedAccountOccupationClass; 
-    } 
+        return mappedAccountOccupationClass;
+    }
 }

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 ﻿using Business.Abstracts;
-=======
-using Business.Abstracts;
->>>>>>> 6ec2c23587a3b54bb0d994f7a24f91d6574e9815
 using Business.Dtos.Requests.AccountRequests;
 using Business.Messages;
 using Business.Rules.ValidationRules.FluentValidation.AccountValidators;
