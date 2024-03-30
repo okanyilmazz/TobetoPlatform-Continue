@@ -11,6 +11,6 @@ public interface IAccountOccupationClassService
     Task<DeletedAccountOccupationClassResponse> DeleteAsync(Guid id);
     Task<IPaginate<GetListAccountOccupationClassResponse>> GetListAsync(PageRequest pageRequest);
     Task<GetAccountOccupationClassResponse> GetByIdAsync(Guid id);
-    Task<GetListAccountOccupationClassResponse> GetByAccountIdAndOccupationClassId(Guid accountId, Guid occupationClassId);
+    Task<GetAccountOccupationClassResponse> GetByAccountIdAndOccupationClassId(Guid accountId, Guid occupationClassId);
 
 }

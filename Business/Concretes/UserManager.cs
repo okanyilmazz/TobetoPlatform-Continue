@@ -73,7 +73,7 @@ public class UserManager : IUserService
     
     public async Task<DeletedUserResponse> DeleteAsync(Guid id)
     {
-        await _userBusinessRules.IsExistsUser(id);
+            await _userBusinessRules.IsExistsUser(id);
         User user = await _userDal.GetAsync(predicate: u => u.Id == id);
         User deletedUser = await _userDal.DeleteAsync(user);
         DeletedUserResponse responseUser = _mapper.Map<DeletedUserResponse>(deletedUser);
