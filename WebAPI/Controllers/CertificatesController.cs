@@ -51,10 +51,10 @@ public class CertificatesController : Controller
     [Logging(typeof(FileLogger))]
     [CacheRemove("Certificates.Get")]
     [HttpPost]
-    public async Task<IActionResult> AddAsync([FromForm]CreateCertificateRequest createCertificateRequest)
+    public async Task<IActionResult> AddAsync([FromForm] CreateCertificateRequest createCertificateRequest)
     {
         var currentPath = _webHostEnvironment.ContentRootPath + PathConstant.CertificatesPath;
-        var result = await _certificateService.AddAsync(createCertificateRequest,currentPath);
+        var result = await _certificateService.AddAsync(createCertificateRequest, currentPath);
         return Ok(result);
     }
 
