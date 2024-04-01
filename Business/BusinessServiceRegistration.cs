@@ -1,12 +1,11 @@
-﻿using System.Reflection;
-using Business.Abstracts;
+﻿using Business.Abstracts;
 using Business.Concrete;
 using Business.Concretes;
 using Core.Business.Rules;
 using Core.Utilities.Helpers;
 using Core.Utilities.Security.JWT;
-using DataAccess.Abstracts;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 
 namespace Business;
@@ -90,18 +89,15 @@ public static class BusinessServiceRegistration
         services.AddScoped<IAccountCompetenceTestService, AccountCompetenceTestManager>();
         services.AddScoped<IAccountViewLessonService, AccountViewLessonManager>();
         services.AddScoped<IAccountFavoriteEducationProgramService, AccountFavoriteEducationProgramManager>();
-
-
-
+        services.AddScoped<IBlogImageService, BlogImageManager>();
         services.AddScoped<IOperationClaimService, OperationClaimManager>();
         services.AddScoped<IFileHelper, FileHelper>();
         services.AddScoped<ILessonLikeService, LessonLikeManager>();
         services.AddScoped<IEducationProgramLikeService, EducationProgramLikeManager>();
-
-        services.AddScoped<FileBusinessRules>();
         services.AddScoped<IAnnouncementTypeService, AnnouncementTypeManager>();
         services.AddScoped<IAnnouncementReadService, AnnouncementReadManager>();
         services.AddScoped<IMailService, MailManager>();
+        services.AddScoped<FileBusinessRules>();
 
 
 

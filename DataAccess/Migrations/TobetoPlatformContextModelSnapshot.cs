@@ -1116,6 +1116,40 @@ namespace DataAccess.Migrations
                     b.ToTable("Blogs", (string)null);
                 });
 
+            modelBuilder.Entity("Entities.Concretes.BlogImage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("BlogId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ImagePath");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BlogId");
+
+                    b.HasIndex(new[] { "Id" }, "UK_Id")
+                        .IsUnique();
+
+                    b.ToTable("BlogImages", (string)null);
+                });
+
             modelBuilder.Entity("Entities.Concretes.Certificate", b =>
                 {
                     b.Property<Guid>("Id")
@@ -3440,6 +3474,17 @@ namespace DataAccess.Migrations
                     b.Navigation("Account");
 
                     b.Navigation("Announcement");
+                });
+
+            modelBuilder.Entity("Entities.Concretes.BlogImage", b =>
+                {
+                    b.HasOne("Entities.Concretes.Blog", "Blog")
+                        .WithMany()
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Blog");
                 });
 
             modelBuilder.Entity("Entities.Concretes.Certificate", b =>

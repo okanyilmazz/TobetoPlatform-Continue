@@ -10,10 +10,10 @@ public class CreateBlogRequestValidator : AbstractValidator<CreateBlogRequest>
         RuleFor(b => b.Title).NotEmpty();
         RuleFor(b => b.Description).NotEmpty();
         RuleFor(b => b.ReleaseDate).NotEmpty();
-        RuleFor(b => b.ThumbnailPath).NotEmpty();
+        //RuleFor(b => b.ThumbnailPath).NotEmpty();
 
         RuleFor(b => b.Title).MinimumLength(2);
         RuleFor(b => b.Description).MinimumLength(2);
-        RuleFor(b => b.ThumbnailPath).MinimumLength(2);
+        //RuleFor(b => b.ThumbnailPath).MinimumLength(2);
     }
 }

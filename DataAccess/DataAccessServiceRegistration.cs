@@ -98,6 +98,8 @@ public static class DataAccessServiceRegistration
         services.AddScoped<IAccountCompetenceTestDal, EfAccountCompetenceTestDal>();
         services.AddScoped<IAccountViewLessonDal, EfAccountViewLessonDal>();
         services.AddScoped<IAccountFavoriteEducationProgramDal, EfAccountFavoriteEducationProgramDal>();
+        services.AddScoped<IBlogImageDal, EfBlogImageDal>();
+
 
         return services;
     }

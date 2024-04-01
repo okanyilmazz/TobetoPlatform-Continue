@@ -84,6 +84,7 @@ public class TobetoPlatformContext : DbContext
     public DbSet<AnnouncementRead> AnnouncementReads { get; set; }
     public DbSet<AccountViewLesson> AccountViewLessons { get; set; }
     public DbSet<AccountFavoriteEducationProgram> AccountFavoriteEducationPrograms { get; set; }
+    public DbSet<BlogImage> BlogImages { get; set; }
 
 
 
