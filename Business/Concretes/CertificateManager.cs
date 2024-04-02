@@ -28,23 +28,64 @@ public class CertificateManager : ICertificateService
 
     public async Task<CreatedCertificateResponse> AddAsync(CreateCertificateRequest createCertificateRequest, string currentPath)
     {
-        var uploadResult = _fileHelper.Add(createCertificateRequest.File, currentPath);
-        string newFolderPath = uploadResult.Result.Replace(currentPath, PathConstant.CertificatesPath);
-        createCertificateRequest.FolderPath = newFolderPath;
+        /* Server */
+
+        #region
+        //var uploadResult = _fileHelper.Add(createCertificateRequest.File, currentPath);
+        //string newFolderPath = uploadResult.Result.Replace(currentPath, PathConstant.CertificatesPath);
+        //createCertificateRequest.FolderPath = newFolderPath;
+
+        //Certificate certificate = _mapper.Map<Certificate>(createCertificateRequest);
+        //Certificate addedCertificate = await _certificateDal.AddAsync(certificate);
+        //CreatedCertificateResponse createdCertificateResponse = _mapper.Map<CreatedCertificateResponse>(addedCertificate);
+        //return createdCertificateResponse;
+        #endregion
+
+
+        /* Localhost */
+
+        #region
+
+        string folderPath = currentPath.Replace(currentPath, PathConstant.LocalCertificatesPath);
+        string addResult = await _fileHelper.Add(createCertificateRequest.File, folderPath);
+        string newFolderPath = addResult.Replace(folderPath, PathConstant.LocalBaseUrlCertificatesPath);
 
         Certificate certificate = _mapper.Map<Certificate>(createCertificateRequest);
+        certificate.FolderPath = newFolderPath;
+
         Certificate addedCertificate = await _certificateDal.AddAsync(certificate);
         CreatedCertificateResponse createdCertificateResponse = _mapper.Map<CreatedCertificateResponse>(addedCertificate);
         return createdCertificateResponse;
+
+        #endregion
     }
 
     public async Task<DeletedCertificateResponse> DeleteAsync(Guid id)
     {
+
+        /* Server */
+
+        #region
+        //await _certificateBusinessRules.IsExistsCertificate(id);
+        //Certificate certificate = await _certificateDal.GetAsync(predicate: l => l.Id == id);
+        //await _fileHelper.Delete(certificate.FolderPath.TrimStart('\\'));
+        //Certificate deletedCertificate = await _certificateDal.DeleteAsync(certificate);
+        //DeletedCertificateResponse deletedCertificateResponse = _mapper.Map<DeletedCertificateResponse>(deletedCertificate);
+        //return deletedCertificateResponse;
+        #endregion
+
+        /* Localhost */
+
+        #region
         await _certificateBusinessRules.IsExistsCertificate(id);
         Certificate certificate = await _certificateDal.GetAsync(predicate: l => l.Id == id);
+        string folderPath = PathConstant.LocalCertificatesPath + certificate.FolderPath.Substring(PathConstant.LocalBaseUrlCertificatesPath.Length);
+
+        await _fileHelper.Delete(folderPath);
         Certificate deletedCertificate = await _certificateDal.DeleteAsync(certificate);
         DeletedCertificateResponse deletedCertificateResponse = _mapper.Map<DeletedCertificateResponse>(deletedCertificate);
         return deletedCertificateResponse;
+        #endregion
     }
     public async Task<UpdatedCertificateResponse> UpdateAsync(UpdateCertificateRequest updateCertificateRequest)
     {
