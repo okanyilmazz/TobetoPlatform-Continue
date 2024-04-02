@@ -22,6 +22,7 @@ namespace Business.Concretes
         IFileHelper _fileHelper;
 
         public BlogImageManager(IBlogImageDal blogImageDal, IMapper mapper, IFileHelper fileHelper, BlogImageBusinessRules blogImageBusinessRules)
+
         {
             _blogImageDal = blogImageDal;
             _mapper = mapper;
