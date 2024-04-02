@@ -21,11 +21,12 @@ namespace Business.Concretes
         BlogImageBusinessRules _blogImageBusinessRules;
         IFileHelper _fileHelper;
 
-        public BlogImageManager(IBlogImageDal blogImageDal, IMapper mapper, IFileHelper fileHelper)
+        public BlogImageManager(IBlogImageDal blogImageDal, IMapper mapper, IFileHelper fileHelper, BlogImageBusinessRules blogImageBusinessRules)
         {
             _blogImageDal = blogImageDal;
             _mapper = mapper;
             _fileHelper = fileHelper;
+            _blogImageBusinessRules = blogImageBusinessRules;
         }
 
 
