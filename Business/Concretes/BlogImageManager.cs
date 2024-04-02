@@ -3,6 +3,7 @@ using Business.Abstracts;
 using Business.Dtos.Requests.BlogImageRequests;
 using Business.Dtos.Requests.CertificateRequests;
 using Business.Dtos.Responses.BlogImageResponses;
+using Business.Dtos.Responses.BlogResponses;
 using Business.Dtos.Responses.CertificateResponses;
 using Business.Messages;
 using Business.Rules.BusinessRules;
@@ -100,14 +101,14 @@ namespace Business.Concretes
             /* Server */
 
             #region
-            //await _blogImageBusinessRules.IsExistsBlog(id);
+            //await _blogImageBusinessRules.IsExistsBlogImage(id);
             //BlogImage blogImage = await _blogImageDal.GetAsync(predicate: l => l.Id == id);
-            //await _fileHelper.Delete(blogImage.ImagePath);
-            //blogImage.ImagePath = null;
-            //BlogImage deletedBlogImage = await _blogImageDal.UpdateAsync(blogImage);
-            //DeletedBlogResponse deletedBlogResponse = _mapper.Map<DeletedBlogResponse>(deletedBlogImage);
-            //return deletedBlogResponse;
+            //await _fileHelper.Delete(blogImage.ImagePath.TrimStart('\\'));
+            //BlogImage deletedBlogImage = await _blogImageDal.DeleteAsync(blogImage);
+            //DeletedBlogImageResponse deletedBlogImageResponse = _mapper.Map<DeletedBlogImageResponse>(deletedBlogImage);
+            //return deletedBlogImageResponse;
             #endregion
+
 
             /* Localhost */
 
