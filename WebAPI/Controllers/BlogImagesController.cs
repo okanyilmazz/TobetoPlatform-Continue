@@ -59,7 +59,7 @@ public class BlogImagesController : ControllerBase
     [Logging(typeof(MsSqlLogger))]
     [Logging(typeof(FileLogger))]
     [CacheRemove("BlogImages.Get")]
-    [HttpPut("Image")]
+    [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromForm] UpdateBlogImageRequest updateBlogImageRequest)
     {
         var result = await _blogImageService.UpdateAsync(updateBlogImageRequest);

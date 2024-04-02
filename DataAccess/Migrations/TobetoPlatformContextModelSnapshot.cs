@@ -1095,11 +1095,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("ReleaseDate");
 
-                    b.Property<string>("ThumbnailPath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ThumbnailPath");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
