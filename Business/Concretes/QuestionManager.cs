@@ -44,15 +44,17 @@ public class QuestionManager : IQuestionService
     {
         var questions = await _questionDal.GetListAsync(
             index: pageRequest.PageIndex,
-            size: pageRequest.PageSize
-            );
+            size: pageRequest.PageSize,
+            include:q=>q.Include(q=>q.QuestionType));
         var mappedQuestions = _mapper.Map<Paginate<GetListQuestionResponse>>(questions);
         return mappedQuestions;
     }
 
     public async Task<GetQuestionResponse> GetByIdAsync(Guid id)
     {
-        var question = await _questionDal.GetAsync(q => q.Id == id);
+        var question = await _questionDal.GetAsync(
+            predicate:q => q.Id == id,
+            include:q=>q.Include(q=>q.QuestionType));
         var mappedQuestion = _mapper.Map<GetQuestionResponse>(question);
         return mappedQuestion;
     }

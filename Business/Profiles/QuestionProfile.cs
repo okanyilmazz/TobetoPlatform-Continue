@@ -18,8 +18,13 @@ public class QuestionProfile : Profile
 
         CreateMap<Question, DeletedQuestionResponse>().ReverseMap();
 
-        CreateMap<Question, GetQuestionResponse>().ReverseMap();
-        CreateMap<Question, GetListQuestionResponse>().ReverseMap();
+        CreateMap<Question, GetQuestionResponse>()
+            .ForMember(destinationMember:q=>q.QuestionTypeName,
+            memberOptions:opt=>opt.MapFrom(q=>q.QuestionType.Name))
+            .ReverseMap();
+        CreateMap<Question, GetListQuestionResponse>()
+            .ForMember(destinationMember: q => q.QuestionTypeName,
+            memberOptions: opt => opt.MapFrom(q => q.QuestionType.Name)).ReverseMap();
         CreateMap<IPaginate<Question>, Paginate<GetListQuestionResponse>>().ReverseMap();
         
         CreateMap<List<Question>, Paginate<GetListQuestionResponse>>()
