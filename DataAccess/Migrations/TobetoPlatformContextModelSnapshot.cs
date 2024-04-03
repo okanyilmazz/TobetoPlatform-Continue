@@ -1119,7 +1119,8 @@ namespace DataAccess.Migrations
                         .HasColumnName("Id");
 
                     b.Property<Guid>("BlogId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("BlogId");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -2429,11 +2430,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("ReleaseDate");
 
-                    b.Property<string>("ThumbnailPath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ThumbnailPath");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
@@ -2448,6 +2444,41 @@ namespace DataAccess.Migrations
                         .IsUnique();
 
                     b.ToTable("MediaNews", (string)null);
+                });
+
+            modelBuilder.Entity("Entities.Concretes.MediaNewImage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("Id");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ImagePath");
+
+                    b.Property<Guid>("MediaNewId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("MediaNewId");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MediaNewId");
+
+                    b.HasIndex(new[] { "Id" }, "UK_Id")
+                        .IsUnique();
+
+                    b.ToTable("MediaNewImages", (string)null);
                 });
 
             modelBuilder.Entity("Entities.Concretes.Occupation", b =>
@@ -3829,6 +3860,17 @@ namespace DataAccess.Migrations
                     b.Navigation("Account");
 
                     b.Navigation("Lesson");
+                });
+
+            modelBuilder.Entity("Entities.Concretes.MediaNewImage", b =>
+                {
+                    b.HasOne("Entities.Concretes.MediaNew", "MediaNew")
+                        .WithMany()
+                        .HasForeignKey("MediaNewId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MediaNew");
                 });
 
             modelBuilder.Entity("Entities.Concretes.OccupationClassSurvey", b =>

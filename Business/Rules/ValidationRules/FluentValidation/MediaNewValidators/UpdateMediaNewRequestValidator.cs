@@ -11,6 +11,5 @@ public class UpdateMediaNewRequestValidator : AbstractValidator<UpdateMediaNewRe
         RuleFor(m => m.Description).NotEmpty();
         RuleFor(m => m.Description).MinimumLength(10);
         RuleFor(m => m.ReleaseDate).NotEmpty();
-        RuleFor(m => m.ThumbnailPath).NotEmpty();
     }
 }
