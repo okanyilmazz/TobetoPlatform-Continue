@@ -99,6 +99,7 @@ public static class DataAccessServiceRegistration
         services.AddScoped<IAccountViewLessonDal, EfAccountViewLessonDal>();
         services.AddScoped<IAccountFavoriteEducationProgramDal, EfAccountFavoriteEducationProgramDal>();
         services.AddScoped<IBlogImageDal, EfBlogImageDal>();
+        services.AddScoped<IMediaNewImageDal, EfMediaNewImageDal>();
 
 
         return services;

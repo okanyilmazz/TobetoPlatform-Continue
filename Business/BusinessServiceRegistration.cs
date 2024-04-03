@@ -90,6 +90,7 @@ public static class BusinessServiceRegistration
         services.AddScoped<IAccountViewLessonService, AccountViewLessonManager>();
         services.AddScoped<IAccountFavoriteEducationProgramService, AccountFavoriteEducationProgramManager>();
         services.AddScoped<IBlogImageService, BlogImageManager>();
+        services.AddScoped<IMediaNewImageService, MediaNewImageManager>();
         services.AddScoped<IOperationClaimService, OperationClaimManager>();
         services.AddScoped<IFileHelper, FileHelper>();
         services.AddScoped<ILessonLikeService, LessonLikeManager>();

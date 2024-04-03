@@ -43,7 +43,7 @@ namespace Business.Concretes
             //BlogImage blogImage = await _blogImageDal.GetAsync(predicate: a => a.Id == updateBlogImageRequest.Id);
             //string newBlogThumbnailPath = await _fileHelper.Update(updateBlogImageRequest.File, blogImage.ImagePath);
             //blogImage.ImagePath = newBlogThumbnailPath;
-            //await _blogImageDal.UpdateAsync(blog);
+            //await _blogImageDal.UpdateAsync(blogImage);
             //var mappedBlogImage = _mapper.Map<UpdatedBlogImageResponse>(blogImage);
             //return mappedBlogImage;
             #endregion
@@ -117,8 +117,7 @@ namespace Business.Concretes
             BlogImage blogImage = await _blogImageDal.GetAsync(predicate: l => l.Id == id);
             string imagePath = PathConstant.LocalImagePath + blogImage.ImagePath.Substring(PathConstant.LocalBaseUrlImagePath.Length);
             await _fileHelper.Delete(imagePath);
-            blogImage.ImagePath = null;
-            BlogImage deletedBlogImage = await _blogImageDal.UpdateAsync(blogImage);
+            BlogImage deletedBlogImage = await _blogImageDal.DeleteAsync(blogImage);
             DeletedBlogImageResponse deletedBlogImageResponse = _mapper.Map<DeletedBlogImageResponse>(deletedBlogImage);
             return deletedBlogImageResponse;
             #endregion
