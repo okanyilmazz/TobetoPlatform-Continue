@@ -65,7 +65,7 @@ We welcome contributions from the community to improve Tobeto Platform. If you h
 - **Global Exception Handling:** Implemented for centralized exception handling.
 - **MSSQL:** Employed Microsoft SQL Server as the database management system.
 - **Authorization:** Used for user authentication and access control.
-
+- **SMTP:** Used for password reset operations. When users request a password reset, an email is sent securely via SMTP, allowing users to reset their passwords
 
 ## Dependencies
 
